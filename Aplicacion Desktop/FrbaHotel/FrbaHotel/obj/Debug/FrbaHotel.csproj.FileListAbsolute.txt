@@ -1,0 +1,8 @@
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\bin\Debug\FrbaHotel.exe
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\bin\Debug\FrbaHotel.pdb
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Properties.Resources.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.csproj.GenerateResource.Cache
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.exe
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.pdb
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Login.Login.resources

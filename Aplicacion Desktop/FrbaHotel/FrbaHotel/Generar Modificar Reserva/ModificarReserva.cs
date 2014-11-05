@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FrbaHotel.Login
+namespace FrbaHotel.Generar_Modificar_Reserva
 {
-    public partial class Form1 : Form
+    public partial class ModificarReserva : Form
     {
-        public Form1()
+        public ModificarReserva()
         {
             InitializeComponent();
         }

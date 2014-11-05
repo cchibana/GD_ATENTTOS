@@ -1,6 +1,6 @@
 ﻿namespace FrbaHotel.Generar_Modificar_Reserva
 {
-    partial class Form1
+    partial class ModificarReserva
     {
         /// <summary>
         /// Required designer variable.
