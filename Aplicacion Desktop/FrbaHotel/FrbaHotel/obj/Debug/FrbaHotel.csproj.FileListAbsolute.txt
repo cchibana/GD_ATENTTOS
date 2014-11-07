@@ -6,3 +6,5 @@ C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaH
 C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.exe
 C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.pdb
 C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Login.Login.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Contrasenia.encriptarContrasenia.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Form1.resources
