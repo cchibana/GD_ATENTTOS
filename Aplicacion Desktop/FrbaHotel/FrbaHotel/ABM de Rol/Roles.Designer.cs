@@ -1,6 +1,6 @@
 ﻿namespace FrbaHotel.ABM_de_Rol
 {
-    partial class Form1
+    partial class Roles
     {
         /// <summary>
         /// Required designer variable.
