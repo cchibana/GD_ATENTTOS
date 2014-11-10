@@ -24,8 +24,8 @@ namespace FrbaHotel.Login
             //Generar MenuStrip para la pantalla inicial según el rol del usuario
             //PantallaPrincipal pantPrinc;
 
-            Dominio.Usuario usu1 = new Dominio.Usuario();
-            string contrHash = usu1.cifrarContrasenia(txt_passwordUsuario.Text);
+            //Dominio.Usuario usu1 = new Dominio.Usuario();
+            //string contrHash = usu1.cifrarContrasenia(txt_passwordUsuario.Text);
 
 
             //if (txt_nombreUsuario.Text == "admin" && hashContr == "e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7")
