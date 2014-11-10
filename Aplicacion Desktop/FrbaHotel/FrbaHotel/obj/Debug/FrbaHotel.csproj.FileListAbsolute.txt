@@ -7,4 +7,16 @@ C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaH
 C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.pdb
 C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Login.Login.resources
 C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Contrasenia.encriptarContrasenia.resources
-C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Form1.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Cliente.Clientes.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Cliente.Cliente_Alta.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Cliente.Cliente_Baja.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Cliente.Cliente_Modificacion.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Habitacion.Habitaciones.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Habitacion.Habitacion_Alta.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Habitacion.Habitacion_Baja.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Habitacion.Habitacion_Modificacion.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Hotel.Hotel.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Hotel.Hotel_Alta.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Hotel.Hotel_Baja.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Hotel.Hotel_Modificacion.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.PantallaPrincipal.resources

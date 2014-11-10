@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.ABM_de_Cliente
 {
-    public partial class Form1 : Form
+    public partial class Cliente_Baja : Form
     {
-        public Form1()
+        public Cliente_Baja()
         {
             InitializeComponent();
         }

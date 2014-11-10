@@ -48,17 +48,77 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ABM de Cliente\Form1.cs">
+    <Compile Include="ABM de Cliente\Clientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM de Cliente\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ABM de Cliente\Clientes.Designer.cs">
+      <DependentUpon>Clientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Habitacion\Form1.cs">
+    <Compile Include="ABM de Cliente\Cliente_Alta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM de Habitacion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ABM de Cliente\Cliente_Alta.Designer.cs">
+      <DependentUpon>Cliente_Alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Cliente\Cliente_Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Cliente\Cliente_Baja.Designer.cs">
+      <DependentUpon>Cliente_Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Cliente\Cliente_Modificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Cliente\Cliente_Modificacion.Designer.cs">
+      <DependentUpon>Cliente_Modificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Habitacion\Habitaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Habitacion\Habitaciones.Designer.cs">
+      <DependentUpon>Habitaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Habitacion\Habitacion_Alta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Habitacion\Habitacion_Alta.Designer.cs">
+      <DependentUpon>Habitacion_Alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Habitacion\Habitacion_Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Habitacion\Habitacion_Baja.Designer.cs">
+      <DependentUpon>Habitacion_Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Habitacion\Habitacion_Modificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Habitacion\Habitacion_Modificacion.Designer.cs">
+      <DependentUpon>Habitacion_Modificacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Hotel\Hotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Hotel\Hotel.Designer.cs">
+      <DependentUpon>Hotel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Hotel\Hotel_Alta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Hotel\Hotel_Alta.Designer.cs">
+      <DependentUpon>Hotel_Alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Hotel\Hotel_Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Hotel\Hotel_Baja.Designer.cs">
+      <DependentUpon>Hotel_Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Hotel\Hotel_Modificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Hotel\Hotel_Modificacion.Designer.cs">
+      <DependentUpon>Hotel_Modificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM de Regimen\Form1.cs">
       <SubType>Form</SubType>
@@ -90,11 +150,17 @@
     <Compile Include="Contrasenia\encriptarContrasenia.Designer.cs">
       <DependentUpon>encriptarContrasenia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="PantallaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="PantallaPrincipal.Designer.cs">
+      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
     <Compile Include="Generar Modificar Reserva\ModificarReserva.cs">
       <SubType>Form</SubType>
@@ -122,11 +188,47 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ABM de Cliente\Clientes.resx">
+      <DependentUpon>Clientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Cliente\Cliente_Alta.resx">
+      <DependentUpon>Cliente_Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Cliente\Cliente_Baja.resx">
+      <DependentUpon>Cliente_Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Cliente\Cliente_Modificacion.resx">
+      <DependentUpon>Cliente_Modificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Habitacion\Habitaciones.resx">
+      <DependentUpon>Habitaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Habitacion\Habitacion_Alta.resx">
+      <DependentUpon>Habitacion_Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Habitacion\Habitacion_Baja.resx">
+      <DependentUpon>Habitacion_Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Habitacion\Habitacion_Modificacion.resx">
+      <DependentUpon>Habitacion_Modificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Hotel\Hotel.resx">
+      <DependentUpon>Hotel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Hotel\Hotel_Alta.resx">
+      <DependentUpon>Hotel_Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Hotel\Hotel_Baja.resx">
+      <DependentUpon>Hotel_Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Hotel\Hotel_Modificacion.resx">
+      <DependentUpon>Hotel_Modificacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contrasenia\encriptarContrasenia.resx">
       <DependentUpon>encriptarContrasenia.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="PantallaPrincipal.resx">
+      <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -161,6 +263,9 @@
     <Compile Include="Registrar Estadia\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

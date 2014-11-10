@@ -1,6 +1,6 @@
-﻿namespace FrbaHotel.ABM_de_Cliente
+﻿namespace FrbaHotel
 {
-    partial class Form1
+    partial class PantallaPrincipal
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // PantallaPrincipal
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(984, 487);
+            this.Name = "PantallaPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
     }
 }

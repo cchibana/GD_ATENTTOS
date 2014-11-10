@@ -43,7 +43,6 @@ namespace FrbaHotel.Contrasenia
 
         public string hash(string input)
         {
-
             SHA256 hash = SHA256.Create();
 
             // Convertir la cadena en un array de bytes y calcular hash
