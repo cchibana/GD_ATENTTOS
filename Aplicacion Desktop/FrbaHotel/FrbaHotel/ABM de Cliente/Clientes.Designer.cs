@@ -166,7 +166,6 @@
             this.txt_nro_doc.Name = "txt_nro_doc";
             this.txt_nro_doc.Size = new System.Drawing.Size(100, 20);
             this.txt_nro_doc.TabIndex = 12;
-            //this.txt_nro_doc.TextChanged += new System.EventHandler(this.txt_nro_doc_TextChanged);
             // 
             // lbl_nro_doc
             // 

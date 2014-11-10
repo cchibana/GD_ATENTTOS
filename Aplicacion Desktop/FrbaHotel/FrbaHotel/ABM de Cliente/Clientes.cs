@@ -105,6 +105,7 @@ namespace FrbaHotel.ABM_de_Cliente
             cliente_Baja.Show(this);
         }
 
+
        /* private void txt_nro_doc_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
