@@ -127,11 +127,29 @@
     <Compile Include="ABM de Regimen\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Rol\Form1.cs">
+    <Compile Include="ABM de Usuario\Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM de Rol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="ABM de Usuario\Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Usuario\Usuario_Alta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Usuario\Usuario_Alta.Designer.cs">
+      <DependentUpon>Usuario_Alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Usuario\Usuario_Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Usuario\Usuario_Baja.Designer.cs">
+      <DependentUpon>Usuario_Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Usuario\Usuario_Modificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Usuario\Usuario_Modificacion.Designer.cs">
+      <DependentUpon>Usuario_Modificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Cancelar Reserva\Form1.cs">
       <SubType>Form</SubType>
@@ -215,6 +233,18 @@
     <EmbeddedResource Include="ABM de Hotel\Hotel_Modificacion.resx">
       <DependentUpon>Hotel_Modificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\Usuario_Alta.resx">
+      <DependentUpon>Usuario_Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\Usuario_Baja.resx">
+      <DependentUpon>Usuario_Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\Usuario_Modificacion.resx">
+      <DependentUpon>Usuario_Modificacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contrasenia\encriptarContrasenia.resx">
       <DependentUpon>encriptarContrasenia.cs</DependentUpon>
     </EmbeddedResource>
@@ -266,7 +296,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ABM de Usuario\" />
+    <Folder Include="ABM de Rol\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
