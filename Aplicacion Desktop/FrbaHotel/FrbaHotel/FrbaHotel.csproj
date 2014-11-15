@@ -150,6 +150,7 @@
     <Compile Include="Contrasenia\encriptarContrasenia.Designer.cs">
       <DependentUpon>encriptarContrasenia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dominio\Clientes.cs" />
     <Compile Include="PantallaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -226,6 +227,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenia\encriptarContrasenia.resx">
       <DependentUpon>encriptarContrasenia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\GenerarReserva.resx">
+      <DependentUpon>GenerarReserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\ModificarReserva.resx">
+      <DependentUpon>ModificarReserva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PantallaPrincipal.resx">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>

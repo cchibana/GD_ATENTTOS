@@ -44,7 +44,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-           
+         //   Clientes clientenuevo = new Clientes
         }
 
         private void lbl_estado_Click(object sender, EventArgs e)

@@ -41,7 +41,7 @@ namespace FrbaHotel.ABM_de_Cliente
         {
 
         }
-
+        
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
