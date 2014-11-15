@@ -6,20 +6,44 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Configuration;
+
 
 namespace FrbaHotel.ABM_de_Cliente
 {
     public partial class Clientes : Form
     {
+        Dominio.Cliente cliente1 = new Dominio.Cliente();
+            
         public Clientes()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        /* (Código Nuevo: Llenar el objeto con datos, este metodo hace que los de los controles pasen al objeto*/
+        public bool LlenarObjeto()
+        {
+            try
+            {
+                try { cliente1.Nombre = txt_nombre.Text; }
+                catch { cliente1.Nombre = null; }
+                cliente1.Nombre = txt_nombre.Text;
+                cliente1.Apellido = txt_apellido.Text;
+
+                return true;//Devuelve verdadero cuando los datos son correctos
+            }
+            catch
+            {
+                return false;//Devuelve falso cuando los datos NO son correctos
+            }
+        }
+
+
+        private void btn_Limpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
-        }
+        }        
 
 
         public void Limpiar()
@@ -32,60 +56,15 @@ namespace FrbaHotel.ABM_de_Cliente
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btn_Buscar_Click(object sender, EventArgs e)
         {
-
+            //Usando el metodo Listar de oProducto y mostrandolo en el DataGridView
+            dgv1.DataSource = cliente1.Listar();
         }
+            
+         
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_email_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_Apellido_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cBox_tipo_doc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_tipo_Doc_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void gBox_filtros_Enter(object sender, EventArgs e)
-        {
-
-        }
+                
 
         private void btn_Alta_Click(object sender, EventArgs e)
         {
@@ -105,6 +84,20 @@ namespace FrbaHotel.ABM_de_Cliente
             cliente_Baja.Show(this);
         }
 
+        private void cbox_tipo_doc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Clientes_Load(object sender, EventArgs e)
+        {
+          
+      
+            
+        }
+
+
+        
 
        /* private void txt_nro_doc_KeyPress(object sender, KeyPressEventArgs e)
         {

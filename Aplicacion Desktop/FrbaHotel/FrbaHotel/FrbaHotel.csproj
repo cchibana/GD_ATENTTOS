@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -150,7 +151,8 @@
     <Compile Include="Contrasenia\encriptarContrasenia.Designer.cs">
       <DependentUpon>encriptarContrasenia.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dominio\Clientes.cs" />
+    <Compile Include="Dominio\CDatos.cs" />
+    <Compile Include="Dominio\Cliente.cs" />
     <Compile Include="Dominio\Usuarios.cs" />
     <Compile Include="PantallaPrincipal.cs">
       <SubType>Form</SubType>

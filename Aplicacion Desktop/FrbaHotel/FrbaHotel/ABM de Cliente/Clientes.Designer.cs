@@ -43,13 +43,9 @@
             this.lbl_nro_doc = new System.Windows.Forms.Label();
             this.cbox_tipo_doc = new System.Windows.Forms.ComboBox();
             this.lbl_tipo_Doc = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv1 = new System.Windows.Forms.DataGridView();
             this.gBox_filtros = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.gBox_filtros.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +57,7 @@
             this.btn_Limpiar.TabIndex = 0;
             this.btn_Limpiar.Text = "Limpiar";
             this.btn_Limpiar.UseVisualStyleBackColor = true;
-            this.btn_Limpiar.Click += new System.EventHandler(this.button1_Click);
+            this.btn_Limpiar.Click += new System.EventHandler(this.btn_Limpiar_Click);
             // 
             // btn_Buscar
             // 
@@ -71,7 +67,7 @@
             this.btn_Buscar.TabIndex = 1;
             this.btn_Buscar.Text = "Buscar";
             this.btn_Buscar.UseVisualStyleBackColor = true;
-            this.btn_Buscar.Click += new System.EventHandler(this.button2_Click);
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // btn_Alta
             // 
@@ -112,7 +108,6 @@
             this.lbl_Nombre.Size = new System.Drawing.Size(44, 13);
             this.lbl_Nombre.TabIndex = 5;
             this.lbl_Nombre.Text = "Nombre";
-            this.lbl_Nombre.Click += new System.EventHandler(this.label1_Click);
             // 
             // txt_nombre
             // 
@@ -120,7 +115,6 @@
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(100, 20);
             this.txt_nombre.TabIndex = 6;
-            this.txt_nombre.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txt_apellido
             // 
@@ -128,7 +122,6 @@
             this.txt_apellido.Name = "txt_apellido";
             this.txt_apellido.Size = new System.Drawing.Size(100, 20);
             this.txt_apellido.TabIndex = 7;
-            this.txt_apellido.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
             // txt_mail
             // 
@@ -136,7 +129,6 @@
             this.txt_mail.Name = "txt_mail";
             this.txt_mail.Size = new System.Drawing.Size(100, 20);
             this.txt_mail.TabIndex = 8;
-            this.txt_mail.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // lbl_Apellido
             // 
@@ -147,7 +139,6 @@
             this.lbl_Apellido.Size = new System.Drawing.Size(44, 13);
             this.lbl_Apellido.TabIndex = 9;
             this.lbl_Apellido.Text = "Apellido";
-            this.lbl_Apellido.Click += new System.EventHandler(this.lbl_Apellido_Click);
             // 
             // lbl_email
             // 
@@ -158,7 +149,6 @@
             this.lbl_email.Size = new System.Drawing.Size(34, 13);
             this.lbl_email.TabIndex = 10;
             this.lbl_email.Text = "e-mail";
-            this.lbl_email.Click += new System.EventHandler(this.lbl_email_Click);
             // 
             // txt_nro_doc
             // 
@@ -191,7 +181,7 @@
             this.cbox_tipo_doc.Name = "cbox_tipo_doc";
             this.cbox_tipo_doc.Size = new System.Drawing.Size(100, 21);
             this.cbox_tipo_doc.TabIndex = 13;
-            this.cbox_tipo_doc.SelectedIndexChanged += new System.EventHandler(this.cBox_tipo_doc_SelectedIndexChanged);
+            this.cbox_tipo_doc.SelectedIndexChanged += new System.EventHandler(this.cbox_tipo_doc_SelectedIndexChanged);
             // 
             // lbl_tipo_Doc
             // 
@@ -202,41 +192,14 @@
             this.lbl_tipo_Doc.Size = new System.Drawing.Size(51, 13);
             this.lbl_tipo_Doc.TabIndex = 14;
             this.lbl_tipo_Doc.Text = "Tipo Doc";
-            this.lbl_tipo_Doc.Click += new System.EventHandler(this.lbl_tipo_Doc_Click);
             // 
-            // dataGridView1
+            // dgv1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(28, 170);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(437, 88);
-            this.dataGridView1.TabIndex = 15;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
+            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv1.Location = new System.Drawing.Point(28, 170);
+            this.dgv1.Name = "dgv1";
+            this.dgv1.Size = new System.Drawing.Size(437, 88);
+            this.dgv1.TabIndex = 15;
             // 
             // gBox_filtros
             // 
@@ -257,14 +220,13 @@
             this.gBox_filtros.TabIndex = 16;
             this.gBox_filtros.TabStop = false;
             this.gBox_filtros.Text = "Filtros";
-            this.gBox_filtros.Enter += new System.EventHandler(this.gBox_filtros_Enter);
             // 
             // Clientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(520, 370);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv1);
             this.Controls.Add(this.btn_Baja);
             this.Controls.Add(this.btn_Modificacion);
             this.Controls.Add(this.btn_Alta);
@@ -274,7 +236,8 @@
             this.Name = "Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.Clientes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             this.gBox_filtros.ResumeLayout(false);
             this.gBox_filtros.PerformLayout();
             this.ResumeLayout(false);
@@ -298,11 +261,7 @@
         private System.Windows.Forms.Label lbl_nro_doc;
         private System.Windows.Forms.ComboBox cbox_tipo_doc;
         private System.Windows.Forms.Label lbl_tipo_Doc;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridView dgv1;
         private System.Windows.Forms.GroupBox gBox_filtros;
     }
 }

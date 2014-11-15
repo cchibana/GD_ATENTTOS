@@ -22,7 +22,7 @@ namespace FrbaHotel.Login
             //Comparar y Loguear
             //Selección del hotel, si trabaja en más de uno.
             //Generar MenuStrip para la pantalla inicial según el rol del usuario
-            PantallaPrincipal pantPrinc;
+            //PantallaPrincipal pantPrinc;
 
             //Contrasenia.encriptarContrasenia contraseniaUsr = new Contrasenia.encriptarContrasenia();
             //string hashContr = contraseniaUsr.hash(txt_passwordUsuario.Text);
