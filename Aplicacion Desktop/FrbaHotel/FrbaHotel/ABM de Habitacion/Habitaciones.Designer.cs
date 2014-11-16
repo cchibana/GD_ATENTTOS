@@ -28,14 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_habitacion = new System.Windows.Forms.DataGridView();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.btn_Limpiar = new System.Windows.Forms.Button();
             this.gBox_filtros = new System.Windows.Forms.GroupBox();
+            this.lbl_tipo = new System.Windows.Forms.Label();
+            this.cbox_tipo_hab = new System.Windows.Forms.ComboBox();
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.lbl_ubicacion = new System.Windows.Forms.Label();
             this.lbl_numero = new System.Windows.Forms.Label();
@@ -47,45 +45,18 @@
             this.btn_baja = new System.Windows.Forms.Button();
             this.btn_modificacion = new System.Windows.Forms.Button();
             this.btn_alta = new System.Windows.Forms.Button();
-            this.cbox_tipo_hab = new System.Windows.Forms.ComboBox();
-            this.lbl_tipo = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_habitacion)).BeginInit();
             this.gBox_filtros.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgv_habitacion
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(43, 218);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(437, 88);
-            this.dataGridView1.TabIndex = 26;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Ciudad";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "País";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Seleccionar";
-            this.Column4.Name = "Column4";
+            this.dgv_habitacion.AllowUserToAddRows = false;
+            this.dgv_habitacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_habitacion.Location = new System.Drawing.Point(43, 218);
+            this.dgv_habitacion.Name = "dgv_habitacion";
+            this.dgv_habitacion.Size = new System.Drawing.Size(437, 88);
+            this.dgv_habitacion.TabIndex = 26;
             // 
             // btn_Buscar
             // 
@@ -95,6 +66,7 @@
             this.btn_Buscar.TabIndex = 25;
             this.btn_Buscar.Text = "Buscar";
             this.btn_Buscar.UseVisualStyleBackColor = true;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // btn_Limpiar
             // 
@@ -125,6 +97,31 @@
             this.gBox_filtros.TabIndex = 27;
             this.gBox_filtros.TabStop = false;
             this.gBox_filtros.Text = "Filtros";
+            // 
+            // lbl_tipo
+            // 
+            this.lbl_tipo.AutoSize = true;
+            this.lbl_tipo.ForeColor = System.Drawing.SystemColors.MenuText;
+            this.lbl_tipo.Location = new System.Drawing.Point(256, 48);
+            this.lbl_tipo.Name = "lbl_tipo";
+            this.lbl_tipo.Size = new System.Drawing.Size(80, 13);
+            this.lbl_tipo.TabIndex = 38;
+            this.lbl_tipo.Text = "Tipo habitación";
+            // 
+            // cbox_tipo_hab
+            // 
+            this.cbox_tipo_hab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_tipo_hab.FormattingEnabled = true;
+            this.cbox_tipo_hab.Items.AddRange(new object[] {
+            "Simple",
+            "Doble",
+            "Doble Twin",
+            "Triple",
+            "Cuadruple"});
+            this.cbox_tipo_hab.Location = new System.Drawing.Point(353, 45);
+            this.cbox_tipo_hab.Name = "cbox_tipo_hab";
+            this.cbox_tipo_hab.Size = new System.Drawing.Size(101, 21);
+            this.cbox_tipo_hab.TabIndex = 37;
             // 
             // txt_numero
             // 
@@ -232,37 +229,12 @@
             this.btn_alta.UseVisualStyleBackColor = true;
             this.btn_alta.Click += new System.EventHandler(this.btn_alta_Click);
             // 
-            // cbox_tipo_hab
-            // 
-            this.cbox_tipo_hab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbox_tipo_hab.FormattingEnabled = true;
-            this.cbox_tipo_hab.Items.AddRange(new object[] {
-            "Simple",
-            "Doble",
-            "Doble Twin",
-            "Triple",
-            "Cuadruple"});
-            this.cbox_tipo_hab.Location = new System.Drawing.Point(353, 45);
-            this.cbox_tipo_hab.Name = "cbox_tipo_hab";
-            this.cbox_tipo_hab.Size = new System.Drawing.Size(101, 21);
-            this.cbox_tipo_hab.TabIndex = 37;
-            // 
-            // lbl_tipo
-            // 
-            this.lbl_tipo.AutoSize = true;
-            this.lbl_tipo.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lbl_tipo.Location = new System.Drawing.Point(256, 48);
-            this.lbl_tipo.Name = "lbl_tipo";
-            this.lbl_tipo.Size = new System.Drawing.Size(80, 13);
-            this.lbl_tipo.TabIndex = 38;
-            this.lbl_tipo.Text = "Tipo habitación";
-            // 
             // Habitaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(578, 433);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv_habitacion);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.btn_Limpiar);
             this.Controls.Add(this.gBox_filtros);
@@ -271,7 +243,7 @@
             this.Controls.Add(this.btn_alta);
             this.Name = "Habitaciones";
             this.Text = "Habitaciones";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_habitacion)).EndInit();
             this.gBox_filtros.ResumeLayout(false);
             this.gBox_filtros.PerformLayout();
             this.ResumeLayout(false);
@@ -280,11 +252,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.DataGridView dgv_habitacion;
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.Button btn_Limpiar;
         private System.Windows.Forms.GroupBox gBox_filtros;

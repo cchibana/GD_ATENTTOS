@@ -80,6 +80,7 @@
             this.cbox_estado.Name = "cbox_estado";
             this.cbox_estado.Size = new System.Drawing.Size(121, 21);
             this.cbox_estado.TabIndex = 25;
+            this.cbox_estado.SelectedIndexChanged += new System.EventHandler(this.cbox_estado_SelectedIndexChanged);
             // 
             // cbox_ubicacion
             // 
@@ -130,6 +131,7 @@
             // 
             this.txt_piso.Location = new System.Drawing.Point(102, 80);
             this.txt_piso.Name = "txt_piso";
+            this.txt_piso.ReadOnly = true;
             this.txt_piso.Size = new System.Drawing.Size(127, 20);
             this.txt_piso.TabIndex = 20;
             // 
@@ -137,6 +139,7 @@
             // 
             this.txt_numero.Location = new System.Drawing.Point(102, 38);
             this.txt_numero.Name = "txt_numero";
+            this.txt_numero.ReadOnly = true;
             this.txt_numero.Size = new System.Drawing.Size(127, 20);
             this.txt_numero.TabIndex = 19;
             // 

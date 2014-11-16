@@ -24,7 +24,32 @@ namespace FrbaHotel.Dominio
             set { apellido = value; }
         }
 
-        /*Estos metodos retornan resultados pues con consultas*/
+        string mail;
+
+        public string Mail
+        {
+            get { return mail; }
+            set { mail = value; }
+        }
+
+        string tipoDoc;
+
+        public string Tipodoc
+        {
+            get { return tipoDoc; }
+            set { tipoDoc = value; }
+        }
+
+        int nroDocumento;
+
+        public int NroDocumento
+        {
+            get { return nroDocumento; }
+            set { nroDocumento = value; }
+        }
+
+
+        /*Estos metodos retornan resultados de consultas*/
         public DataTable Listar()
         {
             string texto = "select * from [GD2C2014].[gd_esquema].[Maestra];";
@@ -33,10 +58,9 @@ namespace FrbaHotel.Dominio
 
         public DataTable ListarPorNombre()
         {
-            string texto = "select * from [GD2C2014].[gd_esquema].[Maestra] where nombre=" + Nombre + ";";
+            string texto = "select [Cliente_Pasaporte_Nro],[Cliente_Apellido],[Cliente_Nombre],[Cliente_Fecha_Nac],[Cliente_Mail],[Cliente_Nacionalidad] from [GD2C2014].[gd_esquema].[Maestra] where nombre=" + Nombre + ";";
             return EjecutarConsulta(texto);
         }
-
-
+        
     }
 } 

@@ -53,7 +53,7 @@
             this.lbl_nombre = new System.Windows.Forms.Label();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.date_nacimiento = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // cbox_estado
@@ -280,22 +280,22 @@
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // date_nacimiento
             // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(96, 99);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 20);
-            this.dateTimePicker1.TabIndex = 73;
-            this.dateTimePicker1.Value = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
+            this.date_nacimiento.Enabled = false;
+            this.date_nacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date_nacimiento.Location = new System.Drawing.Point(96, 99);
+            this.date_nacimiento.Name = "date_nacimiento";
+            this.date_nacimiento.Size = new System.Drawing.Size(100, 20);
+            this.date_nacimiento.TabIndex = 73;
+            this.date_nacimiento.Value = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
             // 
             // Cliente_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 366);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.date_nacimiento);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.cbox_estado);
@@ -356,6 +356,6 @@
         private System.Windows.Forms.Label lbl_nombre;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Button btn_cancelar;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker date_nacimiento;
     }
 }

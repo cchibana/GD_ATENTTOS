@@ -15,5 +15,10 @@ namespace FrbaHotel.ABM_de_Habitacion
         {
             InitializeComponent();
         }
+
+        private void cbox_estado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

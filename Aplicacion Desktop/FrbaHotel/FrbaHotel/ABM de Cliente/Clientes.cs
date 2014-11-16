@@ -6,8 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using System.Configuration;
 
 
 namespace FrbaHotel.ABM_de_Cliente
@@ -58,7 +56,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            //Usando el metodo Listar de oProducto y mostrandolo en el DataGridView
+            //Se usa el metodo Listar de cliente y mostrandolo en el DataGridView
             dgv1.DataSource = cliente1.Listar();
         }
             

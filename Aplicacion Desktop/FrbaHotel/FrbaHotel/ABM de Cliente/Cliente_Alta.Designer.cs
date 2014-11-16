@@ -38,7 +38,6 @@
             this.cbox_tipodoc = new System.Windows.Forms.ComboBox();
             this.lbl_nacionalidad = new System.Windows.Forms.Label();
             this.txt_nacionalidad = new System.Windows.Forms.TextBox();
-            this.txt_fechanac = new System.Windows.Forms.TextBox();
             this.lbl_fecha_nac = new System.Windows.Forms.Label();
             this.txt_mail = new System.Windows.Forms.TextBox();
             this.lbl_mail = new System.Windows.Forms.Label();
@@ -54,6 +53,7 @@
             this.btn_guardar = new System.Windows.Forms.Button();
             this.cbox_estado = new System.Windows.Forms.ComboBox();
             this.lbl_estado = new System.Windows.Forms.Label();
+            this.date_nacimiento = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // lbl_nombre
@@ -143,13 +143,6 @@
             this.txt_nacionalidad.Name = "txt_nacionalidad";
             this.txt_nacionalidad.Size = new System.Drawing.Size(100, 20);
             this.txt_nacionalidad.TabIndex = 10;
-            // 
-            // txt_fechanac
-            // 
-            this.txt_fechanac.Location = new System.Drawing.Point(97, 92);
-            this.txt_fechanac.Name = "txt_fechanac";
-            this.txt_fechanac.Size = new System.Drawing.Size(100, 20);
-            this.txt_fechanac.TabIndex = 11;
             // 
             // lbl_fecha_nac
             // 
@@ -283,11 +276,22 @@
             this.lbl_estado.Text = "Estado";
             this.lbl_estado.Click += new System.EventHandler(this.lbl_estado_Click);
             // 
+            // date_nacimiento
+            // 
+            this.date_nacimiento.Enabled = false;
+            this.date_nacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.date_nacimiento.Location = new System.Drawing.Point(98, 93);
+            this.date_nacimiento.Name = "date_nacimiento";
+            this.date_nacimiento.Size = new System.Drawing.Size(100, 20);
+            this.date_nacimiento.TabIndex = 74;
+            this.date_nacimiento.Value = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
+            // 
             // Cliente_Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 366);
+            this.Controls.Add(this.date_nacimiento);
             this.Controls.Add(this.cbox_estado);
             this.Controls.Add(this.lbl_estado);
             this.Controls.Add(this.btn_guardar);
@@ -303,7 +307,6 @@
             this.Controls.Add(this.lbl_mail);
             this.Controls.Add(this.txt_mail);
             this.Controls.Add(this.lbl_fecha_nac);
-            this.Controls.Add(this.txt_fechanac);
             this.Controls.Add(this.txt_nacionalidad);
             this.Controls.Add(this.lbl_nacionalidad);
             this.Controls.Add(this.cbox_tipodoc);
@@ -334,7 +337,6 @@
         private System.Windows.Forms.ComboBox cbox_tipodoc;
         private System.Windows.Forms.Label lbl_nacionalidad;
         private System.Windows.Forms.TextBox txt_nacionalidad;
-        private System.Windows.Forms.TextBox txt_fechanac;
         private System.Windows.Forms.Label lbl_fecha_nac;
         private System.Windows.Forms.TextBox txt_mail;
         private System.Windows.Forms.Label lbl_mail;
@@ -350,5 +352,6 @@
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.ComboBox cbox_estado;
         private System.Windows.Forms.Label lbl_estado;
+        private System.Windows.Forms.DateTimePicker date_nacimiento;
     }
 }

@@ -11,6 +11,8 @@ namespace FrbaHotel.ABM_de_Habitacion
 {
     public partial class Habitaciones : Form
     {
+        Dominio.Habitacion habitacion1 = new Dominio.Habitacion();
+
         public Habitaciones()
         {
             InitializeComponent();
@@ -46,6 +48,12 @@ namespace FrbaHotel.ABM_de_Habitacion
             txt_descripcion.Text = "";
             cbox_tipo_hab.SelectedItem = null;
             cbox_ubicacion.SelectedItem = null;
+        }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            //Se usa el metodo Listar de hotel y mostrandolo en el DataGridView
+            dgv_habitacion.DataSource = habitacion1.Listar();
         }
     }
 }

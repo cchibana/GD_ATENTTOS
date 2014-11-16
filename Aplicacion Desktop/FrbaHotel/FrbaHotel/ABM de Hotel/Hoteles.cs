@@ -9,46 +9,14 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.ABM_de_Hotel
 {
-    public partial class Hotel : Form
+    public partial class Hoteles : Form
     {
-        public Hotel()
+        Dominio.Hotel hotel1 = new Dominio.Hotel();
+
+
+        public Hoteles()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_estrellas_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox1_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
         }
 
         private void btn_alta_Click(object sender, EventArgs e)
@@ -83,9 +51,13 @@ namespace FrbaHotel.ABM_de_Hotel
           
         }
 
-        private void cbox_estrellas_SelectedIndexChanged(object sender, EventArgs e)
+ 
+        private void btn_Buscar_Click(object sender, EventArgs e)
         {
-
+            //Se usa el metodo Listar de hotel y mostrandolo en el DataGridView
+            dgv1.DataSource = hotel1.Listar();
         }
+
+ 
     }
 }

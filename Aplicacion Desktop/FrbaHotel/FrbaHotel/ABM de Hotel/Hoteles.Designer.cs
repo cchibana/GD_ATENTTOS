@@ -1,6 +1,6 @@
 ﻿namespace FrbaHotel.ABM_de_Hotel
 {
-    partial class Hotel
+    partial class Hoteles
     {
         /// <summary>
         /// Required designer variable.
@@ -31,11 +31,7 @@
             this.btn_baja = new System.Windows.Forms.Button();
             this.btn_modificacion = new System.Windows.Forms.Button();
             this.btn_alta = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv1 = new System.Windows.Forms.DataGridView();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.btn_Limpiar = new System.Windows.Forms.Button();
             this.gBox_filtros = new System.Windows.Forms.GroupBox();
@@ -47,7 +43,7 @@
             this.txt_pais = new System.Windows.Forms.TextBox();
             this.lbl_ciudad = new System.Windows.Forms.Label();
             this.lbl_pais = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
             this.gBox_filtros.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,39 +77,14 @@
             this.btn_alta.UseVisualStyleBackColor = true;
             this.btn_alta.Click += new System.EventHandler(this.btn_alta_Click);
             // 
-            // dataGridView1
+            // dgv1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(46, 176);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(437, 88);
-            this.dataGridView1.TabIndex = 19;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Nombre";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Ciudad";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "País";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Seleccionar";
-            this.Column4.Name = "Column4";
+            this.dgv1.AllowUserToAddRows = false;
+            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv1.Location = new System.Drawing.Point(46, 176);
+            this.dgv1.Name = "dgv1";
+            this.dgv1.Size = new System.Drawing.Size(437, 88);
+            this.dgv1.TabIndex = 19;
             // 
             // btn_Buscar
             // 
@@ -123,6 +94,7 @@
             this.btn_Buscar.TabIndex = 18;
             this.btn_Buscar.Text = "Buscar";
             this.btn_Buscar.UseVisualStyleBackColor = true;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // btn_Limpiar
             // 
@@ -196,7 +168,6 @@
             this.cbox_estrellas.Name = "cbox_estrellas";
             this.cbox_estrellas.Size = new System.Drawing.Size(100, 21);
             this.cbox_estrellas.TabIndex = 13;
-            this.cbox_estrellas.SelectedIndexChanged += new System.EventHandler(this.cbox_estrellas_SelectedIndexChanged);
             // 
             // txt_ciudad
             // 
@@ -232,22 +203,22 @@
             this.lbl_pais.TabIndex = 10;
             this.lbl_pais.Text = "País";
             // 
-            // Hotel
+            // Hoteles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 382);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv1);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.btn_Limpiar);
             this.Controls.Add(this.gBox_filtros);
             this.Controls.Add(this.btn_baja);
             this.Controls.Add(this.btn_modificacion);
             this.Controls.Add(this.btn_alta);
-            this.Name = "Hotel";
+            this.Name = "Hoteles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hoteles";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
             this.gBox_filtros.ResumeLayout(false);
             this.gBox_filtros.PerformLayout();
             this.ResumeLayout(false);
@@ -259,7 +230,7 @@
         private System.Windows.Forms.Button btn_baja;
         private System.Windows.Forms.Button btn_modificacion;
         private System.Windows.Forms.Button btn_alta;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv1;
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.Button btn_Limpiar;
         private System.Windows.Forms.GroupBox gBox_filtros;
@@ -271,9 +242,5 @@
         private System.Windows.Forms.TextBox txt_pais;
         private System.Windows.Forms.Label lbl_ciudad;
         private System.Windows.Forms.Label lbl_pais;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }

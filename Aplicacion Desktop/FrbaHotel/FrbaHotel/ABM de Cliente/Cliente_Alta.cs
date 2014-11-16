@@ -33,7 +33,7 @@ namespace FrbaHotel.ABM_de_Cliente
             txt_nacionalidad.Text = "";
             txt_mail.Text = "";
             txt_telefono.Text = "";
-            txt_fechanac.Text = "";
+            date_nacimiento.Value = DateTime.Now;
             txt_direccion.Text = "";
             txt_localidad.Text = "";
             txt_pais.Text = "";            
