@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.SqlClient;
 using System.Data;
+using System.Configuration;
 
 namespace FrbaHotel.Dominio
 {
@@ -11,7 +12,8 @@ namespace FrbaHotel.Dominio
     {
         //Aquí esta la cadena de conexión a SqlServer, dependiendo de tu proyecto, esto debes cambiarlo
         //normalmente se cambia el nombre del servidor y el nombre de la base de datos
-        string cadenaDeConexion = @"Data Source=(local)\SQLSERVER2008;Initial Catalog=GD2C2014;Integrated Security=True";
+        //string cadenaDeConexion = @"Data Source=(local)\SQLSERVER2008;Initial Catalog=GD2C2014";
+        string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
 
         public DataTable EjecutarConsulta(string textoSQL)
         {

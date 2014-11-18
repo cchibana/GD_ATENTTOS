@@ -58,7 +58,7 @@ namespace FrbaHotel.Dominio
 
         public DataTable ListarPorNombre()
         {
-            string texto = "select [Cliente_Pasaporte_Nro],[Cliente_Apellido],[Cliente_Nombre],[Cliente_Fecha_Nac],[Cliente_Mail],[Cliente_Nacionalidad] from [GD2C2014].[gd_esquema].[Maestra] where nombre=" + Nombre + ";";
+            string texto = "select [Cliente_Pasaporte_Nro],[Cliente_Apellido],[Cliente_Nombre],[Cliente_Fecha_Nac],[Cliente_Mail],[Cliente_Nacionalidad] from [GD2C2014].[gd_esquema].[Maestra] where nombre = '" + Nombre + "';";
             return EjecutarConsulta(texto);
         }
         

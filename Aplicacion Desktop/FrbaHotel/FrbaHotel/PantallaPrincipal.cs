@@ -103,7 +103,7 @@ namespace FrbaHotel
 
         private void menuItem_Hoteles_Click(object sender, EventArgs e)
         {
-            ABM_de_Hotel.Hotel newHotel = new ABM_de_Hotel.Hotel();
+            ABM_de_Hotel.Hoteles newHotel = new ABM_de_Hotel.Hoteles();
             newHotel.Show(this);
         }
 
