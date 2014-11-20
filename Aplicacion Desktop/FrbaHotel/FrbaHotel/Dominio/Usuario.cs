@@ -14,18 +14,13 @@ namespace FrbaHotel.Dominio
 {
     class Usuario : CDatos
     {
-        public string Usu_Username;
-        public string Usu_Password;
-        public string Usu_Rol_Id;
-        public bool Usu_Estado;
+        protected string Usu_Username;
+        protected string Usu_Hotel_Nombre;
+        protected int Usu_Hotel_Id;
+        protected string Usu_Rol_Id;
 
-        SqlConnection con;
-        SqlDataReader dr;
-        SqlCommand cmd;
-
-        public Usuario(string usu_username, string usu_password) {
+        public void setUsuario(string usu_username) {
             this.Usu_Username = usu_username;
-            this.Usu_Password = usu_password;
         }
 
         public string cifrarContrasenia(string contrasenia) 
@@ -37,10 +32,10 @@ namespace FrbaHotel.Dominio
             return hashContr;
         }
 
-        public bool buscarUsuarioContrasenia()
+        public bool buscarUsuarioContrasenia(string nombreUsuarioIngresado, string contraseniaIngresada)
         {
-            string passHASH = cifrarContrasenia(Usu_Password);
-            string textoSQL = "SELECT Usu_Username, Usu_Password, Usu_Rol_Id, Usu_Estado FROM  ATENTTOS.Usuarios WHERE Usu_Username = '" + Usu_Username + "' AND Usu_Password = '" + passHASH + "'";
+            string passHASH = cifrarContrasenia(contraseniaIngresada);
+            string textoSQL = "SELECT Usu_Username, Usu_Password, Usu_Rol_Id, Usu_Estado FROM  ATENTTOS.Usuarios WHERE Usu_Username = '" + nombreUsuarioIngresado + "' AND Usu_Password = '" + passHASH + "'";
 
             DataTable dt = EjecutarConsulta(textoSQL);
             int cantidadFilas = dt.Rows.Count;
@@ -58,37 +53,93 @@ namespace FrbaHotel.Dominio
         public string MostrarDatoLogin(DataTable dt) 
         {
             int numColumnas;
-            string nombreCampo = "";
-            string campo = "";
-
             numColumnas = dt.Columns.Count;
 
-            ////Iteramos por cada fila y cada columna
-            //for (int fila = 0; fila  < dt.Rows.Count; fila++)
-            //{
-            //    for (int col = 0; col  < numColumnas; col++)
-            //    {
-            //        if(!dt.Rows[fila].IsNull(col))
-            //        {
-            //            //Almacenamos el nombre del campo y su contenido
-            //            campo = dt.Rows[fila][col].ToString();
-            //            nombreCampo = dt.Columns[col].ColumnName;
-            //        }
-            //        if (campo != null)
-            //         {
-            //            return nombreCampo + ":   " + campo.ToString();
-            //         }
-            //   }
-                
-            //}
             if (!dt.Rows[0].IsNull(0))
             {
                 this.Usu_Rol_Id = dt.Rows[0][2].ToString();
-                this.Usu_Estado = Convert.ToBoolean(dt.Rows[0][3].ToString());
+                //this.Usu_Estado = Convert.ToBoolean(dt.Rows[0][3].ToString());
             }
             return null;
         }
 
-        
+
+
+        public List<HotelRolLista> BuscarHotelRol()
+        {
+            //1 - Ejecuto el SP para traer el listado de hotel y rol de un usuario
+            //2 - IF 
+                    //- no me devuelve Ningun dato -> return null;
+                    //- Si me trae algo -> armo la lista y lo retorno
+
+
+            /*
+            string textoSQL = "SELECT Usu_Username, Usu_Password, Usu_Rol_Id, Usu_Estado FROM  ATENTTO'";
+            DataTable dt = EjecutarConsulta(textoSQL);
+            int cantidadFilas = dt.Rows.Count;
+            if (cantidadFilas == 1)
+            {
+                MostrarDatoLogin(dt);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            */
+
+            var lHotelRol = new List<HotelRolLista>();
+
+            lHotelRol.Add(new HotelRolLista
+            {
+                nombreHotel = "hotelA",
+                idHotel = 1,
+                rol = "Administrador"
+            });
+
+            lHotelRol.Add(new HotelRolLista
+            {
+                nombreHotel = "hotelB",
+                idHotel = 2,
+                rol = "Administrador"
+            });
+
+            lHotelRol.Add(new HotelRolLista
+            {
+                nombreHotel = "hotelB",
+                idHotel = 2,
+                rol = "Recepcionista"
+            });
+
+            return lHotelRol;
+        }
+
+        /* GET Y SET */
+
+        public void setUsu_Username(string nombreUsuario) 
+        {
+            this.Usu_Username = nombreUsuario;
+        }
+
+        public string getRol()
+        {
+            return this.Usu_Rol_Id;
+        }
+
+        public void setearHotelRol(string hotelNombre, int hotelId, string rolUsu)
+        {
+            this.Usu_Hotel_Nombre = hotelNombre;
+            this.Usu_Hotel_Id = hotelId;
+            this.Usu_Rol_Id = rolUsu;
+        }
+
+    }
+
+    public class HotelRolLista
+    {
+        public string nombreHotel;
+        public int idHotel;
+        public string rol;
+
     }
 }

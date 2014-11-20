@@ -20,53 +20,75 @@ namespace FrbaHotel.Login
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
             //Buscar Nombre de usuario en la tabla de Usuarios, y obtener el password.
-            //Comparar y Loguear
-            //Selección del hotel, si trabaja en más de uno.
-            //Generar MenuStrip para la pantalla inicial según el rol del usuario
-            //PantallaPrincipal pantPrinc;
+            //Selección del hotel, si trabaja en más de uno. Idem rol
 
-            Dominio.Usuario usu1 = new Dominio.Usuario(txt_nombreUsuario.Text,txt_passwordUsuario.Text);
-            bool valorRe = usu1.buscarUsuarioContrasenia();
-            if (valorRe )
+            Dominio.Usuario usu1 = new Dominio.Usuario();
+            bool valorRe = usu1.buscarUsuarioContrasenia(txt_nombreUsuario.Text, txt_passwordUsuario.Text);
+            if (valorRe)
             {
-                if (usu1.Usu_Rol_Id == "Administrador")
-	            {
-                    this.Hide();
-                    //Pantalla Administrador
-                    PantallaPrincipal pantPrinc = new PantallaPrincipal("administrador");
-                    pantPrinc.Show(this);
+                //Usuario y contraseña válidos
+                usu1.setUsu_Username(txt_nombreUsuario.Text);
+
+
+                
+                
+                
+                List<Dominio.HotelRolLista> lHotelRol = usu1.BuscarHotelRol();
+
+                //Si lHotelRol
+                    //- es NULO -> Mensaje de error : Su usuario no tiene acceso a ningún hotel ni rol. Comuníquese con el administrador.
+                    //- si me trae algo. 
+                        //-IF contar cuantos me trajo
+                            //- Si me trae uno solo -> Setear el hotel y el rol al que se loguea. 
+                            //                         Crear la pantalla para ese usuario y mostrarlo
+                            //- Si me trae más de uno -> Armar la coleccion
+
+                if (lHotelRol.Count == 0)
+                {
+                    MessageBox.Show("Su usuario no tiene acceso a ningún hotel ni rol. Comuníquese con el administrador.");
                 }
-                else if (usu1.Usu_Rol_Id == "Recepcionista")
+                else if (lHotelRol.Count == 1)
+                {
+                    foreach (var iHotelRol in lHotelRol)
+                    {
+                        usu1.setearHotelRol(iHotelRol.nombreHotel,iHotelRol.idHotel, iHotelRol.rol);
+
+                        this.Hide();
+                        PantallaPrincipal pantPrinc = new PantallaPrincipal(usu1.getRol());
+                        pantPrinc.Show(this);
+                    }
+
+                }
+                else
                 {
                     this.Hide();
-                    //Pantalla Recepcionista
-                    //recepcionista -> usuario: recepcion, contraseña recepcion
-                    PantallaPrincipal pantPrinc = new PantallaPrincipal("recepcionista");
-                    pantPrinc.Show(this);
+                    LoginHotelRol loginHotelRol = new LoginHotelRol(lHotelRol);
+                    loginHotelRol.Show(this);
                 }
-                
+
+
+                //if (usu1.Usu_Rol_Id == "Administrador")
+                //{
+                //    this.Hide();
+                //    //Pantalla Administrador
+                //    PantallaPrincipal pantPrinc = new PantallaPrincipal("administrador");
+                //    pantPrinc.Show(this);
+                //}
+                //else if (usu1.Usu_Rol_Id == "Recepcionista")
+                //{
+                //    this.Hide();
+                //    //Pantalla Recepcionista
+                //    //recepcionista -> usuario: recepcion, contraseña recepcion
+                //    PantallaPrincipal pantPrinc = new PantallaPrincipal("recepcionista");
+                //    pantPrinc.Show(this);
+                //}
+
             }
             else
 	        {
+               //Usuario y contraseña inválidos
                MessageBox.Show("ERROR!!!");
 	        }
-
-
-            //if (txt_nombreUsuario.Text == "admin" && hashContr == "e6b87050bfcb8143fcb8db0170a4dc9ed00d904ddd3e2a4ad1b1e8dc0fdc9be7")
-            //{
-            //    this.Hide();
-            //    //Pantalla Administrador
-            //    pantPrinc = new PantallaPrincipal("administrador");
-            //    pantPrinc.Show(this);
-            //}
-            //else if (txt_nombreUsuario.Text == "recepcionista" && hashContr == "bd2f76155a54ecf99bd3efd53dfbadf54d7b0ecd7b99f989449dfb817c0bb744")
-            //{
-            //    this.Hide(); 
-            //    //Pantalla Recepcionista
-            //    //recepcionista -> usuario: recepcionista, contraseña recepcionista
-            //    pantPrinc = new PantallaPrincipal("recepcionista");
-            //    pantPrinc.Show(this);
-            //}
         }
 
         private void btn_salir_Click(object sender, EventArgs e)
@@ -84,8 +106,7 @@ namespace FrbaHotel.Login
         }
 
         private bool verificarUsuarioContr(string usuario, string contrasenia) 
-        {
-            
+        {            
             return true;
         }
     }

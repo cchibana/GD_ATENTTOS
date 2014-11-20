@@ -16,8 +16,8 @@ namespace FrbaHotel
         public PantallaPrincipal(string rol)
         {
             InitializeComponent();
+            MaximizarVentana();
             CreateSimpleMenu(rol);
-
         }
 
         private void CreateSimpleMenu(string rol) {
@@ -30,7 +30,7 @@ namespace FrbaHotel
             //menuItem_Reservas.DropDownItems.Add("Sub menu item");
             //strip.Items.Add(menuItem_Reservas);
 
-            if (rol == "recepcionista" || rol == "administrador")
+            if (rol == "Recepcionista" || rol == "Administrador")
             {
                 ToolStripMenuItem menuItem_Clientes = new ToolStripMenuItem("&Clientes", null, new EventHandler(menuItem_Clientes_Click));
                 menuPrincipal.Items.Add(menuItem_Clientes);
@@ -41,7 +41,7 @@ namespace FrbaHotel
                 ToolStripMenuItem menuItem_Facturaciones = new ToolStripMenuItem("&Facturaciones", null, new EventHandler(menuItem_Facturaciones_Click));
                 menuPrincipal.Items.Add(menuItem_Facturaciones);
 
-                if (rol == "administrador")
+                if (rol == "Administrador")
                 {
                     ToolStripMenuItem menuItem_Roles = new ToolStripMenuItem("Roles", null, new EventHandler(menuItem_Roles_Click));
                     menuPrincipal.Items.Add(menuItem_Roles);
@@ -137,14 +137,16 @@ namespace FrbaHotel
                 //base.OnClosed(e);
                 MessageBox.Show("Se cerrará su sesión.");
             }
-
         }
 
+        private void MaximizarVentana() {
+            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
+            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+       }
 
+        private void PantallaPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-
-
-
-
-
