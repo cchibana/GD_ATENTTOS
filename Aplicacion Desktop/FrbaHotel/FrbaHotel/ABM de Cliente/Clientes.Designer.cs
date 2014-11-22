@@ -43,9 +43,9 @@
             this.lbl_nro_doc = new System.Windows.Forms.Label();
             this.cbox_tipo_doc = new System.Windows.Forms.ComboBox();
             this.lbl_tipo_Doc = new System.Windows.Forms.Label();
-            this.dgv1 = new System.Windows.Forms.DataGridView();
+            this.dgv_clientes = new System.Windows.Forms.DataGridView();
             this.gBox_filtros = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).BeginInit();
             this.gBox_filtros.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -181,7 +181,6 @@
             this.cbox_tipo_doc.Name = "cbox_tipo_doc";
             this.cbox_tipo_doc.Size = new System.Drawing.Size(100, 21);
             this.cbox_tipo_doc.TabIndex = 13;
-            this.cbox_tipo_doc.SelectedIndexChanged += new System.EventHandler(this.cbox_tipo_doc_SelectedIndexChanged);
             // 
             // lbl_tipo_Doc
             // 
@@ -193,13 +192,19 @@
             this.lbl_tipo_Doc.TabIndex = 14;
             this.lbl_tipo_Doc.Text = "Tipo Doc";
             // 
-            // dgv1
+            // dgv_clientes
             // 
-            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv1.Location = new System.Drawing.Point(28, 170);
-            this.dgv1.Name = "dgv1";
-            this.dgv1.Size = new System.Drawing.Size(437, 88);
-            this.dgv1.TabIndex = 15;
+            this.dgv_clientes.AllowUserToAddRows = false;
+            this.dgv_clientes.AllowUserToDeleteRows = false;
+            this.dgv_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_clientes.Location = new System.Drawing.Point(28, 170);
+            this.dgv_clientes.MultiSelect = false;
+            this.dgv_clientes.Name = "dgv_clientes";
+            this.dgv_clientes.ReadOnly = true;
+            this.dgv_clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_clientes.Size = new System.Drawing.Size(437, 88);
+            this.dgv_clientes.TabIndex = 15;
+            this.dgv_clientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_clientes_CellContentClick);
             // 
             // gBox_filtros
             // 
@@ -225,8 +230,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(520, 370);
-            this.Controls.Add(this.dgv1);
+            this.ClientSize = new System.Drawing.Size(523, 369);
+            this.Controls.Add(this.dgv_clientes);
             this.Controls.Add(this.btn_Baja);
             this.Controls.Add(this.btn_Modificacion);
             this.Controls.Add(this.btn_Alta);
@@ -236,8 +241,7 @@
             this.Name = "Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
-            this.Load += new System.EventHandler(this.Clientes_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).EndInit();
             this.gBox_filtros.ResumeLayout(false);
             this.gBox_filtros.PerformLayout();
             this.ResumeLayout(false);
@@ -261,7 +265,7 @@
         private System.Windows.Forms.Label lbl_nro_doc;
         private System.Windows.Forms.ComboBox cbox_tipo_doc;
         private System.Windows.Forms.Label lbl_tipo_Doc;
-        private System.Windows.Forms.DataGridView dgv1;
+        private System.Windows.Forms.DataGridView dgv_clientes;
         private System.Windows.Forms.GroupBox gBox_filtros;
     }
 }

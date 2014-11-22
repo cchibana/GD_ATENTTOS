@@ -52,7 +52,7 @@ namespace FrbaHotel.Dominio
         /*Estos metodos retornan resultados de consultas*/
         public DataTable Listar()
         {
-            string texto = "select * from [GD2C2014].[gd_esquema].[Maestra];";
+            string texto = "select [Cliente_Nombre],[Cliente_Apellido],[Cliente_Nacionalidad],[Cliente_Fecha_Nac],[Cliente_Mail] from [GD2C2014].[gd_esquema].[Maestra];";
             return EjecutarConsulta(texto);
         }
 

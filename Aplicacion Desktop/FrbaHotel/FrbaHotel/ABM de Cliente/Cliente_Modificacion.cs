@@ -16,9 +16,20 @@ namespace FrbaHotel.ABM_de_Cliente
             InitializeComponent();
         }
 
-        private void txt_nro_doc_TextChanged(object sender, EventArgs e)
+        public Cliente_Modificacion(string stringvalor)
         {
-
+            InitializeComponent();
+            txt_nombre.Text = stringvalor;
         }
+
+        private void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+
+
+
     }
 }

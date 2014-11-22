@@ -31,7 +31,7 @@
             this.btn_baja = new System.Windows.Forms.Button();
             this.btn_modificacion = new System.Windows.Forms.Button();
             this.btn_alta = new System.Windows.Forms.Button();
-            this.dgv1 = new System.Windows.Forms.DataGridView();
+            this.dgv_hoteles = new System.Windows.Forms.DataGridView();
             this.btn_Buscar = new System.Windows.Forms.Button();
             this.btn_Limpiar = new System.Windows.Forms.Button();
             this.gBox_filtros = new System.Windows.Forms.GroupBox();
@@ -43,7 +43,7 @@
             this.txt_pais = new System.Windows.Forms.TextBox();
             this.lbl_ciudad = new System.Windows.Forms.Label();
             this.lbl_pais = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_hoteles)).BeginInit();
             this.gBox_filtros.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,14 +77,19 @@
             this.btn_alta.UseVisualStyleBackColor = true;
             this.btn_alta.Click += new System.EventHandler(this.btn_alta_Click);
             // 
-            // dgv1
+            // dgv_hoteles
             // 
-            this.dgv1.AllowUserToAddRows = false;
-            this.dgv1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv1.Location = new System.Drawing.Point(46, 176);
-            this.dgv1.Name = "dgv1";
-            this.dgv1.Size = new System.Drawing.Size(437, 88);
-            this.dgv1.TabIndex = 19;
+            this.dgv_hoteles.AllowUserToAddRows = false;
+            this.dgv_hoteles.AllowUserToDeleteRows = false;
+            this.dgv_hoteles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_hoteles.Location = new System.Drawing.Point(46, 176);
+            this.dgv_hoteles.MultiSelect = false;
+            this.dgv_hoteles.Name = "dgv_hoteles";
+            this.dgv_hoteles.ReadOnly = true;
+            this.dgv_hoteles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_hoteles.Size = new System.Drawing.Size(437, 88);
+            this.dgv_hoteles.TabIndex = 19;
+            this.dgv_hoteles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellContentClick);
             // 
             // btn_Buscar
             // 
@@ -208,7 +213,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 382);
-            this.Controls.Add(this.dgv1);
+            this.Controls.Add(this.dgv_hoteles);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.btn_Limpiar);
             this.Controls.Add(this.gBox_filtros);
@@ -218,7 +223,7 @@
             this.Name = "Hoteles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hoteles";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_hoteles)).EndInit();
             this.gBox_filtros.ResumeLayout(false);
             this.gBox_filtros.PerformLayout();
             this.ResumeLayout(false);
@@ -230,7 +235,7 @@
         private System.Windows.Forms.Button btn_baja;
         private System.Windows.Forms.Button btn_modificacion;
         private System.Windows.Forms.Button btn_alta;
-        private System.Windows.Forms.DataGridView dgv1;
+        private System.Windows.Forms.DataGridView dgv_hoteles;
         private System.Windows.Forms.Button btn_Buscar;
         private System.Windows.Forms.Button btn_Limpiar;
         private System.Windows.Forms.GroupBox gBox_filtros;

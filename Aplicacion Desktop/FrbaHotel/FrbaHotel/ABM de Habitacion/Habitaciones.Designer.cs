@@ -52,9 +52,13 @@
             // dgv_habitacion
             // 
             this.dgv_habitacion.AllowUserToAddRows = false;
+            this.dgv_habitacion.AllowUserToDeleteRows = false;
             this.dgv_habitacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_habitacion.Location = new System.Drawing.Point(43, 218);
+            this.dgv_habitacion.MultiSelect = false;
             this.dgv_habitacion.Name = "dgv_habitacion";
+            this.dgv_habitacion.ReadOnly = true;
+            this.dgv_habitacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_habitacion.Size = new System.Drawing.Size(437, 88);
             this.dgv_habitacion.TabIndex = 26;
             // 

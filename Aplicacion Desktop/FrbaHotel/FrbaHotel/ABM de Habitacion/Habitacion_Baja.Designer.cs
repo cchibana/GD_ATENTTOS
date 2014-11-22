@@ -113,6 +113,7 @@
             this.btn_cancelar.TabIndex = 36;
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.UseVisualStyleBackColor = true;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // cbox_tipo_hab
             // 

@@ -13,7 +13,7 @@ namespace FrbaHotel.ABM_de_Cliente
     public partial class Clientes : Form
     {
         Dominio.Cliente cliente1 = new Dominio.Cliente();
-            
+
         public Clientes()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace FrbaHotel.ABM_de_Cliente
         private void btn_Limpiar_Click(object sender, EventArgs e)
         {
             Limpiar();
-        }        
+        }
 
 
         public void Limpiar()
@@ -50,19 +50,29 @@ namespace FrbaHotel.ABM_de_Cliente
             txt_apellido.Text = "";
             txt_mail.Text = "";
             txt_nro_doc.Text = "";
-            cbox_tipo_doc.SelectedItem = null;            
+            cbox_tipo_doc.SelectedItem = null;
         }
 
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             //Se usa el metodo Listar de cliente y mostrandolo en el DataGridView
-            dgv1.DataSource = cliente1.Listar();
-        }
+            //*gs- ver como aplicar los filtros de busqueda   
             
-         
+            try
+            {
+                dgv_clientes.DataSource = cliente1.Listar();                                
+            }
+            catch
+            {
+                MessageBox.Show("No se encontró el registro. Desea darlo de alta?");
+            }
+                           
+        }
 
-                
+
+
+
 
         private void btn_Alta_Click(object sender, EventArgs e)
         {
@@ -73,39 +83,37 @@ namespace FrbaHotel.ABM_de_Cliente
         private void btn_Modificacion_Click(object sender, EventArgs e)
         {
             ABM_de_Cliente.Cliente_Modificacion cliente_Modificacion = new FrbaHotel.ABM_de_Cliente.Cliente_Modificacion();
-            cliente_Modificacion.Show(this);
+            
+            //se pasan los datos de la fila seleccionada a la pantalla de modificación
+            cliente_Modificacion.txt_nombre.Text = dgv_clientes.CurrentRow.Cells[0].Value.ToString();
+            cliente_Modificacion.txt_apellido.Text = dgv_clientes.CurrentRow.Cells[1].Value.ToString();
+            cliente_Modificacion.txt_nacionalidad.Text = dgv_clientes.CurrentRow.Cells[2].Value.ToString();
+            cliente_Modificacion.date_nacimiento.Text = dgv_clientes.CurrentRow.Cells[3].Value.ToString();
+            cliente_Modificacion.txt_mail.Text = dgv_clientes.CurrentRow.Cells[4].Value.ToString();
+                        
+            cliente_Modificacion.Show();
         }
 
         private void btn_Baja_Click(object sender, EventArgs e)
         {
             ABM_de_Cliente.Cliente_Baja cliente_Baja = new FrbaHotel.ABM_de_Cliente.Cliente_Baja();
-            cliente_Baja.Show(this);
-        }
 
-        private void cbox_tipo_doc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Clientes_Load(object sender, EventArgs e)
-        {
-          
-      
+            //se pasan los datos de la fila seleccionada a la pantalla de baja
+            cliente_Baja.txt_nombre.Text = dgv_clientes.CurrentRow.Cells[0].Value.ToString();
+            cliente_Baja.txt_apellido.Text = dgv_clientes.CurrentRow.Cells[1].Value.ToString();
+            cliente_Baja.txt_nacionalidad.Text = dgv_clientes.CurrentRow.Cells[2].Value.ToString();
+            cliente_Baja.date_nacimiento.Text = dgv_clientes.CurrentRow.Cells[3].Value.ToString();
+            cliente_Baja.txt_mail.Text = dgv_clientes.CurrentRow.Cells[4].Value.ToString();
             
+            cliente_Baja.Show();
         }
 
+  
 
-        
-
-       /* private void txt_nro_doc_KeyPress(object sender, KeyPressEventArgs e)
+        private void dgv_clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
-                {
-                    MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    e.Handled = true;
-                    return;
-                }
-        }*/
 
+
+        }
     }
 }

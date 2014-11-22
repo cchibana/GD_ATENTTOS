@@ -179,7 +179,6 @@
             this.txt_nro_doc.Name = "txt_nro_doc";
             this.txt_nro_doc.Size = new System.Drawing.Size(100, 20);
             this.txt_nro_doc.TabIndex = 29;
-            this.txt_nro_doc.TextChanged += new System.EventHandler(this.txt_nro_doc_TextChanged);
             // 
             // lbl_nro_doc
             // 
@@ -269,6 +268,7 @@
             this.btn_cancelar.TabIndex = 48;
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.UseVisualStyleBackColor = true;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // date_nacimiento
             // 
@@ -320,31 +320,31 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txt_pais;
         private System.Windows.Forms.Label lbl_pais;
-        private System.Windows.Forms.TextBox txt_localidad;
         private System.Windows.Forms.Label lbl_localidad;
-        private System.Windows.Forms.TextBox txt_direccion;
         private System.Windows.Forms.Label lbl_direccion;
-        private System.Windows.Forms.TextBox txt_telefono;
         private System.Windows.Forms.Label lbl_telefono;
         private System.Windows.Forms.Label lbl_mail;
-        private System.Windows.Forms.TextBox txt_mail;
         private System.Windows.Forms.Label lbl_fecha_nac;
-        private System.Windows.Forms.TextBox txt_nacionalidad;
         private System.Windows.Forms.Label lbl_nacionalidad;
         private System.Windows.Forms.ComboBox cBox_tipo_doc;
-        private System.Windows.Forms.TextBox txt_nro_doc;
         private System.Windows.Forms.Label lbl_nro_doc;
         private System.Windows.Forms.Label lbl_tipo_doc;
-        private System.Windows.Forms.TextBox txt_apellido;
-        private System.Windows.Forms.TextBox txt_nombre;
         private System.Windows.Forms.Label lbl_apellido;
         private System.Windows.Forms.Label lbl_nombre;
         private System.Windows.Forms.Label lbl_estado;
         private System.Windows.Forms.ComboBox cbox_estado;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Button btn_cancelar;
-        private System.Windows.Forms.DateTimePicker date_nacimiento;
+        public System.Windows.Forms.TextBox txt_nombre;
+        public System.Windows.Forms.TextBox txt_pais;
+        public System.Windows.Forms.TextBox txt_localidad;
+        public System.Windows.Forms.TextBox txt_direccion;
+        public System.Windows.Forms.TextBox txt_telefono;
+        public System.Windows.Forms.TextBox txt_mail;
+        public System.Windows.Forms.TextBox txt_nacionalidad;
+        public System.Windows.Forms.TextBox txt_nro_doc;
+        public System.Windows.Forms.TextBox txt_apellido;
+        public System.Windows.Forms.DateTimePicker date_nacimiento;
     }
 }

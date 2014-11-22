@@ -96,7 +96,7 @@
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(197, 289);
+            this.btn_guardar.Location = new System.Drawing.Point(201, 289);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.btn_guardar.TabIndex = 23;
@@ -111,6 +111,7 @@
             this.btn_cancelar.TabIndex = 22;
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.UseVisualStyleBackColor = true;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // cbox_tipo_hab
             // 
@@ -208,18 +209,18 @@
         #endregion
 
         private System.Windows.Forms.Label lbl_descripcion;
-        private System.Windows.Forms.TextBox txt_descripcion;
         private System.Windows.Forms.Label lbl_estado;
-        private System.Windows.Forms.ComboBox cbox_estado;
-        private System.Windows.Forms.ComboBox cbox_ubicacion;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Button btn_cancelar;
-        private System.Windows.Forms.ComboBox cbox_tipo_hab;
-        private System.Windows.Forms.TextBox txt_piso;
-        private System.Windows.Forms.TextBox txt_numero;
         private System.Windows.Forms.Label lbl_tipo;
         private System.Windows.Forms.Label lbl_ubicacion;
         private System.Windows.Forms.Label lbl_piso;
         private System.Windows.Forms.Label lbl_numero;
+        public System.Windows.Forms.TextBox txt_descripcion;
+        public System.Windows.Forms.ComboBox cbox_estado;
+        public System.Windows.Forms.ComboBox cbox_ubicacion;
+        public System.Windows.Forms.ComboBox cbox_tipo_hab;
+        public System.Windows.Forms.TextBox txt_piso;
+        public System.Windows.Forms.TextBox txt_numero;
     }
 }

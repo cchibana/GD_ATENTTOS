@@ -55,7 +55,12 @@ namespace FrbaHotel.ABM_de_Hotel
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             //Se usa el metodo Listar de hotel y mostrandolo en el DataGridView
-            dgv1.DataSource = hotel1.Listar();
+            dgv_hoteles.DataSource = hotel1.Listar();
+        }
+
+        private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
  

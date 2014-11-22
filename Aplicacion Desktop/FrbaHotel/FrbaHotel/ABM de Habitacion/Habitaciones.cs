@@ -27,7 +27,15 @@ namespace FrbaHotel.ABM_de_Habitacion
         private void btn_modificacion_Click(object sender, EventArgs e)
         {
             ABM_de_Habitacion.Habitacion_Modificacion hab_Modificacion = new FrbaHotel.ABM_de_Habitacion.Habitacion_Modificacion();
-            hab_Modificacion.Show(this);
+
+            //se pasan los datos de la fila seleccionada a la pantalla de modificación
+            hab_Modificacion.txt_numero.Text = dgv_habitacion.CurrentRow.Cells[0].Value.ToString();
+            hab_Modificacion.txt_piso.Text = dgv_habitacion.CurrentRow.Cells[1].Value.ToString();
+            hab_Modificacion.cbox_ubicacion.Text = dgv_habitacion.CurrentRow.Cells[2].Value.ToString();
+            //hab_Modificacion.cbox_tipo_hab.Text = dgv_habitacion.CurrentRow.Cells[3].Value.ToString();
+            hab_Modificacion.txt_descripcion.Text = dgv_habitacion.CurrentRow.Cells[3].Value.ToString();
+         
+            hab_Modificacion.Show();
         }
 
         private void btn_baja_Click(object sender, EventArgs e)

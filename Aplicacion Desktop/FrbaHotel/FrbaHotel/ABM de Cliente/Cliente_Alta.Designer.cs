@@ -235,7 +235,7 @@
             // 
             // btn_limpiar
             // 
-            this.btn_limpiar.Location = new System.Drawing.Point(141, 293);
+            this.btn_limpiar.Location = new System.Drawing.Point(142, 292);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(75, 23);
             this.btn_limpiar.TabIndex = 23;
@@ -278,7 +278,6 @@
             // 
             // date_nacimiento
             // 
-            this.date_nacimiento.Enabled = false;
             this.date_nacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.date_nacimiento.Location = new System.Drawing.Point(98, 93);
             this.date_nacimiento.Name = "date_nacimiento";
