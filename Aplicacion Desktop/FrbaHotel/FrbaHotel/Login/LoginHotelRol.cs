@@ -11,8 +11,11 @@ namespace FrbaHotel.Login
 {
     public partial class LoginHotelRol : Form
     {
-        public LoginHotelRol(List<Dominio.HotelRolLista> listaHotelRol)
+        private Dominio.UsuarioLogin usuarioLogueado;
+
+        public LoginHotelRol(List<Dominio.HotelRolLista> listaHotelRol, Dominio.UsuarioLogin usu1)
         {
+            usuarioLogueado = usu1;
             InitializeComponent();
             ArmarListView(listaHotelRol);            
         }
@@ -29,8 +32,6 @@ namespace FrbaHotel.Login
 
             foreach (var iHotelRol in listaHotelRol)
             {
-            //    Console.Write(iHotelRol + " ");
-
                 var itemLV = new ListViewItem(iHotelRol.idHotel.ToString());
                 itemLV.SubItems.Add(iHotelRol.nombreHotel);
                 itemLV.SubItems.Add(iHotelRol.rol.ToString());
@@ -43,11 +44,36 @@ namespace FrbaHotel.Login
             //Segun qué rol y hotel eligio seteo el usuario con esos datos y creo la pantallaPrincipal
 
             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!TERMINARRRR!!!!!!!!!!!!!!!!
+            if (listViewHotelRol.SelectedItems.Count == 1)
+            {
+                ListViewItem itemLVSeleccionado = listViewHotelRol.SelectedItems[0];
 
-            //Pantalla ADMINISTRADOR
-            this.Hide();
-            PantallaPrincipal pantPrinc = new PantallaPrincipal("Administrador");
-            pantPrinc.Show(this);
+                //MessageBox.Show("Usted ha seleccionado:" + itemLVSeleccionado.SubItems[0].Text //Hotel_cod
+                //                + " - " + itemLVSeleccionado.SubItems[1].Text  //Hotel_Nombre
+                //                + " - " + itemLVSeleccionado.SubItems[2].Text); //Rol_Id
+
+                usuarioLogueado.setearHotelRol(itemLVSeleccionado.SubItems[1].Text, Convert.ToInt32(itemLVSeleccionado.SubItems[0].Text), itemLVSeleccionado.SubItems[2].Text);
+
+                this.Hide();
+                if (itemLVSeleccionado.SubItems[2].Text == "Administrador")
+                {
+                    //Pantalla ADMINISTRADOR
+                    PantallaPrincipal pantPrinc = new PantallaPrincipal("Administrador");
+                    pantPrinc.Show(this);
+                }
+                else if (itemLVSeleccionado.SubItems[2].Text == "Recepcionista")
+                {
+                    //Pantalla Recepcionista
+                    PantallaPrincipal pantPrinc = new PantallaPrincipal("Recepcionista");
+                    pantPrinc.Show(this);
+                }
+            }
+            else 
+            {
+                MessageBox.Show("Debe seleccionar un hotel y un rol");
+            }
+
+
 
         }
 

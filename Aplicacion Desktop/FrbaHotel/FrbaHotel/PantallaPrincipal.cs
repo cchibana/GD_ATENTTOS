@@ -125,6 +125,7 @@ namespace FrbaHotel
 
         private void menuItem_Salir_Click(object sender, EventArgs e) 
         {
+            //this.Dispose();
             this.Close();
         }
 
@@ -137,6 +138,7 @@ namespace FrbaHotel
                 //base.OnClosed(e);
                 MessageBox.Show("Se cerrará su sesión.");
             }
+            
         }
 
         private void MaximizarVentana() {

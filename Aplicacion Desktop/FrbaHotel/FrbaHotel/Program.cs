@@ -17,7 +17,7 @@ namespace FrbaHotel
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new ABM_de_Cliente.Clientes());
             Application.Run(new Login.Login());
-            
+            //Application.Run(new Prueba_Parameters());
         }
     }
 }

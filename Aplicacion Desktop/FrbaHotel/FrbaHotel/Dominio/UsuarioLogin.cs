@@ -12,12 +12,16 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.Dominio
 {
-    class Usuario : CDatos
+    public class UsuarioLogin : CDatos
     {
+
         protected string Usu_Username;
         protected string Usu_Hotel_Nombre;
         protected int Usu_Hotel_Id;
         protected string Usu_Rol_Id;
+
+        //Parametros para SP
+        private Parametros[] parametrosSP;
 
         public void setUsuario(string usu_username) {
             this.Usu_Username = usu_username;
@@ -87,29 +91,26 @@ namespace FrbaHotel.Dominio
                 return false;
             }
             */
-
             var lHotelRol = new List<HotelRolLista>();
 
-            lHotelRol.Add(new HotelRolLista
-            {
-                nombreHotel = "hotelA",
-                idHotel = 1,
-                rol = "Administrador"
-            });
+            parametrosSP = new Parametros[1];//1 por la cantidad de parámetros que ingreso
+            parametrosSP[0] = new Parametros("@username", Usu_Username);
 
-            lHotelRol.Add(new HotelRolLista
+            DataTable dt = EjecutarStoreProcedure("dbo.SP_RolesYHoteles", parametrosSP);
+           
+            int cantidadFilas = dt.Rows.Count;
+            if (cantidadFilas > 0)
             {
-                nombreHotel = "hotelB",
-                idHotel = 2,
-                rol = "Administrador"
-            });
-
-            lHotelRol.Add(new HotelRolLista
-            {
-                nombreHotel = "hotelB",
-                idHotel = 2,
-                rol = "Recepcionista"
-            });
+                for (int i = 0; i < cantidadFilas; i++)
+                {
+                    lHotelRol.Add(new HotelRolLista
+                    {
+                        nombreHotel = dt.Rows[i][2].ToString(),
+                        idHotel = Convert.ToInt32(dt.Rows[i][1].ToString()),
+                        rol = dt.Rows[i][0].ToString()
+                    });
+                }
+            }
 
             return lHotelRol;
         }

@@ -22,17 +22,14 @@ namespace FrbaHotel.Login
             //Buscar Nombre de usuario en la tabla de Usuarios, y obtener el password.
             //Selección del hotel, si trabaja en más de uno. Idem rol
 
-            Dominio.Usuario usu1 = new Dominio.Usuario();
+            //Dominio.Usuario usu1 = new Dominio.Usuario();
+            Dominio.UsuarioLogin usu1 = new Dominio.UsuarioLogin();
             bool valorRe = usu1.buscarUsuarioContrasenia(txt_nombreUsuario.Text, txt_passwordUsuario.Text);
             if (valorRe)
             {
                 //Usuario y contraseña válidos
                 usu1.setUsu_Username(txt_nombreUsuario.Text);
 
-
-                
-                
-                
                 List<Dominio.HotelRolLista> lHotelRol = usu1.BuscarHotelRol();
 
                 //Si lHotelRol
@@ -52,42 +49,24 @@ namespace FrbaHotel.Login
                     foreach (var iHotelRol in lHotelRol)
                     {
                         usu1.setearHotelRol(iHotelRol.nombreHotel,iHotelRol.idHotel, iHotelRol.rol);
-
-                        this.Hide();
+                                                
                         PantallaPrincipal pantPrinc = new PantallaPrincipal(usu1.getRol());
                         pantPrinc.Show(this);
+                        this.Hide();
                     }
 
                 }
                 else
-                {
-                    this.Hide();
-                    LoginHotelRol loginHotelRol = new LoginHotelRol(lHotelRol);
+                {                                       
+                    LoginHotelRol loginHotelRol = new LoginHotelRol(lHotelRol, usu1);
                     loginHotelRol.Show(this);
+                    this.Hide();
                 }
-
-
-                //if (usu1.Usu_Rol_Id == "Administrador")
-                //{
-                //    this.Hide();
-                //    //Pantalla Administrador
-                //    PantallaPrincipal pantPrinc = new PantallaPrincipal("administrador");
-                //    pantPrinc.Show(this);
-                //}
-                //else if (usu1.Usu_Rol_Id == "Recepcionista")
-                //{
-                //    this.Hide();
-                //    //Pantalla Recepcionista
-                //    //recepcionista -> usuario: recepcion, contraseña recepcion
-                //    PantallaPrincipal pantPrinc = new PantallaPrincipal("recepcionista");
-                //    pantPrinc.Show(this);
-                //}
-
             }
             else
 	        {
                //Usuario y contraseña inválidos
-               MessageBox.Show("ERROR!!!");
+                MessageBox.Show("Usuario y contraseña inválidos");
 	        }
         }
 
