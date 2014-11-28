@@ -12,8 +12,37 @@ namespace FrbaHotel.Dominio
     {
         //Aquí esta la cadena de conexión a SqlServer, dependiendo de tu proyecto, esto debes cambiarlo
         //normalmente se cambia el nombre del servidor y el nombre de la base de datos
-        //string cadenaDeConexion = @"Data Source=(local)\SQLSERVER2008;Initial Catalog=GD2C2014";
         string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
+
+
+        public string EjecutarComando(string textoSql)
+        {
+            try
+            {
+                //Para la cadena de conexión
+                string sCnn = cadenaDeConexion;
+                //Creamos la conexión
+                SqlConnection cnn = new SqlConnection(sCnn);
+                //Texto del comando insert
+                string iTexto = textoSql;
+                //Creamos el comando con su texto y conexión
+                SqlCommand cmd = new SqlCommand(iTexto, cnn);
+                cmd.CommandType = CommandType.Text;
+                //abrimos la conexión y ejecutamos el comando
+                cnn.Open();
+                //Ejecutamos el comando sql
+                cmd.ExecuteNonQuery();
+                //Cerramos la conexión
+                cnn.Close();
+                return "Comando realizado con exito...";
+            }
+            catch
+            {
+                return "Comando Fallido...";
+                throw;
+            }
+
+        }
 
         public DataTable EjecutarConsulta(string textoSQL)
         {

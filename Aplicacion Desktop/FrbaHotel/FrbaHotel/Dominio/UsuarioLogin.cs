@@ -76,7 +76,9 @@ namespace FrbaHotel.Dominio
                     if (Usu_Password == passHASH)
                     {
                         string textoSQL2 = "UPDATE [GD2C2014].[ATENTTOS].[Usuarios] SET Usu_CantIntentosFallidos = 0 WHERE Usu_Username = '" + Usu_Username + "'";
-                        DataTable dt2 = EjecutarConsulta(textoSQL2);
+                        EjecutarComando(textoSQL2);
+                        //string mensajePRUEBA = EjecutarComando(textoSQL2);
+                        //MessageBox.Show(mensajePRUEBA);
                         return true;
                     }
                     else

@@ -173,7 +173,6 @@
     <Compile Include="Dominio\Cliente.cs" />
     <Compile Include="Dominio\Habitacion.cs" />
     <Compile Include="Dominio\Hotel.cs" />
-    <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="Dominio\Validadores.cs" />
     <Compile Include="Dominio\Parametros.cs" />
     <Compile Include="Dominio\Prueba.cs" />
@@ -251,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Hotel\Hotel_Modificacion.resx">
       <DependentUpon>Hotel_Modificacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Rol\Roles.resx">
+      <DependentUpon>Roles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Usuario\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>

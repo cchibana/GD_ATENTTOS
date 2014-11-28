@@ -26,7 +26,6 @@ namespace FrbaHotel.Login
             listViewHotelRol.AutoResizeColumn(2,
                ColumnHeaderAutoResizeStyle.HeaderSize);
 
-
             foreach (var iHotelRol in listaHotelRol)
             {
                 var itemLV = new ListViewItem(iHotelRol.idHotel.ToString());
@@ -59,9 +58,6 @@ namespace FrbaHotel.Login
             {
                 MessageBox.Show("Debe seleccionar un hotel y un rol");
             }
-
-
-
         }
 
         private void listViewHotelRol_ColumnWidthChanging(object sender, ColumnWidthChangingEventArgs e)
