@@ -61,31 +61,51 @@ namespace FrbaHotel.Dominio
         public bool buscarUsuarioContrasenia(string nombreUsuarioIngresado, string contraseniaIngresada)
         {
             string passHASH = cifrarContrasenia(contraseniaIngresada);
-            string textoSQL = "SELECT Usu_Username, Usu_Password, Usu_Rol_Id, Usu_Estado FROM  ATENTTOS.Usuarios WHERE Usu_Username = '" + nombreUsuarioIngresado + "' AND Usu_Password = '" + passHASH + "'";
+            string textoSQL = "SELECT Usu_Username, Usu_Password, Usu_Estado, Usu_CantIntentosFallidos FROM  ATENTTOS.Usuarios WHERE Usu_Username = '" + nombreUsuarioIngresado + "'";
 
             DataTable dt = EjecutarConsulta(textoSQL);
             int cantidadFilas = dt.Rows.Count;
             if (cantidadFilas == 1)
             {
-                MostrarDatoLogin(dt);
-                return true;
+                string Usu_Username = dt.Rows[0][0].ToString();
+                string Usu_Password = dt.Rows[0][1].ToString();
+                bool Usu_Estado = Convert.ToBoolean(dt.Rows[0][2].ToString());
+                int Usu_CantIntentosFallidos = Convert.ToInt32(dt.Rows[0][3].ToString());
+                if (Usu_Estado == true)
+                {
+                    if (Usu_Password == passHASH)
+                    {
+                        string textoSQL2 = "UPDATE [GD2C2014].[ATENTTOS].[Usuarios] SET Usu_CantIntentosFallidos = 0 WHERE Usu_Username = '" + Usu_Username + "'";
+                        DataTable dt2 = EjecutarConsulta(textoSQL2);
+                        return true;
+                    }
+                    else
+                    {
+                        Usu_CantIntentosFallidos++;
+                        //No coincide el password
+                        string textoSQL2 = "UPDATE [GD2C2014].[ATENTTOS].[Usuarios] SET Usu_CantIntentosFallidos = " + Usu_CantIntentosFallidos + " WHERE Usu_Username = '" + Usu_Username + "'";
+                        DataTable dt2 = EjecutarConsulta(textoSQL2);
+                        MessageBox.Show("Contraseña Inválida");
+                        if (Usu_CantIntentosFallidos == 3)
+                        {
+                            textoSQL2 = "UPDATE [GD2C2014].[ATENTTOS].[Usuarios] SET Usu_Estado = 'false' WHERE Usu_Username = '" + Usu_Username + "'";
+                            dt2 = EjecutarConsulta(textoSQL2);
+                            MessageBox.Show("Su usuario ha sido inhabilitado por llegar a los 3 intentos fallidos. Comuníquese con el administrador.");
+                        }
+                        return false;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Su usuario se encuentra inhabilitado. Comuníquese con el administrador.");
+                    return false;
+                }
             }
             else
             {
+                MessageBox.Show("Nombre de usuario inválido");
                 return false;
             }
-        }
-
-        public string MostrarDatoLogin(DataTable dt) 
-        {
-            int numColumnas;
-            numColumnas = dt.Columns.Count;
-
-            if (!dt.Rows[0].IsNull(0))
-            {
-                this.Usu_Rol_Id = dt.Rows[0][2].ToString();
-            }
-            return null;
         }
 
         public List<HotelRolLista> BuscarHotelRol()
@@ -136,11 +156,6 @@ namespace FrbaHotel.Dominio
 
             return listaIDFuncionalidades;
         }
-
-
-
-
-        //public List<int>
 
         /* GET Y SET */
 

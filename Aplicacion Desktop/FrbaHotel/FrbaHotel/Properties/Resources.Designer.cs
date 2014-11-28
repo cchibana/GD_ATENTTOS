@@ -59,12 +59,5 @@ namespace FrbaHotel.Properties {
                 resourceCulture = value;
             }
         }
-        
-        internal static System.Drawing.Bitmap imgLogin {
-            get {
-                object obj = ResourceManager.GetObject("imgLogin", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

@@ -19,12 +19,6 @@ namespace FrbaHotel.Login
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            //Buscar Nombre de usuario en la tabla de Usuarios, y obtener el password.
-            //Selección del hotel, si trabaja en más de uno. Idem rol
-
-            //Dominio.Usuario usu1 = new Dominio.Usuario();
-            
-            //Dominio.UsuarioLogin usu1 = new Dominio.UsuarioLogin();
             bool valorRe = Dominio.UsuarioLogin.TheInstance.buscarUsuarioContrasenia(txt_nombreUsuario.Text, txt_passwordUsuario.Text);
             if (valorRe)
             {
@@ -48,7 +42,6 @@ namespace FrbaHotel.Login
                         pantPrinc.Show(this);
                         this.Hide();
                     }
-
                 }
                 else
                 {                                       
@@ -58,11 +51,11 @@ namespace FrbaHotel.Login
                     this.Hide();
                 }
             }
-            else
-	        {
-               //Usuario y contraseña inválidos
-                MessageBox.Show("Usuario y contraseña inválidos");
-	        }
+            //else
+            //{
+            //   //Usuario y contraseña inválidos
+            //    MessageBox.Show("Usuario y contraseña inválidos");
+            //}
         }
 
         private void btn_salir_Click(object sender, EventArgs e)
