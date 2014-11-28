@@ -11,8 +11,23 @@ namespace FrbaHotel.Login
 {
     public partial class LoginHotelRol : Form
     {
-        public LoginHotelRol(List<Dominio.HotelRolLista> listaHotelRol)
+        List<Dominio.HotelRolLista> hotelRolLista;
+
+        private static LoginHotelRol _instancia;
+
+        public static LoginHotelRol ObtenerInstancia(List<Dominio.HotelRolLista> listaHotelRol)
         {
+            if (_instancia == null || _instancia.IsDisposed)
+            {
+                _instancia = new LoginHotelRol(listaHotelRol);
+            }
+            _instancia.BringToFront();
+            return _instancia;
+        }
+
+        private LoginHotelRol(List<Dominio.HotelRolLista> listaHotelRol)
+        {
+            hotelRolLista = listaHotelRol;
             InitializeComponent();
             ArmarListView(listaHotelRol);            
         }
@@ -48,11 +63,19 @@ namespace FrbaHotel.Login
                 //                + " - " + itemLVSeleccionado.SubItems[1].Text  //Hotel_Nombre
                 //                + " - " + itemLVSeleccionado.SubItems[2].Text); //Rol_Id
 
-                Dominio.UsuarioLogin.TheInstance.setearHotelRol(itemLVSeleccionado.SubItems[1].Text, Convert.ToInt32(itemLVSeleccionado.SubItems[0].Text), itemLVSeleccionado.SubItems[2].Text);
+                if (Dominio.UsuarioLogin.TheInstance.BuscarEstadoDelRol(itemLVSeleccionado.SubItems[2].Text))
+                {
+                    Dominio.UsuarioLogin.TheInstance.setearHotelRol(itemLVSeleccionado.SubItems[1].Text, Convert.ToInt32(itemLVSeleccionado.SubItems[0].Text), itemLVSeleccionado.SubItems[2].Text);
 
-                this.Hide();
-                PantallaPrincipal pantPrinc = new PantallaPrincipal();
-                pantPrinc.Show(this);
+                    this.Hide();
+                    PantallaPrincipal pantPrinc = new PantallaPrincipal();
+                    pantPrinc.Show(this);
+                }
+                else
+                {
+                    MessageBox.Show("El Rol con el que se quiere ingresar se encuentra Inactivo.");
+                    LoginHotelRol.ObtenerInstancia(this.hotelRolLista);
+                }
             }
             else 
             {
@@ -64,6 +87,13 @@ namespace FrbaHotel.Login
         {
             e.Cancel = true;
             e.NewWidth = listViewHotelRol.Columns[e.ColumnIndex].Width;
+        }
+
+        private void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            Dominio.UsuarioLogin.TheInstance.setUsu_Username(null);
+            Login.ObtenerInstancia().Show();
+            this.Close();
         }
     }
 }

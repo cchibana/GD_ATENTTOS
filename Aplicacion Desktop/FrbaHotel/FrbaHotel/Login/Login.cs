@@ -12,6 +12,18 @@ namespace FrbaHotel.Login
 {
     public partial class Login : Form
     {
+        private static Login _instancia;
+
+        public static Login ObtenerInstancia()
+        {
+            if (_instancia == null || _instancia.IsDisposed)
+            {
+                _instancia = new Login();
+            }
+            _instancia.BringToFront();
+            return _instancia;
+        }
+       
         public Login()
         {
             InitializeComponent();
@@ -34,28 +46,27 @@ namespace FrbaHotel.Login
                 else if (lHotelRol.Count == 1)
                 {
                     //Usuario con permiso para acceder con un sólo rol y hotel
-                    foreach (var iHotelRol in lHotelRol)
+                    if (Dominio.UsuarioLogin.TheInstance.BuscarEstadoDelRol(lHotelRol[0].rol))
                     {
-                        Dominio.UsuarioLogin.TheInstance.setearHotelRol(iHotelRol.nombreHotel, iHotelRol.idHotel, iHotelRol.rol);
-
+                        Dominio.UsuarioLogin.TheInstance.setearHotelRol(lHotelRol[0].nombreHotel, lHotelRol[0].idHotel, lHotelRol[0].rol);
                         PantallaPrincipal pantPrinc = new PantallaPrincipal();
                         pantPrinc.Show(this);
                         this.Hide();
                     }
+                    else
+                    {
+                        MessageBox.Show("El Rol con el que se quiere ingresar se encuentra Inactivo.");
+                    }
+
                 }
                 else
                 {                                       
                     //Más de un hotel y/o rol
-                    LoginHotelRol loginHotelRol = new LoginHotelRol(lHotelRol);
+                    LoginHotelRol loginHotelRol = LoginHotelRol.ObtenerInstancia(lHotelRol);
                     loginHotelRol.Show(this);
                     this.Hide();
                 }
             }
-            //else
-            //{
-            //   //Usuario y contraseña inválidos
-            //    MessageBox.Show("Usuario y contraseña inválidos");
-            //}
         }
 
         private void btn_salir_Click(object sender, EventArgs e)
@@ -65,11 +76,19 @@ namespace FrbaHotel.Login
 
         private void btn_guest_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            
             //Pantalla GUEST
-            Dominio.UsuarioLogin.TheInstance.setRol("Guest");
-            PantallaPrincipal pantPrinc = new PantallaPrincipal();
-            pantPrinc.Show(this);
+            if (Dominio.UsuarioLogin.TheInstance.BuscarEstadoDelRol("Guest"))
+            {                Dominio.UsuarioLogin.TheInstance.setRol("Guest");
+                PantallaPrincipal pantPrinc = new PantallaPrincipal();
+                pantPrinc.Show(this);
+                this.Hide();
+            } 
+            else
+	        {
+                MessageBox.Show("El Rol Guest con el que se quiere ingresar se encuentra Inactivo.");
+	        }   
+            
             
         }
 

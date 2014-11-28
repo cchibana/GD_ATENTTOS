@@ -15,7 +15,7 @@ namespace FrbaHotel.Dominio
         string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
 
 
-        public string EjecutarComando(string textoSql)
+        public bool EjecutarComando(string textoSql)
         {
             try
             {
@@ -34,11 +34,11 @@ namespace FrbaHotel.Dominio
                 cmd.ExecuteNonQuery();
                 //Cerramos la conexión
                 cnn.Close();
-                return "Comando realizado con exito...";
+                return true;
             }
             catch
             {
-                return "Comando Fallido...";
+                return false;
                 throw;
             }
 

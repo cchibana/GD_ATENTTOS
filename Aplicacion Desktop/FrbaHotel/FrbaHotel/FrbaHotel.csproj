@@ -127,11 +127,23 @@
     <Compile Include="ABM de Regimen\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ABM de Rol\Roles.cs">
+    <Compile Include="ABM de Rol\Rol_Alta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ABM de Rol\Roles.Designer.cs">
-      <DependentUpon>Roles.cs</DependentUpon>
+    <Compile Include="ABM de Rol\Rol_Alta.Designer.cs">
+      <DependentUpon>Rol_Alta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Rol\Rol_Baja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Rol\Rol_Baja.Designer.cs">
+      <DependentUpon>Rol_Baja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Rol\Rol_Modificacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Rol\Rol_Modificacion.Designer.cs">
+      <DependentUpon>Rol_Modificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="ABM de Usuario\Usuarios.cs">
       <SubType>Form</SubType>
@@ -171,8 +183,10 @@
     </Compile>
     <Compile Include="Dominio\CDatos.cs" />
     <Compile Include="Dominio\Cliente.cs" />
+    <Compile Include="Dominio\ComboBoxItem.cs" />
     <Compile Include="Dominio\Habitacion.cs" />
     <Compile Include="Dominio\Hotel.cs" />
+    <Compile Include="Dominio\Rol.cs" />
     <Compile Include="Dominio\Validadores.cs" />
     <Compile Include="Dominio\Parametros.cs" />
     <Compile Include="Dominio\Prueba.cs" />
@@ -251,8 +265,14 @@
     <EmbeddedResource Include="ABM de Hotel\Hotel_Modificacion.resx">
       <DependentUpon>Hotel_Modificacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ABM de Rol\Roles.resx">
-      <DependentUpon>Roles.cs</DependentUpon>
+    <EmbeddedResource Include="ABM de Rol\Rol_Alta.resx">
+      <DependentUpon>Rol_Alta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Rol\Rol_Baja.resx">
+      <DependentUpon>Rol_Baja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Rol\Rol_Modificacion.resx">
+      <DependentUpon>Rol_Modificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ABM de Usuario\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
@@ -330,7 +350,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\imgLogin.png" />
+    <None Include="Resources\fotoA.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

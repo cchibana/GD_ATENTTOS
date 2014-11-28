@@ -30,8 +30,19 @@ namespace FrbaHotel
 
             if (listaIDFuncionalidades.Exists(element => element == 1))
             {
-                ToolStripMenuItem menuItem_Roles = new ToolStripMenuItem("Roles", null, new EventHandler(menuItem_Roles_Click));
+                ToolStripMenuItem menuItem_Roles = new ToolStripMenuItem("Roles", null);
                 menuPrincipal.Items.Add(menuItem_Roles);
+
+                menuItem_Roles.DropDownItems.Add("Alta de Rol", null, new EventHandler(menuItem_Rol_Alta_Click));
+                menuPrincipal.Items.Add(menuItem_Roles);
+
+                menuItem_Roles.DropDownItems.Add("Modificación de Rol", null, new EventHandler(menuItem_Rol_Modificacion_Click));
+                menuPrincipal.Items.Add(menuItem_Roles);
+
+                menuItem_Roles.DropDownItems.Add("Baja de Rol", null, new EventHandler(menuItem_Rol_Baja_Click));
+                menuPrincipal.Items.Add(menuItem_Roles);
+
+
             }
 
             if (listaIDFuncionalidades.Exists(element => element == 2))
@@ -114,9 +125,22 @@ namespace FrbaHotel
         }
 
         //EventHandler
-        private void menuItem_Roles_Click(object sender, EventArgs e)
+        private void menuItem_Rol_Alta_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Roles");
+            ABM_de_Rol.Rol_Alta newVentanaRolAlta = ABM_de_Rol.Rol_Alta.ObtenerInstancia();
+            newVentanaRolAlta.Show();
+        }
+
+        private void menuItem_Rol_Baja_Click(object sender, EventArgs e)
+        {
+            ABM_de_Rol.Rol_Baja newVentanaRolBaja = ABM_de_Rol.Rol_Baja.ObtenerInstancia();
+            newVentanaRolBaja.Show();
+        }
+
+        private void menuItem_Rol_Modificacion_Click(object sender, EventArgs e)
+        {
+            ABM_de_Rol.Rol_Modificacion newVentanaRolModificacion = ABM_de_Rol.Rol_Modificacion.ObtenerInstancia();
+            newVentanaRolModificacion.Show();
         }
 
         private void menuItem_Usuarios_Click(object sender, EventArgs e)
@@ -145,7 +169,7 @@ namespace FrbaHotel
 
         private void menuItem_Regimenes_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Regímenes");
+            MessageBox.Show("ABM no disponible.");
         }
 
         private void menuItem_ReservasGenerarModificar(object sender, EventArgs e)
