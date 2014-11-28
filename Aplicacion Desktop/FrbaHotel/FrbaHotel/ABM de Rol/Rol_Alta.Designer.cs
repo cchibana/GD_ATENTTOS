@@ -33,12 +33,12 @@
             this.cb_Funcionalidades = new System.Windows.Forms.ComboBox();
             this.txtNombreRol = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lb_Funcionalidades = new System.Windows.Forms.ListBox();
             this.btn_QuitarFuncionalidad = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.cb_EstadoRol = new System.Windows.Forms.ComboBox();
             this.btn_GuardarRol = new System.Windows.Forms.Button();
             this.btn_Limpiar = new System.Windows.Forms.Button();
-            this.lb_Funcionalidades = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,9 +53,9 @@
             // 
             // btn_AgregarFuncionalidad
             // 
-            this.btn_AgregarFuncionalidad.Location = new System.Drawing.Point(286, 69);
+            this.btn_AgregarFuncionalidad.Location = new System.Drawing.Point(260, 67);
             this.btn_AgregarFuncionalidad.Name = "btn_AgregarFuncionalidad";
-            this.btn_AgregarFuncionalidad.Size = new System.Drawing.Size(201, 30);
+            this.btn_AgregarFuncionalidad.Size = new System.Drawing.Size(182, 30);
             this.btn_AgregarFuncionalidad.TabIndex = 1;
             this.btn_AgregarFuncionalidad.Text = "Agregar Funcionalidad";
             this.btn_AgregarFuncionalidad.UseVisualStyleBackColor = true;
@@ -65,9 +65,9 @@
             // 
             this.cb_Funcionalidades.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Funcionalidades.FormattingEnabled = true;
-            this.cb_Funcionalidades.Location = new System.Drawing.Point(286, 29);
+            this.cb_Funcionalidades.Location = new System.Drawing.Point(260, 27);
             this.cb_Funcionalidades.Name = "cb_Funcionalidades";
-            this.cb_Funcionalidades.Size = new System.Drawing.Size(201, 21);
+            this.cb_Funcionalidades.Size = new System.Drawing.Size(182, 21);
             this.cb_Funcionalidades.TabIndex = 0;
             // 
             // txtNombreRol
@@ -85,16 +85,24 @@
             this.groupBox1.Controls.Add(this.btn_AgregarFuncionalidad);
             this.groupBox1.Location = new System.Drawing.Point(20, 59);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(511, 265);
+            this.groupBox1.Size = new System.Drawing.Size(460, 265);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Listado de Funcionalidades";
             // 
+            // lb_Funcionalidades
+            // 
+            this.lb_Funcionalidades.FormattingEnabled = true;
+            this.lb_Funcionalidades.Location = new System.Drawing.Point(20, 29);
+            this.lb_Funcionalidades.Name = "lb_Funcionalidades";
+            this.lb_Funcionalidades.Size = new System.Drawing.Size(223, 225);
+            this.lb_Funcionalidades.TabIndex = 4;
+            // 
             // btn_QuitarFuncionalidad
             // 
-            this.btn_QuitarFuncionalidad.Location = new System.Drawing.Point(286, 224);
+            this.btn_QuitarFuncionalidad.Location = new System.Drawing.Point(260, 222);
             this.btn_QuitarFuncionalidad.Name = "btn_QuitarFuncionalidad";
-            this.btn_QuitarFuncionalidad.Size = new System.Drawing.Size(201, 30);
+            this.btn_QuitarFuncionalidad.Size = new System.Drawing.Size(182, 30);
             this.btn_QuitarFuncionalidad.TabIndex = 3;
             this.btn_QuitarFuncionalidad.Text = "Quitar Funcionalidad";
             this.btn_QuitarFuncionalidad.UseVisualStyleBackColor = true;
@@ -120,9 +128,9 @@
             // 
             // btn_GuardarRol
             // 
-            this.btn_GuardarRol.Location = new System.Drawing.Point(89, 380);
+            this.btn_GuardarRol.Location = new System.Drawing.Point(81, 381);
             this.btn_GuardarRol.Name = "btn_GuardarRol";
-            this.btn_GuardarRol.Size = new System.Drawing.Size(174, 30);
+            this.btn_GuardarRol.Size = new System.Drawing.Size(149, 40);
             this.btn_GuardarRol.TabIndex = 3;
             this.btn_GuardarRol.Text = "Guardar Rol";
             this.btn_GuardarRol.UseVisualStyleBackColor = true;
@@ -130,27 +138,19 @@
             // 
             // btn_Limpiar
             // 
-            this.btn_Limpiar.Location = new System.Drawing.Point(288, 380);
+            this.btn_Limpiar.Location = new System.Drawing.Point(260, 381);
             this.btn_Limpiar.Name = "btn_Limpiar";
-            this.btn_Limpiar.Size = new System.Drawing.Size(174, 30);
+            this.btn_Limpiar.Size = new System.Drawing.Size(149, 40);
             this.btn_Limpiar.TabIndex = 8;
             this.btn_Limpiar.Text = "Limpiar Campos";
             this.btn_Limpiar.UseVisualStyleBackColor = true;
             this.btn_Limpiar.Click += new System.EventHandler(this.btn_Limpiar_Click);
             // 
-            // lb_Funcionalidades
-            // 
-            this.lb_Funcionalidades.FormattingEnabled = true;
-            this.lb_Funcionalidades.Location = new System.Drawing.Point(20, 29);
-            this.lb_Funcionalidades.Name = "lb_Funcionalidades";
-            this.lb_Funcionalidades.Size = new System.Drawing.Size(259, 225);
-            this.lb_Funcionalidades.TabIndex = 4;
-            // 
             // Rol_Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(556, 422);
+            this.ClientSize = new System.Drawing.Size(499, 431);
             this.Controls.Add(this.btn_Limpiar);
             this.Controls.Add(this.btn_GuardarRol);
             this.Controls.Add(this.cb_EstadoRol);

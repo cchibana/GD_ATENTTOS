@@ -53,8 +53,6 @@ namespace FrbaHotel.Login
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
             //Segun qué rol y hotel eligio seteo el usuario con esos datos y creo la pantallaPrincipal
-
-            //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!TERMINARRRR!!!!!!!!!!!!!!!!
             if (listViewHotelRol.SelectedItems.Count == 1)
             {
                 ListViewItem itemLVSeleccionado = listViewHotelRol.SelectedItems[0];

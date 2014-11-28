@@ -75,7 +75,15 @@ namespace FrbaHotel.Dominio
                 {
                     if (Usu_Password == passHASH)
                     {
-                        return ActualizarCantIntentosFallidosACero(Usu_Username);
+                        if (Usu_CantIntentosFallidos == 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return ActualizarCantIntentosFallidosACero(Usu_Username);
+                        }
+                        
                     }
                     else
                     {
@@ -98,14 +106,20 @@ namespace FrbaHotel.Dominio
         private bool ActualizarCantIntentosFallidos(int Usu_CantIntentosFallidos, string Usu_Username)
         {
             Usu_CantIntentosFallidos++;
-            string textoSQL2 = "UPDATE [GD2C2014].[ATENTTOS].[Usuarios] SET Usu_CantIntentosFallidos = " + Usu_CantIntentosFallidos + " WHERE Usu_Username = '" + Usu_Username + "'";
-            DataTable dt2 = EjecutarConsulta(textoSQL2);
-            MessageBox.Show("Contraseña Inválida");
+            string textoSQL2;
+            DataTable dt2;
+
             if (Usu_CantIntentosFallidos == 3)
             {
-                textoSQL2 = "UPDATE [GD2C2014].[ATENTTOS].[Usuarios] SET Usu_Estado = 'false' WHERE Usu_Username = '" + Usu_Username + "'";
+                textoSQL2 = "UPDATE [GD2C2014].[ATENTTOS].[Usuarios] SET Usu_Estado = 'false', Usu_CantIntentosFallidos = " + Usu_CantIntentosFallidos + "WHERE Usu_Username = '" + Usu_Username + "'";
                 dt2 = EjecutarConsulta(textoSQL2);
                 MessageBox.Show("Su usuario ha sido inhabilitado por llegar a los 3 intentos fallidos. Comuníquese con el administrador.");
+            }
+            else
+            {
+                textoSQL2 = "UPDATE [GD2C2014].[ATENTTOS].[Usuarios] SET Usu_CantIntentosFallidos = " + Usu_CantIntentosFallidos + " WHERE Usu_Username = '" + Usu_Username + "'";
+                dt2 = EjecutarConsulta(textoSQL2);
+                MessageBox.Show("Contraseña Inválida");
             }
             return false;
         }

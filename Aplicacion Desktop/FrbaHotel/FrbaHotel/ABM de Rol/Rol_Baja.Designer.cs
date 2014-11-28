@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lb_Roles = new System.Windows.Forms.ListBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
-            // 
-            // lb_Roles
-            // 
-            this.lb_Roles.FormattingEnabled = true;
-            this.lb_Roles.Location = new System.Drawing.Point(27, 18);
-            this.lb_Roles.Name = "lb_Roles";
-            this.lb_Roles.Size = new System.Drawing.Size(328, 303);
-            this.lb_Roles.TabIndex = 0;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(365, 18);
+            this.button2.Location = new System.Drawing.Point(81, 309);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(201, 30);
+            this.button2.Size = new System.Drawing.Size(188, 30);
             this.button2.TabIndex = 1;
             this.button2.Text = "Deshabilitar Rol Seleccionado";
             this.button2.UseVisualStyleBackColor = true;
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(27, 26);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(304, 274);
+            this.listView1.TabIndex = 2;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // Rol_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(588, 343);
+            this.ClientSize = new System.Drawing.Size(358, 363);
+            this.Controls.Add(this.listView1);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.lb_Roles);
             this.Name = "Rol_Baja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rol_Baja";
@@ -65,8 +65,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ListBox lb_Roles;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ListView listView1;
 
 
 

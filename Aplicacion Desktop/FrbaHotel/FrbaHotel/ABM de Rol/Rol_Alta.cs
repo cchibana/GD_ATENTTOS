@@ -42,6 +42,9 @@ namespace FrbaHotel.ABM_de_Rol
 
                 cb_Funcionalidades.Items.Add(item);
             }
+
+            cb_Funcionalidades.SelectedIndex = 0;
+            rol1.cargarListaFuncionalidad();
         }
 
         private void InicializarComboBoxEstado()
@@ -55,6 +58,7 @@ namespace FrbaHotel.ABM_de_Rol
             item2.Text = "No Activo";
             item2.Value = "False";
             cb_EstadoRol.Items.Add(item2);
+            cb_EstadoRol.SelectedIndex = 0;
         }
 
         private void btn_Limpiar_Click(object sender, EventArgs e)
@@ -67,8 +71,8 @@ namespace FrbaHotel.ABM_de_Rol
             txtNombreRol.Text = null;
             lb_Funcionalidades.DataSource = null;
             lb_Funcionalidades.Items.Clear();
-            cb_EstadoRol.SelectedItem = null;
-            cb_Funcionalidades.SelectedItem = null;    
+            cb_EstadoRol.SelectedIndex = 0;
+            cb_Funcionalidades.SelectedIndex = 0;    
         }
 
         private void btn_AgregarFuncionalidad_Click(object sender, EventArgs e)
@@ -82,7 +86,6 @@ namespace FrbaHotel.ABM_de_Rol
             {
                 MessageBox.Show("La funcionalidad seleccionada ya se ha sido agregada.");
             }
-
         }
 
         private void btn_QuitarFuncionalidad_Click(object sender, EventArgs e)
@@ -95,11 +98,53 @@ namespace FrbaHotel.ABM_de_Rol
 
         private void btn_GuardarRol_Click(object sender, EventArgs e)
         {
-            //Verificar que no exista un Rol con el mismo Nombre.
-            //Que todos los campos nombreRol y EstadoRol no sean nulos
-            //Hacer un Insert a la tabla de Roles
-            //Hacer insert a la tabla Roles_Por_Funcionalidades de todas las funcionalidades del ListBox. Estado de la funcionalidad en 1.
+            Dominio.Rol rol1 = new Dominio.Rol();
+            if (txtNombreRol.Text != "")
+            {
+                if (rol1.verificarNombreDeRolValido(txtNombreRol.Text))
+                {
+                    bool estadoRolSeleccionado = Convert.ToBoolean((cb_EstadoRol.SelectedItem as Dominio.ComboBoxItem).Value.ToString());
+                    List<int> listaIDFuncionalidadesSeleccionadas = armarListaFuncionalidadesSeleccionadas();
+
+                    if (rol1.InsertarNuevoRol(txtNombreRol.Text, estadoRolSeleccionado) && rol1.InsertarFuncionalidadesAlRol(txtNombreRol.Text, listaIDFuncionalidadesSeleccionadas))
+                    {
+                        MessageBox.Show("Alta de Rol exitosa");
+                        LimpiarCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No sa ha podido dar de alta al nuevo Rol");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El nombre de rol ingresado ya se encuentra registrado");
+                }                
+            }
+            else
+            {
+                MessageBox.Show("Debe ingresar un nombre para el nuevo Rol");
+            }
+
         }
+
+        private List<int> armarListaFuncionalidadesSeleccionadas()
+        {
+            List<int> listaIDFuncionalidadesSeleccionadas = new List<int>();
+
+            //Arma una lista a partir del ListBox
+            var listaFuncionalidadesListBox = this.lb_Funcionalidades.Items.Cast<String>().ToList();
+
+            Dominio.Rol rol1 = new Dominio.Rol();
+            foreach (var item in listaFuncionalidadesListBox)
+            {
+                int id = rol1.obtenerIDdeFuncionalidad(item);
+                listaIDFuncionalidadesSeleccionadas.Add(id);
+            }
+            return listaIDFuncionalidadesSeleccionadas;
+        }
+
+
 
     }
 }
