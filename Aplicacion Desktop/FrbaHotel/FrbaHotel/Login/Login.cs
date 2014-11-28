@@ -23,22 +23,15 @@ namespace FrbaHotel.Login
             //Selección del hotel, si trabaja en más de uno. Idem rol
 
             //Dominio.Usuario usu1 = new Dominio.Usuario();
-            Dominio.UsuarioLogin usu1 = new Dominio.UsuarioLogin();
-            bool valorRe = usu1.buscarUsuarioContrasenia(txt_nombreUsuario.Text, txt_passwordUsuario.Text);
+            
+            //Dominio.UsuarioLogin usu1 = new Dominio.UsuarioLogin();
+            bool valorRe = Dominio.UsuarioLogin.TheInstance.buscarUsuarioContrasenia(txt_nombreUsuario.Text, txt_passwordUsuario.Text);
             if (valorRe)
             {
                 //Usuario y contraseña válidos
-                usu1.setUsu_Username(txt_nombreUsuario.Text);
+                Dominio.UsuarioLogin.TheInstance.setUsu_Username(txt_nombreUsuario.Text);
 
-                List<Dominio.HotelRolLista> lHotelRol = usu1.BuscarHotelRol();
-
-                //Si lHotelRol
-                    //- es NULO -> Mensaje de error : Su usuario no tiene acceso a ningún hotel ni rol. Comuníquese con el administrador.
-                    //- si me trae algo. 
-                        //-IF contar cuantos me trajo
-                            //- Si me trae uno solo -> Setear el hotel y el rol al que se loguea. 
-                            //                         Crear la pantalla para ese usuario y mostrarlo
-                            //- Si me trae más de uno -> Armar la coleccion
+                List<Dominio.HotelRolLista> lHotelRol = Dominio.UsuarioLogin.TheInstance.BuscarHotelRol();
 
                 if (lHotelRol.Count == 0)
                 {
@@ -46,11 +39,12 @@ namespace FrbaHotel.Login
                 }
                 else if (lHotelRol.Count == 1)
                 {
+                    //Usuario con permiso para acceder con un sólo rol y hotel
                     foreach (var iHotelRol in lHotelRol)
                     {
-                        usu1.setearHotelRol(iHotelRol.nombreHotel,iHotelRol.idHotel, iHotelRol.rol);
-                                                
-                        PantallaPrincipal pantPrinc = new PantallaPrincipal(usu1.getRol());
+                        Dominio.UsuarioLogin.TheInstance.setearHotelRol(iHotelRol.nombreHotel, iHotelRol.idHotel, iHotelRol.rol);
+
+                        PantallaPrincipal pantPrinc = new PantallaPrincipal();
                         pantPrinc.Show(this);
                         this.Hide();
                     }
@@ -58,7 +52,8 @@ namespace FrbaHotel.Login
                 }
                 else
                 {                                       
-                    LoginHotelRol loginHotelRol = new LoginHotelRol(lHotelRol, usu1);
+                    //Más de un hotel y/o rol
+                    LoginHotelRol loginHotelRol = new LoginHotelRol(lHotelRol);
                     loginHotelRol.Show(this);
                     this.Hide();
                 }
@@ -79,7 +74,8 @@ namespace FrbaHotel.Login
         {
             this.Hide();
             //Pantalla GUEST
-            PantallaPrincipal pantPrinc = new PantallaPrincipal("usuario");
+            Dominio.UsuarioLogin.TheInstance.setRol("Guest");
+            PantallaPrincipal pantPrinc = new PantallaPrincipal();
             pantPrinc.Show(this);
             
         }

@@ -31,6 +31,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -53,7 +54,6 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -86,6 +86,14 @@
             this.groupBox3.TabIndex = 19;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Roles y Hoteles";
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(14, 38);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(339, 95);
+            this.listView1.TabIndex = 11;
+            this.listView1.UseCompatibleStateImageBehavior = false;
             // 
             // groupBox2
             // 
@@ -296,14 +304,6 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Nombre";
             // 
-            // listView1
-            // 
-            this.listView1.Location = new System.Drawing.Point(14, 38);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(339, 95);
-            this.listView1.TabIndex = 11;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // Usuario_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -315,6 +315,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Usuario_Baja";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario_Baja";
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);

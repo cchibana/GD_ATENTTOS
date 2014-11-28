@@ -12,16 +12,38 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.Dominio
 {
-    public class UsuarioLogin : CDatos
+    public sealed class UsuarioLogin : CDatos
     {
 
-        protected string Usu_Username;
-        protected string Usu_Hotel_Nombre;
-        protected int Usu_Hotel_Id;
-        protected string Usu_Rol_Id;
+        private string Usu_Username;
+        private string Usu_Hotel_Nombre;
+        private int Usu_Hotel_Id;
+        private string Usu_Rol_Id;
+
 
         //Parametros para SP
         private Parametros[] parametrosSP;
+
+        //Singleton
+        private static volatile UsuarioLogin theInstance = null;
+        private static readonly object padlock = new object();
+        UsuarioLogin() { }
+
+        public static UsuarioLogin TheInstance 
+        {
+            get
+            {
+                if (theInstance == null)
+                {
+                    lock (padlock)
+                    {
+                        if (theInstance == null)
+                            theInstance = new UsuarioLogin();
+                    }
+                }
+                return theInstance;
+            }
+        }
 
         public void setUsuario(string usu_username) {
             this.Usu_Username = usu_username;
@@ -62,39 +84,16 @@ namespace FrbaHotel.Dominio
             if (!dt.Rows[0].IsNull(0))
             {
                 this.Usu_Rol_Id = dt.Rows[0][2].ToString();
-                //this.Usu_Estado = Convert.ToBoolean(dt.Rows[0][3].ToString());
             }
             return null;
         }
 
-
-
         public List<HotelRolLista> BuscarHotelRol()
         {
-            //1 - Ejecuto el SP para traer el listado de hotel y rol de un usuario
-            //2 - IF 
-                    //- no me devuelve Ningun dato -> return null;
-                    //- Si me trae algo -> armo la lista y lo retorno
-
-
-            /*
-            string textoSQL = "SELECT Usu_Username, Usu_Password, Usu_Rol_Id, Usu_Estado FROM  ATENTTO'";
-            DataTable dt = EjecutarConsulta(textoSQL);
-            int cantidadFilas = dt.Rows.Count;
-            if (cantidadFilas == 1)
-            {
-                MostrarDatoLogin(dt);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-            */
             var lHotelRol = new List<HotelRolLista>();
 
             parametrosSP = new Parametros[1];//1 por la cantidad de parámetros que ingreso
-            parametrosSP[0] = new Parametros("@username", Usu_Username);
+            parametrosSP[0] = new Parametros("@username", Usu_Username); //0 porque un vector empieza en la posición 0
 
             DataTable dt = EjecutarStoreProcedure("dbo.SP_RolesYHoteles", parametrosSP);
            
@@ -115,6 +114,34 @@ namespace FrbaHotel.Dominio
             return lHotelRol;
         }
 
+
+        public List<int> BuscarFuncionalidades()
+        {
+
+            var listaIDFuncionalidades = new List<int>();
+
+            parametrosSP = new Parametros[1]; //Pongo uno entre corchetes porque busco por un sólo parámetro
+            parametrosSP[0] = new Parametros("@rol", this.Usu_Rol_Id); //El vector empieza en la posición 0.
+            
+            DataTable dt = EjecutarStoreProcedure("dbo.SP_FuncionalidadesPorRol", parametrosSP);
+
+            int cantidadFilas = dt.Rows.Count;
+            if (cantidadFilas > 0)
+            {
+                for (int i = 0; i < cantidadFilas; i++)
+                {
+                    listaIDFuncionalidades.Add(Convert.ToInt32(dt.Rows[i][0].ToString()));
+                }
+            }
+
+            return listaIDFuncionalidades;
+        }
+
+
+
+
+        //public List<int>
+
         /* GET Y SET */
 
         public void setUsu_Username(string nombreUsuario) 
@@ -125,6 +152,11 @@ namespace FrbaHotel.Dominio
         public string getRol()
         {
             return this.Usu_Rol_Id;
+        }
+
+        public void setRol(string rol) 
+        {
+            this.Usu_Rol_Id = rol;
         }
 
         public void setearHotelRol(string hotelNombre, int hotelId, string rolUsu)

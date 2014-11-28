@@ -11,11 +11,8 @@ namespace FrbaHotel.Login
 {
     public partial class LoginHotelRol : Form
     {
-        private Dominio.UsuarioLogin usuarioLogueado;
-
-        public LoginHotelRol(List<Dominio.HotelRolLista> listaHotelRol, Dominio.UsuarioLogin usu1)
+        public LoginHotelRol(List<Dominio.HotelRolLista> listaHotelRol)
         {
-            usuarioLogueado = usu1;
             InitializeComponent();
             ArmarListView(listaHotelRol);            
         }
@@ -52,21 +49,11 @@ namespace FrbaHotel.Login
                 //                + " - " + itemLVSeleccionado.SubItems[1].Text  //Hotel_Nombre
                 //                + " - " + itemLVSeleccionado.SubItems[2].Text); //Rol_Id
 
-                usuarioLogueado.setearHotelRol(itemLVSeleccionado.SubItems[1].Text, Convert.ToInt32(itemLVSeleccionado.SubItems[0].Text), itemLVSeleccionado.SubItems[2].Text);
+                Dominio.UsuarioLogin.TheInstance.setearHotelRol(itemLVSeleccionado.SubItems[1].Text, Convert.ToInt32(itemLVSeleccionado.SubItems[0].Text), itemLVSeleccionado.SubItems[2].Text);
 
                 this.Hide();
-                if (itemLVSeleccionado.SubItems[2].Text == "Administrador")
-                {
-                    //Pantalla ADMINISTRADOR
-                    PantallaPrincipal pantPrinc = new PantallaPrincipal("Administrador");
-                    pantPrinc.Show(this);
-                }
-                else if (itemLVSeleccionado.SubItems[2].Text == "Recepcionista")
-                {
-                    //Pantalla Recepcionista
-                    PantallaPrincipal pantPrinc = new PantallaPrincipal("Recepcionista");
-                    pantPrinc.Show(this);
-                }
+                PantallaPrincipal pantPrinc = new PantallaPrincipal();
+                pantPrinc.Show(this);
             }
             else 
             {

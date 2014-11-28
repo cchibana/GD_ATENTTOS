@@ -15,5 +15,23 @@ namespace FrbaHotel.ABM_de_Usuario
         {
             InitializeComponent();
         }
+
+        private void btn_Alta_Click(object sender, EventArgs e)
+        {
+            ABM_de_Usuario.Usuario_Alta usuario_Alta = new FrbaHotel.ABM_de_Usuario.Usuario_Alta();
+            usuario_Alta.Show(this);
+        }
+
+        private void btn_Modificacion_Click(object sender, EventArgs e)
+        {
+            ABM_de_Usuario.Usuario_Modificacion usuario_Modificacion = new FrbaHotel.ABM_de_Usuario.Usuario_Modificacion();
+            usuario_Modificacion.Show(this);
+        }
+
+        private void btn_Baja_Click(object sender, EventArgs e)
+        {
+            ABM_de_Usuario.Usuario_Alta usuario_Baja = new FrbaHotel.ABM_de_Usuario.Usuario_Alta();
+            usuario_Baja.Show(this);
+        }
     }
 }
