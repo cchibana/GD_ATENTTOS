@@ -175,6 +175,15 @@
     <Compile Include="Dominio\Hotel.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="Dominio\Validadores.cs" />
+    <Compile Include="Dominio\Parametros.cs" />
+    <Compile Include="Dominio\Prueba.cs" />
+    <Compile Include="Dominio\UsuarioLogin.cs" />
+    <Compile Include="Login\LoginHotelRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\LoginHotelRol.Designer.cs">
+      <DependentUpon>LoginHotelRol.cs</DependentUpon>
+    </Compile>
     <Compile Include="PantallaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -264,6 +273,9 @@
     <EmbeddedResource Include="Generar Modificar Reserva\ModificarReserva.resx">
       <DependentUpon>ModificarReserva.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login\LoginHotelRol.resx">
+      <DependentUpon>LoginHotelRol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PantallaPrincipal.resx">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,9 +287,13 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Prueba Parameters.resx">
+      <DependentUpon>Prueba Parameters.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -288,6 +304,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Prueba Parameters.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Prueba Parameters.Designer.cs">
+      <DependentUpon>Prueba Parameters.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrar Consumible\Form1.cs">
       <SubType>Form</SubType>
@@ -304,6 +326,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgLogin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

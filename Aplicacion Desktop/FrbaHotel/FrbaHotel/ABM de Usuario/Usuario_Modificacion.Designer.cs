@@ -361,6 +361,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Usuario_Modificacion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario_Modificacion";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

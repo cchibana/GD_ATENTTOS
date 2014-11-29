@@ -19,7 +19,7 @@ namespace FrbaHotel.Dominio
         {
             //Creamos la cadena de conexion
             string sCnn = cadenaDeConexion;
-            //Creamo el comando de sql para listar
+            //Creamos el comando de sql para listar
             string sSel = textoSQL;
             //Creamos el adaptador que capturara los datos
             SqlDataAdapter da = new SqlDataAdapter(sSel, sCnn);
@@ -31,7 +31,21 @@ namespace FrbaHotel.Dominio
             return dt;
         }
 
+        public DataTable EjecutarStoreProcedure(string nombreSP, Dominio.Parametros[] datos)
+        {
+            SqlConnection connection = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand(nombreSP,connection);
+            cmd.CommandType = CommandType.StoredProcedure;
 
-
+            for (int i = 0; i < datos.Length; i++)
+			{
+                cmd.Parameters.AddWithValue(datos[i].Nombre, datos[i].Valor);
+			}
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
     }
 }
