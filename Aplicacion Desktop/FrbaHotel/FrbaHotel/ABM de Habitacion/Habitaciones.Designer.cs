@@ -61,6 +61,7 @@
             this.dgv_habitacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_habitacion.Size = new System.Drawing.Size(437, 88);
             this.dgv_habitacion.TabIndex = 26;
+            this.dgv_habitacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_habitacion_CellContentClick);
             // 
             // btn_Buscar
             // 
@@ -205,6 +206,7 @@
             // 
             // btn_baja
             // 
+            this.btn_baja.Enabled = false;
             this.btn_baja.Location = new System.Drawing.Point(346, 357);
             this.btn_baja.Name = "btn_baja";
             this.btn_baja.Size = new System.Drawing.Size(75, 23);
@@ -215,6 +217,7 @@
             // 
             // btn_modificacion
             // 
+            this.btn_modificacion.Enabled = false;
             this.btn_modificacion.Location = new System.Drawing.Point(226, 357);
             this.btn_modificacion.Name = "btn_modificacion";
             this.btn_modificacion.Size = new System.Drawing.Size(75, 23);

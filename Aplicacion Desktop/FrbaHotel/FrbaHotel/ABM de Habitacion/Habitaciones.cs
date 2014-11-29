@@ -63,5 +63,11 @@ namespace FrbaHotel.ABM_de_Habitacion
             //Se usa el metodo Listar de hotel y mostrandolo en el DataGridView
             dgv_habitacion.DataSource = habitacion1.Listar();
         }
+
+        private void dgv_habitacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btn_modificacion.Enabled = true;
+            btn_baja.Enabled = true;
+        }
     }
 }

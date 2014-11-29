@@ -51,7 +51,7 @@
             // 
             // btn_Limpiar
             // 
-            this.btn_Limpiar.Location = new System.Drawing.Point(259, 127);
+            this.btn_Limpiar.Location = new System.Drawing.Point(369, 145);
             this.btn_Limpiar.Name = "btn_Limpiar";
             this.btn_Limpiar.Size = new System.Drawing.Size(75, 23);
             this.btn_Limpiar.TabIndex = 0;
@@ -61,7 +61,7 @@
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Location = new System.Drawing.Point(365, 127);
+            this.btn_Buscar.Location = new System.Drawing.Point(471, 145);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(75, 23);
             this.btn_Buscar.TabIndex = 1;
@@ -71,7 +71,7 @@
             // 
             // btn_Alta
             // 
-            this.btn_Alta.Location = new System.Drawing.Point(100, 295);
+            this.btn_Alta.Location = new System.Drawing.Point(314, 354);
             this.btn_Alta.Name = "btn_Alta";
             this.btn_Alta.Size = new System.Drawing.Size(75, 23);
             this.btn_Alta.TabIndex = 2;
@@ -81,7 +81,8 @@
             // 
             // btn_Modificacion
             // 
-            this.btn_Modificacion.Location = new System.Drawing.Point(200, 295);
+            this.btn_Modificacion.Enabled = false;
+            this.btn_Modificacion.Location = new System.Drawing.Point(414, 354);
             this.btn_Modificacion.Name = "btn_Modificacion";
             this.btn_Modificacion.Size = new System.Drawing.Size(77, 23);
             this.btn_Modificacion.TabIndex = 3;
@@ -91,7 +92,8 @@
             // 
             // btn_Baja
             // 
-            this.btn_Baja.Location = new System.Drawing.Point(312, 295);
+            this.btn_Baja.Enabled = false;
+            this.btn_Baja.Location = new System.Drawing.Point(526, 354);
             this.btn_Baja.Name = "btn_Baja";
             this.btn_Baja.Size = new System.Drawing.Size(75, 23);
             this.btn_Baja.TabIndex = 4;
@@ -113,21 +115,21 @@
             // 
             this.txt_nombre.Location = new System.Drawing.Point(104, 19);
             this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(100, 20);
+            this.txt_nombre.Size = new System.Drawing.Size(173, 20);
             this.txt_nombre.TabIndex = 6;
             // 
             // txt_apellido
             // 
             this.txt_apellido.Location = new System.Drawing.Point(104, 45);
             this.txt_apellido.Name = "txt_apellido";
-            this.txt_apellido.Size = new System.Drawing.Size(100, 20);
+            this.txt_apellido.Size = new System.Drawing.Size(173, 20);
             this.txt_apellido.TabIndex = 7;
             // 
             // txt_mail
             // 
             this.txt_mail.Location = new System.Drawing.Point(104, 71);
             this.txt_mail.Name = "txt_mail";
-            this.txt_mail.Size = new System.Drawing.Size(100, 20);
+            this.txt_mail.Size = new System.Drawing.Size(173, 20);
             this.txt_mail.TabIndex = 8;
             // 
             // lbl_Apellido
@@ -152,16 +154,16 @@
             // 
             // txt_nro_doc
             // 
-            this.txt_nro_doc.Location = new System.Drawing.Point(353, 45);
+            this.txt_nro_doc.Location = new System.Drawing.Point(459, 45);
             this.txt_nro_doc.Name = "txt_nro_doc";
-            this.txt_nro_doc.Size = new System.Drawing.Size(100, 20);
+            this.txt_nro_doc.Size = new System.Drawing.Size(130, 20);
             this.txt_nro_doc.TabIndex = 12;
             // 
             // lbl_nro_doc
             // 
             this.lbl_nro_doc.AutoSize = true;
             this.lbl_nro_doc.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lbl_nro_doc.Location = new System.Drawing.Point(256, 48);
+            this.lbl_nro_doc.Location = new System.Drawing.Point(362, 48);
             this.lbl_nro_doc.Name = "lbl_nro_doc";
             this.lbl_nro_doc.Size = new System.Drawing.Size(82, 13);
             this.lbl_nro_doc.TabIndex = 11;
@@ -177,16 +179,16 @@
             this.cbox_tipo_doc.Items.AddRange(new object[] {
             "DNI",
             "Pasaporte"});
-            this.cbox_tipo_doc.Location = new System.Drawing.Point(353, 18);
+            this.cbox_tipo_doc.Location = new System.Drawing.Point(459, 18);
             this.cbox_tipo_doc.Name = "cbox_tipo_doc";
-            this.cbox_tipo_doc.Size = new System.Drawing.Size(100, 21);
+            this.cbox_tipo_doc.Size = new System.Drawing.Size(130, 21);
             this.cbox_tipo_doc.TabIndex = 13;
             // 
             // lbl_tipo_Doc
             // 
             this.lbl_tipo_Doc.AutoSize = true;
             this.lbl_tipo_Doc.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lbl_tipo_Doc.Location = new System.Drawing.Point(256, 21);
+            this.lbl_tipo_Doc.Location = new System.Drawing.Point(362, 21);
             this.lbl_tipo_Doc.Name = "lbl_tipo_Doc";
             this.lbl_tipo_Doc.Size = new System.Drawing.Size(51, 13);
             this.lbl_tipo_Doc.TabIndex = 14;
@@ -197,12 +199,12 @@
             this.dgv_clientes.AllowUserToAddRows = false;
             this.dgv_clientes.AllowUserToDeleteRows = false;
             this.dgv_clientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_clientes.Location = new System.Drawing.Point(28, 170);
+            this.dgv_clientes.Location = new System.Drawing.Point(22, 194);
             this.dgv_clientes.MultiSelect = false;
             this.dgv_clientes.Name = "dgv_clientes";
             this.dgv_clientes.ReadOnly = true;
             this.dgv_clientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_clientes.Size = new System.Drawing.Size(437, 88);
+            this.dgv_clientes.Size = new System.Drawing.Size(623, 110);
             this.dgv_clientes.TabIndex = 15;
             this.dgv_clientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_clientes_CellContentClick);
             // 
@@ -221,7 +223,7 @@
             this.gBox_filtros.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.gBox_filtros.Location = new System.Drawing.Point(12, 12);
             this.gBox_filtros.Name = "gBox_filtros";
-            this.gBox_filtros.Size = new System.Drawing.Size(473, 109);
+            this.gBox_filtros.Size = new System.Drawing.Size(639, 115);
             this.gBox_filtros.TabIndex = 16;
             this.gBox_filtros.TabStop = false;
             this.gBox_filtros.Text = "Filtros";
@@ -230,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(523, 369);
+            this.ClientSize = new System.Drawing.Size(677, 417);
             this.Controls.Add(this.dgv_clientes);
             this.Controls.Add(this.btn_Baja);
             this.Controls.Add(this.btn_Modificacion);

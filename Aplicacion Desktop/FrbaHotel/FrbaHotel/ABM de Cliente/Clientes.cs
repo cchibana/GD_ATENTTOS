@@ -112,8 +112,8 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void dgv_clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-
+            btn_Modificacion.Enabled = true;
+            btn_Baja.Enabled = true;
         }
     }
 }

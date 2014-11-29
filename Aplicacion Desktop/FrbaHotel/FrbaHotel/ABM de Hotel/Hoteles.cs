@@ -60,7 +60,8 @@ namespace FrbaHotel.ABM_de_Hotel
 
         private void dgv1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            btn_modificacion.Enabled = true;
+            btn_baja.Enabled = true;
         }
 
  

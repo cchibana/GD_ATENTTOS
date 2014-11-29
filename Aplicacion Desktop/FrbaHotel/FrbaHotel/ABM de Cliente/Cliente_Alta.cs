@@ -62,6 +62,68 @@ namespace FrbaHotel.ABM_de_Cliente
 
         }
 
+        private void txt_nrodoc_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_nro_doc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl_tipo_doc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+
+            e.Handled = Dominio.Validadores.ValidadorAlfa(e.KeyChar);
+        }
+
+        private void txt_apellido_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+
+            e.Handled = Dominio.Validadores.ValidadorAlfa(e.KeyChar);
+        }
+
+        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+
+            e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
+        }
+
+        private void txt_nrodoc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+
+            e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
+        }
+
+
+
      
 
     }

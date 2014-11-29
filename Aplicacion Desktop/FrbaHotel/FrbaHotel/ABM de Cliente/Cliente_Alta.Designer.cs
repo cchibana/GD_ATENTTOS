@@ -59,7 +59,7 @@
             // lbl_nombre
             // 
             this.lbl_nombre.AutoSize = true;
-            this.lbl_nombre.Location = new System.Drawing.Point(13, 16);
+            this.lbl_nombre.Location = new System.Drawing.Point(12, 40);
             this.lbl_nombre.Name = "lbl_nombre";
             this.lbl_nombre.Size = new System.Drawing.Size(44, 13);
             this.lbl_nombre.TabIndex = 0;
@@ -68,7 +68,7 @@
             // lbl_apellido
             // 
             this.lbl_apellido.AutoSize = true;
-            this.lbl_apellido.Location = new System.Drawing.Point(13, 42);
+            this.lbl_apellido.Location = new System.Drawing.Point(12, 66);
             this.lbl_apellido.Name = "lbl_apellido";
             this.lbl_apellido.Size = new System.Drawing.Size(44, 13);
             this.lbl_apellido.TabIndex = 1;
@@ -76,43 +76,49 @@
             // 
             // txt_nombre
             // 
-            this.txt_nombre.Location = new System.Drawing.Point(97, 13);
+            this.txt_nombre.Location = new System.Drawing.Point(96, 37);
             this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(100, 20);
+            this.txt_nombre.Size = new System.Drawing.Size(180, 20);
             this.txt_nombre.TabIndex = 2;
             this.txt_nombre.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nombre_KeyPress);
             // 
             // txt_apellido
             // 
-            this.txt_apellido.Location = new System.Drawing.Point(97, 39);
+            this.txt_apellido.Location = new System.Drawing.Point(96, 63);
             this.txt_apellido.Name = "txt_apellido";
-            this.txt_apellido.Size = new System.Drawing.Size(100, 20);
+            this.txt_apellido.Size = new System.Drawing.Size(180, 20);
             this.txt_apellido.TabIndex = 3;
+            this.txt_apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_apellido_KeyPress);
             // 
             // txt_nrodoc
             // 
-            this.txt_nrodoc.Location = new System.Drawing.Point(325, 40);
+            this.txt_nrodoc.Location = new System.Drawing.Point(490, 64);
             this.txt_nrodoc.Name = "txt_nrodoc";
-            this.txt_nrodoc.Size = new System.Drawing.Size(100, 20);
+            this.txt_nrodoc.Size = new System.Drawing.Size(120, 20);
             this.txt_nrodoc.TabIndex = 7;
+            this.txt_nrodoc.TextChanged += new System.EventHandler(this.txt_nrodoc_TextChanged);
+            this.txt_nrodoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_nrodoc_KeyPress);
             // 
             // lbl_nro_doc
             // 
             this.lbl_nro_doc.AutoSize = true;
-            this.lbl_nro_doc.Location = new System.Drawing.Point(241, 43);
+            this.lbl_nro_doc.Location = new System.Drawing.Point(406, 67);
             this.lbl_nro_doc.Name = "lbl_nro_doc";
             this.lbl_nro_doc.Size = new System.Drawing.Size(47, 13);
             this.lbl_nro_doc.TabIndex = 5;
             this.lbl_nro_doc.Text = "Nro Doc";
+            this.lbl_nro_doc.Click += new System.EventHandler(this.lbl_nro_doc_Click);
             // 
             // lbl_tipo_doc
             // 
             this.lbl_tipo_doc.AutoSize = true;
-            this.lbl_tipo_doc.Location = new System.Drawing.Point(241, 16);
+            this.lbl_tipo_doc.Location = new System.Drawing.Point(406, 40);
             this.lbl_tipo_doc.Name = "lbl_tipo_doc";
             this.lbl_tipo_doc.Size = new System.Drawing.Size(51, 13);
             this.lbl_tipo_doc.TabIndex = 4;
             this.lbl_tipo_doc.Text = "Tipo Doc";
+            this.lbl_tipo_doc.Click += new System.EventHandler(this.lbl_tipo_doc_Click);
             // 
             // cbox_tipodoc
             // 
@@ -122,16 +128,16 @@
             this.cbox_tipodoc.Items.AddRange(new object[] {
             "DNI",
             "Pasaporte"});
-            this.cbox_tipodoc.Location = new System.Drawing.Point(325, 10);
+            this.cbox_tipodoc.Location = new System.Drawing.Point(490, 34);
             this.cbox_tipodoc.Name = "cbox_tipodoc";
-            this.cbox_tipodoc.Size = new System.Drawing.Size(100, 21);
+            this.cbox_tipodoc.Size = new System.Drawing.Size(120, 21);
             this.cbox_tipodoc.TabIndex = 8;
             this.cbox_tipodoc.SelectedIndexChanged += new System.EventHandler(this.cbox_tipodoc_SelectedIndexChanged);
             // 
             // lbl_nacionalidad
             // 
             this.lbl_nacionalidad.AutoSize = true;
-            this.lbl_nacionalidad.Location = new System.Drawing.Point(13, 68);
+            this.lbl_nacionalidad.Location = new System.Drawing.Point(12, 92);
             this.lbl_nacionalidad.Name = "lbl_nacionalidad";
             this.lbl_nacionalidad.Size = new System.Drawing.Size(69, 13);
             this.lbl_nacionalidad.TabIndex = 9;
@@ -139,15 +145,15 @@
             // 
             // txt_nacionalidad
             // 
-            this.txt_nacionalidad.Location = new System.Drawing.Point(97, 65);
+            this.txt_nacionalidad.Location = new System.Drawing.Point(96, 89);
             this.txt_nacionalidad.Name = "txt_nacionalidad";
-            this.txt_nacionalidad.Size = new System.Drawing.Size(100, 20);
+            this.txt_nacionalidad.Size = new System.Drawing.Size(180, 20);
             this.txt_nacionalidad.TabIndex = 10;
             // 
             // lbl_fecha_nac
             // 
             this.lbl_fecha_nac.AutoSize = true;
-            this.lbl_fecha_nac.Location = new System.Drawing.Point(13, 95);
+            this.lbl_fecha_nac.Location = new System.Drawing.Point(12, 119);
             this.lbl_fecha_nac.Name = "lbl_fecha_nac";
             this.lbl_fecha_nac.Size = new System.Drawing.Size(60, 13);
             this.lbl_fecha_nac.TabIndex = 12;
@@ -155,15 +161,15 @@
             // 
             // txt_mail
             // 
-            this.txt_mail.Location = new System.Drawing.Point(97, 119);
+            this.txt_mail.Location = new System.Drawing.Point(96, 143);
             this.txt_mail.Name = "txt_mail";
-            this.txt_mail.Size = new System.Drawing.Size(100, 20);
+            this.txt_mail.Size = new System.Drawing.Size(180, 20);
             this.txt_mail.TabIndex = 13;
             // 
             // lbl_mail
             // 
             this.lbl_mail.AutoSize = true;
-            this.lbl_mail.Location = new System.Drawing.Point(13, 122);
+            this.lbl_mail.Location = new System.Drawing.Point(12, 146);
             this.lbl_mail.Name = "lbl_mail";
             this.lbl_mail.Size = new System.Drawing.Size(35, 13);
             this.lbl_mail.TabIndex = 14;
@@ -172,7 +178,7 @@
             // lbl_telefono
             // 
             this.lbl_telefono.AutoSize = true;
-            this.lbl_telefono.Location = new System.Drawing.Point(13, 149);
+            this.lbl_telefono.Location = new System.Drawing.Point(12, 173);
             this.lbl_telefono.Name = "lbl_telefono";
             this.lbl_telefono.Size = new System.Drawing.Size(49, 13);
             this.lbl_telefono.TabIndex = 15;
@@ -180,22 +186,23 @@
             // 
             // txt_telefono
             // 
-            this.txt_telefono.Location = new System.Drawing.Point(98, 146);
+            this.txt_telefono.Location = new System.Drawing.Point(97, 170);
             this.txt_telefono.Name = "txt_telefono";
-            this.txt_telefono.Size = new System.Drawing.Size(100, 20);
+            this.txt_telefono.Size = new System.Drawing.Size(180, 20);
             this.txt_telefono.TabIndex = 16;
+            this.txt_telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_telefono_KeyPress);
             // 
             // txt_direccion
             // 
-            this.txt_direccion.Location = new System.Drawing.Point(97, 172);
+            this.txt_direccion.Location = new System.Drawing.Point(96, 196);
             this.txt_direccion.Name = "txt_direccion";
-            this.txt_direccion.Size = new System.Drawing.Size(100, 20);
+            this.txt_direccion.Size = new System.Drawing.Size(180, 20);
             this.txt_direccion.TabIndex = 18;
             // 
             // lbl_direccion
             // 
             this.lbl_direccion.AutoSize = true;
-            this.lbl_direccion.Location = new System.Drawing.Point(13, 175);
+            this.lbl_direccion.Location = new System.Drawing.Point(12, 199);
             this.lbl_direccion.Name = "lbl_direccion";
             this.lbl_direccion.Size = new System.Drawing.Size(52, 13);
             this.lbl_direccion.TabIndex = 17;
@@ -203,15 +210,15 @@
             // 
             // txt_localidad
             // 
-            this.txt_localidad.Location = new System.Drawing.Point(97, 198);
+            this.txt_localidad.Location = new System.Drawing.Point(96, 222);
             this.txt_localidad.Name = "txt_localidad";
-            this.txt_localidad.Size = new System.Drawing.Size(100, 20);
+            this.txt_localidad.Size = new System.Drawing.Size(180, 20);
             this.txt_localidad.TabIndex = 20;
             // 
             // lbl_localidad
             // 
             this.lbl_localidad.AutoSize = true;
-            this.lbl_localidad.Location = new System.Drawing.Point(13, 201);
+            this.lbl_localidad.Location = new System.Drawing.Point(12, 225);
             this.lbl_localidad.Name = "lbl_localidad";
             this.lbl_localidad.Size = new System.Drawing.Size(53, 13);
             this.lbl_localidad.TabIndex = 19;
@@ -219,15 +226,15 @@
             // 
             // txt_pais
             // 
-            this.txt_pais.Location = new System.Drawing.Point(97, 224);
+            this.txt_pais.Location = new System.Drawing.Point(96, 248);
             this.txt_pais.Name = "txt_pais";
-            this.txt_pais.Size = new System.Drawing.Size(100, 20);
+            this.txt_pais.Size = new System.Drawing.Size(180, 20);
             this.txt_pais.TabIndex = 22;
             // 
             // lbl_pais
             // 
             this.lbl_pais.AutoSize = true;
-            this.lbl_pais.Location = new System.Drawing.Point(13, 227);
+            this.lbl_pais.Location = new System.Drawing.Point(12, 251);
             this.lbl_pais.Name = "lbl_pais";
             this.lbl_pais.Size = new System.Drawing.Size(29, 13);
             this.lbl_pais.TabIndex = 21;
@@ -235,7 +242,7 @@
             // 
             // btn_limpiar
             // 
-            this.btn_limpiar.Location = new System.Drawing.Point(142, 292);
+            this.btn_limpiar.Location = new System.Drawing.Point(372, 314);
             this.btn_limpiar.Name = "btn_limpiar";
             this.btn_limpiar.Size = new System.Drawing.Size(75, 23);
             this.btn_limpiar.TabIndex = 23;
@@ -245,7 +252,7 @@
             // 
             // btn_guardar
             // 
-            this.btn_guardar.Location = new System.Drawing.Point(260, 292);
+            this.btn_guardar.Location = new System.Drawing.Point(490, 314);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.btn_guardar.TabIndex = 24;
@@ -260,16 +267,16 @@
             this.cbox_estado.Items.AddRange(new object[] {
             "Habilitado",
             "Inhabilitado"});
-            this.cbox_estado.Location = new System.Drawing.Point(325, 119);
+            this.cbox_estado.Location = new System.Drawing.Point(490, 143);
             this.cbox_estado.Name = "cbox_estado";
-            this.cbox_estado.Size = new System.Drawing.Size(100, 21);
+            this.cbox_estado.Size = new System.Drawing.Size(120, 21);
             this.cbox_estado.TabIndex = 72;
             this.cbox_estado.SelectedIndexChanged += new System.EventHandler(this.cbox_estado_SelectedIndexChanged);
             // 
             // lbl_estado
             // 
             this.lbl_estado.AutoSize = true;
-            this.lbl_estado.Location = new System.Drawing.Point(241, 122);
+            this.lbl_estado.Location = new System.Drawing.Point(406, 146);
             this.lbl_estado.Name = "lbl_estado";
             this.lbl_estado.Size = new System.Drawing.Size(40, 13);
             this.lbl_estado.TabIndex = 71;
@@ -278,10 +285,11 @@
             // 
             // date_nacimiento
             // 
+            this.date_nacimiento.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.date_nacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_nacimiento.Location = new System.Drawing.Point(98, 93);
+            this.date_nacimiento.Location = new System.Drawing.Point(97, 117);
             this.date_nacimiento.Name = "date_nacimiento";
-            this.date_nacimiento.Size = new System.Drawing.Size(100, 20);
+            this.date_nacimiento.Size = new System.Drawing.Size(180, 20);
             this.date_nacimiento.TabIndex = 74;
             this.date_nacimiento.Value = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
             // 
@@ -289,7 +297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 366);
+            this.ClientSize = new System.Drawing.Size(677, 417);
             this.Controls.Add(this.date_nacimiento);
             this.Controls.Add(this.cbox_estado);
             this.Controls.Add(this.lbl_estado);
