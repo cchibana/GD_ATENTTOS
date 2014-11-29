@@ -61,7 +61,7 @@ namespace FrbaHotel.ABM_de_Cliente
             
             try
             {
-                dgv_clientes.DataSource = cliente1.Listar();                                
+                dgv_clientes.DataSource = cliente1.Listar();                
             }
             catch
             {
@@ -71,9 +71,7 @@ namespace FrbaHotel.ABM_de_Cliente
         }
 
 
-
-
-
+        
         private void btn_Alta_Click(object sender, EventArgs e)
         {
             ABM_de_Cliente.Cliente_Alta cliente_Alta = new FrbaHotel.ABM_de_Cliente.Cliente_Alta();

@@ -9,7 +9,6 @@ namespace FrbaHotel.Dominio
     class Cliente : CDatos
     {
         string nombre;
-
         public string Nombre
         {
             get { return nombre; }
@@ -17,15 +16,21 @@ namespace FrbaHotel.Dominio
         }
 
         string apellido;
-
         public string Apellido
         {
             get { return apellido; }
             set { apellido = value; }
         }
 
-        string mail;
+        string nacionalidad;
+        public string Nacionalidad
+        {
+            get { return nacionalidad; }
+            set { nacionalidad = value;}
+        }
 
+
+        string mail;
         public string Mail
         {
             get { return mail; }
@@ -33,7 +38,6 @@ namespace FrbaHotel.Dominio
         }
 
         string tipoDoc;
-
         public string Tipodoc
         {
             get { return tipoDoc; }
@@ -41,7 +45,6 @@ namespace FrbaHotel.Dominio
         }
 
         int nroDocumento;
-
         public int NroDocumento
         {
             get { return nroDocumento; }
@@ -61,6 +64,15 @@ namespace FrbaHotel.Dominio
             string texto = "select [Cliente_Pasaporte_Nro],[Cliente_Apellido],[Cliente_Nombre],[Cliente_Fecha_Nac],[Cliente_Mail],[Cliente_Nacionalidad] from [GD2C2014].[gd_esquema].[Maestra] where nombre = '" + Nombre + "';";
             return EjecutarConsulta(texto);
         }
+
+        /*Rellenar el combobox desde la tabla*/
+
+        public DataTable ListarNacionalidades()
+        {
+            string texto = "select [Pai_Nombre] from [GD2C2014].[ATENTTOS].[Paises];";
+            return EjecutarConsulta(texto);
+        }
         
+
     }
 } 

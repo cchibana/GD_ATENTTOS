@@ -16,10 +16,6 @@ namespace FrbaHotel.ABM_de_Cliente
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_limpiar_Click(object sender, EventArgs e)
         {
@@ -30,7 +26,7 @@ namespace FrbaHotel.ABM_de_Cliente
         {
             txt_nombre.Text = "";
             txt_apellido.Text = "";
-            txt_nacionalidad.Text = "";
+            cbox_nacionalidad.SelectedItem = null;
             txt_mail.Text = "";
             txt_telefono.Text = "";
             date_nacimiento.Value = DateTime.Now;
@@ -47,35 +43,6 @@ namespace FrbaHotel.ABM_de_Cliente
          //   Clientes clientenuevo = new Clientes
         }
 
-        private void lbl_estado_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbox_estado_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cbox_tipodoc_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_nrodoc_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_nro_doc_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_tipo_doc_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
@@ -120,6 +87,26 @@ namespace FrbaHotel.ABM_de_Cliente
             }
 
             e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
+        }
+
+        private void cbox_nacionalidad_Click (object sender, EventArgs e)
+        {
+            Dominio.Cliente nacionalidad1 = new Dominio.Cliente();
+
+            DataTable nacionalidad =  nacionalidad1.ListarNacionalidades();
+
+            for (int i = 0; i < nacionalidad.Rows.Count; i++)
+            {
+                cbox_nacionalidad.Items.Add(nacionalidad.Rows[i][0]);
+                        
+            }
+           
+            
+        }
+
+        private void Cliente_Alta_Load(object sender, EventArgs e)
+        {
+
         }
 
 
