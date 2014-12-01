@@ -33,7 +33,7 @@ namespace FrbaHotel.ABM_de_Usuario
         private void InicializarComboBoxRol()
         {
             Dominio.Usuario usu1 = new Dominio.Usuario();
-            DataTable dt_roles = usu1.ListarTodosLosRolesActivos();
+            DataTable dt_roles = usu1.ListarTodosLosRolesActivosNoGuest();
             for (int i = 0; i < dt_roles.Rows.Count; i++)
             {
                 Dominio.ComboBoxItem item = new Dominio.ComboBoxItem();
@@ -118,8 +118,9 @@ namespace FrbaHotel.ABM_de_Usuario
                         {
                             if (usu1.InsertarUsuarioEnTablaUsuarios(txt_Username.Text, txt_Contrasenia.Text))
                             {
-                                //if (usu1.InsertarUsuarioEnTablaRoles_Por_Usuarios_Y_Hoteles())
-                                //{
+                                List<string> listaRolesSeleccionados = ArmarListaRolesSeleccionados();
+                                if (usu1.InsertarUsuarioEnTablaRoles_Por_Usuarios_Y_Hoteles(listaRolesSeleccionados, txt_Username.Text))
+                                {
                                     //Falta Insertar Datos en la tabla Roles por Usuarios y Hoteles
                                     if (usu1.InsertarDatosEnTablaEmpleados(txt_Usuario_Nombre.Text, txt_Usuario_Apellido.Text, cb_Usuario_TipoDocumento.SelectedItem.ToString(), txt_Usuario_NroDocumento.Text, txt_Usuario_Mail.Text, txt_Usuario_Telefono.Text, txt_Usuario_Direccion.Text, dtp_Usuario_FechaNacimiento.Value.ToString("yyyy-MM-dd"), txt_Username.Text))
                                     {
@@ -129,7 +130,11 @@ namespace FrbaHotel.ABM_de_Usuario
                                     {
                                         MessageBox.Show("No se ha podido dar de alta al nuevo Usuario");
                                     }
-                                //}
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Error al dar los roles en el hotel del nuevo usuario");
+                                }
                             }
                             else
                             {
@@ -151,6 +156,15 @@ namespace FrbaHotel.ABM_de_Usuario
                     MessageBox.Show("El nombre de usuario ingresado no se encuentra disponible");
                 }
 	        }
+        }
+
+        private List<string> ArmarListaRolesSeleccionados()
+        {
+            List<string> listaRolesSeleccionados = new List<string>();
+
+            //Arma una lista a partir del ListBox de Roles
+            listaRolesSeleccionados = this.lb_roles.Items.Cast<String>().ToList();
+            return listaRolesSeleccionados;
         }
 
 

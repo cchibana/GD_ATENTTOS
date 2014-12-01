@@ -35,7 +35,7 @@ namespace FrbaHotel.Login
             if (valorRe)
             {
                 //Usuario y contraseña válidos
-                Dominio.UsuarioLogin.TheInstance.setUsu_Username(txt_nombreUsuario.Text);
+                Dominio.UsuarioLogin.TheInstance.setUsuario(txt_nombreUsuario.Text);
 
                 List<Dominio.HotelRolLista> lHotelRol = Dominio.UsuarioLogin.TheInstance.BuscarHotelRol();
 

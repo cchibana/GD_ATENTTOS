@@ -45,9 +45,7 @@ namespace FrbaHotel.Dominio
             }
         }
 
-        public void setUsuario(string usu_username) {
-            this.Usu_Username = usu_username;
-        }
+
 
         public string cifrarContrasenia(string contrasenia) 
         {
@@ -137,7 +135,7 @@ namespace FrbaHotel.Dominio
             parametrosSP = new Parametros[1];//1 por la cantidad de parámetros que ingreso
             parametrosSP[0] = new Parametros("@username", Usu_Username); //0 porque un vector empieza en la posición 0
 
-            DataTable dt = EjecutarStoreProcedure("dbo.SP_RolesYHoteles", parametrosSP);
+            DataTable dt = EjecutarStoreProcedure("ATENTTOS.SP_RolesYHoteles", parametrosSP);
            
             int cantidadFilas = dt.Rows.Count;
             if (cantidadFilas > 0)
@@ -179,7 +177,7 @@ namespace FrbaHotel.Dominio
             parametrosSP = new Parametros[1]; //Pongo uno entre corchetes porque busco por un sólo parámetro
             parametrosSP[0] = new Parametros("@rol", this.Usu_Rol_Id); //El vector empieza en la posición 0.
             
-            DataTable dt = EjecutarStoreProcedure("dbo.SP_FuncionalidadesPorRol", parametrosSP);
+            DataTable dt = EjecutarStoreProcedure("ATENTTOS.SP_FuncionalidadesPorRol", parametrosSP);
 
             int cantidadFilas = dt.Rows.Count;
             if (cantidadFilas > 0)
@@ -195,9 +193,9 @@ namespace FrbaHotel.Dominio
 
         /* GET Y SET */
 
-        public void setUsu_Username(string nombreUsuario) 
+        public int getHotel()
         {
-            this.Usu_Username = nombreUsuario;
+            return this.Usu_Hotel_Id;
         }
 
         public string getRol()
@@ -208,6 +206,11 @@ namespace FrbaHotel.Dominio
         public void setRol(string rol) 
         {
             this.Usu_Rol_Id = rol;
+        }
+
+        public void setUsuario(string usu_username)
+        {
+            this.Usu_Username = usu_username;
         }
 
         public void setearHotelRol(string hotelNombre, int hotelId, string rolUsu)

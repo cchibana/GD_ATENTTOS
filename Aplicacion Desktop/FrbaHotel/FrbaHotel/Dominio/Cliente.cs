@@ -110,7 +110,7 @@ namespace FrbaHotel.Dominio
         internal DataTable BuscarClientes(string nombreCli, string apellidoCli, string mailCli, string tipoDoc, string nroDoc)
         {
             SqlConnection connection = new SqlConnection(cadenaDeConexion);
-            SqlCommand cmd = new SqlCommand("dbo.SP_BuscarClientes", connection);
+            SqlCommand cmd = new SqlCommand("ATENTTOS.SP_BuscarClientes", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             if (!string.IsNullOrEmpty(nombreCli))

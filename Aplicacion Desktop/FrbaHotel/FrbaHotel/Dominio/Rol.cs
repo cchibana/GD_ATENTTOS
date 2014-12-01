@@ -34,8 +34,6 @@ namespace FrbaHotel.Dominio
         //Parametros para SP
         private Parametros[] parametrosSP;
 
-
-
         /* Métodos ABM */
         public void cargarListaFuncionalidad()
         {
@@ -149,7 +147,7 @@ namespace FrbaHotel.Dominio
             parametrosSP = new Parametros[1]; //Pongo uno entre corchetes porque busco por un sólo parámetro
             parametrosSP[0] = new Parametros("@rol", rol); //El vector empieza en la posición 0.
 
-            DataTable dt = EjecutarStoreProcedure("dbo.SP_FuncionalidadesPorRol", parametrosSP);
+            DataTable dt = EjecutarStoreProcedure("ATENTTOS.SP_FuncionalidadesPorRol", parametrosSP);
 
             int cantidadFilas = dt.Rows.Count;
             if (cantidadFilas > 0)

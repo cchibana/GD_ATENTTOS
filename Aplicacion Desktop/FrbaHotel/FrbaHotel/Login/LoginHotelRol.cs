@@ -89,7 +89,8 @@ namespace FrbaHotel.Login
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
-            Dominio.UsuarioLogin.TheInstance.setUsu_Username(null);
+            Dominio.UsuarioLogin.TheInstance.setUsuario(null);
+            Dominio.UsuarioLogin.TheInstance.setUsuario(null);
             Login.ObtenerInstancia().Show();
             this.Close();
         }

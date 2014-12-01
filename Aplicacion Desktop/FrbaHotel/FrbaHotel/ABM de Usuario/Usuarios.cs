@@ -39,6 +39,15 @@ namespace FrbaHotel.ABM_de_Usuario
         private void btn_Modificacion_Click(object sender, EventArgs e)
         {
             ABM_de_Usuario.Usuario_Modificacion usuario_Modificacion = FrbaHotel.ABM_de_Usuario.Usuario_Modificacion.ObtenerInstancia();
+            if (dgv_usuarios.CurrentRow != null)
+            {
+                usuario_Modificacion.CargarDatos(dgv_usuarios.CurrentRow.Cells[0].Value.ToString(), dgv_usuarios.CurrentRow.Cells[1].Value.ToString());
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un usuario para realizar la modificación.");
+            }
+            
             usuario_Modificacion.Show(this);
         }
 
@@ -90,11 +99,18 @@ namespace FrbaHotel.ABM_de_Usuario
                 }
 
                 DataTable dt = usu1.BuscarUsuarios(txt_nombre.Text, itemCb_Estado.Value.ToString());
-                dgv_usuarios.DataSource = dt;
+                if (dt.Rows.Count != 0)     
+                {
+                    dgv_usuarios.DataSource = dt;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el registro. Para darlo de Alta, presione el botón de Alta.");
+                }
             }
             catch
             {
-                MessageBox.Show("No se encontró el registro. Para darlo de Alta, precione el botón de Alta");
+                MessageBox.Show("Error en la búsqueda de Usuarios.");
             }
         }
     }

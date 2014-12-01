@@ -17,7 +17,7 @@ namespace FrbaHotel.Dominio
             parametrosSP = new Parametros[1]; //Pongo uno entre corchetes porque busco por un sólo parámetro
             parametrosSP[0] = new Parametros("@username",username); //El vector empieza en la posición 0.
 
-            return EjecutarStoreProcedure("dbo.SP_RolesYHoteles", parametrosSP);
+            return EjecutarStoreProcedure("ATENTTOS.SP_RolesYHoteles", parametrosSP);
         }
 
 

@@ -11,12 +11,16 @@ namespace FrbaHotel.Dominio
 {
     class Usuario : CDatos
     {
+
+        //Parametros para SP
+        private Parametros[] parametrosSP;
+
         string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
 
         internal DataTable BuscarUsuarios(string nombreUsuario, string estadoUsuario)
         {
             SqlConnection connection = new SqlConnection(cadenaDeConexion);
-            SqlCommand cmd = new SqlCommand("dbo.SP_UsuariosBusqueda", connection);
+            SqlCommand cmd = new SqlCommand("ATENTTOS.SP_UsuariosBusqueda", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             if (!string.IsNullOrEmpty(nombreUsuario))
@@ -34,9 +38,9 @@ namespace FrbaHotel.Dominio
             return dt;
         }
 
-        internal DataTable ListarTodosLosRolesActivos()
+        internal DataTable ListarTodosLosRolesActivosNoGuest()
         {
-            string textoSQL = "SELECT [Rol_Id] FROM [GD2C2014].[ATENTTOS].[Roles] WHERE [Rol_Estado] = 'True'";
+            string textoSQL = "SELECT [Rol_Id] FROM [GD2C2014].[ATENTTOS].[Roles] WHERE [Rol_Estado] = 'True' AND [Rol_ID] != 'Guest' ";
             return EjecutarConsulta(textoSQL);
         }
 
@@ -109,6 +113,33 @@ namespace FrbaHotel.Dominio
                 return false;
                 throw;
             }
+        }
+
+        internal bool InsertarUsuarioEnTablaRoles_Por_Usuarios_Y_Hoteles(List<string> listaRolesSeleccionados, string nombreUsuarioNuevo)
+        {
+            int hotelID = Dominio.UsuarioLogin.TheInstance.getHotel();
+            foreach (var item in listaRolesSeleccionados)
+	        {
+                string textSQL = "INSERT INTO ATENTTOS.Roles_Por_Usuarios_Y_Hoteles VALUES('" + item.ToString() + "', '" + nombreUsuarioNuevo + "'," + hotelID + ",1)";
+                try
+                {
+                    EjecutarComando(textSQL);
+                }
+                catch 
+                {
+                    return false;   
+                }
+	        }
+            return true;
+        }
+
+        internal DataTable ObtenerDatosUsuario(string nombreUsuario)
+        {
+            parametrosSP = new Parametros[1];
+            parametrosSP[0] = new Parametros("@nombreUsuario", nombreUsuario);
+
+            DataTable dt = EjecutarStoreProcedure("[ATENTTOS].[SP_ObtenerDatosUsuario]", parametrosSP);
+            return dt;
         }
     }
 }
