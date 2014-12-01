@@ -14,5 +14,10 @@ namespace FrbaHotel.Dominio
         {
             return Text;
         }
+
+        public object GetValue()
+        {
+            return Value;
+        }
     }
 }

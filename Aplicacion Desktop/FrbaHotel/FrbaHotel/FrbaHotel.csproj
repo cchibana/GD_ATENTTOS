@@ -187,6 +187,7 @@
     <Compile Include="Dominio\Habitacion.cs" />
     <Compile Include="Dominio\Hotel.cs" />
     <Compile Include="Dominio\Rol.cs" />
+    <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="Dominio\Validadores.cs" />
     <Compile Include="Dominio\Parametros.cs" />
     <Compile Include="Dominio\Prueba.cs" />

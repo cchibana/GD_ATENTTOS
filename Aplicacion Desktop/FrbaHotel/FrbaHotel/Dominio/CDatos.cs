@@ -14,7 +14,6 @@ namespace FrbaHotel.Dominio
         //normalmente se cambia el nombre del servidor y el nombre de la base de datos
         string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
 
-
         public bool EjecutarComando(string textoSql)
         {
             try

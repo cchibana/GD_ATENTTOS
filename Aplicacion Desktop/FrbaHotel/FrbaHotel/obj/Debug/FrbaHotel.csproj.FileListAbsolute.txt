@@ -56,3 +56,8 @@ C:\Users\Mariana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaH
 C:\Users\Mariana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Usuario.Usuario_Alta.resources
 C:\Users\Mariana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Usuario.Usuario_Baja.resources
 C:\Users\Mariana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Usuario.Usuario_Modificacion.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Rol.Rol_Alta.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Rol.Rol_Baja.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.ABM_de_Rol.Rol_Modificacion.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Login.LoginHotelRol.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Prueba_Parameters.resources

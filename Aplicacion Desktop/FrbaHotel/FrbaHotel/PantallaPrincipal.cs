@@ -145,8 +145,8 @@ namespace FrbaHotel
 
         private void menuItem_Usuarios_Click(object sender, EventArgs e)
         {
-            ABM_de_Usuario.Usuarios newUsu = new ABM_de_Usuario.Usuarios();
-            newUsu.Show(this);
+            ABM_de_Usuario.Usuarios newUsu = ABM_de_Usuario.Usuarios.ObtenerInstancia();
+            newUsu.Show();
         }
 
         private void menuItem_Clientes_Click(object sender, EventArgs e)
