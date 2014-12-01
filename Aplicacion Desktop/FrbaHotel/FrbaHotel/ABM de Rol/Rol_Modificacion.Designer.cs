@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_ActualizarListado = new System.Windows.Forms.Button();
+            this.lv_Roles = new System.Windows.Forms.ListView();
+            this.NombreRol = new System.Windows.Forms.ColumnHeader();
+            this.EstadoRol = new System.Windows.Forms.ColumnHeader();
             this.btn_HabilitarRolSeleccionado = new System.Windows.Forms.Button();
             this.btn_ModificarRolSeleccionado = new System.Windows.Forms.Button();
             this.txtNombreRol = new System.Windows.Forms.TextBox();
@@ -39,10 +43,6 @@
             this.lb_Funcionalidades = new System.Windows.Forms.ListBox();
             this.cb_Funcionalidades = new System.Windows.Forms.ComboBox();
             this.btn_AgregarFuncionalidad = new System.Windows.Forms.Button();
-            this.lv_Roles = new System.Windows.Forms.ListView();
-            this.NombreRol = new System.Windows.Forms.ColumnHeader();
-            this.EstadoRol = new System.Windows.Forms.ColumnHeader();
-            this.btn_ActualizarListado = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +60,42 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Lista de Roles";
             // 
+            // btn_ActualizarListado
+            // 
+            this.btn_ActualizarListado.Location = new System.Drawing.Point(60, 416);
+            this.btn_ActualizarListado.Name = "btn_ActualizarListado";
+            this.btn_ActualizarListado.Size = new System.Drawing.Size(183, 30);
+            this.btn_ActualizarListado.TabIndex = 4;
+            this.btn_ActualizarListado.Text = "Actualizar Listado";
+            this.btn_ActualizarListado.UseVisualStyleBackColor = true;
+            this.btn_ActualizarListado.Click += new System.EventHandler(this.btn_ActualizarListado_Click);
+            // 
+            // lv_Roles
+            // 
+            this.lv_Roles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.NombreRol,
+            this.EstadoRol});
+            this.lv_Roles.FullRowSelect = true;
+            this.lv_Roles.Location = new System.Drawing.Point(16, 19);
+            this.lv_Roles.MultiSelect = false;
+            this.lv_Roles.Name = "lv_Roles";
+            this.lv_Roles.Size = new System.Drawing.Size(270, 276);
+            this.lv_Roles.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.lv_Roles.TabIndex = 3;
+            this.lv_Roles.UseCompatibleStateImageBehavior = false;
+            this.lv_Roles.View = System.Windows.Forms.View.Details;
+            // 
+            // NombreRol
+            // 
+            this.NombreRol.Text = "Nombre del Rol";
+            this.NombreRol.Width = 147;
+            // 
+            // EstadoRol
+            // 
+            this.EstadoRol.Text = "Estado del Rol";
+            this.EstadoRol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.EstadoRol.Width = 119;
+            // 
             // btn_HabilitarRolSeleccionado
             // 
             this.btn_HabilitarRolSeleccionado.Location = new System.Drawing.Point(60, 354);
@@ -68,6 +104,7 @@
             this.btn_HabilitarRolSeleccionado.TabIndex = 2;
             this.btn_HabilitarRolSeleccionado.Text = "Habilitar Rol Seleccionado";
             this.btn_HabilitarRolSeleccionado.UseVisualStyleBackColor = true;
+            this.btn_HabilitarRolSeleccionado.Click += new System.EventHandler(this.btn_HabilitarRolSeleccionado_Click);
             // 
             // btn_ModificarRolSeleccionado
             // 
@@ -94,6 +131,7 @@
             this.btn_GuardarRol.TabIndex = 3;
             this.btn_GuardarRol.Text = "Guardar Modificación";
             this.btn_GuardarRol.UseVisualStyleBackColor = true;
+            this.btn_GuardarRol.Click += new System.EventHandler(this.btn_GuardarRol_Click);
             // 
             // label1
             // 
@@ -153,42 +191,6 @@
             this.btn_AgregarFuncionalidad.Text = "Agregar Funcionalidad";
             this.btn_AgregarFuncionalidad.UseVisualStyleBackColor = true;
             this.btn_AgregarFuncionalidad.Click += new System.EventHandler(this.btn_AgregarFuncionalidad_Click);
-            // 
-            // lv_Roles
-            // 
-            this.lv_Roles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.NombreRol,
-            this.EstadoRol});
-            this.lv_Roles.FullRowSelect = true;
-            this.lv_Roles.Location = new System.Drawing.Point(16, 19);
-            this.lv_Roles.MultiSelect = false;
-            this.lv_Roles.Name = "lv_Roles";
-            this.lv_Roles.Size = new System.Drawing.Size(270, 276);
-            this.lv_Roles.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.lv_Roles.TabIndex = 3;
-            this.lv_Roles.UseCompatibleStateImageBehavior = false;
-            this.lv_Roles.View = System.Windows.Forms.View.Details;
-            // 
-            // NombreRol
-            // 
-            this.NombreRol.Text = "Nombre del Rol";
-            this.NombreRol.Width = 147;
-            // 
-            // EstadoRol
-            // 
-            this.EstadoRol.Text = "Estado del Rol";
-            this.EstadoRol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.EstadoRol.Width = 119;
-            // 
-            // btn_ActualizarListado
-            // 
-            this.btn_ActualizarListado.Location = new System.Drawing.Point(60, 416);
-            this.btn_ActualizarListado.Name = "btn_ActualizarListado";
-            this.btn_ActualizarListado.Size = new System.Drawing.Size(183, 30);
-            this.btn_ActualizarListado.TabIndex = 4;
-            this.btn_ActualizarListado.Text = "Actualizar Listado";
-            this.btn_ActualizarListado.UseVisualStyleBackColor = true;
-            this.btn_ActualizarListado.Click += new System.EventHandler(this.btn_ActualizarListado_Click);
             // 
             // Rol_Modificacion
             // 

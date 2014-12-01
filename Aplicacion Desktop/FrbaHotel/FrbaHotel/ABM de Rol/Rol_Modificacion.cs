@@ -70,19 +70,18 @@ namespace FrbaHotel.ABM_de_Rol
 
             foreach (var item in listadoRoles)
             {
-                    string estado;
-                    var itemLV = new ListViewItem(item.id.ToString());
-                    if (item.estado)
-                    {
-                        estado = "Activo";
-                    }
-                    else
-                    {
-                        estado = "No Activo";
-                    }
-                    itemLV.SubItems.Add(estado);
-                    lv_Roles.Items.Add(itemLV);
-
+                string estado;
+                var itemLV = new ListViewItem(item.id.ToString());
+                if (item.estado)
+                {
+                    estado = "Activo";
+                }
+                else
+                {
+                    estado = "No Activo";
+                }
+                itemLV.SubItems.Add(estado);
+                lv_Roles.Items.Add(itemLV);
             }
         }
 
@@ -111,12 +110,16 @@ namespace FrbaHotel.ABM_de_Rol
 
         private void btn_ModificarRolSeleccionado_Click(object sender, EventArgs e)
         {
-            HabilitarCampos();
             if (lv_Roles.SelectedItems.Count == 1)
             {
+                HabilitarCampos();
                 ListViewItem itemLVSeleccionado = lv_Roles.SelectedItems[0];
                 LimpiarCampos();
                 CargarCampos(itemLVSeleccionado.SubItems[0].Text);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un rol");
             }
         }
 
@@ -161,5 +164,82 @@ namespace FrbaHotel.ABM_de_Rol
             ArmarListView();
         }
 
+        private void btn_GuardarRol_Click(object sender, EventArgs e)
+        {
+            Dominio.Rol rol1 = new Dominio.Rol();
+            List<int> listaFuncionalidadesAnterior = rol1.BuscarFuncionalidades(txtNombreRol.Text);
+            List<int> listaIDFuncionalidadesNueva = armarListaFuncionalidadesSeleccionadas();
+            List<int> listaIDFuncionalidadesParaAgregar = new List<int>();
+            List<int> listaIDFuncionalidadesParaEliminar = rol1.BuscarFuncionalidades(txtNombreRol.Text);
+            
+            //Funcionalidades agregadas
+            foreach (var itemFuncionalidad in listaIDFuncionalidadesNueva)
+            {
+                if (!listaFuncionalidadesAnterior.Contains(itemFuncionalidad))
+                {
+                    listaIDFuncionalidadesParaAgregar.Add(itemFuncionalidad);
+                }
+            }
+            rol1.InsertarFuncionalidadesAlRol(txtNombreRol.Text, listaIDFuncionalidadesParaAgregar);
+
+            //Funcionalidades eliminadas
+            foreach (var itemFuncionalidad in listaFuncionalidadesAnterior)
+            {
+                if (listaIDFuncionalidadesNueva.Contains(itemFuncionalidad))
+                {
+                    listaIDFuncionalidadesParaEliminar.RemoveAt(listaIDFuncionalidadesParaEliminar.IndexOf(itemFuncionalidad));
+                }
+            }
+
+            if (rol1.QuitarFuncionalidadesAlRol(txtNombreRol.Text, listaIDFuncionalidadesParaEliminar))
+            {
+                MessageBox.Show("Se han guardado las modificaciones");
+            }
+            else
+            {
+                MessageBox.Show("No se han podido guardar las modificaciones");
+            }
+
+            lv_Roles.Items.Clear();
+            ArmarListView();
+        }
+
+        private List<int> armarListaFuncionalidadesSeleccionadas()
+        {
+            List<int> listaIDFuncionalidadesSeleccionadas = new List<int>();
+
+            //Arma una lista a partir del ListBox
+            var listaFuncionalidadesListBox = this.lb_Funcionalidades.Items.Cast<String>().ToList();
+
+            Dominio.Rol rol1 = new Dominio.Rol();
+            foreach (var item in listaFuncionalidadesListBox)
+            {
+                int id = rol1.obtenerIDdeFuncionalidad(item);
+                listaIDFuncionalidadesSeleccionadas.Add(id);
+            }
+            return listaIDFuncionalidadesSeleccionadas;
+        }
+
+        private void btn_HabilitarRolSeleccionado_Click(object sender, EventArgs e)
+        {
+            if (lv_Roles.SelectedItems.Count == 1)
+            {
+                Dominio.Rol rol1 = new Dominio.Rol();
+                if (rol1.HabilitarRol(lv_Roles.SelectedItems[0].Text))
+                {
+                    MessageBox.Show("Se ha habilitado el rol");
+                    lv_Roles.Items.Clear();
+                    ArmarListView();
+                }
+                else
+                {
+                    MessageBox.Show("No se ha podido habilitar el rol");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un rol");
+            }
+        }
     }
 }

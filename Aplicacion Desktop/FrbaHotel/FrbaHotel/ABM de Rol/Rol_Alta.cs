@@ -113,7 +113,7 @@ namespace FrbaHotel.ABM_de_Rol
                     }
                     else
                     {
-                        MessageBox.Show("No sa ha podido dar de alta al nuevo Rol");
+                        MessageBox.Show("No se ha podido dar de alta al nuevo Rol");
                     }
                 }
                 else

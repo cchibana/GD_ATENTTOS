@@ -54,16 +54,6 @@ namespace FrbaHotel.Dominio
             return ObtenerInstanciaListaF();
         }
 
-
-        //public void cargarListaFuncionalidad(int idFuncionalidad, string nombreFuncionalidad)
-        //{
-        //    DataTable dt = ListarFuncionalidades();
-        //    if (!ObtenerInstanciaListaF().Exists(e => e.id == idFuncionalidad))
-        //    {
-        //        ObtenerInstanciaListaF().Add(new item_idNombreFuncionalidad { id = idFuncionalidad, nombre = nombreFuncionalidad });
-        //    }
-
-        //}
         public int obtenerIDdeFuncionalidad(string nombreFuncionalidad)
         {
             List<int> lista = new List<int>();
@@ -115,7 +105,23 @@ namespace FrbaHotel.Dominio
                 }
             }
             return true;
-            
+        }
+
+        internal bool QuitarFuncionalidadesAlRol(string nombreRol, List<int> listaIDFuncionalidadesParaEliminar)
+        {
+            foreach (var item in listaIDFuncionalidadesParaEliminar)
+            {
+                string textoSQL = "DELETE FROM ATENTTOS.Roles_Por_Funcionalidad WHERE RxF_Id_Rol = '" + nombreRol + "' AND RxF_Fun_Id = " + item.ToString();
+                try
+                {
+                    EjecutarComando(textoSQL);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         public void LimpiarListadoRol() 
@@ -130,7 +136,7 @@ namespace FrbaHotel.Dominio
             DataTable dt = EjecutarConsulta(textoSQL);
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                    ObtenerInstanciaListaRol().Add(new item_idYEstadoDelRol { id = dt.Rows[i][0].ToString(), estado = Convert.ToBoolean(dt.Rows[i][1].ToString()) });                    
+                ObtenerInstanciaListaRol().Add(new item_idYEstadoDelRol { id = dt.Rows[i][0].ToString(), estado = Convert.ToBoolean(dt.Rows[i][1].ToString()) });                    
             }
             return ObtenerInstanciaListaRol();
         
@@ -138,7 +144,6 @@ namespace FrbaHotel.Dominio
 
         public List<int> BuscarFuncionalidades(string rol)
         {
-
             var listaIDFuncionalidades = new List<int>();
 
             parametrosSP = new Parametros[1]; //Pongo uno entre corchetes porque busco por un sólo parámetro
@@ -156,6 +161,35 @@ namespace FrbaHotel.Dominio
             }
 
             return listaIDFuncionalidades;
+        }
+
+
+        internal bool HabilitarRol(string nombreRol)
+        {
+            string textoSQL = "UPDATE [GD2C2014].[ATENTTOS].[Roles] SET Rol_Estado = 'true' WHERE Rol_Id = '" + nombreRol + "'";
+            try
+            {
+                EjecutarComando(textoSQL);
+            }
+            catch 
+            {
+                return false;
+            }
+            return true;
+        }
+
+        internal bool DeshabilitarRol(string nombreRol)
+        {
+            string textoSQL = "UPDATE [GD2C2014].[ATENTTOS].[Roles] SET Rol_Estado = 'false' WHERE Rol_Id = '" + nombreRol + "'";
+            try
+            {
+                EjecutarComando(textoSQL);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
     }
 
