@@ -15,6 +15,22 @@ namespace FrbaHotel.Dominio
     		set { nombre = value; }
     	}
 
+        private string apellido;
+
+        public string Apellido
+        {
+            get { return apellido; }
+            set { apellido = value; }
+        }
+
+        private string mail;
+
+        public string Mail
+        {
+            get { return mail; }
+            set { mail = value; }
+        }
+
     	private string valor;
 
     	public string Valor

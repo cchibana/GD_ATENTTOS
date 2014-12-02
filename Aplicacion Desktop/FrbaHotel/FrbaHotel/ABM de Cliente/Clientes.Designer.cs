@@ -41,7 +41,7 @@
             this.lbl_email = new System.Windows.Forms.Label();
             this.txt_nro_doc = new System.Windows.Forms.TextBox();
             this.lbl_nro_doc = new System.Windows.Forms.Label();
-            this.cbox_tipo_doc = new System.Windows.Forms.ComboBox();
+            this.cbox_tipodoc = new System.Windows.Forms.ComboBox();
             this.lbl_tipo_Doc = new System.Windows.Forms.Label();
             this.dgv_clientes = new System.Windows.Forms.DataGridView();
             this.gBox_filtros = new System.Windows.Forms.GroupBox();
@@ -117,6 +117,7 @@
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(173, 20);
             this.txt_nombre.TabIndex = 6;
+            this.txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // txt_apellido
             // 
@@ -124,6 +125,7 @@
             this.txt_apellido.Name = "txt_apellido";
             this.txt_apellido.Size = new System.Drawing.Size(173, 20);
             this.txt_apellido.TabIndex = 7;
+            this.txt_apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // txt_mail
             // 
@@ -158,6 +160,7 @@
             this.txt_nro_doc.Name = "txt_nro_doc";
             this.txt_nro_doc.Size = new System.Drawing.Size(130, 20);
             this.txt_nro_doc.TabIndex = 12;
+            this.txt_nro_doc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
             // lbl_nro_doc
             // 
@@ -169,20 +172,17 @@
             this.lbl_nro_doc.TabIndex = 11;
             this.lbl_nro_doc.Text = "Nro Documento";
             // 
-            // cbox_tipo_doc
+            // cbox_tipodoc
             // 
-            this.cbox_tipo_doc.AutoCompleteCustomSource.AddRange(new string[] {
+            this.cbox_tipodoc.AutoCompleteCustomSource.AddRange(new string[] {
             "DNI",
             "Pasaporte"});
-            this.cbox_tipo_doc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbox_tipo_doc.FormattingEnabled = true;
-            this.cbox_tipo_doc.Items.AddRange(new object[] {
-            "DNI",
-            "Pasaporte"});
-            this.cbox_tipo_doc.Location = new System.Drawing.Point(459, 18);
-            this.cbox_tipo_doc.Name = "cbox_tipo_doc";
-            this.cbox_tipo_doc.Size = new System.Drawing.Size(130, 21);
-            this.cbox_tipo_doc.TabIndex = 13;
+            this.cbox_tipodoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_tipodoc.FormattingEnabled = true;
+            this.cbox_tipodoc.Location = new System.Drawing.Point(459, 18);
+            this.cbox_tipodoc.Name = "cbox_tipodoc";
+            this.cbox_tipodoc.Size = new System.Drawing.Size(130, 21);
+            this.cbox_tipodoc.TabIndex = 13;
             // 
             // lbl_tipo_Doc
             // 
@@ -213,7 +213,7 @@
             this.gBox_filtros.Controls.Add(this.txt_nombre);
             this.gBox_filtros.Controls.Add(this.lbl_tipo_Doc);
             this.gBox_filtros.Controls.Add(this.lbl_Nombre);
-            this.gBox_filtros.Controls.Add(this.cbox_tipo_doc);
+            this.gBox_filtros.Controls.Add(this.cbox_tipodoc);
             this.gBox_filtros.Controls.Add(this.txt_apellido);
             this.gBox_filtros.Controls.Add(this.txt_nro_doc);
             this.gBox_filtros.Controls.Add(this.txt_mail);
@@ -243,6 +243,7 @@
             this.Name = "Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
+            this.Load += new System.EventHandler(this.Clientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).EndInit();
             this.gBox_filtros.ResumeLayout(false);
             this.gBox_filtros.PerformLayout();
@@ -265,7 +266,7 @@
         private System.Windows.Forms.Label lbl_email;
         private System.Windows.Forms.TextBox txt_nro_doc;
         private System.Windows.Forms.Label lbl_nro_doc;
-        private System.Windows.Forms.ComboBox cbox_tipo_doc;
+        private System.Windows.Forms.ComboBox cbox_tipodoc;
         private System.Windows.Forms.Label lbl_tipo_Doc;
         private System.Windows.Forms.DataGridView dgv_clientes;
         private System.Windows.Forms.GroupBox gBox_filtros;

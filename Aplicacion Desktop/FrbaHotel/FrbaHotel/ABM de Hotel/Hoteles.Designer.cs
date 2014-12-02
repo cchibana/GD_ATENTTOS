@@ -50,7 +50,7 @@
             // btn_baja
             // 
             this.btn_baja.Enabled = false;
-            this.btn_baja.Location = new System.Drawing.Point(357, 321);
+            this.btn_baja.Location = new System.Drawing.Point(408, 353);
             this.btn_baja.Name = "btn_baja";
             this.btn_baja.Size = new System.Drawing.Size(75, 23);
             this.btn_baja.TabIndex = 5;
@@ -61,7 +61,7 @@
             // btn_modificacion
             // 
             this.btn_modificacion.Enabled = false;
-            this.btn_modificacion.Location = new System.Drawing.Point(237, 321);
+            this.btn_modificacion.Location = new System.Drawing.Point(288, 353);
             this.btn_modificacion.Name = "btn_modificacion";
             this.btn_modificacion.Size = new System.Drawing.Size(75, 23);
             this.btn_modificacion.TabIndex = 4;
@@ -71,7 +71,7 @@
             // 
             // btn_alta
             // 
-            this.btn_alta.Location = new System.Drawing.Point(127, 321);
+            this.btn_alta.Location = new System.Drawing.Point(178, 353);
             this.btn_alta.Name = "btn_alta";
             this.btn_alta.Size = new System.Drawing.Size(75, 23);
             this.btn_alta.TabIndex = 3;
@@ -89,13 +89,13 @@
             this.dgv_hoteles.Name = "dgv_hoteles";
             this.dgv_hoteles.ReadOnly = true;
             this.dgv_hoteles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_hoteles.Size = new System.Drawing.Size(437, 88);
+            this.dgv_hoteles.Size = new System.Drawing.Size(573, 88);
             this.dgv_hoteles.TabIndex = 19;
             this.dgv_hoteles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellContentClick);
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Location = new System.Drawing.Point(383, 133);
+            this.btn_Buscar.Location = new System.Drawing.Point(358, 133);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(75, 23);
             this.btn_Buscar.TabIndex = 18;
@@ -105,7 +105,7 @@
             // 
             // btn_Limpiar
             // 
-            this.btn_Limpiar.Location = new System.Drawing.Point(277, 133);
+            this.btn_Limpiar.Location = new System.Drawing.Point(252, 133);
             this.btn_Limpiar.Name = "btn_Limpiar";
             this.btn_Limpiar.Size = new System.Drawing.Size(75, 23);
             this.btn_Limpiar.TabIndex = 17;
@@ -126,7 +126,7 @@
             this.gBox_filtros.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.gBox_filtros.Location = new System.Drawing.Point(30, 18);
             this.gBox_filtros.Name = "gBox_filtros";
-            this.gBox_filtros.Size = new System.Drawing.Size(473, 109);
+            this.gBox_filtros.Size = new System.Drawing.Size(600, 109);
             this.gBox_filtros.TabIndex = 20;
             this.gBox_filtros.TabStop = false;
             this.gBox_filtros.Text = "Filtros";
@@ -135,14 +135,15 @@
             // 
             this.txt_nombre.Location = new System.Drawing.Point(104, 19);
             this.txt_nombre.Name = "txt_nombre";
-            this.txt_nombre.Size = new System.Drawing.Size(100, 20);
+            this.txt_nombre.Size = new System.Drawing.Size(180, 20);
             this.txt_nombre.TabIndex = 6;
+            this.txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // lbl_estrellas
             // 
             this.lbl_estrellas.AutoSize = true;
             this.lbl_estrellas.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lbl_estrellas.Location = new System.Drawing.Point(256, 21);
+            this.lbl_estrellas.Location = new System.Drawing.Point(359, 22);
             this.lbl_estrellas.Name = "lbl_estrellas";
             this.lbl_estrellas.Size = new System.Drawing.Size(46, 13);
             this.lbl_estrellas.TabIndex = 14;
@@ -171,7 +172,7 @@
             "3",
             "4",
             "5"});
-            this.cbox_estrellas.Location = new System.Drawing.Point(353, 18);
+            this.cbox_estrellas.Location = new System.Drawing.Point(456, 19);
             this.cbox_estrellas.Name = "cbox_estrellas";
             this.cbox_estrellas.Size = new System.Drawing.Size(100, 21);
             this.cbox_estrellas.TabIndex = 13;
@@ -180,14 +181,14 @@
             // 
             this.txt_ciudad.Location = new System.Drawing.Point(104, 45);
             this.txt_ciudad.Name = "txt_ciudad";
-            this.txt_ciudad.Size = new System.Drawing.Size(100, 20);
+            this.txt_ciudad.Size = new System.Drawing.Size(180, 20);
             this.txt_ciudad.TabIndex = 7;
             // 
             // txt_pais
             // 
             this.txt_pais.Location = new System.Drawing.Point(104, 71);
             this.txt_pais.Name = "txt_pais";
-            this.txt_pais.Size = new System.Drawing.Size(100, 20);
+            this.txt_pais.Size = new System.Drawing.Size(180, 20);
             this.txt_pais.TabIndex = 8;
             // 
             // lbl_ciudad
@@ -214,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 382);
+            this.ClientSize = new System.Drawing.Size(677, 417);
             this.Controls.Add(this.dgv_hoteles);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.btn_Limpiar);

@@ -20,5 +20,7 @@ namespace FrbaHotel.ABM_de_Habitacion
         {
             this.Close();
         }
+
+
     }
 }

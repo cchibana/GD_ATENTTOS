@@ -59,7 +59,7 @@
             this.dgv_habitacion.Name = "dgv_habitacion";
             this.dgv_habitacion.ReadOnly = true;
             this.dgv_habitacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_habitacion.Size = new System.Drawing.Size(437, 88);
+            this.dgv_habitacion.Size = new System.Drawing.Size(586, 88);
             this.dgv_habitacion.TabIndex = 26;
             this.dgv_habitacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_habitacion_CellContentClick);
             // 
@@ -98,7 +98,7 @@
             this.gBox_filtros.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.gBox_filtros.Location = new System.Drawing.Point(27, 26);
             this.gBox_filtros.Name = "gBox_filtros";
-            this.gBox_filtros.Size = new System.Drawing.Size(473, 134);
+            this.gBox_filtros.Size = new System.Drawing.Size(614, 134);
             this.gBox_filtros.TabIndex = 27;
             this.gBox_filtros.TabStop = false;
             this.gBox_filtros.Text = "Filtros";
@@ -107,7 +107,7 @@
             // 
             this.lbl_tipo.AutoSize = true;
             this.lbl_tipo.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lbl_tipo.Location = new System.Drawing.Point(256, 48);
+            this.lbl_tipo.Location = new System.Drawing.Point(350, 49);
             this.lbl_tipo.Name = "lbl_tipo";
             this.lbl_tipo.Size = new System.Drawing.Size(80, 13);
             this.lbl_tipo.TabIndex = 38;
@@ -123,7 +123,7 @@
             "Doble Twin",
             "Triple",
             "Cuadruple"});
-            this.cbox_tipo_hab.Location = new System.Drawing.Point(353, 45);
+            this.cbox_tipo_hab.Location = new System.Drawing.Point(447, 46);
             this.cbox_tipo_hab.Name = "cbox_tipo_hab";
             this.cbox_tipo_hab.Size = new System.Drawing.Size(101, 21);
             this.cbox_tipo_hab.TabIndex = 37;
@@ -132,14 +132,15 @@
             // 
             this.txt_numero.Location = new System.Drawing.Point(104, 19);
             this.txt_numero.Name = "txt_numero";
-            this.txt_numero.Size = new System.Drawing.Size(100, 20);
+            this.txt_numero.Size = new System.Drawing.Size(180, 20);
             this.txt_numero.TabIndex = 6;
+            this.txt_numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
             // lbl_ubicacion
             // 
             this.lbl_ubicacion.AutoSize = true;
             this.lbl_ubicacion.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.lbl_ubicacion.Location = new System.Drawing.Point(256, 21);
+            this.lbl_ubicacion.Location = new System.Drawing.Point(350, 22);
             this.lbl_ubicacion.Name = "lbl_ubicacion";
             this.lbl_ubicacion.Size = new System.Drawing.Size(55, 13);
             this.lbl_ubicacion.TabIndex = 14;
@@ -165,7 +166,7 @@
             this.cbox_ubicacion.Items.AddRange(new object[] {
             "Frente",
             "Contrafrente"});
-            this.cbox_ubicacion.Location = new System.Drawing.Point(353, 18);
+            this.cbox_ubicacion.Location = new System.Drawing.Point(447, 19);
             this.cbox_ubicacion.Name = "cbox_ubicacion";
             this.cbox_ubicacion.Size = new System.Drawing.Size(100, 21);
             this.cbox_ubicacion.TabIndex = 13;
@@ -174,14 +175,15 @@
             // 
             this.txt_piso.Location = new System.Drawing.Point(104, 45);
             this.txt_piso.Name = "txt_piso";
-            this.txt_piso.Size = new System.Drawing.Size(100, 20);
+            this.txt_piso.Size = new System.Drawing.Size(180, 20);
             this.txt_piso.TabIndex = 7;
+            this.txt_piso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
             // txt_descripcion
             // 
             this.txt_descripcion.Location = new System.Drawing.Point(104, 71);
             this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(100, 20);
+            this.txt_descripcion.Size = new System.Drawing.Size(180, 20);
             this.txt_descripcion.TabIndex = 8;
             // 
             // lbl_piso
@@ -207,7 +209,7 @@
             // btn_baja
             // 
             this.btn_baja.Enabled = false;
-            this.btn_baja.Location = new System.Drawing.Point(346, 357);
+            this.btn_baja.Location = new System.Drawing.Point(417, 356);
             this.btn_baja.Name = "btn_baja";
             this.btn_baja.Size = new System.Drawing.Size(75, 23);
             this.btn_baja.TabIndex = 23;
@@ -218,7 +220,7 @@
             // btn_modificacion
             // 
             this.btn_modificacion.Enabled = false;
-            this.btn_modificacion.Location = new System.Drawing.Point(226, 357);
+            this.btn_modificacion.Location = new System.Drawing.Point(297, 356);
             this.btn_modificacion.Name = "btn_modificacion";
             this.btn_modificacion.Size = new System.Drawing.Size(75, 23);
             this.btn_modificacion.TabIndex = 22;
@@ -228,7 +230,7 @@
             // 
             // btn_alta
             // 
-            this.btn_alta.Location = new System.Drawing.Point(116, 357);
+            this.btn_alta.Location = new System.Drawing.Point(187, 356);
             this.btn_alta.Name = "btn_alta";
             this.btn_alta.Size = new System.Drawing.Size(75, 23);
             this.btn_alta.TabIndex = 21;
@@ -240,7 +242,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 433);
+            this.ClientSize = new System.Drawing.Size(677, 417);
             this.Controls.Add(this.dgv_habitacion);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.btn_Limpiar);

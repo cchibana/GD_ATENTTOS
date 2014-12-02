@@ -22,12 +22,33 @@ namespace FrbaHotel.ABM_de_Cliente
             txt_nombre.Text = stringvalor;
         }
 
+        public void KeyPressAlfa(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+
+            e.Handled = Dominio.Validadores.ValidadorAlfa(e.KeyChar);
+        }
+
+        public void KeyPressNum(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+
+            e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
+        }
+
+        
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-
 
 
 

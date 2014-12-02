@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Windows.Forms;
+
 
 namespace FrbaHotel.Dominio
 {
-    class Validadores
+    public class Validadores
     {
         public static bool ValidadorNumerico(char e)
         {
@@ -40,6 +45,7 @@ namespace FrbaHotel.Dominio
                 return true;
             }
         }
+
 
     }
 }

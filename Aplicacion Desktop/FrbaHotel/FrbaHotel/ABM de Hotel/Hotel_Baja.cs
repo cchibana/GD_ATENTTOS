@@ -25,5 +25,10 @@ namespace FrbaHotel.ABM_de_Hotel
         {
             this.Close();
         }
+
+        private void txt_nombre_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

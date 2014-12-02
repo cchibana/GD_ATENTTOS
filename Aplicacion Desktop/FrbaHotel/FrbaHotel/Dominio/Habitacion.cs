@@ -9,22 +9,35 @@ namespace FrbaHotel.Dominio
     class Habitacion : CDatos
     {
         int numero;
+        int piso;
+        string ubicacion;
+        int tipo;
+        string descripcion;
+        int estado;
 
         public int Numero
         {
             get { return numero; }
             set { numero = value; }
         }
-
-        int piso;
-
+        
         public int Piso
         {
             get { return piso; }
             set { piso = value; }
         }
 
-        string descripcion;
+        public string Ubicacion
+        {
+            get { return ubicacion; }
+            set { ubicacion = value; }
+        }
+
+        public int Tipo
+        {
+            get { return tipo; }
+            set { tipo = value; }
+        }
 
         public string Descripcion
         {
@@ -32,11 +45,33 @@ namespace FrbaHotel.Dominio
             set { descripcion = value; }
         }
 
+        public int Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
+
         /*Estos metodos retornan resultados de consultas*/
         public DataTable Listar()
         {
-            string texto = "select [Habitacion_Numero],[Habitacion_Piso],[Habitacion_frente],[Habitacion_Tipo_Descripcion] from [GD2C2014].[gd_esquema].[Maestra];";
+            string texto = @"select [Hab_Numero] as 'Numero',
+                                    [Hab_Piso] as 'Piso',
+                                    [Hab_Ubicacion] as 'Ubicacion',
+                                    [Hab_Tipo_Habitacion] as 'Tipo', 
+                                    [Hab_Descripcion] as 'Descripción',
+                                    [Hab_Estado] as 'Estado'
+                               from [GD2C2014].[ATENTTOS].[Habitaciones];";
             return EjecutarConsulta(texto);
         }
+
+
+        /*public string Insertar()
+        {
+            string texto = @"INSERT into [GD2C2014].[ATENTTOS].[Habitaciones](Hab_Numero, Hab_Piso, Hab_Ubicacion, Hab_Tipo_Habitacion, Hab_Descripcion, Hab_Estado)
+                             values(" + Numero + "," + Piso + ",'" + Ubicacion + "'," + Tipo + ",'" + Descripcion + "'," + Estado + ")";
+            return EjecutarComando(texto);
+        }*/
+
+
     }
 }

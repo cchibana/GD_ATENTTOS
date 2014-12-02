@@ -32,10 +32,8 @@
             this.lbl_estado = new System.Windows.Forms.Label();
             this.txt_pais = new System.Windows.Forms.TextBox();
             this.lbl_pais = new System.Windows.Forms.Label();
-            this.txt_localidad = new System.Windows.Forms.TextBox();
-            this.lbl_localidad = new System.Windows.Forms.Label();
-            this.txt_direccion = new System.Windows.Forms.TextBox();
-            this.lbl_direccion = new System.Windows.Forms.Label();
+            this.txt_ciudad = new System.Windows.Forms.TextBox();
+            this.lbl_ciudad = new System.Windows.Forms.Label();
             this.txt_telefono = new System.Windows.Forms.TextBox();
             this.lbl_telefono = new System.Windows.Forms.Label();
             this.lbl_mail = new System.Windows.Forms.Label();
@@ -43,7 +41,6 @@
             this.lbl_fecha_nac = new System.Windows.Forms.Label();
             this.txt_nacionalidad = new System.Windows.Forms.TextBox();
             this.lbl_nacionalidad = new System.Windows.Forms.Label();
-            this.cBox_tipo_doc = new System.Windows.Forms.ComboBox();
             this.txt_nro_doc = new System.Windows.Forms.TextBox();
             this.lbl_nro_doc = new System.Windows.Forms.Label();
             this.lbl_tipo_doc = new System.Windows.Forms.Label();
@@ -54,15 +51,21 @@
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
             this.date_nacimiento = new System.Windows.Forms.DateTimePicker();
+            this.txt_dom_dpto = new System.Windows.Forms.TextBox();
+            this.lbl_dom_dpto = new System.Windows.Forms.Label();
+            this.txt_dom_piso = new System.Windows.Forms.TextBox();
+            this.lbl_dom_piso = new System.Windows.Forms.Label();
+            this.txt_dom_nro = new System.Windows.Forms.TextBox();
+            this.lbl_dom_nro = new System.Windows.Forms.Label();
+            this.txt_dom_calle = new System.Windows.Forms.TextBox();
+            this.lbl_dom_calle = new System.Windows.Forms.Label();
+            this.txt_tipodoc = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // cbox_estado
             // 
             this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_estado.FormattingEnabled = true;
-            this.cbox_estado.Items.AddRange(new object[] {
-            "Habilitado",
-            "Inhabilitado"});
             this.cbox_estado.Location = new System.Drawing.Point(485, 116);
             this.cbox_estado.Name = "cbox_estado";
             this.cbox_estado.Size = new System.Drawing.Size(120, 21);
@@ -79,57 +82,37 @@
             // 
             // txt_pais
             // 
-            this.txt_pais.Location = new System.Drawing.Point(96, 248);
+            this.txt_pais.Location = new System.Drawing.Point(97, 300);
             this.txt_pais.Name = "txt_pais";
             this.txt_pais.ReadOnly = true;
             this.txt_pais.Size = new System.Drawing.Size(180, 20);
             this.txt_pais.TabIndex = 68;
-            this.txt_pais.TextChanged += new System.EventHandler(this.txt_pais_TextChanged);
             // 
             // lbl_pais
             // 
             this.lbl_pais.AutoSize = true;
-            this.lbl_pais.Location = new System.Drawing.Point(12, 251);
+            this.lbl_pais.Location = new System.Drawing.Point(13, 303);
             this.lbl_pais.Name = "lbl_pais";
             this.lbl_pais.Size = new System.Drawing.Size(29, 13);
             this.lbl_pais.TabIndex = 67;
             this.lbl_pais.Text = "País";
             // 
-            // txt_localidad
+            // txt_ciudad
             // 
-            this.txt_localidad.Location = new System.Drawing.Point(96, 222);
-            this.txt_localidad.Name = "txt_localidad";
-            this.txt_localidad.ReadOnly = true;
-            this.txt_localidad.Size = new System.Drawing.Size(180, 20);
-            this.txt_localidad.TabIndex = 66;
-            this.txt_localidad.TextChanged += new System.EventHandler(this.txt_localidad_TextChanged);
+            this.txt_ciudad.Location = new System.Drawing.Point(97, 274);
+            this.txt_ciudad.Name = "txt_ciudad";
+            this.txt_ciudad.ReadOnly = true;
+            this.txt_ciudad.Size = new System.Drawing.Size(180, 20);
+            this.txt_ciudad.TabIndex = 66;
             // 
-            // lbl_localidad
+            // lbl_ciudad
             // 
-            this.lbl_localidad.AutoSize = true;
-            this.lbl_localidad.Location = new System.Drawing.Point(12, 225);
-            this.lbl_localidad.Name = "lbl_localidad";
-            this.lbl_localidad.Size = new System.Drawing.Size(53, 13);
-            this.lbl_localidad.TabIndex = 65;
-            this.lbl_localidad.Text = "Localidad";
-            // 
-            // txt_direccion
-            // 
-            this.txt_direccion.Location = new System.Drawing.Point(96, 196);
-            this.txt_direccion.Name = "txt_direccion";
-            this.txt_direccion.ReadOnly = true;
-            this.txt_direccion.Size = new System.Drawing.Size(180, 20);
-            this.txt_direccion.TabIndex = 64;
-            this.txt_direccion.TextChanged += new System.EventHandler(this.txt_direccion_TextChanged);
-            // 
-            // lbl_direccion
-            // 
-            this.lbl_direccion.AutoSize = true;
-            this.lbl_direccion.Location = new System.Drawing.Point(12, 199);
-            this.lbl_direccion.Name = "lbl_direccion";
-            this.lbl_direccion.Size = new System.Drawing.Size(52, 13);
-            this.lbl_direccion.TabIndex = 63;
-            this.lbl_direccion.Text = "Dirección";
+            this.lbl_ciudad.AutoSize = true;
+            this.lbl_ciudad.Location = new System.Drawing.Point(13, 277);
+            this.lbl_ciudad.Name = "lbl_ciudad";
+            this.lbl_ciudad.Size = new System.Drawing.Size(40, 13);
+            this.lbl_ciudad.TabIndex = 65;
+            this.lbl_ciudad.Text = "Ciudad";
             // 
             // txt_telefono
             // 
@@ -138,7 +121,6 @@
             this.txt_telefono.ReadOnly = true;
             this.txt_telefono.Size = new System.Drawing.Size(180, 20);
             this.txt_telefono.TabIndex = 62;
-            this.txt_telefono.TextChanged += new System.EventHandler(this.txt_telefono_TextChanged);
             // 
             // lbl_telefono
             // 
@@ -165,7 +147,6 @@
             this.txt_mail.ReadOnly = true;
             this.txt_mail.Size = new System.Drawing.Size(180, 20);
             this.txt_mail.TabIndex = 59;
-            this.txt_mail.TextChanged += new System.EventHandler(this.txt_mail_TextChanged);
             // 
             // lbl_fecha_nac
             // 
@@ -183,7 +164,6 @@
             this.txt_nacionalidad.ReadOnly = true;
             this.txt_nacionalidad.Size = new System.Drawing.Size(180, 20);
             this.txt_nacionalidad.TabIndex = 56;
-            this.txt_nacionalidad.TextChanged += new System.EventHandler(this.txt_nacionalidad_TextChanged);
             // 
             // lbl_nacionalidad
             // 
@@ -193,19 +173,6 @@
             this.lbl_nacionalidad.Size = new System.Drawing.Size(69, 13);
             this.lbl_nacionalidad.TabIndex = 55;
             this.lbl_nacionalidad.Text = "Nacionalidad";
-            // 
-            // cBox_tipo_doc
-            // 
-            this.cBox_tipo_doc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cBox_tipo_doc.Enabled = false;
-            this.cBox_tipo_doc.FormattingEnabled = true;
-            this.cBox_tipo_doc.Items.AddRange(new object[] {
-            "DNI",
-            "Pasaporte"});
-            this.cBox_tipo_doc.Location = new System.Drawing.Point(485, 37);
-            this.cBox_tipo_doc.Name = "cBox_tipo_doc";
-            this.cBox_tipo_doc.Size = new System.Drawing.Size(120, 21);
-            this.cBox_tipo_doc.TabIndex = 54;
             // 
             // txt_nro_doc
             // 
@@ -240,7 +207,6 @@
             this.txt_apellido.ReadOnly = true;
             this.txt_apellido.Size = new System.Drawing.Size(180, 20);
             this.txt_apellido.TabIndex = 50;
-            this.txt_apellido.TextChanged += new System.EventHandler(this.txt_apellido_TextChanged);
             // 
             // txt_nombre
             // 
@@ -249,7 +215,6 @@
             this.txt_nombre.ReadOnly = true;
             this.txt_nombre.Size = new System.Drawing.Size(180, 20);
             this.txt_nombre.TabIndex = 49;
-            this.txt_nombre.TextChanged += new System.EventHandler(this.txt_nombre_TextChanged);
             // 
             // lbl_apellido
             // 
@@ -297,13 +262,97 @@
             this.date_nacimiento.Size = new System.Drawing.Size(180, 20);
             this.date_nacimiento.TabIndex = 73;
             this.date_nacimiento.Value = new System.DateTime(2014, 1, 1, 0, 0, 0, 0);
-            this.date_nacimiento.ValueChanged += new System.EventHandler(this.date_nacimiento_ValueChanged);
+            // 
+            // txt_dom_dpto
+            // 
+            this.txt_dom_dpto.Location = new System.Drawing.Point(211, 248);
+            this.txt_dom_dpto.Name = "txt_dom_dpto";
+            this.txt_dom_dpto.ReadOnly = true;
+            this.txt_dom_dpto.Size = new System.Drawing.Size(66, 20);
+            this.txt_dom_dpto.TabIndex = 89;
+            // 
+            // lbl_dom_dpto
+            // 
+            this.lbl_dom_dpto.AutoSize = true;
+            this.lbl_dom_dpto.Location = new System.Drawing.Point(178, 251);
+            this.lbl_dom_dpto.Name = "lbl_dom_dpto";
+            this.lbl_dom_dpto.Size = new System.Drawing.Size(30, 13);
+            this.lbl_dom_dpto.TabIndex = 88;
+            this.lbl_dom_dpto.Text = "Dpto";
+            // 
+            // txt_dom_piso
+            // 
+            this.txt_dom_piso.Location = new System.Drawing.Point(97, 248);
+            this.txt_dom_piso.Name = "txt_dom_piso";
+            this.txt_dom_piso.ReadOnly = true;
+            this.txt_dom_piso.Size = new System.Drawing.Size(66, 20);
+            this.txt_dom_piso.TabIndex = 87;
+            // 
+            // lbl_dom_piso
+            // 
+            this.lbl_dom_piso.AutoSize = true;
+            this.lbl_dom_piso.Location = new System.Drawing.Point(13, 251);
+            this.lbl_dom_piso.Name = "lbl_dom_piso";
+            this.lbl_dom_piso.Size = new System.Drawing.Size(27, 13);
+            this.lbl_dom_piso.TabIndex = 86;
+            this.lbl_dom_piso.Text = "Piso";
+            // 
+            // txt_dom_nro
+            // 
+            this.txt_dom_nro.Location = new System.Drawing.Point(96, 222);
+            this.txt_dom_nro.Name = "txt_dom_nro";
+            this.txt_dom_nro.ReadOnly = true;
+            this.txt_dom_nro.Size = new System.Drawing.Size(180, 20);
+            this.txt_dom_nro.TabIndex = 85;
+            // 
+            // lbl_dom_nro
+            // 
+            this.lbl_dom_nro.AutoSize = true;
+            this.lbl_dom_nro.Location = new System.Drawing.Point(12, 225);
+            this.lbl_dom_nro.Name = "lbl_dom_nro";
+            this.lbl_dom_nro.Size = new System.Drawing.Size(44, 13);
+            this.lbl_dom_nro.TabIndex = 84;
+            this.lbl_dom_nro.Text = "Número";
+            // 
+            // txt_dom_calle
+            // 
+            this.txt_dom_calle.Location = new System.Drawing.Point(96, 196);
+            this.txt_dom_calle.Name = "txt_dom_calle";
+            this.txt_dom_calle.ReadOnly = true;
+            this.txt_dom_calle.Size = new System.Drawing.Size(180, 20);
+            this.txt_dom_calle.TabIndex = 83;
+            // 
+            // lbl_dom_calle
+            // 
+            this.lbl_dom_calle.AutoSize = true;
+            this.lbl_dom_calle.Location = new System.Drawing.Point(12, 199);
+            this.lbl_dom_calle.Name = "lbl_dom_calle";
+            this.lbl_dom_calle.Size = new System.Drawing.Size(81, 13);
+            this.lbl_dom_calle.TabIndex = 82;
+            this.lbl_dom_calle.Text = "Domicilio - Calle";
+            // 
+            // txt_tipodoc
+            // 
+            this.txt_tipodoc.Location = new System.Drawing.Point(485, 37);
+            this.txt_tipodoc.Name = "txt_tipodoc";
+            this.txt_tipodoc.ReadOnly = true;
+            this.txt_tipodoc.Size = new System.Drawing.Size(120, 20);
+            this.txt_tipodoc.TabIndex = 90;
             // 
             // Cliente_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 417);
+            this.Controls.Add(this.txt_tipodoc);
+            this.Controls.Add(this.txt_dom_dpto);
+            this.Controls.Add(this.lbl_dom_dpto);
+            this.Controls.Add(this.txt_dom_piso);
+            this.Controls.Add(this.lbl_dom_piso);
+            this.Controls.Add(this.txt_dom_nro);
+            this.Controls.Add(this.lbl_dom_nro);
+            this.Controls.Add(this.txt_dom_calle);
+            this.Controls.Add(this.lbl_dom_calle);
             this.Controls.Add(this.date_nacimiento);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_guardar);
@@ -311,10 +360,8 @@
             this.Controls.Add(this.lbl_estado);
             this.Controls.Add(this.txt_pais);
             this.Controls.Add(this.lbl_pais);
-            this.Controls.Add(this.txt_localidad);
-            this.Controls.Add(this.lbl_localidad);
-            this.Controls.Add(this.txt_direccion);
-            this.Controls.Add(this.lbl_direccion);
+            this.Controls.Add(this.txt_ciudad);
+            this.Controls.Add(this.lbl_ciudad);
             this.Controls.Add(this.txt_telefono);
             this.Controls.Add(this.lbl_telefono);
             this.Controls.Add(this.lbl_mail);
@@ -322,7 +369,6 @@
             this.Controls.Add(this.lbl_fecha_nac);
             this.Controls.Add(this.txt_nacionalidad);
             this.Controls.Add(this.lbl_nacionalidad);
-            this.Controls.Add(this.cBox_tipo_doc);
             this.Controls.Add(this.txt_nro_doc);
             this.Controls.Add(this.lbl_nro_doc);
             this.Controls.Add(this.lbl_tipo_doc);
@@ -341,16 +387,13 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbox_estado;
         private System.Windows.Forms.Label lbl_estado;
         private System.Windows.Forms.Label lbl_pais;
-        private System.Windows.Forms.Label lbl_localidad;
-        private System.Windows.Forms.Label lbl_direccion;
+        private System.Windows.Forms.Label lbl_ciudad;
         private System.Windows.Forms.Label lbl_telefono;
         private System.Windows.Forms.Label lbl_mail;
         private System.Windows.Forms.Label lbl_fecha_nac;
         private System.Windows.Forms.Label lbl_nacionalidad;
-        private System.Windows.Forms.ComboBox cBox_tipo_doc;
         private System.Windows.Forms.Label lbl_nro_doc;
         private System.Windows.Forms.Label lbl_tipo_doc;
         private System.Windows.Forms.Label lbl_apellido;
@@ -362,10 +405,19 @@
         public System.Windows.Forms.TextBox txt_nombre;
         public System.Windows.Forms.DateTimePicker date_nacimiento;
         public System.Windows.Forms.TextBox txt_pais;
-        public System.Windows.Forms.TextBox txt_localidad;
-        public System.Windows.Forms.TextBox txt_direccion;
+        public System.Windows.Forms.TextBox txt_ciudad;
         public System.Windows.Forms.TextBox txt_telefono;
         public System.Windows.Forms.TextBox txt_mail;
         public System.Windows.Forms.TextBox txt_nro_doc;
+        public System.Windows.Forms.TextBox txt_dom_dpto;
+        private System.Windows.Forms.Label lbl_dom_dpto;
+        public System.Windows.Forms.TextBox txt_dom_piso;
+        private System.Windows.Forms.Label lbl_dom_piso;
+        public System.Windows.Forms.TextBox txt_dom_nro;
+        private System.Windows.Forms.Label lbl_dom_nro;
+        public System.Windows.Forms.TextBox txt_dom_calle;
+        private System.Windows.Forms.Label lbl_dom_calle;
+        public System.Windows.Forms.TextBox txt_tipodoc;
+        public System.Windows.Forms.ComboBox cbox_estado;
     }
 }

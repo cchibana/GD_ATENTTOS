@@ -26,49 +26,6 @@ namespace FrbaHotel.ABM_de_Cliente
 
         }
 
-        private void txt_pais_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void txt_localidad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_direccion_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_telefono_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_mail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_nacionalidad_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_apellido_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txt_nombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void date_nacimiento_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -14,13 +14,9 @@ namespace FrbaHotel.ABM_de_Cliente
         public Cliente_Alta()
         {
             InitializeComponent();
+            
         }
 
-
-        private void btn_limpiar_Click(object sender, EventArgs e)
-        {
-            Limpiar();
-        }
 
         public void Limpiar()
         {
@@ -30,88 +26,69 @@ namespace FrbaHotel.ABM_de_Cliente
             txt_mail.Text = "";
             txt_telefono.Text = "";
             date_nacimiento.Value = DateTime.Now;
-            txt_direccion.Text = "";
-            txt_localidad.Text = "";
+            txt_dom_calle.Text = "";
+            txt_ciudad.Text = "";
             txt_pais.Text = "";            
             txt_nrodoc.Text = "";
             cbox_tipodoc.SelectedItem = null;
             cbox_estado.SelectedItem = "Habilitado";            
         }
 
+
+        private void KeyPressAlfa(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+
+            e.Handled = Dominio.Validadores.ValidadorAlfa(e.KeyChar);
+        }
+
+        private void KeyPressNum(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
+
+            e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
+        }
+
+
+        private void btn_limpiar_Click(object sender, EventArgs e)
+        {
+            Limpiar();
+        }
+
+
         private void btn_guardar_Click(object sender, EventArgs e)
         {
-         //   Clientes clientenuevo = new Clientes
+            //   Clientes clientenuevo = new Clientes
         }
 
 
-
-        private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
-            }
-
-            e.Handled = Dominio.Validadores.ValidadorAlfa(e.KeyChar);
-        }
-
-        private void txt_apellido_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
-            }
-
-            e.Handled = Dominio.Validadores.ValidadorAlfa(e.KeyChar);
-        }
-
-        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
-            }
-
-            e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
-        }
-
-        private void txt_nrodoc_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)13)
-            {
-                e.Handled = true;
-                SendKeys.Send("{TAB}");
-            }
-
-            e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
-        }
-
-        private void cbox_nacionalidad_Click (object sender, EventArgs e)
+        private void Cliente_Alta_Load(object sender, EventArgs e)
         {
             Dominio.Cliente nacionalidad1 = new Dominio.Cliente();
-
-            DataTable nacionalidad =  nacionalidad1.ListarNacionalidades();
+            DataTable nacionalidad = nacionalidad1.ListarNacionalidades();
 
             for (int i = 0; i < nacionalidad.Rows.Count; i++)
             {
                 cbox_nacionalidad.Items.Add(nacionalidad.Rows[i][0]);
-                        
             }
-           
-            
+
+            Dominio.Cliente tipoDoc1 = new Dominio.Cliente();
+            DataTable tipoDoc = tipoDoc1.ListarTipoDoc();
+
+            for (int i = 0; i < tipoDoc.Rows.Count; i++)
+            {
+                cbox_tipodoc.Items.Add(tipoDoc.Rows[i][0]);
+            }
         }
-
-        private void Cliente_Alta_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-     
+                      
 
     }
 }

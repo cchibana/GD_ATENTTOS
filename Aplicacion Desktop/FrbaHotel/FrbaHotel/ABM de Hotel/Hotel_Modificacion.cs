@@ -16,19 +16,35 @@ namespace FrbaHotel.ABM_de_Hotel
             InitializeComponent();
         }
 
-        private void Hotel_Modificacion_Load(object sender, EventArgs e)
+        private void KeyPressAlfa(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
 
+            e.Handled = Dominio.Validadores.ValidadorAlfa(e.KeyChar);
         }
 
-        private void cbox_estrellas_SelectedIndexChanged(object sender, EventArgs e)
+        private void KeyPressNum(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == (char)13)
+            {
+                e.Handled = true;
+                SendKeys.Send("{TAB}");
+            }
 
+            e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
         }
+
+
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+ 
     }
 }

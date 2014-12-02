@@ -58,13 +58,13 @@
             this.txt_descripcion.Location = new System.Drawing.Point(126, 215);
             this.txt_descripcion.Name = "txt_descripcion";
             this.txt_descripcion.ReadOnly = true;
-            this.txt_descripcion.Size = new System.Drawing.Size(127, 20);
+            this.txt_descripcion.Size = new System.Drawing.Size(180, 20);
             this.txt_descripcion.TabIndex = 41;
             // 
             // lbl_estado
             // 
             this.lbl_estado.AutoSize = true;
-            this.lbl_estado.Location = new System.Drawing.Point(347, 88);
+            this.lbl_estado.Location = new System.Drawing.Point(395, 89);
             this.lbl_estado.Name = "lbl_estado";
             this.lbl_estado.Size = new System.Drawing.Size(40, 13);
             this.lbl_estado.TabIndex = 40;
@@ -78,7 +78,7 @@
             "Libre",
             "Ocupada",
             "Inhabilitada"});
-            this.cbox_estado.Location = new System.Drawing.Point(393, 83);
+            this.cbox_estado.Location = new System.Drawing.Point(441, 84);
             this.cbox_estado.Name = "cbox_estado";
             this.cbox_estado.Size = new System.Drawing.Size(121, 21);
             this.cbox_estado.TabIndex = 39;
@@ -93,7 +93,7 @@
             "Contrafrente"});
             this.cbox_ubicacion.Location = new System.Drawing.Point(126, 128);
             this.cbox_ubicacion.Name = "cbox_ubicacion";
-            this.cbox_ubicacion.Size = new System.Drawing.Size(127, 21);
+            this.cbox_ubicacion.Size = new System.Drawing.Size(180, 21);
             this.cbox_ubicacion.TabIndex = 38;
             // 
             // btn_guardar
@@ -128,7 +128,7 @@
             "Cuadruple"});
             this.cbox_tipo_hab.Location = new System.Drawing.Point(126, 173);
             this.cbox_tipo_hab.Name = "cbox_tipo_hab";
-            this.cbox_tipo_hab.Size = new System.Drawing.Size(127, 21);
+            this.cbox_tipo_hab.Size = new System.Drawing.Size(180, 21);
             this.cbox_tipo_hab.TabIndex = 35;
             // 
             // txt_piso
@@ -136,7 +136,7 @@
             this.txt_piso.Location = new System.Drawing.Point(126, 84);
             this.txt_piso.Name = "txt_piso";
             this.txt_piso.ReadOnly = true;
-            this.txt_piso.Size = new System.Drawing.Size(127, 20);
+            this.txt_piso.Size = new System.Drawing.Size(180, 20);
             this.txt_piso.TabIndex = 34;
             // 
             // txt_numero
@@ -144,7 +144,7 @@
             this.txt_numero.Location = new System.Drawing.Point(126, 42);
             this.txt_numero.Name = "txt_numero";
             this.txt_numero.ReadOnly = true;
-            this.txt_numero.Size = new System.Drawing.Size(127, 20);
+            this.txt_numero.Size = new System.Drawing.Size(180, 20);
             this.txt_numero.TabIndex = 33;
             // 
             // lbl_tipo
@@ -187,7 +187,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 359);
+            this.ClientSize = new System.Drawing.Size(677, 417);
             this.Controls.Add(this.lbl_descripcion);
             this.Controls.Add(this.txt_descripcion);
             this.Controls.Add(this.lbl_estado);
@@ -212,18 +212,18 @@
         #endregion
 
         private System.Windows.Forms.Label lbl_descripcion;
-        private System.Windows.Forms.TextBox txt_descripcion;
         private System.Windows.Forms.Label lbl_estado;
-        private System.Windows.Forms.ComboBox cbox_estado;
-        private System.Windows.Forms.ComboBox cbox_ubicacion;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Button btn_cancelar;
-        private System.Windows.Forms.ComboBox cbox_tipo_hab;
-        private System.Windows.Forms.TextBox txt_piso;
-        private System.Windows.Forms.TextBox txt_numero;
         private System.Windows.Forms.Label lbl_tipo;
         private System.Windows.Forms.Label lbl_ubicacion;
         private System.Windows.Forms.Label lbl_piso;
         private System.Windows.Forms.Label lbl_numero;
+        public System.Windows.Forms.TextBox txt_numero;
+        public System.Windows.Forms.TextBox txt_piso;
+        public System.Windows.Forms.TextBox txt_descripcion;
+        public System.Windows.Forms.ComboBox cbox_ubicacion;
+        public System.Windows.Forms.ComboBox cbox_tipo_hab;
+        public System.Windows.Forms.ComboBox cbox_estado;
     }
 }

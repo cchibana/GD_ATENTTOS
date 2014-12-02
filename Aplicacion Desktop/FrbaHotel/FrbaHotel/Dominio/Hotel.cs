@@ -35,7 +35,17 @@ namespace FrbaHotel.Dominio
         /*Estos metodos retornan resultados de consultas*/
         public DataTable Listar()
         {
-            string texto = "select [Hotel_Ciudad],[Hotel_Calle],[Hotel_Nro_Calle],[Hotel_CantEstrella] from [GD2C2014].[gd_esquema].[Maestra] where ;";
+            string texto = @"select [Hot_Nombre] as 'Nombre',
+                                    [Hot_Email] as 'E-Mail' ,
+                                    [Hot_Telefono] as 'Telefono',
+                                    [Hot_Calle] as 'Calle',
+                                    [Hot_Numero] as 'Número',
+                                    [Hot_Ciu_Id] as 'Ciudad',
+                                    [Hot_Pai_Nombre] as 'Pais',
+                                    [Hot_CantEstrella] as 'Estrellas',
+                                    [Hot_Fecha_Creacion] as 'Fecha Creación',
+                                    [Hot_Estado] as 'Estado'
+                               from [GD2C2014].[ATENTTOS].[Hoteles];";
             return EjecutarConsulta(texto);
         }
 
