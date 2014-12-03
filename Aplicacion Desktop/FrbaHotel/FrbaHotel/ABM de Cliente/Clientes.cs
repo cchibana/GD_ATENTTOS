@@ -17,6 +17,7 @@ namespace FrbaHotel.ABM_de_Cliente
         public Clientes()
         {
             InitializeComponent();
+            InicializarComboBoxEstado();
         }
 
         /* Llenar el objeto con datos, este metodo hace que los de los controles pasen al objeto*/
@@ -71,13 +72,13 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void Clientes_Load(object sender, EventArgs e)
         {
-            Dominio.Cliente tipoDoc1 = new Dominio.Cliente();
+            /*Dominio.Cliente tipoDoc1 = new Dominio.Cliente();
             DataTable tipoDoc = tipoDoc1.ListarTipoDoc();
 
             for (int i = 0; i < tipoDoc.Rows.Count; i++)
             {
                 cbox_tipodoc.Items.Add(tipoDoc.Rows[i][0]);
-            }
+            }*/
         }
 
         private void btn_Limpiar_Click(object sender, EventArgs e)
@@ -85,24 +86,66 @@ namespace FrbaHotel.ABM_de_Cliente
             Limpiar();
         }
 
+        private void InicializarComboBoxEstado()
+        {
+
+            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
+            item0.Text = "Sin Especificar";
+            item0.Value = null;
+            cbox_tipodoc.Items.Add(item0);
+
+            cbox_tipodoc.SelectedIndex = 0;
+
+            Dominio.ComboBoxItem item1 = new Dominio.ComboBoxItem();
+            item1.Text = "DNI";
+            item1.Value = "1";
+            cbox_tipodoc.Items.Add(item1);
+
+            Dominio.ComboBoxItem item2 = new Dominio.ComboBoxItem();
+            item2.Text = "CI";
+            item2.Value = "2";
+            cbox_tipodoc.Items.Add(item2);
+
+            Dominio.ComboBoxItem item3 = new Dominio.ComboBoxItem();
+            item3.Text = "LE";
+            item3.Value = "3";
+            cbox_tipodoc.Items.Add(item3);
+
+            Dominio.ComboBoxItem item4 = new Dominio.ComboBoxItem();
+            item4.Text = "LC";
+            item4.Value = "5";
+            cbox_tipodoc.Items.Add(item4);
+
+            Dominio.ComboBoxItem item5 = new Dominio.ComboBoxItem();
+            item5.Text = "PASS";
+            item5.Value = "5";
+            cbox_tipodoc.Items.Add(item5);
+
+            Dominio.ComboBoxItem item6 = new Dominio.ComboBoxItem();
+            item6.Text = "Otro";
+            item6.Value = "6";
+            cbox_tipodoc.Items.Add(item6);
+        }
+
+
+
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            string nombreCli = txt_nombre.Text;
-            string apellidoCli = txt_apellido.Text;
-            string mailCli = txt_mail.Text;
-            string tipoDocCli = cbox_tipodoc.Text;
+            Dominio.Cliente cliente1 = new Dominio.Cliente();
 
-            Dominio.Cliente cliente  = new Dominio.Cliente();
-            DataTable dt = cliente.ConsultaClientes(nombreCli, apellidoCli, mailCli, tipoDocCli);
-            int cantidadFilas = dt.Rows.Count;
-            if (cantidadFilas > 0)
+            try
             {
-                for (int i = 0; i < cantidadFilas; i++)
+                Dominio.ComboBoxItem itemCbox_tipodoc = (Dominio.ComboBoxItem)cbox_tipodoc.SelectedItem;
+
+                if (itemCbox_tipodoc.Value == null)
                 {
-                    dgv_clientes.DataSource = dt;
+                    itemCbox_tipodoc.Value = "";
                 }
+
+                DataTable dt = cliente1.BuscarClientes(txt_nombre.Text, txt_apellido.Text, txt_mail.Text, itemCbox_tipodoc.Value.ToString(), txt_nro_doc.Text);
+                dgv_clientes.DataSource = dt;
             }
-            else
+            catch
             {
                 DialogResult Result;
                 Result = MessageBox.Show("No se encontró el cliente. Desea darlo de alta?", " ", MessageBoxButtons.OKCancel);
@@ -116,7 +159,7 @@ namespace FrbaHotel.ABM_de_Cliente
                 {
                     return;
                 }
-            }                                       
+            }
         }
 
                 
