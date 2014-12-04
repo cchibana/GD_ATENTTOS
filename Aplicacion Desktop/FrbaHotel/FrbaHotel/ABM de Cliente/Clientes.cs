@@ -12,6 +12,7 @@ namespace FrbaHotel.ABM_de_Cliente
 {
     public partial class Clientes : Form
     {
+
         Dominio.Cliente cliente1 = new Dominio.Cliente();
 
         public Clientes()
@@ -88,13 +89,10 @@ namespace FrbaHotel.ABM_de_Cliente
 
         private void InicializarComboBoxEstado()
         {
-
             Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
             item0.Text = "Sin Especificar";
             item0.Value = null;
             cbox_tipodoc.Items.Add(item0);
-
-            cbox_tipodoc.SelectedIndex = 0;
 
             Dominio.ComboBoxItem item1 = new Dominio.ComboBoxItem();
             item1.Text = "DNI";
@@ -113,7 +111,7 @@ namespace FrbaHotel.ABM_de_Cliente
 
             Dominio.ComboBoxItem item4 = new Dominio.ComboBoxItem();
             item4.Text = "LC";
-            item4.Value = "5";
+            item4.Value = "4";
             cbox_tipodoc.Items.Add(item4);
 
             Dominio.ComboBoxItem item5 = new Dominio.ComboBoxItem();
@@ -125,13 +123,15 @@ namespace FrbaHotel.ABM_de_Cliente
             item6.Text = "Otro";
             item6.Value = "6";
             cbox_tipodoc.Items.Add(item6);
-        }
 
+            cbox_tipodoc.SelectedIndex = 0;
+
+        }
 
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            Dominio.Cliente cliente1 = new Dominio.Cliente();
+            Dominio.Cliente cli1 = new Dominio.Cliente();
 
             try
             {
@@ -142,7 +142,7 @@ namespace FrbaHotel.ABM_de_Cliente
                     itemCbox_tipodoc.Value = "";
                 }
 
-                DataTable dt = cliente1.BuscarClientes(txt_nombre.Text, txt_apellido.Text, txt_mail.Text, itemCbox_tipodoc.Value.ToString(), txt_nro_doc.Text);
+                DataTable dt = cli1.BuscarClientes(txt_nombre.Text, txt_apellido.Text, txt_mail.Text, itemCbox_tipodoc.Value.ToString(), txt_nro_doc.Text);
                 dgv_clientes.DataSource = dt;
             }
             catch

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.Sql;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace FrbaHotel.Dominio
 {
@@ -101,18 +104,40 @@ namespace FrbaHotel.Dominio
             return EjecutarConsulta(texto);
         }
 
-        private Parametros[] parametrosSP;
-        
-        public DataTable ConsultaClientes(string nombre, string ape, string mail, string tipoDoc){
 
-            parametrosSP = new Parametros[1]; //Pongo uno entre corchetes porque busco por un sólo parámetro
-            parametrosSP[0] = new Parametros("@nombre",nombre); //El vector empieza en la posición 0.
-            /*parametrosSP[1] = new Parametros("@apellido", apellido);
-            parametrosSP[2] = new Parametros("@mail", mail);
-            parametrosSP[3] = new Parametros("@tipo_doc", tipoDoc);*/
-            //parametrosSP[4] = new Parametros("@nro_doc", nroDocumento);
+        string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
 
-            return EjecutarStoreProcedure("dbo.buscarClientes", parametrosSP);
+        internal DataTable BuscarClientes(string nombreCli, string apellidoCli, string mailCli, string tipoDoc, string nroDoc)
+        {
+            SqlConnection connection = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand("dbo.SP_BuscarClientes", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (!string.IsNullOrEmpty(nombreCli))
+            {
+                cmd.Parameters.AddWithValue("@nombre", nombreCli);
+            }
+            if (!string.IsNullOrEmpty(apellidoCli))
+            {
+                cmd.Parameters.AddWithValue("@apellido", apellidoCli);
+            }
+            if (!string.IsNullOrEmpty(mailCli))
+            {
+                cmd.Parameters.AddWithValue("@mail", mailCli);
+            }            
+            if (!string.IsNullOrEmpty(tipoDoc))
+            {
+                cmd.Parameters.AddWithValue("@tipo_doc", tipoDoc.ToString());
+            }
+            if (!string.IsNullOrEmpty(nroDoc))
+            {
+                cmd.Parameters.AddWithValue("@nro_doc", nroDoc);
+            }            
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
         }
     }
 } 
