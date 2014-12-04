@@ -28,28 +28,66 @@ namespace FrbaHotel.ABM_de_Usuario
         {
             InitializeComponent();
             InicializarComboBoxEstado();
+            InicializarComboBoxTipoDocumento();
+        }
+
+        private void InicializarComboBoxTipoDocumento()
+        {
+            Dominio.Usuario usu1 = new Dominio.Usuario();
+            DataTable dt_TipoDoc = usu1.ListarTodosLosTiposDocumentos();
+
+            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
+            item0.Text = "Sin Especificar";
+            item0.Value = null;
+            cb_Usuario_TipoDocumento.Items.Add(item0);
+
+            for (int i = 0; i < dt_TipoDoc.Rows.Count; i++)
+            {
+                Dominio.ComboBoxItem item = new Dominio.ComboBoxItem();
+                item.Text = dt_TipoDoc.Rows[i][0].ToString();
+                item.Value = dt_TipoDoc.Rows[i][0].ToString();
+
+                cb_Usuario_TipoDocumento.Items.Add(item);
+            }
+            cb_Usuario_TipoDocumento.SelectedIndex = 0;
         }
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            Dominio.Usuario usu1 = new Dominio.Usuario();
+            BuscarUsuarios();
+        }
 
+        public void BuscarUsuarios()
+        {
+            Dominio.Usuario usu1 = new Dominio.Usuario();
+            Dominio.ComboBoxItem itemCb_Estado = (Dominio.ComboBoxItem)cb_EstadoUsuario.SelectedItem;
+            Dominio.ComboBoxItem itemCb_TipoDocumento = (Dominio.ComboBoxItem)cb_Usuario_TipoDocumento.SelectedItem;
+            DataTable dt;
+
+            if (itemCb_Estado.Value == null)
+            {
+                itemCb_Estado.Value = "";
+            }
+            if (itemCb_TipoDocumento.Value == null)
+            {
+                itemCb_TipoDocumento.Value = "";
+            }
             try
             {
-                Dominio.ComboBoxItem itemCb_Estado = (Dominio.ComboBoxItem)cb_EstadoUsuario.SelectedItem;
-
-                if (itemCb_Estado.Value == null)
-                {
-                    itemCb_Estado.Value = "";
-                }
-
-                DataTable dt = usu1.BuscarUsuarios(txt_nombre.Text, itemCb_Estado.Value.ToString());
+                    dt = usu1.BuscarUsuarios    (txt_nombre.Text, 
+                                                itemCb_Estado.Value.ToString(),
+                                                itemCb_TipoDocumento.Value.ToString(),
+                                                txt_Usuario_NroDocumento.Text,
+                                                txt_Usuario_Nombre.Text,
+                                                txt_Usuario_Apellido.Text,
+                                                txt_Usuario_Mail.Text,
+                                                txt_Usuario_Telefono.Text,
+                                                txt_Usuario_Direccion.Text,
+                                                dtp_Usuario_FechaNacimiento.Value);
                 if (dt.Rows.Count != 0)
                 {
                     dgv_usuarios.DataSource = dt;
-                    dgv_usuarios.Columns[0].Width = 160;
-                    dgv_usuarios.Columns[1].Width = 110;
-                    dgv_usuarios.Columns[2].Width = 130;
+                    dgv_usuarios.Columns[2].Width = 110;
                 }
                 else
                 {
@@ -98,8 +136,29 @@ namespace FrbaHotel.ABM_de_Usuario
 
         private void btn_Baja_Click(object sender, EventArgs e)
         {
-            ABM_de_Usuario.Usuario_Alta usuario_Baja = FrbaHotel.ABM_de_Usuario.Usuario_Alta.ObtenerInstancia();
-            usuario_Baja.Show(this);
+            if (dgv_usuarios.CurrentRow != null)
+            {
+                if (dgv_usuarios.CurrentRow.Cells[1].Value.ToString() == "True")
+                {
+                    if (dgv_usuarios.CurrentRow.Cells[2].Value.ToString() == "True")
+                    {
+                        ABM_de_Usuario.Usuario_Baja usuario_Baja = FrbaHotel.ABM_de_Usuario.Usuario_Baja.ObtenerInstancia(dgv_usuarios.CurrentRow.Cells[0].Value.ToString());
+                        usuario_Baja.Show(this);   
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se puede dar de baja a un usuario que no se desempeñe en este hotel.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Ya se ha dado de baja a este usuario");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un usuario para darlo de baja.");
+            }
         }
 
         private void btn_Limpiar_Click(object sender, EventArgs e)
@@ -111,16 +170,12 @@ namespace FrbaHotel.ABM_de_Usuario
         {
             txt_nombre.Text = null;
             cb_EstadoUsuario.SelectedIndex = 0;
-            dgv_usuarios.DataSource = null;           
+            dgv_usuarios.DataSource = null;
+            dtp_Usuario_FechaNacimiento.Value = DateTime.Today;
         }
 
         private void InicializarComboBoxEstado()
         {
-
-            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
-            item0.Text = "Sin Especificar";
-            item0.Value = null;
-            cb_EstadoUsuario.Items.Add(item0);
 
             Dominio.ComboBoxItem item = new Dominio.ComboBoxItem();
             item.Text = "Activo";
@@ -132,9 +187,26 @@ namespace FrbaHotel.ABM_de_Usuario
             item2.Value = "False";
             cb_EstadoUsuario.Items.Add(item2);
 
+            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
+            item0.Text = "Sin Especificar";
+            item0.Value = null;
+            cb_EstadoUsuario.Items.Add(item0);
+
             cb_EstadoUsuario.SelectedIndex = 0;
         }
 
+        private void btn_TodosRolesHoteles_Click(object sender, EventArgs e)
+        {
+            if (dgv_usuarios.CurrentRow != null)
+            {
+                ABM_de_Usuario.TodasLosRolesyHotelesDeUnUsuario ventanaRolesHotelesDeUsuario = ABM_de_Usuario.TodasLosRolesyHotelesDeUnUsuario.ObtenerInstancia(dgv_usuarios.CurrentRow.Cells[0].Value.ToString(), dgv_usuarios.CurrentRow.Cells[1].Value.ToString());
+                ventanaRolesHotelesDeUsuario.Show();          
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un usuario para ver los roles y hoteles en donde se desempeña.");
+            }
+        }
 
     }
 }

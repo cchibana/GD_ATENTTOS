@@ -159,7 +159,7 @@ namespace FrbaHotel.ABM_de_Usuario
             txt_Usuario_Mail.Text = null;
             txt_Usuario_Telefono.Text = null;
             txt_Usuario_Direccion.Text = null;
-            dtp_Usuario_FechaNacimiento.Value = DateTime.Now;
+            dtp_Usuario_FechaNacimiento.Value = DateTime.Today;
             this.Usu_MailBD = null;
             this.Usu_NroDocumentoBD = null;
             this.Usu_TipoDocumentoBD = null;
@@ -194,7 +194,16 @@ namespace FrbaHotel.ABM_de_Usuario
 
         private void btn_TodosRolesHoteles_Click(object sender, EventArgs e)
         {
-            ABM_de_Usuario.TodasLosRolesyHotelesDeUnUsuario ventanaRolesHotelesDeUsuario = ABM_de_Usuario.TodasLosRolesyHotelesDeUnUsuario.ObtenerInstancia(txt_Username.Text);
+            string estadoUsuario;
+            if (this.Usu_EstadoBD == 1)
+            {
+                estadoUsuario = "True";
+            }else
+	        {
+                estadoUsuario = "False";
+	        }
+
+            ABM_de_Usuario.TodasLosRolesyHotelesDeUnUsuario ventanaRolesHotelesDeUsuario = ABM_de_Usuario.TodasLosRolesyHotelesDeUnUsuario.ObtenerInstancia(Usu_UserNameBD, estadoUsuario);
             ventanaRolesHotelesDeUsuario.Show();
         }
 
@@ -287,28 +296,28 @@ namespace FrbaHotel.ABM_de_Usuario
             {
                 if (this.Usu_NroDocumentoBD != Convert.ToInt64(txt_Usuario_NroDocumento.Text) || this.Usu_TipoDocumentoBD != cb_Usuario_TipoDocumento.SelectedItem.ToString())
                 {
-                    if (usu1.verificarTipoYNumeroDocumentoValido(cb_Usuario_TipoDocumento.SelectedItem.ToString(), txt_Usuario_NroDocumento.Text))
-                    {
-                        if (estadoDatosUsuario == true)
-                        {
-                            if (!usu1.ModificarDatosEnTablaEmpleados(txt_Usuario_Nombre.Text, txt_Usuario_Apellido.Text, cb_Usuario_TipoDocumento.SelectedItem.ToString(), txt_Usuario_NroDocumento.Text, txt_Usuario_Mail.Text, txt_Usuario_Telefono.Text, txt_Usuario_Direccion.Text, dtp_Usuario_FechaNacimiento.Value.ToString("yyyy-MM-dd"), txt_Username.Text))
-                            {
-                                MessageBox.Show("Error en la modificación de datos del Usuario");
-                                estadoModificaciones = false;
-                            }
-                        }
-                        else
-                        {
-                            if (!usu1.InsertarDatosEnTablaEmpleados(txt_Usuario_Nombre.Text, txt_Usuario_Apellido.Text, cb_Usuario_TipoDocumento.SelectedItem.ToString(), txt_Usuario_NroDocumento.Text, txt_Usuario_Mail.Text, txt_Usuario_Telefono.Text, txt_Usuario_Direccion.Text, dtp_Usuario_FechaNacimiento.Value.ToString("yyyy-MM-dd"), txt_Username.Text))
-                            {
-                                MessageBox.Show("Error al guardar de datos del Usuario");
-                                estadoModificaciones = false;
-                            }
-                        }
-                    }
-                    else
+                    if (!usu1.verificarTipoYNumeroDocumentoValido(cb_Usuario_TipoDocumento.SelectedItem.ToString(), txt_Usuario_NroDocumento.Text))
                     {
                         MessageBox.Show("Ya existe un usuario con el tipo y número de documento ingresado");
+                        estadoModificaciones = false;
+                    }
+                }
+            }
+            if (estadoModificaciones)
+            {
+                if (estadoDatosUsuario == true)
+                {
+                    if (!usu1.ModificarDatosEnTablaEmpleados(txt_Usuario_Nombre.Text, txt_Usuario_Apellido.Text, cb_Usuario_TipoDocumento.SelectedItem.ToString(), txt_Usuario_NroDocumento.Text, txt_Usuario_Mail.Text, txt_Usuario_Telefono.Text, txt_Usuario_Direccion.Text, dtp_Usuario_FechaNacimiento.Value, txt_Username.Text))
+                    {
+                        MessageBox.Show("Error en la modificación de datos del Usuario");
+                        estadoModificaciones = false;
+                    }
+                }
+                else
+                {
+                    if (!usu1.InsertarDatosEnTablaEmpleados(txt_Usuario_Nombre.Text, txt_Usuario_Apellido.Text, cb_Usuario_TipoDocumento.SelectedItem.ToString(), txt_Usuario_NroDocumento.Text, txt_Usuario_Mail.Text, txt_Usuario_Telefono.Text, txt_Usuario_Direccion.Text, dtp_Usuario_FechaNacimiento.Value.ToString("yyyy-MM-dd"), txt_Username.Text))
+                    {
+                        MessageBox.Show("Error al guardar de datos del Usuario");
                         estadoModificaciones = false;
                     }
                 }
@@ -317,6 +326,11 @@ namespace FrbaHotel.ABM_de_Usuario
             if (estadoModificaciones)
             {
                 MessageBox.Show("Se han guardado los cambios correctamente");
+                this.Hide();
+                ABM_de_Usuario.Usuarios newUsu = ABM_de_Usuario.Usuarios.ObtenerInstancia();
+                newUsu.BuscarUsuarios();
+                newUsu.Show();
+                this.Close();
             }
 
         }

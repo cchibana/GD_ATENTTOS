@@ -80,7 +80,7 @@ namespace FrbaHotel.ABM_de_Usuario
             txt_Usuario_Mail.Text = null;
             txt_Usuario_Telefono.Text = null;
             txt_Usuario_Direccion.Text = null;
-            dtp_Usuario_FechaNacimiento.Value = DateTime.Now;
+            dtp_Usuario_FechaNacimiento.Value = DateTime.Today;
         }
 
 

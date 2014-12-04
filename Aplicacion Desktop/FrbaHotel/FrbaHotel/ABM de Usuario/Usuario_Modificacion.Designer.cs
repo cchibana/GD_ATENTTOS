@@ -98,7 +98,7 @@
             this.groupBox3.Size = new System.Drawing.Size(376, 238);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Roles";
+            this.groupBox3.Text = "Roles en el Hotel Actual";
             // 
             // btn_TodosRolesHoteles
             // 
@@ -386,7 +386,7 @@
             this.Controls.Add(this.btn_Guardar);
             this.Name = "Usuario_Modificacion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Usuario_Modificacion";
+            this.Text = "Usuario: Modificación de datos";
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);

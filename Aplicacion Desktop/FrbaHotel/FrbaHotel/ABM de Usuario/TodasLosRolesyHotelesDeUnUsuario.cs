@@ -13,20 +13,29 @@ namespace FrbaHotel.ABM_de_Usuario
     {
         private static TodasLosRolesyHotelesDeUnUsuario _instancia;
 
-        public static TodasLosRolesyHotelesDeUnUsuario ObtenerInstancia(string nombreUsuario)
+        public static TodasLosRolesyHotelesDeUnUsuario ObtenerInstancia(string nombreUsuario, string estadoUsuario)
         {
             if (_instancia == null || _instancia.IsDisposed)
             {
-                _instancia = new TodasLosRolesyHotelesDeUnUsuario(nombreUsuario);
+                _instancia = new TodasLosRolesyHotelesDeUnUsuario(nombreUsuario, estadoUsuario);
             }
             _instancia.BringToFront();
             return _instancia;
         }
 
-        public TodasLosRolesyHotelesDeUnUsuario(string nombreUsuario)
+        public TodasLosRolesyHotelesDeUnUsuario(string nombreUsuario, string estadoUsuario)
         {
             InitializeComponent();
             lbl_nombreUsuario.Text = nombreUsuario;
+            if (estadoUsuario == "True")
+            {
+                estadoUsuario = "Activo";
+            }
+            else
+	        {
+                estadoUsuario = "No Activo";
+	        }
+            lbl_estadoUsuario.Text = estadoUsuario;
             ArmarDataGridView();
         }
 
@@ -40,15 +49,17 @@ namespace FrbaHotel.ABM_de_Usuario
                 if (dt.Rows.Count != 0)
                 {
                     dgv_usuarios.DataSource = dt;
+                    dgv_usuarios.DefaultCellStyle.SelectionBackColor = dgv_usuarios.DefaultCellStyle.BackColor;
+                    dgv_usuarios.DefaultCellStyle.SelectionForeColor = dgv_usuarios.DefaultCellStyle.ForeColor;
                     if (dgv_usuarios.Height > dgv_usuarios.Rows.GetRowsHeight(DataGridViewElementStates.Visible))
                     {
-                        dgv_usuarios.Columns[0].Width = 128;
-                        dgv_usuarios.Columns[1].Width = 128;
+                        dgv_usuarios.Columns[0].Width = 135;
+                        dgv_usuarios.Columns[1].Width = 135;
                     }
                     else
                     {
-                        dgv_usuarios.Columns[0].Width = 120;
-                        dgv_usuarios.Columns[1].Width = 120;
+                        dgv_usuarios.Columns[0].Width = 127;
+                        dgv_usuarios.Columns[1].Width = 127;
                     }
                 }
                 else

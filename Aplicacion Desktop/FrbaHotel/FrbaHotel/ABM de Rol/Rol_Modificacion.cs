@@ -187,7 +187,6 @@ namespace FrbaHotel.ABM_de_Rol
 
         private void btn_GuardarRol_Click(object sender, EventArgs e)
         {
-            bool estadoModificacion = true;
             Dominio.Rol rol1 = new Dominio.Rol();
             List<int> listaFuncionalidadesAnterior = rol1.BuscarFuncionalidades(txtNombreRol.Text);
             List<int> listaIDFuncionalidadesNueva = armarListaFuncionalidadesSeleccionadas();

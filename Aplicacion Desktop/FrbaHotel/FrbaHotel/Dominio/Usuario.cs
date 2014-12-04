@@ -17,7 +17,7 @@ namespace FrbaHotel.Dominio
 
         string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
 
-        internal DataTable BuscarUsuarios(string nombreUsuario, string estadoUsuario)
+        internal DataTable BuscarUsuarios(string nombreUsuario, string estadoUsuario, string tipoDocumentoEmpleado, string nroDocumentoEmpleado, string nombreEmpleado, string apellidoEmpleado, string mailEmpleado, string telefonoEmpleado, string direccionEmpleado, DateTime fechaNacimientoEmpleado)
         {
             SqlConnection connection = new SqlConnection(cadenaDeConexion);
             SqlCommand cmd = new SqlCommand("ATENTTOS.SP_UsuariosBusqueda", connection);
@@ -30,6 +30,40 @@ namespace FrbaHotel.Dominio
             if (!string.IsNullOrEmpty(estadoUsuario))
             {
                 cmd.Parameters.AddWithValue("@estadoUsuario", estadoUsuario.ToString());
+            }
+            if (!string.IsNullOrEmpty(tipoDocumentoEmpleado))
+            {
+                cmd.Parameters.AddWithValue("@Emp_Tipo_Documento", tipoDocumentoEmpleado.ToString());
+            }
+            if (!string.IsNullOrEmpty(nroDocumentoEmpleado))
+            {
+                cmd.Parameters.Add("@Emp_Documento_Numero", SqlDbType.BigInt);
+                cmd.Parameters["@Emp_Documento_Numero"].Value = Convert.ToInt64(nroDocumentoEmpleado);
+            }
+            if (!string.IsNullOrEmpty(nombreEmpleado))
+            {
+                cmd.Parameters.AddWithValue("@Emp_Nombre", nombreEmpleado);
+            }
+            if (!string.IsNullOrEmpty(apellidoEmpleado))
+            {
+                cmd.Parameters.AddWithValue("@Emp_Apellido", apellidoEmpleado);
+            }
+            if (!string.IsNullOrEmpty(mailEmpleado))
+            {
+                cmd.Parameters.AddWithValue("@Emp_Mail", mailEmpleado);
+            }
+            if (!string.IsNullOrEmpty(telefonoEmpleado))
+            {
+                cmd.Parameters.AddWithValue("@Emp_Telefono", telefonoEmpleado);
+            }
+            if (!string.IsNullOrEmpty(apellidoEmpleado))
+            {
+                cmd.Parameters.AddWithValue("@Emp_Direccion", direccionEmpleado);
+            }
+            if (fechaNacimientoEmpleado.ToShortDateString() != DateTime.Today.ToShortDateString())
+            {
+                cmd.Parameters.Add("@Emp_Fecha_Nac", SqlDbType.DateTime);
+                cmd.Parameters["@Emp_Fecha_Nac"].Value = fechaNacimientoEmpleado;
             }
             int idHotelActual = Dominio.UsuarioLogin.TheInstance.getHotel();
             cmd.Parameters.AddWithValue("@hotelID", idHotelActual);
@@ -240,21 +274,23 @@ namespace FrbaHotel.Dominio
             return true;
         }
 
-        internal bool ModificarDatosEnTablaEmpleados(string nombreUsuario, string apellidoUsuario, string tipoDocumentoUsuario, string nroDocumentoUsuario, string mailUsuario, string telefonoUsuario, string direccionUsuario, string fechaNacimientoUsuario, string Username)
+        internal bool ModificarDatosEnTablaEmpleados(string nombreUsuario, string apellidoUsuario, string tipoDocumentoUsuario, string nroDocumentoUsuario, string mailUsuario, string telefonoUsuario, string direccionUsuario, DateTime fechaNacimientoUsuario, string Username)
         {
 
             SqlConnection connection = new SqlConnection(cadenaDeConexion);
             SqlCommand cmd = new SqlCommand("ATENTTOS.SP_ModificarDatosEmpleados", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@Emp_Documento_Numero",Convert.ToInt64(nroDocumentoUsuario));
+            cmd.Parameters.Add("@Emp_Documento_Numero", SqlDbType.BigInt);
+            cmd.Parameters["@Emp_Documento_Numero"].Value = nroDocumentoUsuario;
             cmd.Parameters.AddWithValue("@Emp_Tipo_Documento", tipoDocumentoUsuario);
             cmd.Parameters.AddWithValue("@Emp_Apellido", apellidoUsuario);
             cmd.Parameters.AddWithValue("@Emp_Nombre", nombreUsuario);
             cmd.Parameters.AddWithValue("@Emp_Direccion", direccionUsuario);
-            cmd.Parameters.AddWithValue("@Emp_Fecha_Nac", fechaNacimientoUsuario);
+            cmd.Parameters.Add("@Emp_Fecha_Nac", SqlDbType.DateTime);
+            cmd.Parameters["@Emp_Fecha_Nac"].Value = fechaNacimientoUsuario;
             cmd.Parameters.AddWithValue("@Emp_Telefono", telefonoUsuario);
-            cmd.Parameters.AddWithValue("@Emp_Mail", Convert.ToInt64(mailUsuario));
+            cmd.Parameters.AddWithValue("@Emp_Mail", mailUsuario);
             cmd.Parameters.AddWithValue("@Emp_Username", Username);
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -268,24 +304,6 @@ namespace FrbaHotel.Dominio
             {
                 return false;
             }
-
-
-            //parametrosSP = new Parametros[9];
-            //parametrosSP[0] = new Parametros("@Emp_Documento_Numero", nroDocumentoUsuario);
-            //parametrosSP[1] = new Parametros("@Emp_Tipo_Documento", tipoDocumentoUsuario);
-            //parametrosSP[2] = new Parametros("@Emp_Apellido", apellidoUsuario);
-            //parametrosSP[3] = new Parametros("@Emp_Nombre", nombreUsuario);
-            //parametrosSP[4] = new Parametros("@Emp_Direccion", direccionUsuario);
-            //parametrosSP[5] = new Parametros("@Emp_Fecha_Nac", fechaNacimientoUsuario);
-            //parametrosSP[6] = new Parametros("@Emp_Telefono", telefonoUsuario);
-            //parametrosSP[7] = new Parametros("@Emp_Mail", mailUsuario);
-            //parametrosSP[8] = new Parametros("@Emp_Username", Username);
-
-            //if (EjecutarStoreProcedureSinDataTable("ATENTTOS.SP_ModificarDatosEmpleados", parametrosSP))
-            //{
-            //    return false;
-            //}
-            //return true;
 
 
         }
