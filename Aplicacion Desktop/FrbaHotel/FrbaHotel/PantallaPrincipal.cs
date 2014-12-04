@@ -115,7 +115,17 @@ namespace FrbaHotel
                 ToolStripMenuItem menuItem_Listado_Estadistico = new ToolStripMenuItem("&Listado Estadístico", null, new EventHandler(menuItem_Listado_Estadistico_Click));
                 menuPrincipal.Items.Add(menuItem_Listado_Estadistico);
             }
-            
+
+            if (rol != "Guest")
+            {
+                //Item: Cambiar Contraseña propia
+                ToolStripMenuItem menuItem_Configuracion = new ToolStripMenuItem("Configuración", null);
+                menuPrincipal.Items.Add(menuItem_Configuracion);
+
+                menuItem_Configuracion.DropDownItems.Add("Cambiar contraseña propia", null, new EventHandler(menuItem_ContraseñaPropia_Click));
+                menuPrincipal.Items.Add(menuItem_Configuracion);   
+            }
+
             //Item: Salir del sistema 
             ToolStripMenuItem menuItem_Salir = new ToolStripMenuItem("&Salir del Sistema", null, new EventHandler(menuItem_Salir_Click));
             menuPrincipal.Items.Add(menuItem_Salir);
@@ -202,23 +212,18 @@ namespace FrbaHotel
             MessageBox.Show("Listado estadístico");
         }
 
+        private void menuItem_ContraseñaPropia_Click(object sender, EventArgs e)
+        {
+            Contrasenia.NuevaContraseniaUsuarioLogueado newContrUsuLogin = Contrasenia.NuevaContraseniaUsuarioLogueado.ObtenerInstancia();
+            newContrUsuLogin.Show();
+        }
+
+
         private void menuItem_Salir_Click(object sender, EventArgs e) 
         {
             this.Close();
             Application.Exit();
-            
         }
-
-        //protected override void OnClosed(EventArgs e)
-        //{
-            //DialogResult resultado; 
-            //resultado = MessageBox.Show("¿Desea salir del sistema?", "Aviso", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
-            //if (DialogResult.OK == resultado)
-            //{
-                //base.OnClosed(e);
-                //MessageBox.Show("Se cerrará su sesión."); 
-            //}
-        //}
 
         private void MaximizarVentana() {
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;

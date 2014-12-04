@@ -31,12 +31,16 @@
             this.btn_Limpiar = new System.Windows.Forms.Button();
             this.btn_Guardar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_TodosRolesHoteles = new System.Windows.Forms.Button();
             this.btn_QuitarRol = new System.Windows.Forms.Button();
             this.lb_roles = new System.Windows.Forms.ListBox();
             this.btn_AgregarRol = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cb_Rol = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_NuevaContrasenia = new System.Windows.Forms.Button();
+            this.cb_EstadoUsuario = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_Username = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -56,9 +60,6 @@
             this.txt_Usuario_NroDocumento = new System.Windows.Forms.TextBox();
             this.txt_Usuario_Nombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cb_EstadoUsuario = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btn_NuevaContrasenia = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -66,25 +67,27 @@
             // 
             // btn_Limpiar
             // 
-            this.btn_Limpiar.Location = new System.Drawing.Point(265, 386);
+            this.btn_Limpiar.Location = new System.Drawing.Point(265, 427);
             this.btn_Limpiar.Name = "btn_Limpiar";
             this.btn_Limpiar.Size = new System.Drawing.Size(113, 37);
-            this.btn_Limpiar.TabIndex = 21;
+            this.btn_Limpiar.TabIndex = 4;
             this.btn_Limpiar.Text = "Limpiar";
             this.btn_Limpiar.UseVisualStyleBackColor = true;
             this.btn_Limpiar.Click += new System.EventHandler(this.btn_Limpiar_Click);
             // 
             // btn_Guardar
             // 
-            this.btn_Guardar.Location = new System.Drawing.Point(450, 386);
+            this.btn_Guardar.Location = new System.Drawing.Point(441, 427);
             this.btn_Guardar.Name = "btn_Guardar";
             this.btn_Guardar.Size = new System.Drawing.Size(113, 37);
-            this.btn_Guardar.TabIndex = 20;
+            this.btn_Guardar.TabIndex = 3;
             this.btn_Guardar.Text = "Guardar";
             this.btn_Guardar.UseVisualStyleBackColor = true;
+            this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btn_TodosRolesHoteles);
             this.groupBox3.Controls.Add(this.btn_QuitarRol);
             this.groupBox3.Controls.Add(this.lb_roles);
             this.groupBox3.Controls.Add(this.btn_AgregarRol);
@@ -92,17 +95,27 @@
             this.groupBox3.Controls.Add(this.cb_Rol);
             this.groupBox3.Location = new System.Drawing.Point(25, 172);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(376, 200);
-            this.groupBox3.TabIndex = 24;
+            this.groupBox3.Size = new System.Drawing.Size(376, 238);
+            this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Roles";
+            // 
+            // btn_TodosRolesHoteles
+            // 
+            this.btn_TodosRolesHoteles.Location = new System.Drawing.Point(188, 190);
+            this.btn_TodosRolesHoteles.Name = "btn_TodosRolesHoteles";
+            this.btn_TodosRolesHoteles.Size = new System.Drawing.Size(165, 37);
+            this.btn_TodosRolesHoteles.TabIndex = 4;
+            this.btn_TodosRolesHoteles.Text = "Ver todos los Roles de todos los Hoteles";
+            this.btn_TodosRolesHoteles.UseVisualStyleBackColor = true;
+            this.btn_TodosRolesHoteles.Click += new System.EventHandler(this.btn_TodosRolesHoteles_Click);
             // 
             // btn_QuitarRol
             // 
             this.btn_QuitarRol.Location = new System.Drawing.Point(30, 151);
             this.btn_QuitarRol.Name = "btn_QuitarRol";
             this.btn_QuitarRol.Size = new System.Drawing.Size(145, 33);
-            this.btn_QuitarRol.TabIndex = 14;
+            this.btn_QuitarRol.TabIndex = 3;
             this.btn_QuitarRol.Text = "Quitar Rol";
             this.btn_QuitarRol.UseVisualStyleBackColor = true;
             this.btn_QuitarRol.Click += new System.EventHandler(this.btn_QuitarRol_Click);
@@ -113,14 +126,14 @@
             this.lb_roles.Location = new System.Drawing.Point(188, 24);
             this.lb_roles.Name = "lb_roles";
             this.lb_roles.Size = new System.Drawing.Size(165, 160);
-            this.lb_roles.TabIndex = 4;
+            this.lb_roles.TabIndex = 0;
             // 
             // btn_AgregarRol
             // 
             this.btn_AgregarRol.Location = new System.Drawing.Point(30, 75);
             this.btn_AgregarRol.Name = "btn_AgregarRol";
             this.btn_AgregarRol.Size = new System.Drawing.Size(145, 33);
-            this.btn_AgregarRol.TabIndex = 13;
+            this.btn_AgregarRol.TabIndex = 2;
             this.btn_AgregarRol.Text = "Agregar Rol";
             this.btn_AgregarRol.UseVisualStyleBackColor = true;
             this.btn_AgregarRol.Click += new System.EventHandler(this.btn_AgregarRol_Click_1);
@@ -141,7 +154,7 @@
             this.cb_Rol.Location = new System.Drawing.Point(30, 49);
             this.cb_Rol.Name = "cb_Rol";
             this.cb_Rol.Size = new System.Drawing.Size(145, 21);
-            this.cb_Rol.TabIndex = 9;
+            this.cb_Rol.TabIndex = 1;
             // 
             // groupBox2
             // 
@@ -153,9 +166,38 @@
             this.groupBox2.Location = new System.Drawing.Point(25, 24);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(376, 142);
-            this.groupBox2.TabIndex = 23;
+            this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos de Logueo";
+            // 
+            // btn_NuevaContrasenia
+            // 
+            this.btn_NuevaContrasenia.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btn_NuevaContrasenia.Location = new System.Drawing.Point(30, 101);
+            this.btn_NuevaContrasenia.Name = "btn_NuevaContrasenia";
+            this.btn_NuevaContrasenia.Size = new System.Drawing.Size(171, 33);
+            this.btn_NuevaContrasenia.TabIndex = 2;
+            this.btn_NuevaContrasenia.Text = "Generar nueva Contraseña";
+            this.btn_NuevaContrasenia.UseVisualStyleBackColor = true;
+            this.btn_NuevaContrasenia.Click += new System.EventHandler(this.btn_NuevaContrasenia_Click);
+            // 
+            // cb_EstadoUsuario
+            // 
+            this.cb_EstadoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_EstadoUsuario.FormattingEnabled = true;
+            this.cb_EstadoUsuario.Location = new System.Drawing.Point(157, 59);
+            this.cb_EstadoUsuario.Name = "cb_EstadoUsuario";
+            this.cb_EstadoUsuario.Size = new System.Drawing.Size(196, 21);
+            this.cb_EstadoUsuario.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(27, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Estado del Usuario";
             // 
             // label1
             // 
@@ -171,7 +213,7 @@
             this.txt_Username.Location = new System.Drawing.Point(157, 30);
             this.txt_Username.Name = "txt_Username";
             this.txt_Username.Size = new System.Drawing.Size(196, 20);
-            this.txt_Username.TabIndex = 1;
+            this.txt_Username.TabIndex = 0;
             // 
             // groupBox1
             // 
@@ -193,8 +235,8 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(426, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(376, 348);
-            this.groupBox1.TabIndex = 22;
+            this.groupBox1.Size = new System.Drawing.Size(376, 386);
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Personales";
             // 
@@ -203,7 +245,7 @@
             this.dtp_Usuario_FechaNacimiento.Location = new System.Drawing.Point(153, 215);
             this.dtp_Usuario_FechaNacimiento.Name = "dtp_Usuario_FechaNacimiento";
             this.dtp_Usuario_FechaNacimiento.Size = new System.Drawing.Size(200, 20);
-            this.dtp_Usuario_FechaNacimiento.TabIndex = 20;
+            this.dtp_Usuario_FechaNacimiento.TabIndex = 7;
             // 
             // label10
             // 
@@ -219,7 +261,7 @@
             this.txt_Usuario_Direccion.Location = new System.Drawing.Point(153, 186);
             this.txt_Usuario_Direccion.Name = "txt_Usuario_Direccion";
             this.txt_Usuario_Direccion.Size = new System.Drawing.Size(200, 20);
-            this.txt_Usuario_Direccion.TabIndex = 18;
+            this.txt_Usuario_Direccion.TabIndex = 6;
             // 
             // label11
             // 
@@ -235,7 +277,8 @@
             this.txt_Usuario_Telefono.Location = new System.Drawing.Point(153, 160);
             this.txt_Usuario_Telefono.Name = "txt_Usuario_Telefono";
             this.txt_Usuario_Telefono.Size = new System.Drawing.Size(200, 20);
-            this.txt_Usuario_Telefono.TabIndex = 16;
+            this.txt_Usuario_Telefono.TabIndex = 5;
+            this.txt_Usuario_Telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
             // label8
             // 
@@ -251,7 +294,7 @@
             this.txt_Usuario_Mail.Location = new System.Drawing.Point(153, 134);
             this.txt_Usuario_Mail.Name = "txt_Usuario_Mail";
             this.txt_Usuario_Mail.Size = new System.Drawing.Size(200, 20);
-            this.txt_Usuario_Mail.TabIndex = 14;
+            this.txt_Usuario_Mail.TabIndex = 4;
             // 
             // label9
             // 
@@ -269,7 +312,7 @@
             this.cb_Usuario_TipoDocumento.Location = new System.Drawing.Point(153, 82);
             this.cb_Usuario_TipoDocumento.Name = "cb_Usuario_TipoDocumento";
             this.cb_Usuario_TipoDocumento.Size = new System.Drawing.Size(200, 21);
-            this.cb_Usuario_TipoDocumento.TabIndex = 12;
+            this.cb_Usuario_TipoDocumento.TabIndex = 2;
             // 
             // label6
             // 
@@ -285,7 +328,8 @@
             this.txt_Usuario_Apellido.Location = new System.Drawing.Point(153, 56);
             this.txt_Usuario_Apellido.Name = "txt_Usuario_Apellido";
             this.txt_Usuario_Apellido.Size = new System.Drawing.Size(200, 20);
-            this.txt_Usuario_Apellido.TabIndex = 7;
+            this.txt_Usuario_Apellido.TabIndex = 1;
+            this.txt_Usuario_Apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // label7
             // 
@@ -310,14 +354,16 @@
             this.txt_Usuario_NroDocumento.Location = new System.Drawing.Point(153, 108);
             this.txt_Usuario_NroDocumento.Name = "txt_Usuario_NroDocumento";
             this.txt_Usuario_NroDocumento.Size = new System.Drawing.Size(200, 20);
-            this.txt_Usuario_NroDocumento.TabIndex = 11;
+            this.txt_Usuario_NroDocumento.TabIndex = 3;
+            this.txt_Usuario_NroDocumento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
             // txt_Usuario_Nombre
             // 
             this.txt_Usuario_Nombre.Location = new System.Drawing.Point(153, 30);
             this.txt_Usuario_Nombre.Name = "txt_Usuario_Nombre";
             this.txt_Usuario_Nombre.Size = new System.Drawing.Size(200, 20);
-            this.txt_Usuario_Nombre.TabIndex = 5;
+            this.txt_Usuario_Nombre.TabIndex = 0;
+            this.txt_Usuario_Nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // label4
             // 
@@ -328,39 +374,11 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Nombre";
             // 
-            // cb_EstadoUsuario
-            // 
-            this.cb_EstadoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cb_EstadoUsuario.FormattingEnabled = true;
-            this.cb_EstadoUsuario.Location = new System.Drawing.Point(157, 59);
-            this.cb_EstadoUsuario.Name = "cb_EstadoUsuario";
-            this.cb_EstadoUsuario.Size = new System.Drawing.Size(196, 21);
-            this.cb_EstadoUsuario.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(96, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Estado del Usuario";
-            // 
-            // btn_NuevaContrasenia
-            // 
-            this.btn_NuevaContrasenia.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btn_NuevaContrasenia.Location = new System.Drawing.Point(30, 101);
-            this.btn_NuevaContrasenia.Name = "btn_NuevaContrasenia";
-            this.btn_NuevaContrasenia.Size = new System.Drawing.Size(171, 33);
-            this.btn_NuevaContrasenia.TabIndex = 15;
-            this.btn_NuevaContrasenia.Text = "Generar nueva Contraseña";
-            this.btn_NuevaContrasenia.UseVisualStyleBackColor = true;
-            // 
             // Usuario_Modificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 450);
+            this.ClientSize = new System.Drawing.Size(826, 490);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -412,5 +430,6 @@
         private System.Windows.Forms.Button btn_NuevaContrasenia;
         private System.Windows.Forms.ComboBox cb_EstadoUsuario;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btn_TodosRolesHoteles;
     }
 }

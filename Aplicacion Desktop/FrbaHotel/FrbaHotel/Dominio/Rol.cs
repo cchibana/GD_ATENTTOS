@@ -189,6 +189,24 @@ namespace FrbaHotel.Dominio
             }
             return true;
         }
+
+        internal DataTable ListarFuncionalidadesSinABMUsuario()
+        {
+            string textoSQL = "SELECT [Fun_Id],[Fun_Descripcion] FROM [GD2C2014].[ATENTTOS].[Funcionalidades] WHERE [Fun_Descripcion] != 'ABM de Usuario'";
+            return EjecutarConsulta(textoSQL);
+        }
+
+        internal bool modificarNombreRol(string nombreRolNuevo, string NombreRolAnterior)
+        {
+            parametrosSP = new Parametros[2];
+            parametrosSP[0] = new Parametros("@nombreRolAnterior", NombreRolAnterior);
+            parametrosSP[1] = new Parametros("@nombreRolNuevo", nombreRolNuevo);
+            if (EjecutarStoreProcedureSinDataTable("[ATENTTOS].[SP_CambiarNombreRol]", parametrosSP))
+            {
+                return true;
+            }
+            return false;
+        }
     }
 
     public class item_idNombreFuncionalidad

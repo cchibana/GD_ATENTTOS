@@ -38,7 +38,6 @@ namespace FrbaHotel.Dominio
             catch
             {
                 return false;
-                throw;
             }
 
         }
@@ -74,6 +73,29 @@ namespace FrbaHotel.Dominio
             DataTable dt = new DataTable();
             da.Fill(dt);
             return dt;
+        }
+
+        public bool EjecutarStoreProcedureSinDataTable(string nombreSP, Dominio.Parametros[] datos)
+        {
+            SqlConnection connection = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand(nombreSP, connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            for (int i = 0; i < datos.Length; i++)
+            {
+                cmd.Parameters.AddWithValue(datos[i].Nombre, datos[i].Valor);
+            }
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            DataTable dt = new DataTable();
+            try{
+                da.Fill(dt);
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
         }
     }
 }

@@ -30,6 +30,38 @@ namespace FrbaHotel.ABM_de_Usuario
             InicializarComboBoxEstado();
         }
 
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+            Dominio.Usuario usu1 = new Dominio.Usuario();
+
+            try
+            {
+                Dominio.ComboBoxItem itemCb_Estado = (Dominio.ComboBoxItem)cb_EstadoUsuario.SelectedItem;
+
+                if (itemCb_Estado.Value == null)
+                {
+                    itemCb_Estado.Value = "";
+                }
+
+                DataTable dt = usu1.BuscarUsuarios(txt_nombre.Text, itemCb_Estado.Value.ToString());
+                if (dt.Rows.Count != 0)
+                {
+                    dgv_usuarios.DataSource = dt;
+                    dgv_usuarios.Columns[0].Width = 160;
+                    dgv_usuarios.Columns[1].Width = 110;
+                    dgv_usuarios.Columns[2].Width = 130;
+                }
+                else
+                {
+                    MessageBox.Show("No se encontró el registro. Para darlo de Alta, presione el botón de Alta.");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Error en la búsqueda de Usuarios.");
+            }
+        }
+
         private void btn_Alta_Click(object sender, EventArgs e)
         {
             ABM_de_Usuario.Usuario_Alta usuario_Alta = FrbaHotel.ABM_de_Usuario.Usuario_Alta.ObtenerInstancia();
@@ -38,17 +70,30 @@ namespace FrbaHotel.ABM_de_Usuario
 
         private void btn_Modificacion_Click(object sender, EventArgs e)
         {
-            ABM_de_Usuario.Usuario_Modificacion usuario_Modificacion = FrbaHotel.ABM_de_Usuario.Usuario_Modificacion.ObtenerInstancia();
             if (dgv_usuarios.CurrentRow != null)
             {
-                usuario_Modificacion.CargarDatos(dgv_usuarios.CurrentRow.Cells[0].Value.ToString(), dgv_usuarios.CurrentRow.Cells[1].Value.ToString());
+                if (dgv_usuarios.CurrentRow.Cells[2].Value.ToString() == "True")
+                {
+                    ABM_de_Usuario.Usuario_Modificacion usuario_Modificacion = FrbaHotel.ABM_de_Usuario.Usuario_Modificacion.ObtenerInstancia();
+                    usuario_Modificacion.CargarDatos(dgv_usuarios.CurrentRow.Cells[0].Value.ToString(), dgv_usuarios.CurrentRow.Cells[1].Value.ToString());
+                    usuario_Modificacion.Show(this);
+                }
+                else
+                {
+                    DialogResult resultado;
+                    resultado = MessageBox.Show("Sólo pueden realizar modificaciones sobre usuarios que se desempeñen en este hotel. ¿Desea darle permisos a este usuario?"," ", MessageBoxButtons.YesNo);
+                    if (resultado == DialogResult.Yes)
+                    {
+                        RolesAUsuarioDeHotelLogueado ventanaRolesAUsuarioDeHotelLogueado = RolesAUsuarioDeHotelLogueado.ObtenerInstancia(dgv_usuarios.CurrentRow.Cells[0].Value.ToString());
+                        ventanaRolesAUsuarioDeHotelLogueado.Show(this);
+                        dgv_usuarios.DataSource = null;      
+                    }
+                }
             }
             else
             {
                 MessageBox.Show("Debe seleccionar un usuario para realizar la modificación.");
             }
-            
-            usuario_Modificacion.Show(this);
         }
 
         private void btn_Baja_Click(object sender, EventArgs e)
@@ -59,9 +104,14 @@ namespace FrbaHotel.ABM_de_Usuario
 
         private void btn_Limpiar_Click(object sender, EventArgs e)
         {
+            LimpiarCampos();
+        }
+
+        private void LimpiarCampos() 
+        {
             txt_nombre.Text = null;
             cb_EstadoUsuario.SelectedIndex = 0;
-            dgv_usuarios.DataSource = null;
+            dgv_usuarios.DataSource = null;           
         }
 
         private void InicializarComboBoxEstado()
@@ -85,33 +135,6 @@ namespace FrbaHotel.ABM_de_Usuario
             cb_EstadoUsuario.SelectedIndex = 0;
         }
 
-        private void btn_Buscar_Click(object sender, EventArgs e)
-        {
-            Dominio.Usuario usu1 = new Dominio.Usuario();
 
-            try
-            {
-                Dominio.ComboBoxItem itemCb_Estado = (Dominio.ComboBoxItem)cb_EstadoUsuario.SelectedItem;
-
-                if (itemCb_Estado.Value == null)
-                {
-                    itemCb_Estado.Value = "";
-                }
-
-                DataTable dt = usu1.BuscarUsuarios(txt_nombre.Text, itemCb_Estado.Value.ToString());
-                if (dt.Rows.Count != 0)     
-                {
-                    dgv_usuarios.DataSource = dt;
-                }
-                else
-                {
-                    MessageBox.Show("No se encontró el registro. Para darlo de Alta, presione el botón de Alta.");
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Error en la búsqueda de Usuarios.");
-            }
-        }
     }
 }

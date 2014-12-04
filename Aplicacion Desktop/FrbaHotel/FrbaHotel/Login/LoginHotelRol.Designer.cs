@@ -44,7 +44,7 @@
             this.label1.Location = new System.Drawing.Point(40, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(170, 16);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Seleccione un hotel y un rol";
             // 
             // btn_aceptar
@@ -68,7 +68,7 @@
             this.listViewHotelRol.MultiSelect = false;
             this.listViewHotelRol.Name = "listViewHotelRol";
             this.listViewHotelRol.Size = new System.Drawing.Size(441, 154);
-            this.listViewHotelRol.TabIndex = 3;
+            this.listViewHotelRol.TabIndex = 1;
             this.listViewHotelRol.UseCompatibleStateImageBehavior = false;
             this.listViewHotelRol.View = System.Windows.Forms.View.Details;
             // 
@@ -92,7 +92,7 @@
             this.btn_Cancelar.Location = new System.Drawing.Point(287, 238);
             this.btn_Cancelar.Name = "btn_Cancelar";
             this.btn_Cancelar.Size = new System.Drawing.Size(124, 39);
-            this.btn_Cancelar.TabIndex = 4;
+            this.btn_Cancelar.TabIndex = 3;
             this.btn_Cancelar.Text = "Cancelar";
             this.btn_Cancelar.UseVisualStyleBackColor = true;
             this.btn_Cancelar.Click += new System.EventHandler(this.btn_Cancelar_Click);

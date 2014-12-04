@@ -33,7 +33,7 @@ namespace FrbaHotel.ABM_de_Rol
         private void InicializarComboBoxFuncionalidades()
         {
             Dominio.Rol rol1 = new Dominio.Rol();
-            DataTable dt_roles = rol1.ListarFuncionalidades();
+            DataTable dt_roles = rol1.ListarFuncionalidadesSinABMUsuario();
             for (int i = 0; i < dt_roles.Rows.Count; i++)
             {
                 Dominio.ComboBoxItem item = new Dominio.ComboBoxItem();
@@ -90,9 +90,13 @@ namespace FrbaHotel.ABM_de_Rol
 
         private void btn_QuitarFuncionalidad_Click(object sender, EventArgs e)
         {
-            if (this.lb_Funcionalidades.SelectedIndex >= 0)
+            if (this.lb_Funcionalidades.SelectedIndex != -1)
             {
                 this.lb_Funcionalidades.Items.RemoveAt(this.lb_Funcionalidades.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un funcionalidad.");
             }
         }
 
@@ -125,7 +129,6 @@ namespace FrbaHotel.ABM_de_Rol
             {
                 MessageBox.Show("Debe ingresar un nombre para el nuevo Rol");
             }
-
         }
 
         private List<int> armarListaFuncionalidadesSeleccionadas()

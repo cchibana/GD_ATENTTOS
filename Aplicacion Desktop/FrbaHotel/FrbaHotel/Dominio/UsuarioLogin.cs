@@ -198,6 +198,11 @@ namespace FrbaHotel.Dominio
             return this.Usu_Hotel_Id;
         }
 
+        public string getHotelNombre() 
+        {
+            return this.Usu_Hotel_Nombre;
+        }
+
         public string getRol()
         {
             return this.Usu_Rol_Id;
@@ -213,12 +218,18 @@ namespace FrbaHotel.Dominio
             this.Usu_Username = usu_username;
         }
 
+        public string getUsuario()
+        {
+            return this.Usu_Username;
+        }
+
         public void setearHotelRol(string hotelNombre, int hotelId, string rolUsu)
         {
             this.Usu_Hotel_Nombre = hotelNombre;
             this.Usu_Hotel_Id = hotelId;
             this.Usu_Rol_Id = rolUsu;
         }
+
     }
 
     public class HotelRolLista

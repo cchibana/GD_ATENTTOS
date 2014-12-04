@@ -53,12 +53,12 @@
             this.dgv_usuarios.Name = "dgv_usuarios";
             this.dgv_usuarios.ReadOnly = true;
             this.dgv_usuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_usuarios.Size = new System.Drawing.Size(443, 125);
+            this.dgv_usuarios.Size = new System.Drawing.Size(443, 170);
             this.dgv_usuarios.TabIndex = 22;
             // 
             // btn_Baja
             // 
-            this.btn_Baja.Location = new System.Drawing.Point(330, 328);
+            this.btn_Baja.Location = new System.Drawing.Point(324, 375);
             this.btn_Baja.Name = "btn_Baja";
             this.btn_Baja.Size = new System.Drawing.Size(91, 31);
             this.btn_Baja.TabIndex = 21;
@@ -68,7 +68,7 @@
             // 
             // btn_Modificacion
             // 
-            this.btn_Modificacion.Location = new System.Drawing.Point(219, 328);
+            this.btn_Modificacion.Location = new System.Drawing.Point(213, 375);
             this.btn_Modificacion.Name = "btn_Modificacion";
             this.btn_Modificacion.Size = new System.Drawing.Size(93, 31);
             this.btn_Modificacion.TabIndex = 20;
@@ -78,7 +78,7 @@
             // 
             // btn_Alta
             // 
-            this.btn_Alta.Location = new System.Drawing.Point(109, 328);
+            this.btn_Alta.Location = new System.Drawing.Point(103, 375);
             this.btn_Alta.Name = "btn_Alta";
             this.btn_Alta.Size = new System.Drawing.Size(91, 31);
             this.btn_Alta.TabIndex = 19;
@@ -163,7 +163,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(530, 370);
+            this.ClientSize = new System.Drawing.Size(518, 418);
             this.Controls.Add(this.dgv_usuarios);
             this.Controls.Add(this.btn_Baja);
             this.Controls.Add(this.btn_Modificacion);

@@ -145,6 +145,24 @@
     <Compile Include="ABM de Rol\Rol_Modificacion.Designer.cs">
       <DependentUpon>Rol_Modificacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="ABM de Usuario\NuevaContrasenia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Usuario\NuevaContrasenia.Designer.cs">
+      <DependentUpon>NuevaContrasenia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Usuario\RolesAUsuarioDeHotelLogueado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Usuario\RolesAUsuarioDeHotelLogueado.Designer.cs">
+      <DependentUpon>RolesAUsuarioDeHotelLogueado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ABM de Usuario\TodasLosRolesyHotelesDeUnUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ABM de Usuario\TodasLosRolesyHotelesDeUnUsuario.Designer.cs">
+      <DependentUpon>TodasLosRolesyHotelesDeUnUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="ABM de Usuario\Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,9 +199,16 @@
     <Compile Include="Contrasenia\encriptarContrasenia.Designer.cs">
       <DependentUpon>encriptarContrasenia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Contrasenia\NuevaContraseniaUsuarioLogueado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Contrasenia\NuevaContraseniaUsuarioLogueado.Designer.cs">
+      <DependentUpon>NuevaContraseniaUsuarioLogueado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dominio\CDatos.cs" />
     <Compile Include="Dominio\Cliente.cs" />
     <Compile Include="Dominio\ComboBoxItem.cs" />
+    <Compile Include="Dominio\ContraseniaUsuarioLogueado.cs" />
     <Compile Include="Dominio\Habitacion.cs" />
     <Compile Include="Dominio\Hotel.cs" />
     <Compile Include="Dominio\Rol.cs" />
@@ -275,6 +300,15 @@
     <EmbeddedResource Include="ABM de Rol\Rol_Modificacion.resx">
       <DependentUpon>Rol_Modificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\NuevaContrasenia.resx">
+      <DependentUpon>NuevaContrasenia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\RolesAUsuarioDeHotelLogueado.resx">
+      <DependentUpon>RolesAUsuarioDeHotelLogueado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABM de Usuario\TodasLosRolesyHotelesDeUnUsuario.resx">
+      <DependentUpon>TodasLosRolesyHotelesDeUnUsuario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABM de Usuario\Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenia\encriptarContrasenia.resx">
       <DependentUpon>encriptarContrasenia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Contrasenia\NuevaContraseniaUsuarioLogueado.resx">
+      <DependentUpon>NuevaContraseniaUsuarioLogueado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Generar Modificar Reserva\GenerarReserva.resx">
       <DependentUpon>GenerarReserva.cs</DependentUpon>

@@ -13,6 +13,8 @@ namespace FrbaHotel.ABM_de_Rol
     {
         private static Rol_Modificacion _instancia;
 
+        private string NombreRolAnterior;
+
         public static Rol_Modificacion ObtenerInstancia()
         {
             if (_instancia == null || _instancia.IsDisposed)
@@ -26,16 +28,25 @@ namespace FrbaHotel.ABM_de_Rol
         private Rol_Modificacion()
         {
             InitializeComponent();
-            InicializarComboBoxFuncionalidades();
             DeshabilitarCampos();
             ArmarListView();
+            
         }
 
 
-        private void InicializarComboBoxFuncionalidades()
+        private void InicializarComboBoxFuncionalidades(string rol)
         {
             Dominio.Rol rol1 = new Dominio.Rol();
-            DataTable dt_roles = rol1.ListarFuncionalidades();
+            DataTable dt_roles;
+            if (rol == "Administrador")
+            {
+                dt_roles = rol1.ListarFuncionalidades();
+            }
+            else
+            {
+                dt_roles = rol1.ListarFuncionalidadesSinABMUsuario();
+            }
+
             for (int i = 0; i < dt_roles.Rows.Count; i++)
             {
                 Dominio.ComboBoxItem item = new Dominio.ComboBoxItem();
@@ -95,7 +106,10 @@ namespace FrbaHotel.ABM_de_Rol
             txtNombreRol.Text = null;
             lb_Funcionalidades.DataSource = null;
             lb_Funcionalidades.Items.Clear();
-            cb_Funcionalidades.SelectedIndex = 0;
+            if (cb_Funcionalidades.Items.Count > 0)
+            {
+                cb_Funcionalidades.Items.Clear();
+            }
         }
 
         private void HabilitarCampos()
@@ -125,7 +139,10 @@ namespace FrbaHotel.ABM_de_Rol
 
         private void CargarCampos(string idRolSeleccionado)
         {
+            LimpiarCampos();
             txtNombreRol.Text = idRolSeleccionado;
+            this.NombreRolAnterior = idRolSeleccionado;
+            InicializarComboBoxFuncionalidades(idRolSeleccionado);
             cb_Funcionalidades.SelectedIndex = 0;
             Dominio.Rol rol1 = new Dominio.Rol();
             ListViewItem itemLVSeleccionado = lv_Roles.SelectedItems[0];
@@ -152,9 +169,13 @@ namespace FrbaHotel.ABM_de_Rol
 
         private void btn_QuitarFuncionalidad_Click(object sender, EventArgs e)
         {
-            if (this.lb_Funcionalidades.SelectedIndex >= 0)
+            if (this.lb_Funcionalidades.SelectedIndex != -1)
             {
                 this.lb_Funcionalidades.Items.RemoveAt(this.lb_Funcionalidades.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un funcionalidad.");
             }
         }
 
@@ -166,12 +187,20 @@ namespace FrbaHotel.ABM_de_Rol
 
         private void btn_GuardarRol_Click(object sender, EventArgs e)
         {
+            bool estadoModificacion = true;
             Dominio.Rol rol1 = new Dominio.Rol();
             List<int> listaFuncionalidadesAnterior = rol1.BuscarFuncionalidades(txtNombreRol.Text);
             List<int> listaIDFuncionalidadesNueva = armarListaFuncionalidadesSeleccionadas();
             List<int> listaIDFuncionalidadesParaAgregar = new List<int>();
             List<int> listaIDFuncionalidadesParaEliminar = rol1.BuscarFuncionalidades(txtNombreRol.Text);
-            
+
+            if (txtNombreRol.Text != NombreRolAnterior)
+            {
+                if (rol1.verificarNombreDeRolValido(txtNombreRol.Text))
+                {
+                    rol1.modificarNombreRol(txtNombreRol.Text, NombreRolAnterior);
+                }   
+            }
             //Funcionalidades agregadas
             foreach (var itemFuncionalidad in listaIDFuncionalidadesNueva)
             {
@@ -180,7 +209,6 @@ namespace FrbaHotel.ABM_de_Rol
                     listaIDFuncionalidadesParaAgregar.Add(itemFuncionalidad);
                 }
             }
-            rol1.InsertarFuncionalidadesAlRol(txtNombreRol.Text, listaIDFuncionalidadesParaAgregar);
 
             //Funcionalidades eliminadas
             foreach (var itemFuncionalidad in listaFuncionalidadesAnterior)
@@ -191,7 +219,7 @@ namespace FrbaHotel.ABM_de_Rol
                 }
             }
 
-            if (rol1.QuitarFuncionalidadesAlRol(txtNombreRol.Text, listaIDFuncionalidadesParaEliminar))
+            if (rol1.InsertarFuncionalidadesAlRol(txtNombreRol.Text, listaIDFuncionalidadesParaAgregar) && rol1.QuitarFuncionalidadesAlRol(txtNombreRol.Text, listaIDFuncionalidadesParaEliminar))
             {
                 MessageBox.Show("Se han guardado las modificaciones");
             }

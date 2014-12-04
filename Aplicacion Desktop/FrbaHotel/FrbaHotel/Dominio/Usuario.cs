@@ -31,7 +31,9 @@ namespace FrbaHotel.Dominio
             {
                 cmd.Parameters.AddWithValue("@estadoUsuario", estadoUsuario.ToString());
             }
-          
+            int idHotelActual = Dominio.UsuarioLogin.TheInstance.getHotel();
+            cmd.Parameters.AddWithValue("@hotelID", idHotelActual);
+
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
@@ -120,7 +122,7 @@ namespace FrbaHotel.Dominio
             int hotelID = Dominio.UsuarioLogin.TheInstance.getHotel();
             foreach (var item in listaRolesSeleccionados)
 	        {
-                string textSQL = "INSERT INTO ATENTTOS.Roles_Por_Usuarios_Y_Hoteles VALUES('" + item.ToString() + "', '" + nombreUsuarioNuevo + "'," + hotelID + ",1)";
+                string textSQL = "INSERT INTO ATENTTOS.Roles_Por_Usuarios_Y_Hoteles VALUES('" + item.ToString() + "', '" + nombreUsuarioNuevo + "'," + hotelID + ")";
                 try
                 {
                     EjecutarComando(textSQL);
@@ -140,6 +142,152 @@ namespace FrbaHotel.Dominio
 
             DataTable dt = EjecutarStoreProcedure("[ATENTTOS].[SP_ObtenerDatosUsuario]", parametrosSP);
             return dt;
+        }
+
+        internal DataTable ObtenerRolesUsuario(string nombreUsuario)
+        {
+            string textoSQL = "SELECT RxU_Id_Rol FROM ATENTTOS.Roles_Por_Usuarios_Y_Hoteles WHERE RxU_User_Usu = '" + nombreUsuario + "' AND RxU_Hot_Codigo = " + Dominio.UsuarioLogin.TheInstance.getHotel().ToString();
+            DataTable dt = EjecutarConsulta(textoSQL);
+            return dt;
+        }
+
+        internal bool GuardarNuevaContrasenia(string nombreUsuario, string nuevaContrasenia)
+        {
+            string hash = cifrarContrasenia(nuevaContrasenia);
+            string textoSQL = "UPDATE ATENTTOS.Usuarios SET Usu_Password = '" + hash + "' WHERE Usu_Username = '" + nombreUsuario + "'";
+            try
+            {
+                EjecutarComando(textoSQL);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        internal DataTable BuscarTodosLosRolesHotelesDelUsuario(string nombreUsuario)
+        {
+            string textoSQL = "SELECT r.RxU_Id_Rol, h.Hot_Nombre FROM	ATENTTOS.Roles_Por_Usuarios_Y_Hoteles r, ATENTTOS.Hoteles h WHERE h.Hot_Codigo = r.RxU_Hot_Codigo AND	r.RxU_User_Usu = '" + nombreUsuario + "'";
+            DataTable dt = EjecutarConsulta(textoSQL);
+            return dt;
+        }
+
+        internal bool ModificarDatosUsuarioEnTablaUsuarios(string nombreUsuarioNuevo, string nombreUsuarioAnterior, int estadoUsuario)
+        {
+            parametrosSP = new Parametros[2];
+            parametrosSP[0] = new Parametros("@UsuUsernameAnterior", nombreUsuarioAnterior);
+            parametrosSP[1] = new Parametros("@UsuUsernameNuevo", nombreUsuarioNuevo);
+            if (EjecutarStoreProcedureSinDataTable("[ATENTTOS].[SP_CambiarUsuUsername]", parametrosSP))
+	        {
+                if (ModificarEstadoEnTablaUsuario(nombreUsuarioNuevo, estadoUsuario))
+                {
+                    return true;
+                }  
+	        }
+            return false;
+
+            
+        }
+
+        public bool ModificarEstadoEnTablaUsuario(string nombreUsuario, int estadoUsuario) 
+        {
+            string textoSQL = "UPDATE ATENTTOS.Usuarios SET Usu_Estado = " + estadoUsuario + " WHERE Usu_Username = '" + nombreUsuario + "'; ";
+            try
+            {
+                EjecutarComando(textoSQL);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        internal bool QuitarRolesAlUsuario(string nombreUsuario, List<string> listaRolesParaEliminar)
+        {
+            int HotelActual = Dominio.UsuarioLogin.TheInstance.getHotel();
+            foreach (var item in listaRolesParaEliminar)
+            {
+                string textoSQL = "DELETE FROM ATENTTOS.Roles_Por_Usuarios_Y_Hoteles WHERE RxU_Id_Rol='" + item.ToString() + "' AND RxU_User_Usu = '" + nombreUsuario + "' AND RxU_Hot_Codigo = " + HotelActual;
+                try
+                {
+                    EjecutarComando(textoSQL);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        internal bool InsertarRolesAlUsuario(string nombreUsuario, List<string> listaRolesParaAgregar)
+        {
+            int HotelActual = Dominio.UsuarioLogin.TheInstance.getHotel();
+            foreach (var item in listaRolesParaAgregar)
+            {
+                string textoSQL = "INSERT INTO ATENTTOS.Roles_Por_Usuarios_Y_Hoteles VALUES ('" + item.ToString() + "', '" + nombreUsuario + "'," + HotelActual + ")";
+                try
+                {
+                    EjecutarComando(textoSQL);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        internal bool ModificarDatosEnTablaEmpleados(string nombreUsuario, string apellidoUsuario, string tipoDocumentoUsuario, string nroDocumentoUsuario, string mailUsuario, string telefonoUsuario, string direccionUsuario, string fechaNacimientoUsuario, string Username)
+        {
+
+            SqlConnection connection = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand("ATENTTOS.SP_ModificarDatosEmpleados", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Emp_Documento_Numero",Convert.ToInt64(nroDocumentoUsuario));
+            cmd.Parameters.AddWithValue("@Emp_Tipo_Documento", tipoDocumentoUsuario);
+            cmd.Parameters.AddWithValue("@Emp_Apellido", apellidoUsuario);
+            cmd.Parameters.AddWithValue("@Emp_Nombre", nombreUsuario);
+            cmd.Parameters.AddWithValue("@Emp_Direccion", direccionUsuario);
+            cmd.Parameters.AddWithValue("@Emp_Fecha_Nac", fechaNacimientoUsuario);
+            cmd.Parameters.AddWithValue("@Emp_Telefono", telefonoUsuario);
+            cmd.Parameters.AddWithValue("@Emp_Mail", Convert.ToInt64(mailUsuario));
+            cmd.Parameters.AddWithValue("@Emp_Username", Username);
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            try
+            {
+                da.Fill(dt);
+                return true ;
+            }
+            catch 
+            {
+                return false;
+            }
+
+
+            //parametrosSP = new Parametros[9];
+            //parametrosSP[0] = new Parametros("@Emp_Documento_Numero", nroDocumentoUsuario);
+            //parametrosSP[1] = new Parametros("@Emp_Tipo_Documento", tipoDocumentoUsuario);
+            //parametrosSP[2] = new Parametros("@Emp_Apellido", apellidoUsuario);
+            //parametrosSP[3] = new Parametros("@Emp_Nombre", nombreUsuario);
+            //parametrosSP[4] = new Parametros("@Emp_Direccion", direccionUsuario);
+            //parametrosSP[5] = new Parametros("@Emp_Fecha_Nac", fechaNacimientoUsuario);
+            //parametrosSP[6] = new Parametros("@Emp_Telefono", telefonoUsuario);
+            //parametrosSP[7] = new Parametros("@Emp_Mail", mailUsuario);
+            //parametrosSP[8] = new Parametros("@Emp_Username", Username);
+
+            //if (EjecutarStoreProcedureSinDataTable("ATENTTOS.SP_ModificarDatosEmpleados", parametrosSP))
+            //{
+            //    return false;
+            //}
+            //return true;
+
+
         }
     }
 }

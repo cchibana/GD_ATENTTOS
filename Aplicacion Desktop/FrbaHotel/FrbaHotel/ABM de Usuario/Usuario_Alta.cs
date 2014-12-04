@@ -121,10 +121,10 @@ namespace FrbaHotel.ABM_de_Usuario
                                 List<string> listaRolesSeleccionados = ArmarListaRolesSeleccionados();
                                 if (usu1.InsertarUsuarioEnTablaRoles_Por_Usuarios_Y_Hoteles(listaRolesSeleccionados, txt_Username.Text))
                                 {
-                                    //Falta Insertar Datos en la tabla Roles por Usuarios y Hoteles
                                     if (usu1.InsertarDatosEnTablaEmpleados(txt_Usuario_Nombre.Text, txt_Usuario_Apellido.Text, cb_Usuario_TipoDocumento.SelectedItem.ToString(), txt_Usuario_NroDocumento.Text, txt_Usuario_Mail.Text, txt_Usuario_Telefono.Text, txt_Usuario_Direccion.Text, dtp_Usuario_FechaNacimiento.Value.ToString("yyyy-MM-dd"), txt_Username.Text))
                                     {
                                         MessageBox.Show("Alta de Usuario Exitosa");
+                                        LimpiarCampos();
                                     }
                                     else
                                     {
