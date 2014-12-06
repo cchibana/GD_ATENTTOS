@@ -18,7 +18,7 @@ namespace FrbaHotel.ABM_de_Cliente
         public Clientes()
         {
             InitializeComponent();
-            InicializarComboBoxEstado();
+            InicializarComboBoxTipoDoc();
         }
 
         /* Llenar el objeto con datos, este metodo hace que los de los controles pasen al objeto*/
@@ -46,7 +46,7 @@ namespace FrbaHotel.ABM_de_Cliente
             txt_apellido.Text = "";
             txt_mail.Text = "";
             txt_nro_doc.Text = "";
-            cbox_tipodoc.SelectedItem = null;
+            cbox_tipodoc.SelectedIndex = 0;
         }
 
         public void KeyPressAlfa(object sender, KeyPressEventArgs e)
@@ -71,6 +71,7 @@ namespace FrbaHotel.ABM_de_Cliente
             e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
         }
 
+        //ver borrar//
         private void Clientes_Load(object sender, EventArgs e)
         {
             /*Dominio.Cliente tipoDoc1 = new Dominio.Cliente();
@@ -87,7 +88,7 @@ namespace FrbaHotel.ABM_de_Cliente
             Limpiar();
         }
 
-        private void InicializarComboBoxEstado()
+        private void InicializarComboBoxTipoDoc()
         {
             Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
             item0.Text = "Sin Especificar";
@@ -125,7 +126,6 @@ namespace FrbaHotel.ABM_de_Cliente
             cbox_tipodoc.Items.Add(item6);
 
             cbox_tipodoc.SelectedIndex = 0;
-
         }
 
 
@@ -143,22 +143,30 @@ namespace FrbaHotel.ABM_de_Cliente
                 }
 
                 DataTable dt = cli1.BuscarClientes(txt_nombre.Text, txt_apellido.Text, txt_mail.Text, itemCbox_tipodoc.Value.ToString(), txt_nro_doc.Text);
-                dgv_clientes.DataSource = dt;
-            }
-            catch
-            {
-                DialogResult Result;
-                Result = MessageBox.Show("No se encontró el cliente. Desea darlo de alta?", " ", MessageBoxButtons.OKCancel);
-
-                if (Result == DialogResult.OK)
+                
+                if (dt.Rows.Count == 0 )
                 {
-                    ABM_de_Cliente.Cliente_Alta cliente_Alta = new FrbaHotel.ABM_de_Cliente.Cliente_Alta();
-                    cliente_Alta.Show(this);
+                    DialogResult Result;
+                    Result = MessageBox.Show("No se encontró el cliente. Desea darlo de alta?", " ", MessageBoxButtons.OKCancel);
+
+                    if (Result == DialogResult.OK)
+                    {
+                        ABM_de_Cliente.Cliente_Alta cliente_Alta = new FrbaHotel.ABM_de_Cliente.Cliente_Alta();
+                        cliente_Alta.Show(this);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else
                 {
-                    return;
+                    dgv_clientes.DataSource = dt;
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Error al realizar la búsqueda");                
             }
         }
 
@@ -176,7 +184,7 @@ namespace FrbaHotel.ABM_de_Cliente
             //se pasan los datos de la fila seleccionada a la pantalla de modificación
             cliente_Modificacion.txt_nombre.Text = dgv_clientes.CurrentRow.Cells[0].Value.ToString();
             cliente_Modificacion.txt_apellido.Text = dgv_clientes.CurrentRow.Cells[1].Value.ToString();
-            cliente_Modificacion.cbox_nacionalidad.Items.Add(dgv_clientes.CurrentRow.Cells[2].Value.ToString());
+            cliente_Modificacion.txt_nacionalidad.Text = dgv_clientes.CurrentRow.Cells[2].Value.ToString();
             cliente_Modificacion.date_nacimiento.Text = dgv_clientes.CurrentRow.Cells[3].Value.ToString();
             cliente_Modificacion.txt_mail.Text = dgv_clientes.CurrentRow.Cells[4].Value.ToString();
             cliente_Modificacion.txt_telefono.Text = dgv_clientes.CurrentRow.Cells[5].Value.ToString();
@@ -186,10 +194,24 @@ namespace FrbaHotel.ABM_de_Cliente
             cliente_Modificacion.txt_dom_dpto.Text = dgv_clientes.CurrentRow.Cells[9].Value.ToString();
             cliente_Modificacion.txt_ciudad.Text = dgv_clientes.CurrentRow.Cells[10].Value.ToString();
             cliente_Modificacion.txt_pais.Text = dgv_clientes.CurrentRow.Cells[11].Value.ToString();
-            cliente_Modificacion.cbox_tipo_doc.Items.Add(dgv_clientes.CurrentRow.Cells[12].Value.ToString());
+            cliente_Modificacion.txt_tipodoc.Text = dgv_clientes.CurrentRow.Cells[12].Value.ToString();
             cliente_Modificacion.txt_nro_doc.Text = dgv_clientes.CurrentRow.Cells[13].Value.ToString();
-            cliente_Modificacion.cbox_estado.Items.Add(dgv_clientes.CurrentRow.Cells[14].Value.ToString());
-            
+
+            string idEstado;
+            string descEstado;
+
+            idEstado = dgv_clientes.CurrentRow.Cells[14].Value.ToString();
+
+            if (idEstado == "True")
+            {
+                descEstado = "Habilitado";
+            }
+            else
+            {
+                descEstado = "Inhabilitado";
+            }
+            cliente_Modificacion.txt_estado.Text = descEstado;
+           
             cliente_Modificacion.Show();
         }
 

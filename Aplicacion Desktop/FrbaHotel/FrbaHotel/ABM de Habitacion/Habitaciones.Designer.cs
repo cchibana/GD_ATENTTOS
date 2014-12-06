@@ -54,12 +54,12 @@
             this.dgv_habitacion.AllowUserToAddRows = false;
             this.dgv_habitacion.AllowUserToDeleteRows = false;
             this.dgv_habitacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_habitacion.Location = new System.Drawing.Point(43, 218);
+            this.dgv_habitacion.Location = new System.Drawing.Point(27, 216);
             this.dgv_habitacion.MultiSelect = false;
             this.dgv_habitacion.Name = "dgv_habitacion";
             this.dgv_habitacion.ReadOnly = true;
             this.dgv_habitacion.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_habitacion.Size = new System.Drawing.Size(586, 88);
+            this.dgv_habitacion.Size = new System.Drawing.Size(614, 115);
             this.dgv_habitacion.TabIndex = 26;
             this.dgv_habitacion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_habitacion_CellContentClick);
             // 
@@ -117,12 +117,6 @@
             // 
             this.cbox_tipo_hab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_tipo_hab.FormattingEnabled = true;
-            this.cbox_tipo_hab.Items.AddRange(new object[] {
-            "Simple",
-            "Doble",
-            "Doble Twin",
-            "Triple",
-            "Cuadruple"});
             this.cbox_tipo_hab.Location = new System.Drawing.Point(447, 46);
             this.cbox_tipo_hab.Name = "cbox_tipo_hab";
             this.cbox_tipo_hab.Size = new System.Drawing.Size(101, 21);
@@ -163,9 +157,6 @@
             "Pasaporte"});
             this.cbox_ubicacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_ubicacion.FormattingEnabled = true;
-            this.cbox_ubicacion.Items.AddRange(new object[] {
-            "Frente",
-            "Contrafrente"});
             this.cbox_ubicacion.Location = new System.Drawing.Point(447, 19);
             this.cbox_ubicacion.Name = "cbox_ubicacion";
             this.cbox_ubicacion.Size = new System.Drawing.Size(100, 21);

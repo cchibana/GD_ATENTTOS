@@ -16,7 +16,8 @@ namespace FrbaHotel.ABM_de_Hotel
 
         public Hoteles()
         {
-            InitializeComponent();
+            InitializeComponent(); 
+            InicializarComboBoxEstado();
         }
 
         public void Limpiar()
@@ -47,6 +48,41 @@ namespace FrbaHotel.ABM_de_Hotel
             }
 
             e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
+        }
+
+        private void InicializarComboBoxEstado()
+        {
+            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
+            item0.Text = "Sin Especificar";
+            item0.Value = null;
+            cbox_estrellas.Items.Add(item0);
+
+            Dominio.ComboBoxItem item1 = new Dominio.ComboBoxItem();
+            item1.Text = "1";
+            item1.Value = "1";
+            cbox_estrellas.Items.Add(item1);
+
+            Dominio.ComboBoxItem item2 = new Dominio.ComboBoxItem();
+            item2.Text = "2";
+            item2.Value = "2";
+            cbox_estrellas.Items.Add(item2);
+
+            Dominio.ComboBoxItem item3 = new Dominio.ComboBoxItem();
+            item3.Text = "3";
+            item3.Value = "3";
+            cbox_estrellas.Items.Add(item3);
+
+            Dominio.ComboBoxItem item4 = new Dominio.ComboBoxItem();
+            item4.Text = "4";
+            item4.Value = "4";
+            cbox_estrellas.Items.Add(item4);
+
+            Dominio.ComboBoxItem item5 = new Dominio.ComboBoxItem();
+            item5.Text = "5";
+            item5.Value = "5";
+            cbox_estrellas.Items.Add(item5);
+
+            cbox_estrellas.SelectedIndex = 0;
         }
 
 
@@ -102,22 +138,42 @@ namespace FrbaHotel.ABM_de_Hotel
  
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            dgv_hoteles.DataSource = hotel1.Listar();
+            Dominio.Hotel hotel1 = new Dominio.Hotel();
 
-            if (dgv_hoteles.RowCount == 0)
+            try
             {
-                DialogResult Result;
-                Result = MessageBox.Show("No se encontró el Hotel. Desea darlo de alta?", " ", MessageBoxButtons.OKCancel);
+                Dominio.ComboBoxItem itemCbox_estrellas = (Dominio.ComboBoxItem)cbox_estrellas.SelectedItem;
 
-                if (Result == DialogResult.OK)
+                if (itemCbox_estrellas.Value == null)
                 {
-                    ABM_de_Hotel.Hotel_Alta hab_Alta = new FrbaHotel.ABM_de_Hotel.Hotel_Alta();
-                    hab_Alta.Show(this);
+                    itemCbox_estrellas.Value = "";
+                }
+
+                DataTable dt = hotel1.BuscarHoteles(txt_nombre.Text, txt_ciudad.Text, txt_pais.Text, itemCbox_estrellas.Value.ToString());
+
+                if (dt.Rows.Count == 0)
+                {
+                    DialogResult Result;
+                    Result = MessageBox.Show("No se encontró el hotel. Desea darlo de alta?", " ", MessageBoxButtons.OKCancel);
+
+                    if (Result == DialogResult.OK)
+                    {
+                        ABM_de_Hotel.Hotel_Alta hotel_Alta = new FrbaHotel.ABM_de_Hotel.Hotel_Alta();
+                        hotel_Alta.Show(this);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else
                 {
-                    return;
+                    dgv_hoteles.DataSource = dt;
                 }
+            }
+            catch
+            {
+                MessageBox.Show("Error al realizar la búsqueda");
             }
         }
 

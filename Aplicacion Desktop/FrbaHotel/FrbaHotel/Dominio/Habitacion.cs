@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using System.Data.Sql;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace FrbaHotel.Dominio
 {
@@ -64,6 +67,41 @@ namespace FrbaHotel.Dominio
             return EjecutarConsulta(texto);
         }
 
+
+        string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
+
+        internal DataTable BuscarHabitaciones(string numeroHab, string pisoHab, string descripcion, string ubicacion, string tipoHab)
+        {
+            SqlConnection connection = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand("dbo.SP_BuscarHabitaciones", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            if (!string.IsNullOrEmpty(numeroHab))
+            {
+                cmd.Parameters.AddWithValue("@numeroHab", numeroHab);
+            }
+            if (!string.IsNullOrEmpty(pisoHab))
+            {
+                cmd.Parameters.AddWithValue("@pisoHab", pisoHab);
+            }
+            if (!string.IsNullOrEmpty(descripcion))
+            {
+                cmd.Parameters.AddWithValue("@descripcion", descripcion);
+            }
+            if (!string.IsNullOrEmpty(ubicacion))
+            {
+                cmd.Parameters.AddWithValue("@ubicacion", ubicacion.ToString());
+            }
+            if (!string.IsNullOrEmpty(tipoHab))
+            {
+                cmd.Parameters.AddWithValue("@tipoHab", tipoHab.ToString());
+            }
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+        }
 
         /*public string Insertar()
         {

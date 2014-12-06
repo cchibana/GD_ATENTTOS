@@ -84,12 +84,12 @@
             this.dgv_hoteles.AllowUserToAddRows = false;
             this.dgv_hoteles.AllowUserToDeleteRows = false;
             this.dgv_hoteles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_hoteles.Location = new System.Drawing.Point(46, 176);
+            this.dgv_hoteles.Location = new System.Drawing.Point(30, 182);
             this.dgv_hoteles.MultiSelect = false;
             this.dgv_hoteles.Name = "dgv_hoteles";
             this.dgv_hoteles.ReadOnly = true;
             this.dgv_hoteles.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_hoteles.Size = new System.Drawing.Size(573, 88);
+            this.dgv_hoteles.Size = new System.Drawing.Size(594, 130);
             this.dgv_hoteles.TabIndex = 19;
             this.dgv_hoteles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv1_CellContentClick);
             // 
@@ -166,12 +166,6 @@
             "Pasaporte"});
             this.cbox_estrellas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_estrellas.FormattingEnabled = true;
-            this.cbox_estrellas.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
             this.cbox_estrellas.Location = new System.Drawing.Point(456, 19);
             this.cbox_estrellas.Name = "cbox_estrellas";
             this.cbox_estrellas.Size = new System.Drawing.Size(100, 21);

@@ -16,6 +16,7 @@ namespace FrbaHotel.ABM_de_Habitacion
         public Habitaciones()
         {
             InitializeComponent();
+            InicializarComboBoxEstado();
         }
 
         public void Limpiar()
@@ -47,6 +48,57 @@ namespace FrbaHotel.ABM_de_Habitacion
             }
 
             e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
+        }
+
+        private void InicializarComboBoxEstado()
+        {
+            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
+            item0.Text = "Sin Especificar";
+            item0.Value = null;
+            cbox_ubicacion.Items.Add(item0);
+
+            Dominio.ComboBoxItem item1 = new Dominio.ComboBoxItem();
+            item1.Text = "Vista Externa";
+            item1.Value = "Vista Externa";
+            cbox_ubicacion.Items.Add(item1);
+
+            Dominio.ComboBoxItem item2 = new Dominio.ComboBoxItem();
+            item2.Text = "Vista Interna";
+            item2.Value = "Vista Interna";
+            cbox_ubicacion.Items.Add(item2);
+
+            Dominio.ComboBoxItem item3 = new Dominio.ComboBoxItem();
+            item0.Text = "Sin Especificar";
+            item0.Value = null;
+            cbox_tipo_hab.Items.Add(item3);
+
+            Dominio.ComboBoxItem item4 = new Dominio.ComboBoxItem();
+            item4.Text = "Base simple";
+            item4.Value = "1001";
+            cbox_tipo_hab.Items.Add(item4);
+
+            Dominio.ComboBoxItem item5 = new Dominio.ComboBoxItem();
+            item4.Text = "Base doble";
+            item4.Value = "1002";
+            cbox_tipo_hab.Items.Add(item5);
+
+            Dominio.ComboBoxItem item6 = new Dominio.ComboBoxItem();
+            item4.Text = "Base triple";
+            item4.Value = "1003";
+            cbox_tipo_hab.Items.Add(item6);
+
+            Dominio.ComboBoxItem item7 = new Dominio.ComboBoxItem();
+            item4.Text = "Base cuadruple";
+            item4.Value = "1004";
+            cbox_tipo_hab.Items.Add(item7);
+
+            Dominio.ComboBoxItem item8 = new Dominio.ComboBoxItem();
+            item4.Text = "King";
+            item4.Value = "1005";
+            cbox_tipo_hab.Items.Add(item8);
+
+            cbox_ubicacion.SelectedIndex = 0;
+            cbox_tipo_hab.SelectedIndex = 0;
         }
 
 
@@ -94,24 +146,48 @@ namespace FrbaHotel.ABM_de_Habitacion
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-         
-            dgv_habitacion.DataSource = habitacion1.Listar();
+            Dominio.Habitacion hab1 = new Dominio.Habitacion();
 
-            if (dgv_habitacion.RowCount == 0)
+            try
             {
-                DialogResult Result;
-                Result = MessageBox.Show("No se encontró la habitación. Desea darlo de alta?", " ", MessageBoxButtons.OKCancel);
+                Dominio.ComboBoxItem itemCbox_ubicacion = (Dominio.ComboBoxItem)cbox_ubicacion.SelectedItem;
+                Dominio.ComboBoxItem itemCbox_tipoHab = (Dominio.ComboBoxItem)cbox_tipo_hab.SelectedItem;
 
-                if (Result == DialogResult.OK)
+                if (itemCbox_ubicacion.Value == null)
                 {
-                    ABM_de_Habitacion.Habitacion_Alta hab_Alta = new FrbaHotel.ABM_de_Habitacion.Habitacion_Alta();
-                    hab_Alta.Show(this);
+                    itemCbox_ubicacion.Value = "";
+                }
+                if (itemCbox_tipoHab.Value == null)
+                {
+                    itemCbox_tipoHab.Value = "";
+                }
+
+                DataTable dt = hab1.BuscarHabitaciones(txt_numero.Text, txt_piso.Text, txt_descripcion.Text, itemCbox_ubicacion.Value.ToString(), itemCbox_tipoHab.Value.ToString());
+
+                if (dt.Rows.Count == 0)
+                {
+                    DialogResult Result;
+                    Result = MessageBox.Show("No se encontró la habitación. Desea darlo de alta?", " ", MessageBoxButtons.OKCancel);
+
+                    if (Result == DialogResult.OK)
+                    {
+                        ABM_de_Habitacion.Habitacion_Alta hab_Alta = new FrbaHotel.ABM_de_Habitacion.Habitacion_Alta();
+                        hab_Alta.Show(this);
+                    }
+                    else
+                    {
+                        return;
+                    }
                 }
                 else
                 {
-                    return;
+                    dgv_habitacion.DataSource = dt;
                 }                
-            }            
+            }
+            catch
+            {
+                MessageBox.Show("Error al realizar la búsqueda");
+            }          
         }
 
         private void dgv_habitacion_CellContentClick(object sender, DataGridViewCellEventArgs e)
