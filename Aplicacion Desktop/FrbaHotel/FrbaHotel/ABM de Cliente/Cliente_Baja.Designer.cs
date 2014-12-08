@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbox_estado = new System.Windows.Forms.ComboBox();
             this.lbl_estado = new System.Windows.Forms.Label();
             this.txt_pais = new System.Windows.Forms.TextBox();
             this.lbl_pais = new System.Windows.Forms.Label();
@@ -60,21 +59,16 @@
             this.txt_dom_calle = new System.Windows.Forms.TextBox();
             this.lbl_dom_calle = new System.Windows.Forms.Label();
             this.txt_tipodoc = new System.Windows.Forms.TextBox();
+            this.txt_estado = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cbox_estado = new System.Windows.Forms.ComboBox();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // cbox_estado
-            // 
-            this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbox_estado.FormattingEnabled = true;
-            this.cbox_estado.Location = new System.Drawing.Point(485, 116);
-            this.cbox_estado.Name = "cbox_estado";
-            this.cbox_estado.Size = new System.Drawing.Size(120, 21);
-            this.cbox_estado.TabIndex = 70;
             // 
             // lbl_estado
             // 
             this.lbl_estado.AutoSize = true;
-            this.lbl_estado.Location = new System.Drawing.Point(401, 119);
+            this.lbl_estado.Location = new System.Drawing.Point(391, 180);
             this.lbl_estado.Name = "lbl_estado";
             this.lbl_estado.Size = new System.Drawing.Size(40, 13);
             this.lbl_estado.TabIndex = 69;
@@ -236,12 +230,14 @@
             // 
             // btn_guardar
             // 
+            this.btn_guardar.Enabled = false;
             this.btn_guardar.Location = new System.Drawing.Point(371, 325);
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(75, 23);
             this.btn_guardar.TabIndex = 71;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = true;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // btn_cancelar
             // 
@@ -339,11 +335,41 @@
             this.txt_tipodoc.Size = new System.Drawing.Size(120, 20);
             this.txt_tipodoc.TabIndex = 90;
             // 
+            // txt_estado
+            // 
+            this.txt_estado.Enabled = false;
+            this.txt_estado.Location = new System.Drawing.Point(454, 177);
+            this.txt_estado.Name = "txt_estado";
+            this.txt_estado.Size = new System.Drawing.Size(89, 20);
+            this.txt_estado.TabIndex = 100;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cbox_estado);
+            this.groupBox3.Location = new System.Drawing.Point(549, 161);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(103, 45);
+            this.groupBox3.TabIndex = 99;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Seleccionar";
+            // 
+            // cbox_estado
+            // 
+            this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_estado.FormattingEnabled = true;
+            this.cbox_estado.Location = new System.Drawing.Point(15, 16);
+            this.cbox_estado.Name = "cbox_estado";
+            this.cbox_estado.Size = new System.Drawing.Size(78, 21);
+            this.cbox_estado.TabIndex = 46;
+            this.cbox_estado.SelectedIndexChanged += new System.EventHandler(this.CambiarEstado);
+            // 
             // Cliente_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 417);
+            this.Controls.Add(this.txt_estado);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.txt_tipodoc);
             this.Controls.Add(this.txt_dom_dpto);
             this.Controls.Add(this.lbl_dom_dpto);
@@ -356,7 +382,6 @@
             this.Controls.Add(this.date_nacimiento);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_guardar);
-            this.Controls.Add(this.cbox_estado);
             this.Controls.Add(this.lbl_estado);
             this.Controls.Add(this.txt_pais);
             this.Controls.Add(this.lbl_pais);
@@ -379,7 +404,7 @@
             this.Name = "Cliente_Baja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baja Cliente";
-            this.Load += new System.EventHandler(this.Cliente_Baja_Load);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -418,6 +443,8 @@
         public System.Windows.Forms.TextBox txt_dom_calle;
         private System.Windows.Forms.Label lbl_dom_calle;
         public System.Windows.Forms.TextBox txt_tipodoc;
+        public System.Windows.Forms.TextBox txt_estado;
+        private System.Windows.Forms.GroupBox groupBox3;
         public System.Windows.Forms.ComboBox cbox_estado;
     }
 }

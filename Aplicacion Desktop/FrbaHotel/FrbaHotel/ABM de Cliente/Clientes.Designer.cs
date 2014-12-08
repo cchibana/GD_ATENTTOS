@@ -243,7 +243,6 @@
             this.Name = "Clientes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes";
-            this.Load += new System.EventHandler(this.Clientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).EndInit();
             this.gBox_filtros.ResumeLayout(false);
             this.gBox_filtros.PerformLayout();

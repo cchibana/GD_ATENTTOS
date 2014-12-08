@@ -54,6 +54,8 @@
             this.cbox_estado = new System.Windows.Forms.ComboBox();
             this.lbl_numero = new System.Windows.Forms.Label();
             this.txt_numero = new System.Windows.Forms.TextBox();
+            this.cbox_regimen = new System.Windows.Forms.ComboBox();
+            this.lbl_regimen = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl_estado
@@ -254,6 +256,7 @@
             this.btn_guardar.TabIndex = 53;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = true;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // date_creacion
             // 
@@ -293,11 +296,37 @@
             this.txt_numero.TabIndex = 74;
             this.txt_numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
+            // cbox_regimen
+            // 
+            this.cbox_regimen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_regimen.FormattingEnabled = true;
+            this.cbox_regimen.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5"});
+            this.cbox_regimen.Location = new System.Drawing.Point(123, 270);
+            this.cbox_regimen.Name = "cbox_regimen";
+            this.cbox_regimen.Size = new System.Drawing.Size(180, 21);
+            this.cbox_regimen.TabIndex = 77;
+            // 
+            // lbl_regimen
+            // 
+            this.lbl_regimen.AutoSize = true;
+            this.lbl_regimen.Location = new System.Drawing.Point(21, 273);
+            this.lbl_regimen.Name = "lbl_regimen";
+            this.lbl_regimen.Size = new System.Drawing.Size(49, 13);
+            this.lbl_regimen.TabIndex = 76;
+            this.lbl_regimen.Text = "Regimen";
+            // 
             // Hotel_Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 417);
+            this.Controls.Add(this.cbox_regimen);
+            this.Controls.Add(this.lbl_regimen);
             this.Controls.Add(this.lbl_numero);
             this.Controls.Add(this.txt_numero);
             this.Controls.Add(this.cbox_estado);
@@ -360,5 +389,7 @@
         public System.Windows.Forms.DateTimePicker date_creacion;
         public System.Windows.Forms.ComboBox cbox_estado;
         public System.Windows.Forms.TextBox txt_numero;
+        public System.Windows.Forms.ComboBox cbox_regimen;
+        private System.Windows.Forms.Label lbl_regimen;
     }
 }

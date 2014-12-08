@@ -49,6 +49,20 @@ namespace FrbaHotel.Dominio
             return EjecutarConsulta(texto);
         }
 
+        public DataTable ListarRegimenes()
+        {
+            string texto = "select [Reg_Descripcion] from [GD2C2014].[ATENTTOS].[Regimenes];";
+            return EjecutarConsulta(texto);
+        }
+
+        internal bool verificarCalleYNumeroValido(string calleHotel, string numero)
+        {
+            //Si el nombre del cliente Ingresado se encuentra disponible, devuelve 1(True). Sino, devuelve 0(False).
+            string textoSQL = "  SELECT CASE WHEN EXISTS ( SELECT * FROM ATENTTOS.Hoteles h WHERE h.Hot_Calle = '" + calleHotel + "' AND h.Hot_Numero = '" + numero + "') THEN CAST(0 AS BIT)ELSE CAST(1 AS BIT) END";
+            DataTable dt = EjecutarConsulta(textoSQL);
+            return Convert.ToBoolean(dt.Rows[0][0]);
+        }
+
         string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
 
         internal DataTable BuscarHoteles(string nombreHotel, string ciudadHotel, string paisHotel, string estrellas)
@@ -80,5 +94,22 @@ namespace FrbaHotel.Dominio
             return dt;
         }
 
+
+        internal bool InsertarDatosEnTablaHoteles(string nombre, string mail, string telefono, string calle, string numero, string ciudad, string pais, string estrellas, string fechaCreacion, string regimen, string estado)
+        {
+            string textoSQL = @"INSERT INTO ATENTTOS.Hoteles (Hot_Nombre, Hot_Email, Hot_Telefono, Hot_Calle, Hot_Numero, Hot_Ciu_Id, Hot_Pai_Nombre, Hot_CantEstrella, Hot_Fecha_Creacion, Hot_Estado)"
+                              + "VALUES	('" + nombre + "', '" + mail + "', '" + telefono + "', '" + calle + "', '"
+                              + numero + "', " + ciudad + ", '" + pais + "'," + estrellas + "," + fechaCreacion + ",'" + regimen + "',1)";
+            try
+            {
+                EjecutarComando(textoSQL);
+                return true;
+            }
+            catch
+            {
+                return false;
+                throw;
+            }
+        }
     }
 }

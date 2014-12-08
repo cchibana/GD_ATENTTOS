@@ -13,32 +13,31 @@ namespace FrbaHotel.ABM_de_Cliente
     public partial class Clientes : Form
     {
 
+        private static Clientes _instancia;
+
+        public static Clientes ObtenerInstancia()
+        {
+            if (_instancia == null || _instancia.IsDisposed)
+            {
+                _instancia = new Clientes();
+            }
+            _instancia.BringToFront();
+            return _instancia;
+        }
+
+
         Dominio.Cliente cliente1 = new Dominio.Cliente();
+
+        string tipoDoc;
+        string idEstado;
+        string descEstado;
+        Dominio.Cliente tipoDoc1 = new Dominio.Cliente();
 
         public Clientes()
         {
             InitializeComponent();
             InicializarComboBoxTipoDoc();
-        }
-
-        /* Llenar el objeto con datos, este metodo hace que los de los controles pasen al objeto*/
-        public bool LlenarObjeto()
-        {
-            try
-            {
-                try { cliente1.Nombre = txt_nombre.Text; }
-                catch { cliente1.Nombre = null; }
-                cliente1.Nombre = txt_nombre.Text;
-                cliente1.Apellido = txt_apellido.Text;
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-        
+        }              
 
         public void Limpiar()
         {
@@ -49,6 +48,7 @@ namespace FrbaHotel.ABM_de_Cliente
             cbox_tipodoc.SelectedIndex = 0;
         }
 
+        /*validacion teclas permitidas*/
         public void KeyPressAlfa(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)13)
@@ -71,17 +71,6 @@ namespace FrbaHotel.ABM_de_Cliente
             e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
         }
 
-        //ver borrar//
-        private void Clientes_Load(object sender, EventArgs e)
-        {
-            /*Dominio.Cliente tipoDoc1 = new Dominio.Cliente();
-            DataTable tipoDoc = tipoDoc1.ListarTipoDoc();
-
-            for (int i = 0; i < tipoDoc.Rows.Count; i++)
-            {
-                cbox_tipodoc.Items.Add(tipoDoc.Rows[i][0]);
-            }*/
-        }
 
         private void btn_Limpiar_Click(object sender, EventArgs e)
         {
@@ -126,6 +115,19 @@ namespace FrbaHotel.ABM_de_Cliente
             cbox_tipodoc.Items.Add(item6);
 
             cbox_tipodoc.SelectedIndex = 0;
+        }
+
+        private string DescripEstado(string idEstado)
+        {
+            if (idEstado == "True")
+            {
+                descEstado = "Habilitado";
+            }
+            else
+            {
+                descEstado = "Inhabilitado";
+            }
+            return descEstado;
         }
 
 
@@ -185,7 +187,7 @@ namespace FrbaHotel.ABM_de_Cliente
             cliente_Modificacion.txt_nombre.Text = dgv_clientes.CurrentRow.Cells[0].Value.ToString();
             cliente_Modificacion.txt_apellido.Text = dgv_clientes.CurrentRow.Cells[1].Value.ToString();
             cliente_Modificacion.txt_nacionalidad.Text = dgv_clientes.CurrentRow.Cells[2].Value.ToString();
-            cliente_Modificacion.date_nacimiento.Text = dgv_clientes.CurrentRow.Cells[3].Value.ToString();
+            cliente_Modificacion.date_nacimiento.Value = Convert.ToDateTime(dgv_clientes.CurrentRow.Cells[3].Value.ToString());
             cliente_Modificacion.txt_mail.Text = dgv_clientes.CurrentRow.Cells[4].Value.ToString();
             cliente_Modificacion.txt_telefono.Text = dgv_clientes.CurrentRow.Cells[5].Value.ToString();
             cliente_Modificacion.txt_dom_calle.Text = dgv_clientes.CurrentRow.Cells[6].Value.ToString();
@@ -194,26 +196,20 @@ namespace FrbaHotel.ABM_de_Cliente
             cliente_Modificacion.txt_dom_dpto.Text = dgv_clientes.CurrentRow.Cells[9].Value.ToString();
             cliente_Modificacion.txt_ciudad.Text = dgv_clientes.CurrentRow.Cells[10].Value.ToString();
             cliente_Modificacion.txt_pais.Text = dgv_clientes.CurrentRow.Cells[11].Value.ToString();
-            cliente_Modificacion.txt_tipodoc.Text = dgv_clientes.CurrentRow.Cells[12].Value.ToString();
+
+            tipoDoc = dgv_clientes.CurrentRow.Cells[12].Value.ToString();
+            DataTable dt_tipoDoc = tipoDoc1.RecuperaDescripDoc(tipoDoc);
+            cliente_Modificacion.txt_tipodoc.Text = dt_tipoDoc.Rows[0][0].ToString();
+
             cliente_Modificacion.txt_nro_doc.Text = dgv_clientes.CurrentRow.Cells[13].Value.ToString();
-
-            string idEstado;
-            string descEstado;
-
+                   
             idEstado = dgv_clientes.CurrentRow.Cells[14].Value.ToString();
-
-            if (idEstado == "True")
-            {
-                descEstado = "Habilitado";
-            }
-            else
-            {
-                descEstado = "Inhabilitado";
-            }
-            cliente_Modificacion.txt_estado.Text = descEstado;
-           
+            DescripEstado(idEstado);
+            cliente_Modificacion.txt_estado.Text = descEstado;      
+                      
             cliente_Modificacion.Show();
         }
+
 
         private void btn_Baja_Click(object sender, EventArgs e)
         {
@@ -232,9 +228,16 @@ namespace FrbaHotel.ABM_de_Cliente
             cliente_Baja.txt_dom_dpto.Text = dgv_clientes.CurrentRow.Cells[9].Value.ToString();
             cliente_Baja.txt_ciudad.Text = dgv_clientes.CurrentRow.Cells[10].Value.ToString();
             cliente_Baja.txt_pais.Text = dgv_clientes.CurrentRow.Cells[11].Value.ToString();
-            cliente_Baja.txt_tipodoc.Text = dgv_clientes.CurrentRow.Cells[12].Value.ToString();
+
+            tipoDoc = dgv_clientes.CurrentRow.Cells[12].Value.ToString();
+            DataTable dt_tipoDoc = tipoDoc1.RecuperaDescripDoc(tipoDoc);
+            cliente_Baja.txt_tipodoc.Text = dt_tipoDoc.Rows[0][0].ToString();
+
             cliente_Baja.txt_nro_doc.Text = dgv_clientes.CurrentRow.Cells[13].Value.ToString();
-            cliente_Baja.cbox_estado.Items.Add(dgv_clientes.CurrentRow.Cells[14].Value.ToString());
+
+            idEstado = dgv_clientes.CurrentRow.Cells[14].Value.ToString();
+            DescripEstado(idEstado);
+            cliente_Baja.txt_estado.Text = descEstado;            
             
             cliente_Baja.Show();
         }

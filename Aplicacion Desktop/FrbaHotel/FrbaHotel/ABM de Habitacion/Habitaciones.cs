@@ -16,7 +16,8 @@ namespace FrbaHotel.ABM_de_Habitacion
         public Habitaciones()
         {
             InitializeComponent();
-            InicializarComboBoxEstado();
+            InicializarCboxUbicacion();
+            InicializarCboxTipoHab();
         }
 
         public void Limpiar()
@@ -50,7 +51,7 @@ namespace FrbaHotel.ABM_de_Habitacion
             e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
         }
 
-        private void InicializarComboBoxEstado()
+        private void InicializarCboxUbicacion()
         {
             Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
             item0.Text = "Sin Especificar";
@@ -67,37 +68,41 @@ namespace FrbaHotel.ABM_de_Habitacion
             item2.Value = "Vista Interna";
             cbox_ubicacion.Items.Add(item2);
 
-            Dominio.ComboBoxItem item3 = new Dominio.ComboBoxItem();
+            cbox_ubicacion.SelectedIndex = 0;
+        }
+
+        private void InicializarCboxTipoHab()
+        {
+            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
             item0.Text = "Sin Especificar";
             item0.Value = null;
+            cbox_tipo_hab.Items.Add(item0);
+
+            Dominio.ComboBoxItem item1 = new Dominio.ComboBoxItem();
+            item1.Text = "Base simple";
+            item1.Value = "1001";
+            cbox_tipo_hab.Items.Add(item1);
+
+            Dominio.ComboBoxItem item2 = new Dominio.ComboBoxItem();
+            item2.Text = "Base doble";
+            item2.Value = "1002";
+            cbox_tipo_hab.Items.Add(item2);
+
+            Dominio.ComboBoxItem item3 = new Dominio.ComboBoxItem();
+            item3.Text = "Base triple";
+            item3.Value = "1003";
             cbox_tipo_hab.Items.Add(item3);
 
             Dominio.ComboBoxItem item4 = new Dominio.ComboBoxItem();
-            item4.Text = "Base simple";
-            item4.Value = "1001";
+            item4.Text = "Base cuadruple";
+            item4.Value = "1004";
             cbox_tipo_hab.Items.Add(item4);
 
             Dominio.ComboBoxItem item5 = new Dominio.ComboBoxItem();
-            item4.Text = "Base doble";
-            item4.Value = "1002";
+            item5.Text = "King";
+            item5.Value = "1005";
             cbox_tipo_hab.Items.Add(item5);
 
-            Dominio.ComboBoxItem item6 = new Dominio.ComboBoxItem();
-            item4.Text = "Base triple";
-            item4.Value = "1003";
-            cbox_tipo_hab.Items.Add(item6);
-
-            Dominio.ComboBoxItem item7 = new Dominio.ComboBoxItem();
-            item4.Text = "Base cuadruple";
-            item4.Value = "1004";
-            cbox_tipo_hab.Items.Add(item7);
-
-            Dominio.ComboBoxItem item8 = new Dominio.ComboBoxItem();
-            item4.Text = "King";
-            item4.Value = "1005";
-            cbox_tipo_hab.Items.Add(item8);
-
-            cbox_ubicacion.SelectedIndex = 0;
             cbox_tipo_hab.SelectedIndex = 0;
         }
 

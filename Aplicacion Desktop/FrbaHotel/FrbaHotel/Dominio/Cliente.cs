@@ -11,7 +11,8 @@ namespace FrbaHotel.Dominio
 {
     class Cliente : CDatos
     {
-        string nombre;
+        string estado;
+        /*string nombre;
         public string Nombre
         {
             get { return nombre; }
@@ -32,7 +33,6 @@ namespace FrbaHotel.Dominio
             set { nacionalidad = value;}
         }
 
-
         string mail;
         public string Mail
         {
@@ -52,43 +52,7 @@ namespace FrbaHotel.Dominio
         {
             get { return nroDocumento; }
             set { nroDocumento = value; }
-        }
-
-
-        /*Estos metodos retornan resultados de consultas*/
-        public DataTable Listar()
-        {
-            string texto = @"select [Cli_Nombre] as 'Nombre',
-                                    [Cli_Apellido] as 'Apellido',
-                                    [Cli_Pai_Nombre] as 'Nacionalidad',
-                                    [Cli_Fecha_Nac] as 'Fecha de Nacimiento',
-                                    [Cli_Mail] as 'Mail',
-                                    [Cli_telefono] as 'Teléfono',
-                                    [Cli_Domicilio_Calle] as 'Domicilio',
-                                    [Cli_Nro_Calle] as 'Número',
-                                    [Cli_Piso] as 'Piso',
-                                    [Cli_Dto] as 'Dpto',
-                                    [Cli_Pai_Nombre] as 'Ciudad',
-                                    [Cli_Pai_Nombre] as 'Pais',
-                                    [Cli_Tipo_Documento] as 'Tipo Doc',
-                                    [Cli_Numero_Documento] as 'Nro Documento',
-                                    [Cli_Estado] as 'Estado'
-                               from [GD2C2014].[ATENTTOS].[Clientes];";
-
-            return EjecutarConsulta(texto);
-        }
-
-        public DataTable ListarPorNombre()
-        {
-            string texto = @"select [Cli_Pasaporte_Nro],
-                                    [Cliente_Apellido],
-                                    [Cliente_Nombre],
-                                    [Cliente_Fecha_Nac],
-                                    [Cliente_Mail],
-                                    [Cliente_Nacionalidad] 
-                               from [GD2C2014].[ATENTTOS].[Clientes] where nombre = '" + Nombre + "';";
-            return EjecutarConsulta(texto);
-        }
+        }*/
 
 
         /*Rellenar el combobox desde la tabla*/
@@ -98,9 +62,21 @@ namespace FrbaHotel.Dominio
             return EjecutarConsulta(texto);
         }
 
+        public DataTable ListarPaises()
+        {
+            string texto = "select [Pai_Nombre] from [GD2C2014].[ATENTTOS].[Paises];";
+            return EjecutarConsulta(texto);
+        }
+
         public DataTable ListarTipoDoc()
         {
             string texto = "select [Tip_Descripcion] from [GD2C2014].[ATENTTOS].[Tipo_Documento];";
+            return EjecutarConsulta(texto);
+        }
+
+        public DataTable RecuperaDescripDoc(string tipoDoc)
+        {
+            string texto = "select [Tip_Descripcion] from [GD2C2014].[ATENTTOS].[Tipo_Documento] where [Tip_Id] =" + tipoDoc + ";";
             return EjecutarConsulta(texto);
         }
 
@@ -110,7 +86,7 @@ namespace FrbaHotel.Dominio
         internal DataTable BuscarClientes(string nombreCli, string apellidoCli, string mailCli, string tipoDoc, string nroDoc)
         {
             SqlConnection connection = new SqlConnection(cadenaDeConexion);
-            SqlCommand cmd = new SqlCommand("ATENTTOS.SP_BuscarClientes", connection);
+            SqlCommand cmd = new SqlCommand("dbo.SP_BuscarClientes", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             if (!string.IsNullOrEmpty(nombreCli))
@@ -138,6 +114,103 @@ namespace FrbaHotel.Dominio
             DataTable dt = new DataTable();
             da.Fill(dt);
             return dt;
+        }
+
+
+        internal bool verificarTipoYNumeroDocumentoValido(string tipoDocumento, string numeroDocumento)
+        {
+            //Si el cliente Ingresado no se encuentra registrado, devuelve 1(True). Sino, devuelve 0(False).
+            string textoSQL = "  SELECT CASE WHEN EXISTS ( SELECT * FROM ATENTTOS.Clientes c, ATENTTOS.Tipo_Documento td WHERE c.Cli_Tipo_Documento = td.Tip_Id AND c.Cli_Numero_Documento = " + numeroDocumento + " AND td.Tip_Descripcion = '" + tipoDocumento + "') THEN CAST(0 AS BIT)ELSE CAST(1 AS BIT) END";
+            DataTable dt = EjecutarConsulta(textoSQL);
+            return Convert.ToBoolean(dt.Rows[0][0]);
+        }
+
+        internal bool verificarMailValido(string mailIngresado)
+        {
+            //Si el mail del cliente Ingresado se encuentra disponible, devuelve 1(True). Sino, devuelve 0(False).
+            string textoSQL = "SELECT CASE WHEN EXISTS ( SELECT * FROM ATENTTOS.Clientes c WHERE c.Cli_Mail = '" + mailIngresado + "')	THEN CAST(0 AS BIT)ELSE CAST(1 AS BIT) END";
+            DataTable dt = EjecutarConsulta(textoSQL);
+            return Convert.ToBoolean(dt.Rows[0][0]);
+        }
+
+        internal bool InsertarDatosEnTablaClientes(string nombre, string apellido, string nacionalidad, string fechaNacimiento, string mail, string telefono, string direccion, string dirNumero, string piso, string dpto, string localidad, string pais, string tipoDocumento, string nroDocumento, string estado)
+        {
+            string textoSQL = @"INSERT INTO ATENTTOS.Clientes (Cli_Nombre, Cli_Apellido, Cli_Nacionalidad, Cli_Fecha_Nac, Cli_Mail, Cli_Telefono, Cli_Domicilio_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Dto, Cli_Localidad, Cli_Pai_Nombre, Cli_Tipo_Documento, Cli_Numero_Documento, Cli_Estado)" + 
+                               "VALUES('" + @nombre + "', '" + @apellido + "', '" + @nacionalidad + "', '" + @fechaNacimiento + "', '"    
+                              + @mail + "', " + @telefono + ", '" + @direccion + "'," + @dirNumero+ "," +@piso+ ",'"+@dpto+ "','"
+                              +@localidad+ "','" +@pais+ "',(SELECT tp.Tip_Id FROM ATENTTOS.Tipo_Documento tp WHERE tp.Tip_Descripcion = '"+ @tipoDocumento + "')," + @nroDocumento+ ",1)";
+            try
+            {
+                EjecutarComando(textoSQL);
+                return true;
+            }
+            catch
+            {
+                return false;
+                throw;
+            }
+        }
+
+
+        internal bool ModificarDatosClientes(string nombreCli, string apellidoCli, string nacionalidadCli, DateTime fechaNacimientoCli, string mailCli, string telefonoCli, string dirCalleCli, string nroCalleCli, string pisoCli, string dtoCli, string localidadCli, string paisCli, string tipoDocCli, string nroDocCli, string estadoCli)
+        {
+            if (estadoCli == "Habilitado")
+            {
+                estado = "True";
+            }
+            else
+            {
+                estado = "False";
+            }
+
+            SqlConnection connection = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand("ATENTTOS.SP_ModificarDatosClientes", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Cli_Nombre", nombreCli);
+            cmd.Parameters.AddWithValue("@Cli_Apellido", apellidoCli);
+            cmd.Parameters.AddWithValue("@Cli_Nacionalidad", nacionalidadCli);
+            cmd.Parameters.Add("@Cli_Fecha_Nac", SqlDbType.DateTime);
+            cmd.Parameters["@Cli_Fecha_Nac"].Value = fechaNacimientoCli;
+            cmd.Parameters.AddWithValue("@Cli_Mail", mailCli);
+            cmd.Parameters.AddWithValue("@Cli_Telefono", telefonoCli);
+            cmd.Parameters.AddWithValue("@Cli_Domicilio_Calle", dirCalleCli);
+            cmd.Parameters.AddWithValue("@Cli_Nro_Calle", nroCalleCli);
+            cmd.Parameters.AddWithValue("@Cli_Piso", pisoCli);
+            cmd.Parameters.AddWithValue("@Cli_Dto", dtoCli);
+            cmd.Parameters.AddWithValue("@Cli_Localidad", localidadCli);
+            cmd.Parameters.AddWithValue("@Cli_Pai_Nombre", paisCli);
+            cmd.Parameters.AddWithValue("@Cli_Tipo_Documento", tipoDocCli);
+            cmd.Parameters.Add("@Cli_Numero_Documento", SqlDbType.BigInt);
+            cmd.Parameters["@Cli_Numero_Documento"].Value = nroDocCli;
+            cmd.Parameters.AddWithValue("@Cli_Estado", estado);
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            try
+            {
+                da.Fill(dt);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        
+
+        public bool CambiarEstadoCliente(string tipoDoc, string numeroDoc, int estadoCliente)
+        {
+            string textoSQL = "UPDATE ATENTTOS.Clientes SET Cli_Estado = " + estadoCliente + " WHERE Cli_Tipo_Documento = (SELECT tp.Tip_Id FROM ATENTTOS.Tipo_Documento tp WHERE tp.Tip_Descripcion = '"+ tipoDoc + "') AND Cli_Numero_Documento = " +numeroDoc+ ";";
+            try
+            {
+                EjecutarComando(textoSQL);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
     }
 } 

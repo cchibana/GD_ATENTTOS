@@ -46,7 +46,6 @@
             this.lbl_dom_calle = new System.Windows.Forms.Label();
             this.txt_ciudad = new System.Windows.Forms.TextBox();
             this.lbl_Ciudad = new System.Windows.Forms.Label();
-            this.txt_pais = new System.Windows.Forms.TextBox();
             this.lbl_pais = new System.Windows.Forms.Label();
             this.btn_limpiar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
@@ -60,6 +59,7 @@
             this.lbl_dom_piso = new System.Windows.Forms.Label();
             this.txt_dom_dpto = new System.Windows.Forms.TextBox();
             this.lbl_dom_dpto = new System.Windows.Forms.Label();
+            this.cbox_pais = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lbl_nombre
@@ -215,13 +215,6 @@
             this.lbl_Ciudad.TabIndex = 19;
             this.lbl_Ciudad.Text = "Ciudad";
             // 
-            // txt_pais
-            // 
-            this.txt_pais.Location = new System.Drawing.Point(96, 300);
-            this.txt_pais.Name = "txt_pais";
-            this.txt_pais.Size = new System.Drawing.Size(180, 20);
-            this.txt_pais.TabIndex = 22;
-            // 
             // lbl_pais
             // 
             this.lbl_pais.AutoSize = true;
@@ -337,11 +330,21 @@
             this.lbl_dom_dpto.TabIndex = 80;
             this.lbl_dom_dpto.Text = "Dpto";
             // 
+            // cbox_pais
+            // 
+            this.cbox_pais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_pais.FormattingEnabled = true;
+            this.cbox_pais.Location = new System.Drawing.Point(96, 300);
+            this.cbox_pais.Name = "cbox_pais";
+            this.cbox_pais.Size = new System.Drawing.Size(180, 21);
+            this.cbox_pais.TabIndex = 82;
+            // 
             // Cliente_Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 417);
+            this.Controls.Add(this.cbox_pais);
             this.Controls.Add(this.txt_dom_dpto);
             this.Controls.Add(this.lbl_dom_dpto);
             this.Controls.Add(this.txt_dom_piso);
@@ -354,7 +357,6 @@
             this.Controls.Add(this.lbl_estado);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.btn_limpiar);
-            this.Controls.Add(this.txt_pais);
             this.Controls.Add(this.lbl_pais);
             this.Controls.Add(this.txt_ciudad);
             this.Controls.Add(this.lbl_Ciudad);
@@ -403,7 +405,6 @@
         private System.Windows.Forms.Label lbl_dom_calle;
         private System.Windows.Forms.TextBox txt_ciudad;
         private System.Windows.Forms.Label lbl_Ciudad;
-        private System.Windows.Forms.TextBox txt_pais;
         private System.Windows.Forms.Label lbl_pais;
         private System.Windows.Forms.Button btn_limpiar;
         private System.Windows.Forms.Button btn_guardar;
@@ -417,5 +418,6 @@
         private System.Windows.Forms.Label lbl_dom_piso;
         private System.Windows.Forms.TextBox txt_dom_dpto;
         private System.Windows.Forms.Label lbl_dom_dpto;
+        public System.Windows.Forms.ComboBox cbox_pais;
     }
 }
