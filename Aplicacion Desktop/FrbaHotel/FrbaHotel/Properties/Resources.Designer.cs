@@ -22,7 +22,7 @@ namespace FrbaHotel.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "2.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace FrbaHotel.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FrbaHotel.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace FrbaHotel.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -60,9 +60,37 @@ namespace FrbaHotel.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap fotoA {
+        public static System.Drawing.Bitmap fotoA {
             get {
                 object obj = ResourceManager.GetObject("fotoA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap IMAGEN1bn {
+            get {
+                object obj = ResourceManager.GetObject("IMAGEN1bn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap IMAGEN2bn {
+            get {
+                object obj = ResourceManager.GetObject("IMAGEN2bn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap IMAGEN3bn {
+            get {
+                object obj = ResourceManager.GetObject("IMAGEN3bn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        public static System.Drawing.Bitmap IMAGEN4bn {
+            get {
+                object obj = ResourceManager.GetObject("IMAGEN4bn", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

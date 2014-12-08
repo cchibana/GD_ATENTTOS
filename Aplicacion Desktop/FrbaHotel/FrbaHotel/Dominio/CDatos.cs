@@ -12,7 +12,13 @@ namespace FrbaHotel.Dominio
     {
         //Aquí esta la cadena de conexión a SqlServer, dependiendo de tu proyecto, esto debes cambiarlo
         //normalmente se cambia el nombre del servidor y el nombre de la base de datos
-        string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
+
+        private string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
+
+        public string getCadenaDeConexion() 
+        {
+            return this.cadenaDeConexion;
+        }
 
         public bool EjecutarComando(string textoSql)
         {
@@ -39,7 +45,6 @@ namespace FrbaHotel.Dominio
             {
                 return false;
             }
-
         }
 
         public DataTable EjecutarConsulta(string textoSQL)

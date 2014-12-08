@@ -15,10 +15,9 @@ namespace FrbaHotel.Dominio
         //Parametros para SP
         private Parametros[] parametrosSP;
 
-        string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
-
         internal DataTable BuscarUsuarios(string nombreUsuario, string estadoUsuario, string tipoDocumentoEmpleado, string nroDocumentoEmpleado, string nombreEmpleado, string apellidoEmpleado, string mailEmpleado, string telefonoEmpleado, string direccionEmpleado, DateTime fechaNacimientoEmpleado)
         {
+            string cadenaDeConexion = getCadenaDeConexion();
             SqlConnection connection = new SqlConnection(cadenaDeConexion);
             SqlCommand cmd = new SqlCommand("ATENTTOS.SP_UsuariosBusqueda", connection);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -276,6 +275,7 @@ namespace FrbaHotel.Dominio
 
         internal bool ModificarDatosEnTablaEmpleados(string nombreUsuario, string apellidoUsuario, string tipoDocumentoUsuario, string nroDocumentoUsuario, string mailUsuario, string telefonoUsuario, string direccionUsuario, DateTime fechaNacimientoUsuario, string Username)
         {
+            string cadenaDeConexion = getCadenaDeConexion();
 
             SqlConnection connection = new SqlConnection(cadenaDeConexion);
             SqlCommand cmd = new SqlCommand("ATENTTOS.SP_ModificarDatosEmpleados", connection);

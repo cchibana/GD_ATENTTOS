@@ -187,11 +187,11 @@
     <Compile Include="ABM de Usuario\Usuario_Modificacion.Designer.cs">
       <DependentUpon>Usuario_Modificacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cancelar Reserva\Form1.cs">
+    <Compile Include="Cancelar Reserva\Cancelar_Reserva.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cancelar Reserva\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Cancelar Reserva\Cancelar_Reserva.Designer.cs">
+      <DependentUpon>Cancelar_Reserva.cs</DependentUpon>
     </Compile>
     <Compile Include="Contrasenia\encriptarContrasenia.cs">
       <SubType>Form</SubType>
@@ -211,12 +211,42 @@
     <Compile Include="Dominio\ContraseniaUsuarioLogueado.cs" />
     <Compile Include="Dominio\Habitacion.cs" />
     <Compile Include="Dominio\Hotel.cs" />
+    <Compile Include="Dominio\Reserva.cs" />
     <Compile Include="Dominio\Rol.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="Dominio\Validadores.cs" />
     <Compile Include="Dominio\Parametros.cs" />
-    <Compile Include="Dominio\Prueba.cs" />
     <Compile Include="Dominio\UsuarioLogin.cs" />
+    <Compile Include="Generar Modificar Reserva\Reserva_ClienteBusqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\Reserva_ClienteBusqueda.Designer.cs">
+      <DependentUpon>Reserva_ClienteBusqueda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\Reserva_ClienteNuevo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\Reserva_ClienteNuevo.Designer.cs">
+      <DependentUpon>Reserva_ClienteNuevo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\Reserva_DatosFinales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\Reserva_DatosFinales.Designer.cs">
+      <DependentUpon>Reserva_DatosFinales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\Reserva_DatosHotel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\Reserva_DatosHotel.Designer.cs">
+      <DependentUpon>Reserva_DatosHotel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\Reserva_HabitacionesDisponibles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\Reserva_HabitacionesDisponibles.Designer.cs">
+      <DependentUpon>Reserva_HabitacionesDisponibles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login\LoginHotelRol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,17 +259,17 @@
     <Compile Include="PantallaPrincipal.Designer.cs">
       <DependentUpon>PantallaPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Modificar Reserva\ModificarReserva.cs">
+    <Compile Include="Generar Modificar Reserva\Reserva_Modificar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Generar Modificar Reserva\ModificarReserva.Designer.cs">
-      <DependentUpon>ModificarReserva.cs</DependentUpon>
+    <Compile Include="Generar Modificar Reserva\Reserva_Modificar.Designer.cs">
+      <DependentUpon>Reserva_Modificar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Generar Modificar Reserva\GenerarReserva.cs">
+    <Compile Include="Generar Modificar Reserva\Reserva_Generar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Generar Modificar Reserva\GenerarReserva.Designer.cs">
-      <DependentUpon>GenerarReserva.cs</DependentUpon>
+    <Compile Include="Generar Modificar Reserva\Reserva_Generar.Designer.cs">
+      <DependentUpon>Reserva_Generar.cs</DependentUpon>
     </Compile>
     <Compile Include="Listado Estadistico\Form1.cs">
       <SubType>Form</SubType>
@@ -321,17 +351,35 @@
     <EmbeddedResource Include="ABM de Usuario\Usuario_Modificacion.resx">
       <DependentUpon>Usuario_Modificacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Reserva\Cancelar_Reserva.resx">
+      <DependentUpon>Cancelar_Reserva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Contrasenia\encriptarContrasenia.resx">
       <DependentUpon>encriptarContrasenia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Contrasenia\NuevaContraseniaUsuarioLogueado.resx">
       <DependentUpon>NuevaContraseniaUsuarioLogueado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generar Modificar Reserva\GenerarReserva.resx">
-      <DependentUpon>GenerarReserva.cs</DependentUpon>
+    <EmbeddedResource Include="Generar Modificar Reserva\Reserva_ClienteBusqueda.resx">
+      <DependentUpon>Reserva_ClienteBusqueda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Generar Modificar Reserva\ModificarReserva.resx">
-      <DependentUpon>ModificarReserva.cs</DependentUpon>
+    <EmbeddedResource Include="Generar Modificar Reserva\Reserva_ClienteNuevo.resx">
+      <DependentUpon>Reserva_ClienteNuevo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\Reserva_DatosFinales.resx">
+      <DependentUpon>Reserva_DatosFinales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\Reserva_Generar.resx">
+      <DependentUpon>Reserva_Generar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\Reserva_HabitacionesDisponibles.resx">
+      <DependentUpon>Reserva_HabitacionesDisponibles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\Reserva_Modificar.resx">
+      <DependentUpon>Reserva_Modificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\Reserva_DatosHotel.resx">
+      <DependentUpon>Reserva_DatosHotel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginHotelRol.resx">
       <DependentUpon>LoginHotelRol.cs</DependentUpon>
@@ -343,12 +391,9 @@
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Prueba Parameters.resx">
-      <DependentUpon>Prueba Parameters.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -364,12 +409,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Prueba Parameters.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Prueba Parameters.Designer.cs">
-      <DependentUpon>Prueba Parameters.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrar Consumible\Form1.cs">
       <SubType>Form</SubType>
@@ -389,6 +428,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fotoA.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IMAGEN1bn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IMAGEN2bn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IMAGEN3bn.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\IMAGEN4bn.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

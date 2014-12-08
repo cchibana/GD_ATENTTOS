@@ -19,6 +19,7 @@ namespace FrbaHotel.Dominio
         private string Usu_Hotel_Nombre;
         private int Usu_Hotel_Id;
         private string Usu_Rol_Id;
+        private DateTime fechaSistema;
 
 
         //Parametros para SP
@@ -27,7 +28,6 @@ namespace FrbaHotel.Dominio
         //Singleton
         private static volatile UsuarioLogin theInstance = null;
         private static readonly object padlock = new object();
-        UsuarioLogin() { }
 
         public static UsuarioLogin TheInstance 
         {
@@ -192,6 +192,15 @@ namespace FrbaHotel.Dominio
         }
 
         /* GET Y SET */
+
+        public void setFechaSistema() 
+        {
+            this.fechaSistema = Convert.ToDateTime(ConfigurationManager.ConnectionStrings["FECHA"].ConnectionString.ToString());
+        }
+        public DateTime getFechaSistema() 
+        {
+            return this.fechaSistema;            
+        }
 
         public int getHotel()
         {

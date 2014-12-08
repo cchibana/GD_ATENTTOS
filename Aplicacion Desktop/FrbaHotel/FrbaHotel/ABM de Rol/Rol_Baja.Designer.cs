@@ -37,7 +37,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(65, 308);
+            this.button2.Location = new System.Drawing.Point(111, 334);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(183, 30);
             this.button2.TabIndex = 1;
@@ -51,7 +51,7 @@
             this.nombreRol,
             this.estadoRol});
             this.lv_Roles.FullRowSelect = true;
-            this.lv_Roles.Location = new System.Drawing.Point(27, 26);
+            this.lv_Roles.Location = new System.Drawing.Point(73, 52);
             this.lv_Roles.MultiSelect = false;
             this.lv_Roles.Name = "lv_Roles";
             this.lv_Roles.Size = new System.Drawing.Size(269, 274);
@@ -67,10 +67,11 @@
             // 
             this.estadoRol.Text = "Estado del Rol";
             this.estadoRol.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.estadoRol.Width = 92;
             // 
             // btn_ActualizarListado
             // 
-            this.btn_ActualizarListado.Location = new System.Drawing.Point(65, 344);
+            this.btn_ActualizarListado.Location = new System.Drawing.Point(111, 370);
             this.btn_ActualizarListado.Name = "btn_ActualizarListado";
             this.btn_ActualizarListado.Size = new System.Drawing.Size(183, 30);
             this.btn_ActualizarListado.TabIndex = 5;
@@ -82,7 +83,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 382);
+            this.BackgroundImage = global::FrbaHotel.Properties.Resources.IMAGEN2bn;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(414, 440);
             this.Controls.Add(this.btn_ActualizarListado);
             this.Controls.Add(this.lv_Roles);
             this.Controls.Add(this.button2);

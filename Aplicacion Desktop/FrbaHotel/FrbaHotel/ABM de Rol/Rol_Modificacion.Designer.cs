@@ -49,11 +49,12 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.BackColor = System.Drawing.Color.Transparent;
             this.groupBox3.Controls.Add(this.btn_ActualizarListado);
             this.groupBox3.Controls.Add(this.lv_Roles);
             this.groupBox3.Controls.Add(this.btn_HabilitarRolSeleccionado);
             this.groupBox3.Controls.Add(this.btn_ModificarRolSeleccionado);
-            this.groupBox3.Location = new System.Drawing.Point(19, 18);
+            this.groupBox3.Location = new System.Drawing.Point(19, 35);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(304, 452);
             this.groupBox3.TabIndex = 0;
@@ -118,14 +119,14 @@
             // 
             // txtNombreRol
             // 
-            this.txtNombreRol.Location = new System.Drawing.Point(442, 34);
+            this.txtNombreRol.Location = new System.Drawing.Point(442, 51);
             this.txtNombreRol.Name = "txtNombreRol";
             this.txtNombreRol.Size = new System.Drawing.Size(236, 20);
             this.txtNombreRol.TabIndex = 1;
             // 
             // btn_GuardarRol
             // 
-            this.btn_GuardarRol.Location = new System.Drawing.Point(477, 369);
+            this.btn_GuardarRol.Location = new System.Drawing.Point(477, 386);
             this.btn_GuardarRol.Name = "btn_GuardarRol";
             this.btn_GuardarRol.Size = new System.Drawing.Size(201, 40);
             this.btn_GuardarRol.TabIndex = 3;
@@ -136,7 +137,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(341, 37);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(341, 54);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(80, 13);
             this.label1.TabIndex = 33;
@@ -144,11 +146,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.btn_QuitarFuncionalidad);
             this.groupBox1.Controls.Add(this.lb_Funcionalidades);
             this.groupBox1.Controls.Add(this.cb_Funcionalidades);
             this.groupBox1.Controls.Add(this.btn_AgregarFuncionalidad);
-            this.groupBox1.Location = new System.Drawing.Point(344, 72);
+            this.groupBox1.Location = new System.Drawing.Point(344, 89);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(428, 265);
             this.groupBox1.TabIndex = 2;
@@ -196,7 +199,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 483);
+            this.BackgroundImage = global::FrbaHotel.Properties.Resources.IMAGEN3bn;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(805, 523);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.txtNombreRol);
             this.Controls.Add(this.btn_GuardarRol);

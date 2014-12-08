@@ -1,6 +1,6 @@
 ﻿namespace FrbaHotel.Generar_Modificar_Reserva
 {
-    partial class GenerarReserva
+    partial class Reserva_DatosHotel
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btn_Cerrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // GenerarReserva
+            // btn_Cerrar
+            // 
+            this.btn_Cerrar.Location = new System.Drawing.Point(315, 314);
+            this.btn_Cerrar.Name = "btn_Cerrar";
+            this.btn_Cerrar.Size = new System.Drawing.Size(159, 33);
+            this.btn_Cerrar.TabIndex = 15;
+            this.btn_Cerrar.Text = "Cerrar";
+            this.btn_Cerrar.UseVisualStyleBackColor = true;
+            this.btn_Cerrar.Click += new System.EventHandler(this.btn_Cerrar_Click);
+            // 
+            // Reserva_DatosHotel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 303);
-            this.Name = "GenerarReserva";
-            this.Text = "GenerarReserva";
+            this.ClientSize = new System.Drawing.Size(773, 359);
+            this.Controls.Add(this.btn_Cerrar);
+            this.Name = "Reserva_DatosHotel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Datos del Hotel Seleccionado";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btn_Cerrar;
     }
 }

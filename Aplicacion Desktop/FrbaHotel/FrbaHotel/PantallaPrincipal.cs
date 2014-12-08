@@ -16,6 +16,7 @@ namespace FrbaHotel
         public PantallaPrincipal()
         {
             InitializeComponent();
+            Dominio.UsuarioLogin.TheInstance.setFechaSistema();
             MaximizarVentana();
             CreateSimpleMenu();
         }
@@ -82,12 +83,15 @@ namespace FrbaHotel
 
                 if (listaIDFuncionalidades.Exists(element => element == 7))
                 {
-                    menuItem_Reservas.DropDownItems.Add("Generar o Modificar Reserva",null, new EventHandler(menuItem_ReservasGenerarModificar));
+                    menuItem_Reservas.DropDownItems.Add("Generar Reserva", null, new EventHandler(menuItem_GenerarReserva));
                     menuPrincipal.Items.Add(menuItem_Reservas);
+                    menuItem_Reservas.DropDownItems.Add("Modificar Reserva", null, new EventHandler(menuItem_ModificarReserva));
+                    menuPrincipal.Items.Add(menuItem_Reservas);
+
                 }
                 if (listaIDFuncionalidades.Exists(element => element == 8))
                 {
-                    menuItem_Reservas.DropDownItems.Add("Cancelar Reserva", null, new EventHandler(menuItem_ReservasCancelar));
+                    menuItem_Reservas.DropDownItems.Add("Cancelar Reserva", null, new EventHandler(menuItem_CancelarReserva));
                     menuPrincipal.Items.Add(menuItem_Reservas);
                 }
             }
@@ -161,7 +165,7 @@ namespace FrbaHotel
 
         private void menuItem_Clientes_Click(object sender, EventArgs e)
         {
-            ABM_de_Cliente.Clientes newCli = new ABM_de_Cliente.Clientes();
+            ABM_de_Cliente.Clientes newCli = ABM_de_Cliente.Clientes.ObtenerInstancia();
             newCli.Show(this);
         }
 
@@ -174,22 +178,30 @@ namespace FrbaHotel
         private void menuItem_Habitaciones_Click(object sender, EventArgs e)
         {
             ABM_de_Habitacion.Habitaciones newHab = new ABM_de_Habitacion.Habitaciones();
-            newHab.Show(this);
+            newHab.Show();
         }
 
         private void menuItem_Regimenes_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("ABM no disponible.");
+            MessageBox.Show("ABM Regímenes no disponible.");
         }
 
-        private void menuItem_ReservasGenerarModificar(object sender, EventArgs e)
+        private void menuItem_GenerarReserva(object sender, EventArgs e)
         {
-            MessageBox.Show("Reservas: Generara o Modificar");
+            Generar_Modificar_Reserva.Reserva_Generar newGenRes = Generar_Modificar_Reserva.Reserva_Generar.ObtenerInstancia();
+            newGenRes.Show();
         }
 
-        private void menuItem_ReservasCancelar(object sender, EventArgs e)
+        private void menuItem_ModificarReserva(object sender, EventArgs e)
         {
-            MessageBox.Show("Reservas: Cancelar");
+            Generar_Modificar_Reserva.Reserva_Modificar newModRes = Generar_Modificar_Reserva.Reserva_Modificar.ObtenerInstancia();
+            newModRes.Show();
+        }
+
+        private void menuItem_CancelarReserva(object sender, EventArgs e)
+        {
+            Cancelar_Reserva.Cancelar_Reserva newCancRes = Cancelar_Reserva.Cancelar_Reserva.ObtenerInstancia();
+            newCancRes.Show();
         }
         
         private void menuItem_Estadias_Click(object sender, EventArgs e)
@@ -228,7 +240,8 @@ namespace FrbaHotel
         private void MaximizarVentana() {
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-       }
+        }
+
 
     }
 }
