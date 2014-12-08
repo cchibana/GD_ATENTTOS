@@ -53,7 +53,7 @@ namespace FrbaHotel.Dominio
                 string cadenaDeConexion = getCadenaDeConexion();
 
                 SqlConnection connection = new SqlConnection(cadenaDeConexion);
-                SqlCommand cmd;
+                SqlCommand cmd = null;
                 if (regimenID == null)
                 {
                     cmd = new SqlCommand("ATENTTOS.SP_HabitacionesDisponiblesCualquierRegimen", connection);
@@ -127,6 +127,87 @@ namespace FrbaHotel.Dominio
         }
 
 
+        internal DataTable BuscarCliente(string tipoDocumento, string nroDocumento, string mail)
+        {
+            parametrosSP = new Parametros[3];
 
+            parametrosSP[0] = new Parametros("@tipo_doc", tipoDocumento);
+            parametrosSP[1] = new Parametros("@nro_doc", nroDocumento);
+            parametrosSP[2] = new Parametros("@mail", mail);
+
+            DataTable dt = EjecutarStoreProcedure("[ATENTTOS].[SP_BuscarClientesParaReserva]", parametrosSP);
+            return dt;
+        }
+
+        internal int ObtenerSiguienteNumeroDeReserva()
+        {
+            parametrosSP = new Parametros[0];
+
+            DataTable dt = EjecutarStoreProcedure("[ATENTTOS].[SP_ProximoNumeroReservas]", parametrosSP);
+            return Convert.ToInt32(dt.Rows[0][0].ToString());
+        }
+
+        internal bool RegistrarReservaTablaReservas(int nroReserva, int hotelID, int clienteID, DateTime fechaIngreso, int cantidadNoches, int regimenID, decimal costoPorDia, decimal costoTotal, string usuario)
+        {
+            string textoSQL = "INSERT INTO ATENTTOS.Reservas ([Res_Codigo],[Res_Hot_codigo],[Res_Cli_Id],[Res_Fecha_Inicio],[Res_Cant_Noches],[Res_Tipo_Regimen],[Res_Costo_Por_Dia],[Res_Costo_Total],[Res_Usu_Generador],[Res_Estado]) VALUES (" + nroReserva.ToString() + "," + hotelID.ToString() + "," + clienteID.ToString() + ",'" + fechaIngreso.ToString("yyyy-MM-dd HH:mm:ss") + "'," + cantidadNoches.ToString() + "," + regimenID.ToString() + "," + costoPorDia.ToString().Replace(',', '.') + "," + costoTotal.ToString().Replace(',', '.') + ",'" + usuario + "',1);";
+            return EjecutarComando(textoSQL);
+        }
+
+        internal bool RegistrarReservaTablaHabitacionesPorReservas(string nroReserva, string hotelID, string nroHabitacion)
+        {
+            string textoSQL = "INSERT INTO ATENTTOS.Habitaciones_Por_Reserva ( HxR_Res_Codigo,HxR_Hot_Codigo,HxR_Hab_Nro) VALUES ( " + nroReserva + "," + hotelID + ", " + nroHabitacion + ");";
+            return EjecutarComando(textoSQL);
+        }
+
+        internal bool RegistrarEnTablaLogRegistros(int nroReserva, string usuario)
+        {
+            string cadenaDeConexion = getCadenaDeConexion();
+
+            SqlConnection connection = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand("[ATENTTOS].[SP_InsertarEnLogsReserva]", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@nroReserva", SqlDbType.BigInt);
+            cmd.Parameters["@nroReserva"].Value = Convert.ToInt64(nroReserva);
+            
+            cmd.Parameters.Add("@usuarioGenerador", SqlDbType.NVarChar);
+            cmd.Parameters["@usuarioGenerador"].Value = usuario;
+
+            cmd.Parameters.Add("@fechaLog", SqlDbType.DateTime);
+            cmd.Parameters["@fechaLog"].Value = UsuarioLogin.TheInstance.getFechaSistema().ToString("yyyy-MM-dd HH:mm:ss");
+
+            cmd.Parameters.Add("@tipoAccion", SqlDbType.Char);
+            cmd.Parameters["@tipoAccion"].Value = 'G';
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            try
+            {
+                da.Fill(dt);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        internal DataTable ObtenerDatosCliente(string nroReserva)
+        {
+            string textoSQL = "SELECT c.Cli_Id, c.Cli_Apellido, c.Cli_Nombre, tp.Tip_Descripcion, c.Cli_Numero_Documento, c.Cli_Mail FROM ATENTTOS.Reservas R, ATENTTOS.Clientes c, ATENTTOS.Tipo_Documento tp WHERE R.Res_Cli_Id = c.Cli_Id AND c.Cli_Tipo_Documento = tp.Tip_Id AND r.Res_Codigo = " + nroReserva;
+            return EjecutarConsulta(textoSQL);
+        }
+
+        internal DataTable ObtenerDatosReserva(string nroReserva)
+        {
+            string textoSQL = "SELECT c.Ciu_Detalle, h.Hot_Nombre, h.Hot_Codigo, r.Res_Fecha_Inicio, DATEADD(DAY, r.Res_Cant_Noches, r.Res_Fecha_Inicio) AS CantNoches, r.Res_Tipo_Regimen FROM  ATENTTOS.Reservas r, ATENTTOS.Ciudades c, ATENTTOS.Hoteles h WHERE c.Ciu_Id = h.Hot_Ciu_Id AND  r.Res_Hot_codigo = h.Hot_Codigo AND r.Res_Codigo = " + nroReserva + " AND (r.Res_Estado = 1 OR r.Res_Estado = 2)";
+            return EjecutarConsulta(textoSQL);
+        }
+
+        internal DataTable ObtenerDatosHabitaciones(string nroReserva)
+        {
+            string textoSQL = "SELECT c.Cli_Id, c.Cli_Apellido, c.Cli_Nombre, tp.Tip_Descripcion, c.Cli_Numero_Documento, c.Cli_Mail FROM ATENTTOS.Reservas R, ATENTTOS.Clientes c, ATENTTOS.Tipo_Documento tp WHERE R.Res_Cli_Id = c.Cli_Id AND c.Cli_Tipo_Documento = tp.Tip_Id AND r.Res_Codigo = " + nroReserva;
+            return EjecutarConsulta(textoSQL);
+        }
     }
 }

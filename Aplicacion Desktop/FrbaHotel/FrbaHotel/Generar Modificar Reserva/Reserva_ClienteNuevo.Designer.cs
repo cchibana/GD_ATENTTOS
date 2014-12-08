@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_apellido = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txt_nombre = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_mail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_nrodoc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.cbox_tipodoc = new System.Windows.Forms.ComboBox();
+            this.txt_telefono = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.txt_ciudad = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cbox_pais = new System.Windows.Forms.ComboBox();
             this.txt_dom_dpto = new System.Windows.Forms.TextBox();
             this.lbl_dom_dpto = new System.Windows.Forms.Label();
             this.txt_dom_piso = new System.Windows.Forms.TextBox();
@@ -58,12 +58,13 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox4
+            // txt_apellido
             // 
-            this.textBox4.Location = new System.Drawing.Point(172, 73);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(180, 20);
-            this.textBox4.TabIndex = 25;
+            this.txt_apellido.Location = new System.Drawing.Point(172, 73);
+            this.txt_apellido.Name = "txt_apellido";
+            this.txt_apellido.Size = new System.Drawing.Size(180, 20);
+            this.txt_apellido.TabIndex = 1;
+            this.txt_apellido.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // label4
             // 
@@ -75,12 +76,13 @@
             this.label4.TabIndex = 24;
             this.label4.Text = "Apellido";
             // 
-            // textBox6
+            // txt_nombre
             // 
-            this.textBox6.Location = new System.Drawing.Point(172, 46);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(180, 20);
-            this.textBox6.TabIndex = 23;
+            this.txt_nombre.Location = new System.Drawing.Point(172, 46);
+            this.txt_nombre.Name = "txt_nombre";
+            this.txt_nombre.Size = new System.Drawing.Size(180, 20);
+            this.txt_nombre.TabIndex = 0;
+            this.txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // label6
             // 
@@ -92,12 +94,12 @@
             this.label6.TabIndex = 22;
             this.label6.Text = "Nombre";
             // 
-            // textBox2
+            // txt_mail
             // 
-            this.textBox2.Location = new System.Drawing.Point(172, 155);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(180, 20);
-            this.textBox2.TabIndex = 19;
+            this.txt_mail.Location = new System.Drawing.Point(172, 155);
+            this.txt_mail.Name = "txt_mail";
+            this.txt_mail.Size = new System.Drawing.Size(180, 20);
+            this.txt_mail.TabIndex = 4;
             // 
             // label2
             // 
@@ -109,12 +111,13 @@
             this.label2.TabIndex = 18;
             this.label2.Text = "Mail";
             // 
-            // textBox1
+            // txt_nrodoc
             // 
-            this.textBox1.Location = new System.Drawing.Point(172, 129);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 20);
-            this.textBox1.TabIndex = 17;
+            this.txt_nrodoc.Location = new System.Drawing.Point(172, 129);
+            this.txt_nrodoc.Name = "txt_nrodoc";
+            this.txt_nrodoc.Size = new System.Drawing.Size(180, 20);
+            this.txt_nrodoc.TabIndex = 3;
+            this.txt_nrodoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
             // label3
             // 
@@ -136,21 +139,22 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Número de Identificación";
             // 
-            // comboBox1
+            // cbox_tipodoc
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(172, 101);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(180, 21);
-            this.comboBox1.TabIndex = 28;
+            this.cbox_tipodoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_tipodoc.FormattingEnabled = true;
+            this.cbox_tipodoc.Location = new System.Drawing.Point(172, 101);
+            this.cbox_tipodoc.Name = "cbox_tipodoc";
+            this.cbox_tipodoc.Size = new System.Drawing.Size(180, 21);
+            this.cbox_tipodoc.TabIndex = 2;
             // 
-            // textBox7
+            // txt_telefono
             // 
-            this.textBox7.Location = new System.Drawing.Point(172, 181);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(180, 20);
-            this.textBox7.TabIndex = 30;
+            this.txt_telefono.Location = new System.Drawing.Point(172, 181);
+            this.txt_telefono.Name = "txt_telefono";
+            this.txt_telefono.Size = new System.Drawing.Size(180, 20);
+            this.txt_telefono.TabIndex = 5;
+            this.txt_telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
             // label8
             // 
@@ -172,12 +176,13 @@
             this.label9.TabIndex = 35;
             this.label9.Text = "País";
             // 
-            // textBox9
+            // txt_ciudad
             // 
-            this.textBox9.Location = new System.Drawing.Point(548, 124);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(180, 20);
-            this.textBox9.TabIndex = 34;
+            this.txt_ciudad.Location = new System.Drawing.Point(548, 124);
+            this.txt_ciudad.Name = "txt_ciudad";
+            this.txt_ciudad.Size = new System.Drawing.Size(180, 20);
+            this.txt_ciudad.TabIndex = 10;
+            this.txt_ciudad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // label10
             // 
@@ -189,21 +194,21 @@
             this.label10.TabIndex = 33;
             this.label10.Text = "Ciudad";
             // 
-            // comboBox2
+            // cbox_pais
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(548, 150);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(180, 21);
-            this.comboBox2.TabIndex = 36;
+            this.cbox_pais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_pais.FormattingEnabled = true;
+            this.cbox_pais.Location = new System.Drawing.Point(548, 150);
+            this.cbox_pais.Name = "cbox_pais";
+            this.cbox_pais.Size = new System.Drawing.Size(180, 21);
+            this.cbox_pais.TabIndex = 11;
             // 
             // txt_dom_dpto
             // 
             this.txt_dom_dpto.Location = new System.Drawing.Point(662, 98);
             this.txt_dom_dpto.Name = "txt_dom_dpto";
             this.txt_dom_dpto.Size = new System.Drawing.Size(66, 20);
-            this.txt_dom_dpto.TabIndex = 89;
+            this.txt_dom_dpto.TabIndex = 9;
             // 
             // lbl_dom_dpto
             // 
@@ -219,7 +224,8 @@
             this.txt_dom_piso.Location = new System.Drawing.Point(548, 98);
             this.txt_dom_piso.Name = "txt_dom_piso";
             this.txt_dom_piso.Size = new System.Drawing.Size(67, 20);
-            this.txt_dom_piso.TabIndex = 87;
+            this.txt_dom_piso.TabIndex = 8;
+            this.txt_dom_piso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
             // lbl_dom_piso
             // 
@@ -235,7 +241,8 @@
             this.txt_dom_nro.Location = new System.Drawing.Point(548, 72);
             this.txt_dom_nro.Name = "txt_dom_nro";
             this.txt_dom_nro.Size = new System.Drawing.Size(180, 20);
-            this.txt_dom_nro.TabIndex = 85;
+            this.txt_dom_nro.TabIndex = 7;
+            this.txt_dom_nro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
             // lbl_dom_nro
             // 
@@ -251,7 +258,7 @@
             this.txt_dom_calle.Location = new System.Drawing.Point(548, 46);
             this.txt_dom_calle.Name = "txt_dom_calle";
             this.txt_dom_calle.Size = new System.Drawing.Size(180, 20);
-            this.txt_dom_calle.TabIndex = 83;
+            this.txt_dom_calle.TabIndex = 6;
             // 
             // lbl_dom_calle
             // 
@@ -264,34 +271,34 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox9);
+            this.groupBox1.Controls.Add(this.txt_ciudad);
             this.groupBox1.Controls.Add(this.txt_dom_dpto);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lbl_dom_dpto);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txt_dom_piso);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txt_nrodoc);
             this.groupBox1.Controls.Add(this.lbl_dom_piso);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txt_dom_nro);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txt_mail);
             this.groupBox1.Controls.Add(this.lbl_dom_nro);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txt_dom_calle);
-            this.groupBox1.Controls.Add(this.textBox6);
+            this.groupBox1.Controls.Add(this.txt_nombre);
             this.groupBox1.Controls.Add(this.lbl_dom_calle);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.cbox_pais);
+            this.groupBox1.Controls.Add(this.txt_apellido);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cbox_tipodoc);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textBox7);
+            this.groupBox1.Controls.Add(this.txt_telefono);
             this.groupBox1.Location = new System.Drawing.Point(43, 49);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(767, 237);
-            this.groupBox1.TabIndex = 90;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Cliente";
             // 
@@ -310,7 +317,7 @@
             this.btn_Guardar.Location = new System.Drawing.Point(250, 308);
             this.btn_Guardar.Name = "btn_Guardar";
             this.btn_Guardar.Size = new System.Drawing.Size(159, 33);
-            this.btn_Guardar.TabIndex = 91;
+            this.btn_Guardar.TabIndex = 1;
             this.btn_Guardar.Text = "Guardar";
             this.btn_Guardar.UseVisualStyleBackColor = true;
             this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
@@ -324,6 +331,7 @@
             this.Controls.Add(this.btn_Guardar);
             this.Controls.Add(this.groupBox1);
             this.Name = "Reserva_ClienteNuevo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reserva: Datos del nuevo Cliente";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -333,22 +341,22 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_apellido;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_nombre;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_mail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_nrodoc;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.ComboBox cbox_tipodoc;
+        private System.Windows.Forms.TextBox txt_telefono;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox txt_ciudad;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbox_pais;
         private System.Windows.Forms.TextBox txt_dom_dpto;
         private System.Windows.Forms.Label lbl_dom_dpto;
         private System.Windows.Forms.TextBox txt_dom_piso;

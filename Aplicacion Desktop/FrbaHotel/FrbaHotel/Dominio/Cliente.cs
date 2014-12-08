@@ -86,7 +86,7 @@ namespace FrbaHotel.Dominio
         internal DataTable BuscarClientes(string nombreCli, string apellidoCli, string mailCli, string tipoDoc, string nroDoc)
         {
             SqlConnection connection = new SqlConnection(cadenaDeConexion);
-            SqlCommand cmd = new SqlCommand("dbo.SP_BuscarClientes", connection);
+            SqlCommand cmd = new SqlCommand("ATENTTOS.SP_BuscarClientes", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
             if (!string.IsNullOrEmpty(nombreCli))
@@ -211,6 +211,24 @@ namespace FrbaHotel.Dominio
                 return false;
             }
             return true;
+        }
+
+
+        internal bool InsertarDatosEnTablaClientesReservas(string nombre, string apellido, string mail, string telefono, string direccion, string dirNumero, string piso, string dpto, string localidad, string pais, string tipoDocumento, string nroDocumento)
+        {
+            string textoSQL = @"INSERT INTO ATENTTOS.Clientes (Cli_Nombre, Cli_Apellido, Cli_Mail, Cli_Telefono, Cli_Domicilio_Calle, Cli_Nro_Calle, Cli_Piso, Cli_Dto, Cli_Localidad, Cli_Pai_Nombre, Cli_Tipo_Documento, Cli_Numero_Documento, Cli_Estado)" +
+                               "VALUES('" + @nombre + "', '" + @apellido + "', '" + @mail + "', " + @telefono + ", '" + @direccion + "'," + @dirNumero + "," + @piso + ",'" + @dpto + "','"
+                              + @localidad + "','" + @pais + "',(SELECT tp.Tip_Id FROM ATENTTOS.Tipo_Documento tp WHERE tp.Tip_Descripcion = '" + @tipoDocumento + "')," + @nroDocumento + ",1)";
+            try
+            {
+                EjecutarComando(textoSQL);
+                return true;
+            }
+            catch
+            {
+                return false;
+                throw;
+            }
         }
     }
 } 

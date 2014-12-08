@@ -76,23 +76,26 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             LimpiarCampos();
         }
 
-        private void LimpiarCampos()
+        public void LimpiarCampos()
         {
             InicializarCiudadHotel();
             dtp_FechaEgreso.Value = Dominio.UsuarioLogin.TheInstance.getFechaSistema().AddDays(1);
             dtp_FechaIngreso.Value = Dominio.UsuarioLogin.TheInstance.getFechaSistema();
             dgv_HabitacionesReserva.Rows.Clear();
+            txt_CantNoches.Text = null;
+            txt_ImporteDia.Text = null;
+            txt_ImporteTotal.Text = null;
         }
 
         private void btn_ConfirmarReserva_Click(object sender, EventArgs e)
         {
             if (dgv_HabitacionesReserva.Rows.Count > 1)
             {
-                string primerRegimen = dgv_HabitacionesReserva.Rows[0].Cells[7].Value.ToString();
+                string primerRegimen = dgv_HabitacionesReserva.Rows[0].Cells[1].Value.ToString();
                 bool mismoTipoRegimen = true;
                 for (int i = 0; i < dgv_HabitacionesReserva.Rows.Count - 1; i++)
                 {
-                    if (dgv_HabitacionesReserva.Rows[i].Cells[7].Value.ToString() != primerRegimen)
+                    if (dgv_HabitacionesReserva.Rows[i].Cells[1].Value.ToString() != primerRegimen)
                     {
                         MessageBox.Show("Todas las habitaciones de la reserva deben tener el mismo tipo de régimen.");
                         mismoTipoRegimen = false;
@@ -125,7 +128,8 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                                                                                             dtp_FechaIngreso.Value,
                                                                                             dtp_FechaEgreso.Value) ;
 
-                Reserva_HabitacionesDisponibles habDisp = Reserva_HabitacionesDisponibles.ObtenerInstancia(dt_HabitacionesDisponibles);
+                Reserva_HabitacionesDisponibles habDisp = Reserva_HabitacionesDisponibles.ObtenerInstancia();
+                habDisp.CargarDgv(dt_HabitacionesDisponibles);
                 habDisp.Show();
             }
             else
@@ -202,35 +206,64 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             cb_TipoHabitacion.SelectedIndex = 0;
         }
 
-        internal void AgregarHabitacion(string Hab_Numero, string Hab_Descripcion, string Hab_Piso, string Hab_Ubicacion, string Hab_Tipo_Habitacion, string Hab_Hot_Codigo, string Hot_Nombre, string Reg_Codigo, string Reg_Descripcion, string precioPorDia)
+        internal void AgregarHabitacion(string Reg_Descripcion, string Reg_Codigo, string fechaInicio, string fechaFin, string Hab_Numero, string Hab_Descripcion, string Hab_Piso, string Hab_Ubicacion, 
+                                        string Hab_Tipo_Habitacion, string Hab_Hot_Codigo, string Hot_Nombre, 
+                                         string precioPorDia, string cantidadNoches, string precioTotalHabitacion)
         {
             bool found = false;
             if (dgv_HabitacionesReserva.Rows.Count > 1)
             {
+                DateTime fechaInicio1 = Convert.ToDateTime(dgv_HabitacionesReserva.Rows[0].Cells[2].Value.ToString());
+                DateTime fechaFin1 = Convert.ToDateTime(dgv_HabitacionesReserva.Rows[0].Cells[3].Value.ToString());
                 for (int i = 0; i < dgv_HabitacionesReserva.Rows.Count - 1; i++)
                 {
-                    if (dgv_HabitacionesReserva.Rows[i].Cells[0].Value.ToString() == Hab_Numero && dgv_HabitacionesReserva.Rows[i].Cells[5].Value.ToString() == Hab_Hot_Codigo && dgv_HabitacionesReserva.Rows[i].Cells[6].Value.ToString() == Reg_Codigo)
+                    if (dgv_HabitacionesReserva.Rows[i].Cells[4].Value.ToString() == Hab_Numero && dgv_HabitacionesReserva.Rows[i].Cells[9].Value.ToString() == Hab_Hot_Codigo && dgv_HabitacionesReserva.Rows[i].Cells[1].Value.ToString() == Reg_Codigo)
                     {
                         found = true;
                         MessageBox.Show("Ya se ha agregado a la habitación seleccionada");
                         break;
                     }
+
+                    if (Convert.ToDateTime(dgv_HabitacionesReserva.Rows[0].Cells[3].Value.ToString()) != Convert.ToDateTime(fechaFin) || Convert.ToDateTime(dgv_HabitacionesReserva.Rows[0].Cells[2].Value.ToString()) != Convert.ToDateTime(fechaInicio))
+                    {
+                        found = true;
+                        MessageBox.Show("Todas las reservas de habitaciones deben tener las mismas fechas de inicio y fin.");
+                        break;
+                    }
+
+                    if (dgv_HabitacionesReserva.Rows[0].Cells[9].Value.ToString() != Hab_Hot_Codigo)
+                    {
+                        found = true;
+                        MessageBox.Show("Todas las reservas de habitaciones deben pertenecer al mismo hotel.");
+                        break;
+                    }
                 }
                 if (!found)
-                {
-                    dgv_HabitacionesReserva.Rows.Add(Hab_Numero, Hab_Descripcion, Hab_Piso, Hab_Ubicacion, Hab_Tipo_Habitacion, Hab_Hot_Codigo, Hot_Nombre, Reg_Codigo, Reg_Descripcion, precioPorDia);
+                { 
+                    dgv_HabitacionesReserva.Rows.Add(Reg_Descripcion,  Reg_Codigo,  fechaInicio,  fechaFin,  Hab_Numero,  Hab_Descripcion, Hab_Piso, Hab_Ubicacion, Hab_Tipo_Habitacion,  Hab_Hot_Codigo,  Hot_Nombre, precioPorDia,  cantidadNoches,  precioTotalHabitacion);
+                    txt_ImporteDia.Text = (Convert.ToDecimal(txt_ImporteDia.Text.ToString()) + Convert.ToDecimal(precioPorDia)).ToString();
+                    txt_ImporteTotal.Text = (Convert.ToDecimal(txt_ImporteTotal.Text.ToString()) + Convert.ToDecimal(precioTotalHabitacion)).ToString();
+                    txt_CantNoches.Text = (fechaFin1 - fechaInicio1).Days.ToString();
                 }
             }
             else
             {
-                dgv_HabitacionesReserva.Rows.Add(Hab_Numero, Hab_Descripcion, Hab_Piso, Hab_Ubicacion, Hab_Tipo_Habitacion, Hab_Hot_Codigo, Hot_Nombre, Reg_Codigo, Reg_Descripcion, precioPorDia);
+                dgv_HabitacionesReserva.Rows.Add(Reg_Descripcion, Reg_Codigo, fechaInicio, fechaFin, Hab_Numero, Hab_Descripcion, Hab_Piso, Hab_Ubicacion, Hab_Tipo_Habitacion, Hab_Hot_Codigo, Hot_Nombre, precioPorDia, cantidadNoches, precioTotalHabitacion);
+                txt_ImporteDia.Text = (Convert.ToDecimal(precioPorDia)).ToString();
+                txt_ImporteTotal.Text = Convert.ToDecimal(precioTotalHabitacion).ToString();
+                txt_CantNoches.Text = cantidadNoches;
             }
         }
 
         private void btn_BorrarHabitacion_Click(object sender, EventArgs e)
         {
-            if (dgv_HabitacionesReserva.CurrentRow != null && dgv_HabitacionesReserva.CurrentRow.Cells[0] != null)
+            if (dgv_HabitacionesReserva.CurrentRow != null && dgv_HabitacionesReserva.CurrentRow.Cells[0].Value != null)
             {
+                if (Convert.ToDecimal(txt_ImporteTotal.Text) != 0)
+                {
+                    txt_ImporteDia.Text = (Convert.ToDecimal(txt_ImporteDia.Text) - Convert.ToDecimal(dgv_HabitacionesReserva.CurrentRow.Cells[11].Value.ToString())).ToString();
+                    txt_ImporteTotal.Text = (Convert.ToDecimal(txt_ImporteTotal.Text) - Convert.ToDecimal(dgv_HabitacionesReserva.CurrentRow.Cells[13].Value.ToString())).ToString();                    
+                }
                 dgv_HabitacionesReserva.Rows.RemoveAt(dgv_HabitacionesReserva.CurrentRow.Index);
             }
             else
@@ -238,5 +271,49 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 MessageBox.Show("Debe seleccionar alguna habitación");
             }
         }
+
+        public List<string> ObtenerHabitacionesAgregadasEnReserva() 
+        {
+            
+            List<string> listaHabitaciones = new List<string>();
+            for (int i = 0;i < dgv_HabitacionesReserva.Rows.Count - 1; i++)
+            {
+                listaHabitaciones.Add(dgv_HabitacionesReserva.Rows[i].Cells[4].Value.ToString());
+            }
+            return listaHabitaciones;
+        }
+
+        public int ObtenerHotelIdReserva()
+        {
+            string cadena = dgv_HabitacionesReserva.Rows[0].Cells[9].Value.ToString();
+            return Convert.ToInt32(cadena);
+        }
+
+        public int ObtenerRegimenIdReserva()
+        {
+            string cadena = dgv_HabitacionesReserva.Rows[0].Cells[1].Value.ToString();
+            return Convert.ToInt32(cadena);
+        }
+
+        public DateTime ObtenerFechaIngresoReserva()
+        {
+            return Convert.ToDateTime(dgv_HabitacionesReserva.Rows[0].Cells[3].Value);
+        }
+
+        public int ObtenerCantidadNochesReserva() 
+        {
+            return Convert.ToInt32(txt_CantNoches.Text);
+        }
+
+        public decimal ObtenerImportePorDia() 
+        {
+            return Convert.ToDecimal(txt_ImporteDia.Text);
+        }
+
+        public decimal ObtenerImporteTotal()
+        {
+            return Convert.ToDecimal(txt_ImporteTotal.Text);
+        }
+
     }
 }

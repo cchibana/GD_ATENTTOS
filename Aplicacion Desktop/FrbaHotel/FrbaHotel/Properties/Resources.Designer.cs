@@ -94,5 +94,12 @@ namespace FrbaHotel.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        public static System.Drawing.Bitmap IMAGEN5bn {
+            get {
+                object obj = ResourceManager.GetObject("IMAGEN5bn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

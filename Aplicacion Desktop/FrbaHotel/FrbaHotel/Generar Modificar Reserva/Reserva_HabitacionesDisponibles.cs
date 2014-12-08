@@ -13,24 +13,24 @@ namespace FrbaHotel.Generar_Modificar_Reserva
     {
         private static Reserva_HabitacionesDisponibles _instancia;
 
-        public static Reserva_HabitacionesDisponibles ObtenerInstancia(DataTable dt)
+        public static Reserva_HabitacionesDisponibles ObtenerInstancia()
         {
             if (_instancia == null || _instancia.IsDisposed)
             {
-                _instancia = new Reserva_HabitacionesDisponibles(dt);
+                _instancia = new Reserva_HabitacionesDisponibles();
             }
             _instancia.BringToFront();
             return _instancia;
         }
 
-        public Reserva_HabitacionesDisponibles(DataTable dt)
+        public Reserva_HabitacionesDisponibles()
         {
             InitializeComponent();
-            CargarDgv(dt);
         }
 
-        private void CargarDgv(DataTable dt)
+        public void CargarDgv(DataTable dt)
         {
+            dgv_HabitacionesDisponibles.DataSource = null;
             dgv_HabitacionesDisponibles.DataSource = dt;
         }
 
@@ -54,9 +54,13 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                                             dgv_HabitacionesDisponibles.CurrentRow.Cells[6].Value.ToString(),
                                             dgv_HabitacionesDisponibles.CurrentRow.Cells[7].Value.ToString(),
                                             dgv_HabitacionesDisponibles.CurrentRow.Cells[8].Value.ToString(),
-                                            dgv_HabitacionesDisponibles.CurrentRow.Cells[9].Value.ToString());
-                //dataGridView2.Rows[index].Cells[0].Value
+                                            dgv_HabitacionesDisponibles.CurrentRow.Cells[9].Value.ToString(),
+                                            dgv_HabitacionesDisponibles.CurrentRow.Cells[10].Value.ToString(),
+                                            dgv_HabitacionesDisponibles.CurrentRow.Cells[11].Value.ToString(),
+                                            dgv_HabitacionesDisponibles.CurrentRow.Cells[12].Value.ToString(),
+                                            dgv_HabitacionesDisponibles.CurrentRow.Cells[13].Value.ToString());
 
+                this.Dispose();
 
             }
             else

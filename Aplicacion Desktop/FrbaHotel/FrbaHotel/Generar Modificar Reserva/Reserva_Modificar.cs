@@ -27,5 +27,14 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         {
             InitializeComponent();
         }
+
+        private void btn_BuscarReserva_Click(object sender, EventArgs e)
+        {
+            string nroReserva = txt_NroReserva.Text;
+            Dominio.Reserva res1 = new Dominio.Reserva();
+            DataTable dtReserva = res1.ObtenerDatosReserva(nroReserva);
+            DataTable dtCliente = res1.ObtenerDatosCliente(nroReserva);
+            DataTable dtHabitaciones = res1.ObtenerDatosHabitaciones(nroReserva);
+        }
     }
 }

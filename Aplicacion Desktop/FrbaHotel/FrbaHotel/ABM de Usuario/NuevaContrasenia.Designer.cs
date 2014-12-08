@@ -38,7 +38,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 16);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(56, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 13);
             this.label1.TabIndex = 1;
@@ -47,7 +48,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 45);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(56, 68);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 13);
             this.label2.TabIndex = 3;
@@ -55,14 +57,14 @@
             // 
             // txt_Contrasenia
             // 
-            this.txt_Contrasenia.Location = new System.Drawing.Point(153, 42);
+            this.txt_Contrasenia.Location = new System.Drawing.Point(173, 65);
             this.txt_Contrasenia.Name = "txt_Contrasenia";
             this.txt_Contrasenia.Size = new System.Drawing.Size(212, 20);
             this.txt_Contrasenia.TabIndex = 2;
             // 
             // btn_Guardar
             // 
-            this.btn_Guardar.Location = new System.Drawing.Point(110, 78);
+            this.btn_Guardar.Location = new System.Drawing.Point(130, 101);
             this.btn_Guardar.Name = "btn_Guardar";
             this.btn_Guardar.Size = new System.Drawing.Size(170, 36);
             this.btn_Guardar.TabIndex = 4;
@@ -73,8 +75,9 @@
             // lbl_nombreUsuario
             // 
             this.lbl_nombreUsuario.AutoSize = true;
+            this.lbl_nombreUsuario.BackColor = System.Drawing.Color.Transparent;
             this.lbl_nombreUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_nombreUsuario.Location = new System.Drawing.Point(150, 14);
+            this.lbl_nombreUsuario.Location = new System.Drawing.Point(170, 37);
             this.lbl_nombreUsuario.Name = "lbl_nombreUsuario";
             this.lbl_nombreUsuario.Size = new System.Drawing.Size(131, 17);
             this.lbl_nombreUsuario.TabIndex = 5;
@@ -84,7 +87,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(403, 126);
+            this.BackgroundImage = global::FrbaHotel.Properties.Resources.IMAGEN5bn;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(456, 173);
             this.Controls.Add(this.lbl_nombreUsuario);
             this.Controls.Add(this.btn_Guardar);
             this.Controls.Add(this.label2);

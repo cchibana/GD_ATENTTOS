@@ -124,13 +124,16 @@
   <data name="IMAGEN1bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMAGEN1bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IMAGEN2bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IMAGEN2bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="IMAGEN3bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMAGEN3bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IMAGEN4bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IMAGEN4bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IMAGEN2bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IMAGEN2bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IMAGEN5bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IMAGEN5bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
