@@ -26,6 +26,8 @@ namespace FrbaHotel.ABM_de_Hotel
             txt_ciudad.Text = "";
             txt_pais.Text = "";
             cbox_estrellas.SelectedItem = null;
+            dgv_hoteles.DataSource = null;
+
         }
 
         public void KeyPressAlfa(object sender, KeyPressEventArgs e)

@@ -30,24 +30,34 @@
         {
             this.lbl_descripcion = new System.Windows.Forms.Label();
             this.txt_descripcion = new System.Windows.Forms.TextBox();
-            this.lbl_estado = new System.Windows.Forms.Label();
             this.cbox_estado = new System.Windows.Forms.ComboBox();
             this.cbox_ubicacion = new System.Windows.Forms.ComboBox();
             this.btn_guardar = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
-            this.cbox_tipo_hab = new System.Windows.Forms.ComboBox();
             this.txt_piso = new System.Windows.Forms.TextBox();
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.lbl_tipo = new System.Windows.Forms.Label();
             this.lbl_ubicacion = new System.Windows.Forms.Label();
             this.lbl_piso = new System.Windows.Forms.Label();
             this.lbl_numero = new System.Windows.Forms.Label();
+            this.txt_ubicacion = new System.Windows.Forms.TextBox();
+            this.txt_tipohab = new System.Windows.Forms.TextBox();
+            this.txt_estado = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_hotel = new System.Windows.Forms.TextBox();
+            this.lbl_hotel = new System.Windows.Forms.Label();
+            this.lbl_porcentual = new System.Windows.Forms.Label();
+            this.txt_porcentual = new System.Windows.Forms.TextBox();
+            this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl_descripcion
             // 
             this.lbl_descripcion.AutoSize = true;
-            this.lbl_descripcion.Location = new System.Drawing.Point(32, 227);
+            this.lbl_descripcion.Location = new System.Drawing.Point(32, 243);
             this.lbl_descripcion.Name = "lbl_descripcion";
             this.lbl_descripcion.Size = new System.Drawing.Size(63, 13);
             this.lbl_descripcion.TabIndex = 28;
@@ -55,43 +65,31 @@
             // 
             // txt_descripcion
             // 
-            this.txt_descripcion.Location = new System.Drawing.Point(102, 224);
+            this.txt_descripcion.Location = new System.Drawing.Point(102, 240);
             this.txt_descripcion.Name = "txt_descripcion";
-            this.txt_descripcion.Size = new System.Drawing.Size(180, 20);
+            this.txt_descripcion.ReadOnly = true;
+            this.txt_descripcion.Size = new System.Drawing.Size(209, 20);
             this.txt_descripcion.TabIndex = 27;
-            // 
-            // lbl_estado
-            // 
-            this.lbl_estado.AutoSize = true;
-            this.lbl_estado.Location = new System.Drawing.Point(426, 98);
-            this.lbl_estado.Name = "lbl_estado";
-            this.lbl_estado.Size = new System.Drawing.Size(40, 13);
-            this.lbl_estado.TabIndex = 26;
-            this.lbl_estado.Text = "Estado";
             // 
             // cbox_estado
             // 
             this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_estado.FormattingEnabled = true;
-            this.cbox_estado.Items.AddRange(new object[] {
-            "Libre",
-            "Ocupada"});
-            this.cbox_estado.Location = new System.Drawing.Point(472, 93);
+            this.cbox_estado.Location = new System.Drawing.Point(6, 16);
             this.cbox_estado.Name = "cbox_estado";
-            this.cbox_estado.Size = new System.Drawing.Size(121, 21);
+            this.cbox_estado.Size = new System.Drawing.Size(91, 21);
             this.cbox_estado.TabIndex = 25;
+            this.cbox_estado.SelectedIndexChanged += new System.EventHandler(this.CambiarEstado);
             // 
             // cbox_ubicacion
             // 
             this.cbox_ubicacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_ubicacion.FormattingEnabled = true;
-            this.cbox_ubicacion.Items.AddRange(new object[] {
-            "Frente",
-            "Contrafrente"});
-            this.cbox_ubicacion.Location = new System.Drawing.Point(102, 137);
+            this.cbox_ubicacion.Location = new System.Drawing.Point(10, 18);
             this.cbox_ubicacion.Name = "cbox_ubicacion";
-            this.cbox_ubicacion.Size = new System.Drawing.Size(180, 21);
+            this.cbox_ubicacion.Size = new System.Drawing.Size(82, 21);
             this.cbox_ubicacion.TabIndex = 24;
+            this.cbox_ubicacion.SelectedIndexChanged += new System.EventHandler(this.CambiarUbicacion);
             // 
             // btn_guardar
             // 
@@ -101,6 +99,7 @@
             this.btn_guardar.TabIndex = 23;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = true;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // btn_cancelar
             // 
@@ -112,41 +111,24 @@
             this.btn_cancelar.UseVisualStyleBackColor = true;
             this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
-            // cbox_tipo_hab
-            // 
-            this.cbox_tipo_hab.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbox_tipo_hab.FormattingEnabled = true;
-            this.cbox_tipo_hab.Items.AddRange(new object[] {
-            "Simple",
-            "Doble",
-            "Doble Twin",
-            "Triple",
-            "Cuadruple"});
-            this.cbox_tipo_hab.Location = new System.Drawing.Point(102, 182);
-            this.cbox_tipo_hab.Name = "cbox_tipo_hab";
-            this.cbox_tipo_hab.Size = new System.Drawing.Size(180, 21);
-            this.cbox_tipo_hab.TabIndex = 21;
-            // 
             // txt_piso
             // 
             this.txt_piso.Location = new System.Drawing.Point(102, 93);
             this.txt_piso.Name = "txt_piso";
-            this.txt_piso.ReadOnly = true;
-            this.txt_piso.Size = new System.Drawing.Size(180, 20);
+            this.txt_piso.Size = new System.Drawing.Size(209, 20);
             this.txt_piso.TabIndex = 20;
             // 
             // txt_numero
             // 
             this.txt_numero.Location = new System.Drawing.Point(102, 51);
             this.txt_numero.Name = "txt_numero";
-            this.txt_numero.ReadOnly = true;
-            this.txt_numero.Size = new System.Drawing.Size(180, 20);
+            this.txt_numero.Size = new System.Drawing.Size(209, 20);
             this.txt_numero.TabIndex = 19;
             // 
             // lbl_tipo
             // 
             this.lbl_tipo.AutoSize = true;
-            this.lbl_tipo.Location = new System.Drawing.Point(32, 185);
+            this.lbl_tipo.Location = new System.Drawing.Point(32, 201);
             this.lbl_tipo.Name = "lbl_tipo";
             this.lbl_tipo.Size = new System.Drawing.Size(28, 13);
             this.lbl_tipo.TabIndex = 18;
@@ -155,7 +137,7 @@
             // lbl_ubicacion
             // 
             this.lbl_ubicacion.AutoSize = true;
-            this.lbl_ubicacion.Location = new System.Drawing.Point(32, 140);
+            this.lbl_ubicacion.Location = new System.Drawing.Point(32, 147);
             this.lbl_ubicacion.Name = "lbl_ubicacion";
             this.lbl_ubicacion.Size = new System.Drawing.Size(55, 13);
             this.lbl_ubicacion.TabIndex = 17;
@@ -179,19 +161,115 @@
             this.lbl_numero.TabIndex = 15;
             this.lbl_numero.Text = "Número";
             // 
+            // txt_ubicacion
+            // 
+            this.txt_ubicacion.Location = new System.Drawing.Point(102, 144);
+            this.txt_ubicacion.Name = "txt_ubicacion";
+            this.txt_ubicacion.ReadOnly = true;
+            this.txt_ubicacion.Size = new System.Drawing.Size(98, 20);
+            this.txt_ubicacion.TabIndex = 29;
+            // 
+            // txt_tipohab
+            // 
+            this.txt_tipohab.Location = new System.Drawing.Point(102, 198);
+            this.txt_tipohab.Name = "txt_tipohab";
+            this.txt_tipohab.ReadOnly = true;
+            this.txt_tipohab.Size = new System.Drawing.Size(98, 20);
+            this.txt_tipohab.TabIndex = 30;
+            // 
+            // txt_estado
+            // 
+            this.txt_estado.Location = new System.Drawing.Point(439, 93);
+            this.txt_estado.Name = "txt_estado";
+            this.txt_estado.ReadOnly = true;
+            this.txt_estado.Size = new System.Drawing.Size(89, 20);
+            this.txt_estado.TabIndex = 100;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cbox_estado);
+            this.groupBox3.Location = new System.Drawing.Point(534, 77);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(103, 45);
+            this.groupBox3.TabIndex = 99;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Seleccionar";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(382, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 98;
+            this.label1.Text = "Estado";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cbox_ubicacion);
+            this.groupBox1.Location = new System.Drawing.Point(218, 126);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(103, 45);
+            this.groupBox1.TabIndex = 101;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Seleccionar";
+            // 
+            // txt_hotel
+            // 
+            this.txt_hotel.Enabled = false;
+            this.txt_hotel.Location = new System.Drawing.Point(304, 12);
+            this.txt_hotel.Name = "txt_hotel";
+            this.txt_hotel.Size = new System.Drawing.Size(94, 20);
+            this.txt_hotel.TabIndex = 103;
+            this.txt_hotel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl_hotel
+            // 
+            this.lbl_hotel.AutoSize = true;
+            this.lbl_hotel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lbl_hotel.Location = new System.Drawing.Point(245, 15);
+            this.lbl_hotel.Name = "lbl_hotel";
+            this.lbl_hotel.Size = new System.Drawing.Size(32, 13);
+            this.lbl_hotel.TabIndex = 102;
+            this.lbl_hotel.Text = "Hotel";
+            // 
+            // lbl_porcentual
+            // 
+            this.lbl_porcentual.AutoSize = true;
+            this.lbl_porcentual.Location = new System.Drawing.Point(32, 289);
+            this.lbl_porcentual.Name = "lbl_porcentual";
+            this.lbl_porcentual.Size = new System.Drawing.Size(58, 13);
+            this.lbl_porcentual.TabIndex = 113;
+            this.lbl_porcentual.Text = "Porcentual";
+            // 
+            // txt_porcentual
+            // 
+            this.txt_porcentual.Enabled = false;
+            this.txt_porcentual.Location = new System.Drawing.Point(102, 286);
+            this.txt_porcentual.Name = "txt_porcentual";
+            this.txt_porcentual.ReadOnly = true;
+            this.txt_porcentual.Size = new System.Drawing.Size(209, 20);
+            this.txt_porcentual.TabIndex = 112;
+            // 
             // Habitacion_Modificacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 417);
+            this.Controls.Add(this.lbl_porcentual);
+            this.Controls.Add(this.txt_porcentual);
+            this.Controls.Add(this.txt_hotel);
+            this.Controls.Add(this.lbl_hotel);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txt_estado);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txt_tipohab);
+            this.Controls.Add(this.txt_ubicacion);
             this.Controls.Add(this.lbl_descripcion);
             this.Controls.Add(this.txt_descripcion);
-            this.Controls.Add(this.lbl_estado);
-            this.Controls.Add(this.cbox_estado);
-            this.Controls.Add(this.cbox_ubicacion);
             this.Controls.Add(this.btn_guardar);
             this.Controls.Add(this.btn_cancelar);
-            this.Controls.Add(this.cbox_tipo_hab);
             this.Controls.Add(this.txt_piso);
             this.Controls.Add(this.txt_numero);
             this.Controls.Add(this.lbl_tipo);
@@ -200,6 +278,9 @@
             this.Controls.Add(this.lbl_numero);
             this.Name = "Habitacion_Modificacion";
             this.Text = "Habitacion_Modificacion";
+            this.Load += new System.EventHandler(this.Habitacion_Modificacion_Load);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -208,7 +289,6 @@
         #endregion
 
         private System.Windows.Forms.Label lbl_descripcion;
-        private System.Windows.Forms.Label lbl_estado;
         private System.Windows.Forms.Button btn_guardar;
         private System.Windows.Forms.Button btn_cancelar;
         private System.Windows.Forms.Label lbl_tipo;
@@ -218,8 +298,17 @@
         public System.Windows.Forms.TextBox txt_descripcion;
         public System.Windows.Forms.ComboBox cbox_estado;
         public System.Windows.Forms.ComboBox cbox_ubicacion;
-        public System.Windows.Forms.ComboBox cbox_tipo_hab;
         public System.Windows.Forms.TextBox txt_piso;
         public System.Windows.Forms.TextBox txt_numero;
+        public System.Windows.Forms.TextBox txt_ubicacion;
+        public System.Windows.Forms.TextBox txt_tipohab;
+        public System.Windows.Forms.TextBox txt_estado;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txt_hotel;
+        private System.Windows.Forms.Label lbl_hotel;
+        private System.Windows.Forms.Label lbl_porcentual;
+        public System.Windows.Forms.TextBox txt_porcentual;
     }
 }

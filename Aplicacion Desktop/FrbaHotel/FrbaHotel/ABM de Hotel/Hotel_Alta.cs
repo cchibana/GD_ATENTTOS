@@ -51,10 +51,36 @@ namespace FrbaHotel.ABM_de_Hotel
             cbox_estrellas.SelectedItem = null;
             date_creacion.Value = DateTime.Now;
             cbox_estado.SelectedItem = null;
-            chkBox_all_incl.Checked = false;
-            chkBox_desayuno.Checked = false;
-            chkBox_media_pens.Checked = false;
         }
+
+        private void InicializarComboBoxEstrellas()
+        {
+            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
+            item0.Text = "1";
+            item0.Value = "1";
+            cbox_estado.Items.Add(item0);
+
+            Dominio.ComboBoxItem item1 = new Dominio.ComboBoxItem();
+            item1.Text = "2";
+            item1.Value = "2";
+            cbox_estado.Items.Add(item1);
+
+            Dominio.ComboBoxItem item2 = new Dominio.ComboBoxItem();
+            item2.Text = "3";
+            item2.Value = "3";
+            cbox_estado.Items.Add(item2);
+
+            Dominio.ComboBoxItem item3 = new Dominio.ComboBoxItem();
+            item3.Text = "4";
+            item3.Value = "4";
+            cbox_estado.Items.Add(item3);
+
+            Dominio.ComboBoxItem item4 = new Dominio.ComboBoxItem();
+            item4.Text = "5";
+            item4.Value = "5";
+            cbox_estado.Items.Add(item4);            
+        }
+
 
         private void InicializarComboBoxRegimen()
         {
@@ -70,6 +96,20 @@ namespace FrbaHotel.ABM_de_Hotel
             }
             cbox_regimen.SelectedIndex = 0;
         }
+
+        private void InicializarComboBoxEstado()
+        {
+            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
+            item0.Text = "Disponible";
+            item0.Value = "1";
+            cbox_estado.Items.Add(item0);
+
+            Dominio.ComboBoxItem item1 = new Dominio.ComboBoxItem();
+            item1.Text = "No Disponible";
+            item1.Value = "0";
+            cbox_estado.Items.Add(item1);
+        }
+
 
         private bool ValidarCampos()
         {
@@ -121,7 +161,7 @@ namespace FrbaHotel.ABM_de_Hotel
                     MessageBox.Show("Ya existe un hotel en ese domicilio");
                 }
             }
-        }           
+        }
 
 
     }

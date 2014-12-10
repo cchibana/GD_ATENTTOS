@@ -13,11 +13,18 @@ namespace FrbaHotel.ABM_de_Habitacion
     {
         Dominio.Habitacion habitacion1 = new Dominio.Habitacion();
 
+        private string idEstado;
+        private string descEstado;
+
         public Habitaciones()
         {
             InitializeComponent();
             InicializarCboxUbicacion();
             InicializarCboxTipoHab();
+
+            int idHotel = Dominio.UsuarioLogin.TheInstance.getHotel();
+            txt_hotel.Text = idHotel.ToString();
+
         }
 
         public void Limpiar()
@@ -25,8 +32,9 @@ namespace FrbaHotel.ABM_de_Habitacion
             txt_numero.Text = "";
             txt_piso.Text = "";
             txt_descripcion.Text = "";
-            cbox_tipo_hab.SelectedItem = null;
-            cbox_ubicacion.SelectedItem = null;
+            cbox_ubicacion.SelectedIndex = 0;
+            cbox_tipo_hab.SelectedIndex = 0;
+            dgv_habitacion.DataSource = null;
         }
 
         private void KeyPressAlfa(object sender, KeyPressEventArgs e)
@@ -107,6 +115,20 @@ namespace FrbaHotel.ABM_de_Habitacion
         }
 
 
+        private string DescripEstado(string idEstado)
+        {
+            if (idEstado == "True")
+            {
+                descEstado = "Disponible";
+            }
+            else
+            {
+                descEstado = "No Disponible";
+            }
+            return descEstado;
+        }
+
+
         private void btn_alta_Click(object sender, EventArgs e)
         {
             ABM_de_Habitacion.Habitacion_Alta hab_Alta = new FrbaHotel.ABM_de_Habitacion.Habitacion_Alta();
@@ -120,10 +142,15 @@ namespace FrbaHotel.ABM_de_Habitacion
             //se pasan los datos de la fila seleccionada a la pantalla de modificación
             hab_Modificacion.txt_numero.Text = dgv_habitacion.CurrentRow.Cells[0].Value.ToString();
             hab_Modificacion.txt_piso.Text = dgv_habitacion.CurrentRow.Cells[1].Value.ToString();
-            hab_Modificacion.cbox_ubicacion.Text = dgv_habitacion.CurrentRow.Cells[2].Value.ToString();
-            hab_Modificacion.cbox_tipo_hab.Text = dgv_habitacion.CurrentRow.Cells[3].Value.ToString();
+            hab_Modificacion.txt_ubicacion.Text = dgv_habitacion.CurrentRow.Cells[2].Value.ToString();            
+            hab_Modificacion.txt_tipohab.Text = dgv_habitacion.CurrentRow.Cells[3].Value.ToString();
             hab_Modificacion.txt_descripcion.Text = dgv_habitacion.CurrentRow.Cells[4].Value.ToString();
-         
+            hab_Modificacion.txt_porcentual.Text = dgv_habitacion.CurrentRow.Cells[5].Value.ToString();
+
+            idEstado = dgv_habitacion.CurrentRow.Cells[5].Value.ToString();
+            DescripEstado(idEstado);
+            hab_Modificacion.txt_estado.Text = descEstado;      
+                    
             hab_Modificacion.Show();
         }
 
@@ -134,10 +161,15 @@ namespace FrbaHotel.ABM_de_Habitacion
             //se pasan los datos de la fila seleccionada a la pantalla de baja
             hab_Baja.txt_numero.Text = dgv_habitacion.CurrentRow.Cells[0].Value.ToString();
             hab_Baja.txt_piso.Text = dgv_habitacion.CurrentRow.Cells[1].Value.ToString();
-            hab_Baja.cbox_ubicacion.Text = dgv_habitacion.CurrentRow.Cells[2].Value.ToString();
-            hab_Baja.cbox_tipo_hab.Text = dgv_habitacion.CurrentRow.Cells[3].Value.ToString();
+            hab_Baja.txt_ubicacion.Text = dgv_habitacion.CurrentRow.Cells[2].Value.ToString();
+            hab_Baja.txt_tipohab.Text = dgv_habitacion.CurrentRow.Cells[3].Value.ToString();
             hab_Baja.txt_descripcion.Text = dgv_habitacion.CurrentRow.Cells[4].Value.ToString();
-            hab_Baja.cbox_estado.Text = dgv_habitacion.CurrentRow.Cells[5].Value.ToString();
+            hab_Baja.txt_porcentual.Text = dgv_habitacion.CurrentRow.Cells[5].Value.ToString();
+            //hab_Baja.txt_estado.Text = dgv_habitacion.CurrentRow.Cells[6].Value.ToString();
+
+            idEstado = dgv_habitacion.CurrentRow.Cells[6].Value.ToString();
+            DescripEstado(idEstado);
+            hab_Baja.txt_estado.Text = descEstado; 
 
             hab_Baja.Show();
         }
@@ -167,7 +199,7 @@ namespace FrbaHotel.ABM_de_Habitacion
                     itemCbox_tipoHab.Value = "";
                 }
 
-                DataTable dt = hab1.BuscarHabitaciones(txt_numero.Text, txt_piso.Text, txt_descripcion.Text, itemCbox_ubicacion.Value.ToString(), itemCbox_tipoHab.Value.ToString());
+                DataTable dt = hab1.BuscarHabitaciones(txt_hotel.Text, txt_numero.Text, txt_piso.Text, txt_descripcion.Text, itemCbox_ubicacion.Value.ToString(), itemCbox_tipoHab.Value.ToString());
 
                 if (dt.Rows.Count == 0)
                 {

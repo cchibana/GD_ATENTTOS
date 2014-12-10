@@ -11,71 +11,21 @@ namespace FrbaHotel.Dominio
 {
     class Habitacion : CDatos
     {
-        int numero;
-        int piso;
-        string ubicacion;
-        int tipo;
-        string descripcion;
-        int estado;
-
-        public int Numero
-        {
-            get { return numero; }
-            set { numero = value; }
-        }
-        
-        public int Piso
-        {
-            get { return piso; }
-            set { piso = value; }
-        }
-
-        public string Ubicacion
-        {
-            get { return ubicacion; }
-            set { ubicacion = value; }
-        }
-
-        public int Tipo
-        {
-            get { return tipo; }
-            set { tipo = value; }
-        }
-
-        public string Descripcion
-        {
-            get { return descripcion; }
-            set { descripcion = value; }
-        }
-
-        public int Estado
-        {
-            get { return estado; }
-            set { estado = value; }
-        }
-
-        /*Estos metodos retornan resultados de consultas*/
-        public DataTable Listar()
-        {
-            string texto = @"select [Hab_Numero] as 'Numero',
-                                    [Hab_Piso] as 'Piso',
-                                    [Hab_Ubicacion] as 'Ubicacion',
-                                    [Hab_Tipo_Habitacion] as 'Tipo', 
-                                    [Hab_Descripcion] as 'Descripción',
-                                    [Hab_Estado] as 'Estado'
-                               from [GD2C2014].[ATENTTOS].[Habitaciones];";
-            return EjecutarConsulta(texto);
-        }
+        string estado;
 
 
         string cadenaDeConexion = ConfigurationManager.ConnectionStrings["GD2C2014"].ConnectionString;
 
-        internal DataTable BuscarHabitaciones(string numeroHab, string pisoHab, string descripcion, string ubicacion, string tipoHab)
+        internal DataTable BuscarHabitaciones(string hotelHab, string numeroHab, string pisoHab, string descripcion, string ubicacion, string tipoHab)
         {
             SqlConnection connection = new SqlConnection(cadenaDeConexion);
-            SqlCommand cmd = new SqlCommand("dbo.SP_BuscarHabitaciones", connection);
+            SqlCommand cmd = new SqlCommand("ATENTTOS.SP_BuscarHabitaciones", connection);
             cmd.CommandType = CommandType.StoredProcedure;
 
+            if (!string.IsNullOrEmpty(hotelHab))
+            {
+                cmd.Parameters.AddWithValue("@hotelHab", hotelHab);
+            }
             if (!string.IsNullOrEmpty(numeroHab))
             {
                 cmd.Parameters.AddWithValue("@numeroHab", numeroHab);
@@ -103,13 +53,103 @@ namespace FrbaHotel.Dominio
             return dt;
         }
 
-        /*public string Insertar()
+        public DataTable ListarUbicaciones()
         {
-            string texto = @"INSERT into [GD2C2014].[ATENTTOS].[Habitaciones](Hab_Numero, Hab_Piso, Hab_Ubicacion, Hab_Tipo_Habitacion, Hab_Descripcion, Hab_Estado)
-                             values(" + Numero + "," + Piso + ",'" + Ubicacion + "'," + Tipo + ",'" + Descripcion + "'," + Estado + ")";
-            return EjecutarComando(texto);
-        }*/
+            string texto = "select distinct[Hab_Ubicacion] from [GD2C2014].[ATENTTOS].[Habitaciones];";
+            return EjecutarConsulta(texto);
+        }
 
+        public DataTable ListarTiposHab()
+        {
+            string texto = "select distinct[Hab_Tipo_Habitacion] from [GD2C2014].[ATENTTOS].[Habitaciones];";
+            return EjecutarConsulta(texto);
+        }
+        
+        public DataTable RecuperaDescripHab(string tipoHab)
+        {
+            string texto = "select [Hab_Descripcion] from [GD2C2014].[ATENTTOS].[Habitaciones] where [Hab_Tipo_Habitacion] =" + tipoHab + ";";
+            return EjecutarConsulta(texto);
+        }
+
+        public DataTable RecuperaPorcentualHab(string tipoHab)
+        {
+            string texto = "select [Hab_Tipo_Porcentual] from [GD2C2014].[ATENTTOS].[Habitaciones] where [Hab_Tipo_Habitacion] =" + tipoHab + ";";
+            return EjecutarConsulta(texto);
+        }
+
+        internal bool verificarNroHAbitacionValido(string numeroHab)
+        {
+            //Si el número de habitación Ingresado se encuentra disponible, devuelve 1(True). Sino, devuelve 0(False).
+            string textoSQL = "SELECT CASE WHEN EXISTS ( SELECT * FROM ATENTTOS.Habitaciones h WHERE h.Hab_Numero = '" + numeroHab + "') THEN CAST(0 AS BIT)ELSE CAST(1 AS BIT) END";
+            DataTable dt = EjecutarConsulta(textoSQL);
+            return Convert.ToBoolean(dt.Rows[0][0]);
+        }
+
+        internal bool InsertarDatosEnTablaHabitaciones(string hotelHab, string numeroHab, string pisoHab, string ubicacionHab, string tipoHab, string descHab, string estadoHab)
+        {
+            string textoSQL = @"INSERT INTO ATENTTOS.Habitaciones (Hab_Hot_Codigo, Hab_Numero, Hab_Piso, Hab_Ubicacion, Hab_Tipo_Habitacion, Hab_Descripcion, Hab_Estado)" +
+                               "VALUES(" +hotelHab+ ", " + numeroHab + ", " + pisoHab + ", '" + ubicacionHab + "', " + tipoHab + ", '"+ descHab + "',1)";
+            try
+            {
+                EjecutarComando(textoSQL);
+                return true;
+            }
+            catch
+            {
+                return false;
+                throw;
+            }
+        }
+
+        public bool CambiarEstadoHabitacion(string hotelHab, string numeroHab, int estadoHab)
+        {
+            string textoSQL = "UPDATE ATENTTOS.Habitaciones SET Hab_Estado = " + estadoHab + " WHERE Hab_Numero = " + numeroHab + " and Hab_Hot_Codigo = " + hotelHab + ";";
+            try
+            {
+                EjecutarComando(textoSQL);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+
+        internal bool ModificarDatosHabitaciones(string hotelHab, string numeroHab, string pisoHab, string ubicacionHab, string estadoHab)
+        {
+            if (estadoHab == "Disponible")
+            {
+                estado = "True";
+            }
+            else
+            {
+                estado = "False";
+            }
+
+            SqlConnection connection = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand("ATENTTOS.SP_ModificarDatosHabitaciones", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@Hab_Hotel", hotelHab);
+            cmd.Parameters.AddWithValue("@Hab_Numero", numeroHab);
+            cmd.Parameters.AddWithValue("@Hab_Piso", pisoHab);
+            cmd.Parameters.AddWithValue("@Hab_Ubicacion", ubicacionHab);            
+            cmd.Parameters.AddWithValue("@Hab_Estado", estado);
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            try
+            {
+                da.Fill(dt);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+               
 
     }
 }

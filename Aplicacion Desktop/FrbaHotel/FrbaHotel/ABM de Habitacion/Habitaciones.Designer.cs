@@ -45,6 +45,8 @@
             this.btn_baja = new System.Windows.Forms.Button();
             this.btn_modificacion = new System.Windows.Forms.Button();
             this.btn_alta = new System.Windows.Forms.Button();
+            this.txt_hotel = new System.Windows.Forms.TextBox();
+            this.lbl_hotel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_habitacion)).BeginInit();
             this.gBox_filtros.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +56,7 @@
             this.dgv_habitacion.AllowUserToAddRows = false;
             this.dgv_habitacion.AllowUserToDeleteRows = false;
             this.dgv_habitacion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_habitacion.Location = new System.Drawing.Point(27, 216);
+            this.dgv_habitacion.Location = new System.Drawing.Point(27, 232);
             this.dgv_habitacion.MultiSelect = false;
             this.dgv_habitacion.Name = "dgv_habitacion";
             this.dgv_habitacion.ReadOnly = true;
@@ -65,7 +67,7 @@
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Location = new System.Drawing.Point(380, 177);
+            this.btn_Buscar.Location = new System.Drawing.Point(380, 193);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(75, 23);
             this.btn_Buscar.TabIndex = 25;
@@ -75,7 +77,7 @@
             // 
             // btn_Limpiar
             // 
-            this.btn_Limpiar.Location = new System.Drawing.Point(274, 177);
+            this.btn_Limpiar.Location = new System.Drawing.Point(274, 193);
             this.btn_Limpiar.Name = "btn_Limpiar";
             this.btn_Limpiar.Size = new System.Drawing.Size(75, 23);
             this.btn_Limpiar.TabIndex = 24;
@@ -96,7 +98,7 @@
             this.gBox_filtros.Controls.Add(this.lbl_piso);
             this.gBox_filtros.Controls.Add(this.lbl_descripcion);
             this.gBox_filtros.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.gBox_filtros.Location = new System.Drawing.Point(27, 26);
+            this.gBox_filtros.Location = new System.Drawing.Point(27, 42);
             this.gBox_filtros.Name = "gBox_filtros";
             this.gBox_filtros.Size = new System.Drawing.Size(614, 134);
             this.gBox_filtros.TabIndex = 27;
@@ -200,7 +202,7 @@
             // btn_baja
             // 
             this.btn_baja.Enabled = false;
-            this.btn_baja.Location = new System.Drawing.Point(417, 356);
+            this.btn_baja.Location = new System.Drawing.Point(417, 372);
             this.btn_baja.Name = "btn_baja";
             this.btn_baja.Size = new System.Drawing.Size(75, 23);
             this.btn_baja.TabIndex = 23;
@@ -211,7 +213,7 @@
             // btn_modificacion
             // 
             this.btn_modificacion.Enabled = false;
-            this.btn_modificacion.Location = new System.Drawing.Point(297, 356);
+            this.btn_modificacion.Location = new System.Drawing.Point(297, 372);
             this.btn_modificacion.Name = "btn_modificacion";
             this.btn_modificacion.Size = new System.Drawing.Size(75, 23);
             this.btn_modificacion.TabIndex = 22;
@@ -221,7 +223,7 @@
             // 
             // btn_alta
             // 
-            this.btn_alta.Location = new System.Drawing.Point(187, 356);
+            this.btn_alta.Location = new System.Drawing.Point(187, 372);
             this.btn_alta.Name = "btn_alta";
             this.btn_alta.Size = new System.Drawing.Size(75, 23);
             this.btn_alta.TabIndex = 21;
@@ -229,11 +231,32 @@
             this.btn_alta.UseVisualStyleBackColor = true;
             this.btn_alta.Click += new System.EventHandler(this.btn_alta_Click);
             // 
+            // txt_hotel
+            // 
+            this.txt_hotel.Enabled = false;
+            this.txt_hotel.Location = new System.Drawing.Point(312, 12);
+            this.txt_hotel.Name = "txt_hotel";
+            this.txt_hotel.Size = new System.Drawing.Size(94, 20);
+            this.txt_hotel.TabIndex = 29;
+            this.txt_hotel.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl_hotel
+            // 
+            this.lbl_hotel.AutoSize = true;
+            this.lbl_hotel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lbl_hotel.Location = new System.Drawing.Point(253, 15);
+            this.lbl_hotel.Name = "lbl_hotel";
+            this.lbl_hotel.Size = new System.Drawing.Size(32, 13);
+            this.lbl_hotel.TabIndex = 28;
+            this.lbl_hotel.Text = "Hotel";
+            // 
             // Habitaciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 417);
+            this.Controls.Add(this.txt_hotel);
+            this.Controls.Add(this.lbl_hotel);
             this.Controls.Add(this.dgv_habitacion);
             this.Controls.Add(this.btn_Buscar);
             this.Controls.Add(this.btn_Limpiar);
@@ -247,6 +270,7 @@
             this.gBox_filtros.ResumeLayout(false);
             this.gBox_filtros.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -269,5 +293,7 @@
         private System.Windows.Forms.Button btn_alta;
         private System.Windows.Forms.Label lbl_tipo;
         private System.Windows.Forms.ComboBox cbox_tipo_hab;
+        private System.Windows.Forms.TextBox txt_hotel;
+        private System.Windows.Forms.Label lbl_hotel;
     }
 }
