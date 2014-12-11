@@ -93,6 +93,46 @@ namespace FrbaHotel.Dominio
             return dt;
         }
 
+
+        internal DataTable CambiarRegimenEnHabitacionesSeleccionadas(int hotelID, int regimenID, DateTime fechaIngreso, DateTime fechaEgreso, int habNumero)
+        {
+            DataTable dt = new DataTable();
+            string cadenaDeConexion = getCadenaDeConexion();
+
+            SqlConnection connection = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = null;
+
+            cmd = new SqlCommand("ATENTTOS.SP_NuevoRegimenParaHabitacionDeReserva", connection);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.Add("@fechainicio", SqlDbType.DateTime);
+            cmd.Parameters["@fechainicio"].Value = fechaIngreso;
+
+            cmd.Parameters.Add("@fechafin", SqlDbType.DateTime);
+            cmd.Parameters["@fechafin"].Value = fechaEgreso;
+
+            cmd.Parameters.Add("@Hotel", SqlDbType.Int);
+            cmd.Parameters["@Hotel"].Value = hotelID;
+
+            cmd.Parameters.Add("@habNumero", SqlDbType.Int);
+            cmd.Parameters["@habNumero"].Value = habNumero;
+
+            cmd.Parameters.Add("@regimen", SqlDbType.Int);
+            cmd.Parameters["@regimen"].Value = regimenID;
+
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+
+            try
+            {
+                da.Fill(dt);
+            }
+            catch
+            {
+                return dt = null;
+            }
+            return dt;
+        }
+
         private bool CancelarReservasNoShow(DateTime fechaIngreso, int hotelID, int tipoHabitacionID)
         {
             string cadenaDeConexion = getCadenaDeConexion();
@@ -200,14 +240,24 @@ namespace FrbaHotel.Dominio
 
         internal DataTable ObtenerDatosReserva(string nroReserva)
         {
-            string textoSQL = "SELECT c.Ciu_Detalle, h.Hot_Nombre, h.Hot_Codigo, r.Res_Fecha_Inicio, DATEADD(DAY, r.Res_Cant_Noches, r.Res_Fecha_Inicio) AS CantNoches, r.Res_Tipo_Regimen FROM  ATENTTOS.Reservas r, ATENTTOS.Ciudades c, ATENTTOS.Hoteles h WHERE c.Ciu_Id = h.Hot_Ciu_Id AND  r.Res_Hot_codigo = h.Hot_Codigo AND r.Res_Codigo = " + nroReserva + " AND (r.Res_Estado = 1 OR r.Res_Estado = 2)";
+            string textoSQL = "SELECT c.Ciu_Detalle, h.Hot_Nombre, h.Hot_Codigo, r.Res_Fecha_Inicio, DATEADD(DAY, r.Res_Cant_Noches, r.Res_Fecha_Inicio) AS FechaFin, r.Res_Tipo_Regimen FROM  ATENTTOS.Reservas r, ATENTTOS.Ciudades c, ATENTTOS.Hoteles h WHERE c.Ciu_Id = h.Hot_Ciu_Id AND  r.Res_Hot_codigo = h.Hot_Codigo AND r.Res_Codigo = " + nroReserva + " AND (r.Res_Estado = 1 OR r.Res_Estado = 2)";
             return EjecutarConsulta(textoSQL);
         }
 
         internal DataTable ObtenerDatosHabitaciones(string nroReserva)
         {
-            string textoSQL = "SELECT c.Cli_Id, c.Cli_Apellido, c.Cli_Nombre, tp.Tip_Descripcion, c.Cli_Numero_Documento, c.Cli_Mail FROM ATENTTOS.Reservas R, ATENTTOS.Clientes c, ATENTTOS.Tipo_Documento tp WHERE R.Res_Cli_Id = c.Cli_Id AND c.Cli_Tipo_Documento = tp.Tip_Id AND r.Res_Codigo = " + nroReserva;
+            string textoSQL = "SELECT	re.Reg_Descripcion, r.Res_Tipo_Regimen, r.Res_Fecha_Inicio, DATEADD(DAY, r.Res_Cant_Noches, r.Res_Fecha_Inicio)AS FechaFin,hxr.HxR_Hab_Nro,ha.Hab_Tipo_Habitacion,ha.Hab_Piso,ha.Hab_Ubicacion,ha.Hab_Descripcion,r.Res_Hot_codigo,h.Hot_Nombre,(h.Hot_CantEstrella*h.Hot_RecargaEstrella+(ha.Hab_Tipo_Porcentual*re.Reg_Precio)), r.Res_Cant_Noches, (h.Hot_CantEstrella*h.Hot_RecargaEstrella+(ha.Hab_Tipo_Porcentual*re.Reg_Precio))* r.Res_Cant_Noches FROM	ATENTTOS.Regimenes re, ATENTTOS.Reservas r, ATENTTOS.Habitaciones ha, ATENTTOS.Hoteles h, ATENTTOS.Habitaciones_Por_Reserva hxr WHERE	r.Res_Hot_codigo = h.Hot_Codigo AND	r.Res_Tipo_Regimen = re.Reg_Codigo AND  h.Hot_Codigo = ha.Hab_Hot_Codigo AND  hxr.HxR_Hab_Nro = ha.Hab_Numero AND  hxr.HxR_Res_Codigo = r.Res_Codigo AND  r.Res_Codigo = " + nroReserva;
             return EjecutarConsulta(textoSQL);
         }
+
+        public class itemsNuevoReg
+        {
+            public int hotelID;
+            public int regimenID;
+            public DateTime fechaIngreso;
+            public DateTime fechaEgreso;
+            public int habNumero;
+        }
+
     }
 }
