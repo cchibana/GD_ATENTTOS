@@ -208,8 +208,10 @@
     <Compile Include="Dominio\CDatos.cs" />
     <Compile Include="Dominio\Cliente.cs" />
     <Compile Include="Dominio\ComboBoxItem.cs" />
+    <Compile Include="Dominio\Consumible.cs" />
     <Compile Include="Dominio\ContraseniaUsuarioLogueado.cs" />
     <Compile Include="Dominio\Estadia.cs" />
+    <Compile Include="Dominio\Facturacion.cs" />
     <Compile Include="Dominio\Habitacion.cs" />
     <Compile Include="Dominio\Hotel.cs" />
     <Compile Include="Dominio\Listado.cs" />
@@ -219,6 +221,18 @@
     <Compile Include="Dominio\Validadores.cs" />
     <Compile Include="Dominio\Parametros.cs" />
     <Compile Include="Dominio\UsuarioLogin.cs" />
+    <Compile Include="Facturacion\FacturarEstadia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion\FacturarEstadia.Designer.cs">
+      <DependentUpon>FacturarEstadia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Facturacion\Factura_Buscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturacion\Factura_Buscar.Designer.cs">
+      <DependentUpon>Factura_Buscar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generar Modificar Reserva\LogReservas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,6 +388,9 @@
     <EmbeddedResource Include="Contrasenia\NuevaContraseniaUsuarioLogueado.resx">
       <DependentUpon>NuevaContraseniaUsuarioLogueado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Facturacion\FacturarEstadia.resx">
+      <DependentUpon>FacturarEstadia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generar Modificar Reserva\LogReservas.resx">
       <DependentUpon>LogReservas.cs</DependentUpon>
     </EmbeddedResource>
@@ -418,8 +435,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Consumible\RegistrarConsumibles.resx">
+      <DependentUpon>RegistrarConsumibles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registrar Estadia\Estadia_checkIn.resx">
       <DependentUpon>Estadia_checkIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Estadia\Estadia_checkOut.resx">
+      <DependentUpon>Estadia_checkOut.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -436,17 +459,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Registrar Consumible\Form1.cs">
+    <Compile Include="Registrar Consumible\RegistrarConsumibles.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar Consumible\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registrar Consumible\RegistrarConsumibles.Designer.cs">
+      <DependentUpon>RegistrarConsumibles.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrar Estadia\Estadia_checkIn.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Registrar Estadia\Estadia_checkIn.Designer.cs">
       <DependentUpon>Estadia_checkIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Estadia\Estadia_checkOut.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Estadia\Estadia_checkOut.Designer.cs">
+      <DependentUpon>Estadia_checkOut.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

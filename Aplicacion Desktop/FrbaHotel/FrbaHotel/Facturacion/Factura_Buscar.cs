@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FrbaHotel.Registrar_Consumible
+namespace FrbaHotel.Facturacion
 {
-    public partial class Form1 : Form
+    public partial class Factura_Buscar : Form
     {
-        public Form1()
+        public Factura_Buscar()
         {
             InitializeComponent();
         }

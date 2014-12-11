@@ -160,8 +160,8 @@ namespace FrbaHotel.Dominio
 
             cmd.Parameters.AddWithValue("@Hot_Nombre", nombreHot);
             cmd.Parameters.AddWithValue("@Hot_Email", mailHot);
-            cmd.Parameters.Add("@Hot_Telefono", SqlDbType.Int);
-            cmd.Parameters["@Hot_Telefono"].Value = Convert.ToInt32(telefonoHot);
+            cmd.Parameters.Add("@Hot_Telefono", SqlDbType.BigInt);
+            cmd.Parameters["@Hot_Telefono"].Value = Convert.ToInt64(telefonoHot);
             cmd.Parameters.Add("@Hot_Numero", SqlDbType.Int);
             cmd.Parameters["@Hot_Numero"].Value = Convert.ToInt32(numeroHot);
             cmd.Parameters.Add("@Hot_Ciu_Id", SqlDbType.Int);
