@@ -87,6 +87,8 @@ namespace FrbaHotel
                     menuPrincipal.Items.Add(menuItem_Reservas);
                     menuItem_Reservas.DropDownItems.Add("Modificar Reserva", null, new EventHandler(menuItem_ModificarReserva));
                     menuPrincipal.Items.Add(menuItem_Reservas);
+                    menuItem_Reservas.DropDownItems.Add("Log de Reservas", null, new EventHandler(menuItem_LogReserva));
+                    menuPrincipal.Items.Add(menuItem_Reservas);
 
                 }
                 if (listaIDFuncionalidades.Exists(element => element == 8))
@@ -198,6 +200,12 @@ namespace FrbaHotel
             newModRes.Show();
         }
 
+        private void menuItem_LogReserva(object sender, EventArgs e)
+        {
+            Generar_Modificar_Reserva.LogReservas log1 = Generar_Modificar_Reserva.LogReservas.ObtenerInstancia();
+            log1.Show();
+        }
+
         private void menuItem_CancelarReserva(object sender, EventArgs e)
         {
             Cancelar_Reserva.Cancelar_Reserva newCancRes = Cancelar_Reserva.Cancelar_Reserva.ObtenerInstancia();
@@ -205,7 +213,7 @@ namespace FrbaHotel
         }
         
         private void menuItem_Estadias_Click(object sender, EventArgs e)
-        {            
+        {
             Registrar_Estadia.Estadia_checkIn newCheckIn = new Registrar_Estadia.Estadia_checkIn();
             newCheckIn.Show();
         }
@@ -222,7 +230,8 @@ namespace FrbaHotel
 
         private void menuItem_Listado_Estadistico_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Listado estadístico");
+            Listado_Estadistico.ListadosEstadisticos list1 = Listado_Estadistico.ListadosEstadisticos.ObtenerInstancia();
+            list1.Show();
         }
 
         private void menuItem_ContraseñaPropia_Click(object sender, EventArgs e)

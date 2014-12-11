@@ -131,7 +131,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 {
                     if (RegistrarEnTablaHabitacionesPorReservas(nroReserva, hotelID))
                     {
-                        if (res1.RegistrarEnTablaLogRegistros(nroReserva, usuario))
+                        if (res1.RegistrarEnTablaLogRegistros(nroReserva, usuario, 'G', "Nueva Reserva"))
                         {
                             MessageBox.Show("La reserva ha sido exitosa. Su número de reserva es: " + nroReserva);
                             resGen.LimpiarCampos();

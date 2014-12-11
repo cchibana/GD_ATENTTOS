@@ -167,7 +167,11 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                     Reserva_ClienteBusqueda cliRes = Reserva_ClienteBusqueda.ObtenerInstancia();
                     cliRes.Show();
                     this.Hide();
-                }   
+                }
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar alguna habitación para realizar la reserva");
             }
         }
 
@@ -188,7 +192,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                                                                                             dtp_FechaIngreso.Value,
                                                                                             dtp_FechaEgreso.Value) ;
 
-                Reserva_HabitacionesDisponibles habDisp = Reserva_HabitacionesDisponibles.ObtenerInstancia();
+                Reserva_HabitacionesDisponibles habDisp = Reserva_HabitacionesDisponibles.ObtenerInstancia('A');
                 habDisp.CargarDgv(dt_HabitacionesDisponibles);
                 habDisp.Show();
             }

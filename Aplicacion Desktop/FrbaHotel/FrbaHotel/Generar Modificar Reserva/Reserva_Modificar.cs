@@ -16,6 +16,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         List<string> ListaHabitacionesAnterior;
         List<string> ListaHabitacionesActual;
 
+        int NroReservaBuscado;
         int HotelIdAnterior;
         int RegimenIdAnterior;
         DateTime fechaIngresoAnterior;
@@ -142,6 +143,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             {
                 Limpiar();
                 string nroReserva = txt_NroReserva.Text;
+                this.NroReservaBuscado = Convert.ToInt32(nroReserva);
                 Dominio.Reserva res1 = new Dominio.Reserva();
                 DataTable dtReserva = res1.ObtenerDatosReserva(nroReserva);
                 if (dtReserva.Rows.Count == 0)
@@ -151,6 +153,8 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                 else
                 {
                     CargarDatosReserva(dtReserva);
+
+                    DateTime fechaReservaInicio = Convert.ToDateTime(dtReserva.Rows[0][3].ToString());
                     DataTable dtCliente = res1.ObtenerDatosCliente(nroReserva);
                     CargarDatosCliente(dtCliente);
                     DataTable dtHabitaciones = res1.ObtenerDatosHabitaciones(nroReserva);
@@ -257,15 +261,53 @@ namespace FrbaHotel.Generar_Modificar_Reserva
 
         private void btn_GuardarModificaciones_Click(object sender, EventArgs e)
         {
-            if (this.HotelIdAnterior != this.ObtenerHotelIdReserva() || this.RegimenIdAnterior != this.ObtenerRegimenIdReserva() || this.fechaIngresoAnterior != this.ObtenerFechaIngresoReserva() || this.fechaEgresoAnterior != this.ObtenerFechaIngresoReserva().AddDays(this.ObtenerCantidadNochesReserva()))
+            if (dgv_HabitacionesReserva.Rows.Count > 1)
             {
-                MessageBox.Show("aLGO CAMBIO");
+                Dominio.Reserva res1 = new Dominio.Reserva();
+
+                try
+                {
+                    res1.UpdateTablaReservas(this.ObtenerHotelIdReserva(), this.ObtenerFechaIngresoReserva(), this.ObtenerCantidadNochesReserva(), this.ObtenerRegimenIdReserva(), txt_ImporteDia.Text, txt_ImporteTotal.Text, NroReservaBuscado);
+                    res1.BajaHabitacionesAnteriores(NroReservaBuscado);
+                    RegistrarEnTablaHabitacionesPorReservas(NroReservaBuscado, this.ObtenerHotelIdReserva());
+                    string usuario;
+                    if (Dominio.UsuarioLogin.TheInstance.getUsuario() == null)
+                    {
+                        usuario = "guest";
+                    }else
+                    {
+                        usuario = Dominio.UsuarioLogin.TheInstance.getUsuario();
+                    }
+                    res1.RegistrarEnTablaLogRegistros(NroReservaBuscado, usuario, 'M', "Modificación de reserva");
+                    MessageBox.Show("Se han guardado las modificaciones para el número de reserva " + this.NroReservaBuscado);
+                }
+                catch
+                {
+                    MessageBox.Show("Error al guardar los cambios.");
+                }
+            }
+        }
+
+        private bool RegistrarEnTablaHabitacionesPorReservas(int nroReserva, int hotelID)
+        {
+            Reserva_Generar resGen = Reserva_Generar.ObtenerInstancia();
+            Dominio.Reserva res1 = new Dominio.Reserva();
+            List<string> listaHabitacionesAReservar = this.ObtenerHabitacionesAgregadasEnReserva();
+            if (listaHabitacionesAReservar != null)
+            {
+                foreach (var nroHabitacion in listaHabitacionesAReservar)
+                {
+                    if (!res1.RegistrarReservaTablaHabitacionesPorReservas(nroReserva.ToString(), hotelID.ToString(), nroHabitacion))
+                    {
+                        return false;
+                    }
+                }
+                return true;
             }
             else
             {
-                MessageBox.Show("nO CAMBIO NADA");
+                return false;
             }
-
         }
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
@@ -290,7 +332,7 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                                                                                             dtp_FechaIngreso.Value,
                                                                                             dtp_FechaEgreso.Value);
 
-                Reserva_HabitacionesDisponibles habDisp = Reserva_HabitacionesDisponibles.ObtenerInstancia();
+                Reserva_HabitacionesDisponibles habDisp = Reserva_HabitacionesDisponibles.ObtenerInstancia('M');
                 habDisp.CargarDgv(dt_HabitacionesDisponibles);
                 habDisp.Show();
             }
@@ -384,6 +426,55 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             }
         }
 
+        internal void AgregarHabitacion(string Reg_Descripcion, string Reg_Codigo, string fechaInicio, string fechaFin, string Hab_Numero, string Hab_Descripcion, string Hab_Piso, string Hab_Ubicacion,
+                                        string Hab_Tipo_Habitacion, string Hab_Hot_Codigo, string Hot_Nombre,
+                                        string precioPorDia, string cantidadNoches, string precioTotalHabitacion)
+                {
+            bool found = false;
+            if (dgv_HabitacionesReserva.Rows.Count > 1)
+            {
+                DateTime fechaInicio1 = Convert.ToDateTime(dgv_HabitacionesReserva.Rows[0].Cells[2].Value.ToString());
+                DateTime fechaFin1 = Convert.ToDateTime(dgv_HabitacionesReserva.Rows[0].Cells[3].Value.ToString());
+                for (int i = 0; i < dgv_HabitacionesReserva.Rows.Count - 1; i++)
+                {
+                    if (dgv_HabitacionesReserva.Rows[i].Cells[4].Value.ToString() == Hab_Numero && dgv_HabitacionesReserva.Rows[i].Cells[9].Value.ToString() == Hab_Hot_Codigo && dgv_HabitacionesReserva.Rows[i].Cells[1].Value.ToString() == Reg_Codigo)
+                    {
+                        found = true;
+                        MessageBox.Show("Ya se ha agregado a la habitación seleccionada");
+                        break;
+                    }
+
+                    if (Convert.ToDateTime(dgv_HabitacionesReserva.Rows[0].Cells[3].Value.ToString()) != Convert.ToDateTime(fechaFin) || Convert.ToDateTime(dgv_HabitacionesReserva.Rows[0].Cells[2].Value.ToString()) != Convert.ToDateTime(fechaInicio))
+                    {
+                        found = true;
+                        MessageBox.Show("Todas las reservas de habitaciones deben tener las mismas fechas de inicio y fin.");
+                        break;
+                    }
+
+                    if (dgv_HabitacionesReserva.Rows[0].Cells[9].Value.ToString() != Hab_Hot_Codigo)
+                    {
+                        found = true;
+                        MessageBox.Show("Todas las reservas de habitaciones deben pertenecer al mismo hotel.");
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    dgv_HabitacionesReserva.Rows.Add(Reg_Descripcion, Reg_Codigo, fechaInicio, fechaFin, Hab_Numero, Hab_Descripcion, Hab_Piso, Hab_Ubicacion, Hab_Tipo_Habitacion, Hab_Hot_Codigo, Hot_Nombre, precioPorDia, cantidadNoches, precioTotalHabitacion);
+                    txt_ImporteDia.Text = (Convert.ToDecimal(txt_ImporteDia.Text.ToString()) + Convert.ToDecimal(precioPorDia)).ToString();
+                    txt_ImporteTotal.Text = (Convert.ToDecimal(txt_ImporteTotal.Text.ToString()) + Convert.ToDecimal(precioTotalHabitacion)).ToString();
+                    txt_CantNoches.Text = (fechaFin1 - fechaInicio1).Days.ToString();
+                }
+            }
+            else
+            {
+                dgv_HabitacionesReserva.Rows.Add(Reg_Descripcion, Reg_Codigo, fechaInicio, fechaFin, Hab_Numero, Hab_Descripcion, Hab_Piso, Hab_Ubicacion, Hab_Tipo_Habitacion, Hab_Hot_Codigo, Hot_Nombre, precioPorDia, cantidadNoches, precioTotalHabitacion);
+                txt_ImporteDia.Text = (Convert.ToDecimal(precioPorDia)).ToString();
+                txt_ImporteTotal.Text = Convert.ToDecimal(precioTotalHabitacion).ToString();
+                txt_CantNoches.Text = cantidadNoches;
+            }
+        }
+
         private void CargarDatosHabitaciones(DataTable dtHabitaciones, int indice)
         {
 
@@ -393,10 +484,10 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             dgv_HabitacionesReserva.Rows[indice].Cells["FechaInicio"].Value = Convert.ToDateTime(dtHabitaciones.Rows[0][2].ToString());
             dgv_HabitacionesReserva.Rows[indice].Cells["FechaFin"].Value = Convert.ToDateTime(dtHabitaciones.Rows[0][3].ToString());
             dgv_HabitacionesReserva.Rows[indice].Cells["Hab_Numero"].Value = dtHabitaciones.Rows[0][4].ToString();
-            dgv_HabitacionesReserva.Rows[indice].Cells["Hab_Descripcion"].Value = dtHabitaciones.Rows[0][8].ToString();
+            dgv_HabitacionesReserva.Rows[indice].Cells["Hab_Descripcion"].Value = dtHabitaciones.Rows[0][5].ToString();
             dgv_HabitacionesReserva.Rows[indice].Cells["Hab_Piso"].Value = dtHabitaciones.Rows[0][6].ToString();
             dgv_HabitacionesReserva.Rows[indice].Cells["Hab_Ubicacion"].Value = dtHabitaciones.Rows[0][7].ToString();
-            dgv_HabitacionesReserva.Rows[indice].Cells["Hab_Tipo_Habitacion"].Value = dtHabitaciones.Rows[0][5].ToString();
+            dgv_HabitacionesReserva.Rows[indice].Cells["Hab_Tipo_Habitacion"].Value = dtHabitaciones.Rows[0][8].ToString();
             dgv_HabitacionesReserva.Rows[indice].Cells["Hab_Hot_Codigo"].Value = dtHabitaciones.Rows[0][9].ToString();
             dgv_HabitacionesReserva.Rows[indice].Cells["Hot_Nombre"].Value = dtHabitaciones.Rows[0][10].ToString();
             dgv_HabitacionesReserva.Rows[indice].Cells["Precio_por_dia"].Value = dtHabitaciones.Rows[0][11].ToString();
@@ -406,6 +497,23 @@ namespace FrbaHotel.Generar_Modificar_Reserva
             txt_ImporteDia.Text = (Convert.ToDecimal(txt_ImporteDia.Text.ToString()) + Convert.ToDecimal(dtHabitaciones.Rows[0][11].ToString())).ToString();
             txt_ImporteTotal.Text = (Convert.ToDecimal(txt_ImporteTotal.Text.ToString()) + Convert.ToDecimal(dtHabitaciones.Rows[0][13].ToString())).ToString();
             txt_CantNoches.Text = dtHabitaciones.Rows[0][12].ToString();
+        }
+
+        private void btn_BorrarHabitacion_Click(object sender, EventArgs e)
+        {
+            if (dgv_HabitacionesReserva.CurrentRow != null && dgv_HabitacionesReserva.CurrentRow.Cells[0].Value != null)
+            {
+                if (Convert.ToDecimal(txt_ImporteTotal.Text) != 0)
+                {
+                    txt_ImporteDia.Text = (Convert.ToDecimal(txt_ImporteDia.Text) - Convert.ToDecimal(dgv_HabitacionesReserva.CurrentRow.Cells[11].Value.ToString())).ToString();
+                    txt_ImporteTotal.Text = (Convert.ToDecimal(txt_ImporteTotal.Text) - Convert.ToDecimal(dgv_HabitacionesReserva.CurrentRow.Cells[13].Value.ToString())).ToString();
+                }
+                dgv_HabitacionesReserva.Rows.RemoveAt(dgv_HabitacionesReserva.CurrentRow.Index);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar alguna habitación");
+            }
         }
     }
 }

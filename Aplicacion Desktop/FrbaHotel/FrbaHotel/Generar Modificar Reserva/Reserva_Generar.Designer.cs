@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_RegHotel = new System.Windows.Forms.Button();
             this.btn_VerDisponibilidad = new System.Windows.Forms.Button();
@@ -104,7 +104,7 @@
             // 
             // btn_RegHotel
             // 
-            this.btn_RegHotel.Location = new System.Drawing.Point(650, 59);
+            this.btn_RegHotel.Location = new System.Drawing.Point(650, 65);
             this.btn_RegHotel.Name = "btn_RegHotel";
             this.btn_RegHotel.Size = new System.Drawing.Size(148, 23);
             this.btn_RegHotel.TabIndex = 15;
@@ -114,9 +114,9 @@
             // 
             // btn_VerDisponibilidad
             // 
-            this.btn_VerDisponibilidad.Location = new System.Drawing.Point(273, 163);
+            this.btn_VerDisponibilidad.Location = new System.Drawing.Point(319, 152);
             this.btn_VerDisponibilidad.Name = "btn_VerDisponibilidad";
-            this.btn_VerDisponibilidad.Size = new System.Drawing.Size(126, 31);
+            this.btn_VerDisponibilidad.Size = new System.Drawing.Size(178, 39);
             this.btn_VerDisponibilidad.TabIndex = 13;
             this.btn_VerDisponibilidad.Text = "Ver Disponibilidad";
             this.btn_VerDisponibilidad.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(343, 91);
+            this.label6.Location = new System.Drawing.Point(343, 102);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(97, 13);
             this.label6.TabIndex = 12;
@@ -135,7 +135,7 @@
             // 
             this.cb_TipoHabitacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_TipoHabitacion.FormattingEnabled = true;
-            this.cb_TipoHabitacion.Location = new System.Drawing.Point(444, 87);
+            this.cb_TipoHabitacion.Location = new System.Drawing.Point(444, 98);
             this.cb_TipoHabitacion.Name = "cb_TipoHabitacion";
             this.cb_TipoHabitacion.Size = new System.Drawing.Size(200, 21);
             this.cb_TipoHabitacion.TabIndex = 11;
@@ -143,7 +143,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(343, 65);
+            this.label5.Location = new System.Drawing.Point(343, 71);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 13);
             this.label5.TabIndex = 10;
@@ -153,7 +153,7 @@
             // 
             this.cb_Regimen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_Regimen.FormattingEnabled = true;
-            this.cb_Regimen.Location = new System.Drawing.Point(444, 60);
+            this.cb_Regimen.Location = new System.Drawing.Point(444, 66);
             this.cb_Regimen.Name = "cb_Regimen";
             this.cb_Regimen.Size = new System.Drawing.Size(200, 21);
             this.cb_Regimen.TabIndex = 9;
@@ -161,7 +161,7 @@
             // 
             // dtp_FechaEgreso
             // 
-            this.dtp_FechaEgreso.Location = new System.Drawing.Point(118, 85);
+            this.dtp_FechaEgreso.Location = new System.Drawing.Point(118, 100);
             this.dtp_FechaEgreso.Name = "dtp_FechaEgreso";
             this.dtp_FechaEgreso.Size = new System.Drawing.Size(200, 20);
             this.dtp_FechaEgreso.TabIndex = 8;
@@ -169,7 +169,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(14, 91);
+            this.label4.Location = new System.Drawing.Point(14, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(88, 13);
             this.label4.TabIndex = 7;
@@ -177,7 +177,7 @@
             // 
             // dtp_FechaIngreso
             // 
-            this.dtp_FechaIngreso.Location = new System.Drawing.Point(118, 59);
+            this.dtp_FechaIngreso.Location = new System.Drawing.Point(118, 66);
             this.dtp_FechaIngreso.Name = "dtp_FechaIngreso";
             this.dtp_FechaIngreso.Size = new System.Drawing.Size(200, 20);
             this.dtp_FechaIngreso.TabIndex = 6;
@@ -185,7 +185,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 65);
+            this.label3.Location = new System.Drawing.Point(14, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 13);
             this.label3.TabIndex = 5;
@@ -281,9 +281,9 @@
             // 
             // FechaInicio
             // 
-            dataGridViewCellStyle5.Format = "d";
-            dataGridViewCellStyle5.NullValue = null;
-            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle1;
             this.FechaInicio.HeaderText = "Fecha Inicio de Reserva";
             this.FechaInicio.Name = "FechaInicio";
             this.FechaInicio.ReadOnly = true;
@@ -291,9 +291,9 @@
             // 
             // FechaFin
             // 
-            dataGridViewCellStyle6.Format = "d";
-            dataGridViewCellStyle6.NullValue = null;
-            this.FechaFin.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.FechaFin.DefaultCellStyle = dataGridViewCellStyle2;
             this.FechaFin.HeaderText = "Fecha Fin de Reserva";
             this.FechaFin.Name = "FechaFin";
             this.FechaFin.ReadOnly = true;

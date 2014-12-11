@@ -209,14 +209,22 @@
     <Compile Include="Dominio\Cliente.cs" />
     <Compile Include="Dominio\ComboBoxItem.cs" />
     <Compile Include="Dominio\ContraseniaUsuarioLogueado.cs" />
+    <Compile Include="Dominio\Estadia.cs" />
     <Compile Include="Dominio\Habitacion.cs" />
     <Compile Include="Dominio\Hotel.cs" />
+    <Compile Include="Dominio\Listado.cs" />
     <Compile Include="Dominio\Reserva.cs" />
     <Compile Include="Dominio\Rol.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="Dominio\Validadores.cs" />
     <Compile Include="Dominio\Parametros.cs" />
     <Compile Include="Dominio\UsuarioLogin.cs" />
+    <Compile Include="Generar Modificar Reserva\LogReservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Generar Modificar Reserva\LogReservas.Designer.cs">
+      <DependentUpon>LogReservas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Generar Modificar Reserva\Reserva_ClienteBusqueda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,11 +285,11 @@
     <Compile Include="Generar Modificar Reserva\Reserva_Generar.Designer.cs">
       <DependentUpon>Reserva_Generar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listado Estadistico\Form1.cs">
+    <Compile Include="Listado Estadistico\ListadosEstadisticos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Listado Estadistico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Listado Estadistico\ListadosEstadisticos.Designer.cs">
+      <DependentUpon>ListadosEstadisticos.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.cs">
       <SubType>Form</SubType>
@@ -366,6 +374,9 @@
     <EmbeddedResource Include="Contrasenia\NuevaContraseniaUsuarioLogueado.resx">
       <DependentUpon>NuevaContraseniaUsuarioLogueado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Generar Modificar Reserva\LogReservas.resx">
+      <DependentUpon>LogReservas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Generar Modificar Reserva\Reserva_ClienteBusqueda.resx">
       <DependentUpon>Reserva_ClienteBusqueda.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,6 +401,9 @@
     <EmbeddedResource Include="Generar Modificar Reserva\Reserva_Regimenes.resx">
       <DependentUpon>Reserva_Regimenes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Listado Estadistico\ListadosEstadisticos.resx">
+      <DependentUpon>ListadosEstadisticos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginHotelRol.resx">
       <DependentUpon>LoginHotelRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -403,6 +417,9 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Estadia\Estadia_checkIn.resx">
+      <DependentUpon>Estadia_checkIn.cs</DependentUpon>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -425,11 +442,11 @@
     <Compile Include="Registrar Consumible\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registrar Estadia\Form1.cs">
+    <Compile Include="Registrar Estadia\Estadia_checkIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar Estadia\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registrar Estadia\Estadia_checkIn.Designer.cs">
+      <DependentUpon>Estadia_checkIn.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

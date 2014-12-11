@@ -199,7 +199,7 @@ namespace FrbaHotel.Dominio
             return EjecutarComando(textoSQL);
         }
 
-        internal bool RegistrarEnTablaLogRegistros(int nroReserva, string usuario)
+        internal bool RegistrarEnTablaLogRegistros(int nroReserva, string usuario, char tipoAccion, string motivo)
         {
             string cadenaDeConexion = getCadenaDeConexion();
 
@@ -217,7 +217,10 @@ namespace FrbaHotel.Dominio
             cmd.Parameters["@fechaLog"].Value = UsuarioLogin.TheInstance.getFechaSistema().ToString("yyyy-MM-dd HH:mm:ss");
 
             cmd.Parameters.Add("@tipoAccion", SqlDbType.Char);
-            cmd.Parameters["@tipoAccion"].Value = 'G';
+            cmd.Parameters["@tipoAccion"].Value = tipoAccion;
+
+            cmd.Parameters.Add("@motivo", SqlDbType.NVarChar);
+            cmd.Parameters["@motivo"].Value = motivo;
 
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -240,7 +243,7 @@ namespace FrbaHotel.Dominio
 
         internal DataTable ObtenerDatosReserva(string nroReserva)
         {
-            string textoSQL = "SELECT c.Ciu_Detalle, h.Hot_Nombre, h.Hot_Codigo, r.Res_Fecha_Inicio, DATEADD(DAY, r.Res_Cant_Noches, r.Res_Fecha_Inicio) AS FechaFin, r.Res_Tipo_Regimen FROM  ATENTTOS.Reservas r, ATENTTOS.Ciudades c, ATENTTOS.Hoteles h WHERE c.Ciu_Id = h.Hot_Ciu_Id AND  r.Res_Hot_codigo = h.Hot_Codigo AND r.Res_Codigo = " + nroReserva + " AND (r.Res_Estado = 1 OR r.Res_Estado = 2)";
+            string textoSQL = "SELECT c.Ciu_Detalle, h.Hot_Nombre, h.Hot_Codigo, r.Res_Fecha_Inicio, DATEADD(DAY, r.Res_Cant_Noches, r.Res_Fecha_Inicio) AS FechaFin, r.Res_Tipo_Regimen, re.Reg_Descripcion FROM  ATENTTOS.Reservas r, ATENTTOS.Ciudades c, ATENTTOS.Hoteles h, ATENTTOS.Regimenes re WHERE c.Ciu_Id = h.Hot_Ciu_Id AND  r.Res_Hot_codigo = h.Hot_Codigo AND r.Res_Tipo_Regimen = re.Reg_Codigo AND r.Res_Codigo = " + nroReserva + " AND (r.Res_Estado = 1 OR r.Res_Estado = 2)";
             return EjecutarConsulta(textoSQL);
         }
 
@@ -259,5 +262,50 @@ namespace FrbaHotel.Dominio
             public int habNumero;
         }
 
+
+        internal void UpdateTablaReservas(int hotelCodigo, DateTime fechaInicio, int cantNoches, int RegimenId, string costoPorDiaString, string costoTotalString, int NroReservaBuscado)
+        {
+            string textoSQL = "UPDATE ATENTTOS.Reservas SET Res_Hot_codigo = " + hotelCodigo.ToString() + ", Res_Fecha_Inicio = '" + fechaInicio.ToString("yyyy-MM-dd HH:mm:ss") + "', Res_Cant_Noches = " + cantNoches.ToString() + ",Res_Tipo_Regimen = " + RegimenId.ToString() + ", Res_Costo_Por_Dia = " + costoPorDiaString.Replace(',', '.') + ", Res_Costo_Total = " + costoTotalString.Replace(',', '.') + ", Res_Estado = 2 WHERE Res_Codigo = " + NroReservaBuscado.ToString();
+            EjecutarComando(textoSQL);
+        }
+
+        internal void BajaHabitacionesAnteriores(int NroReservaBuscado)
+        {            
+            string textoSQL = "DELETE ATENTTOS.Habitaciones_Por_Reserva WHERE HxR_Res_Codigo = " + NroReservaBuscado.ToString();
+            EjecutarComando(textoSQL);
+        }
+
+        internal bool CancelarReserva(int NroReservaBuscado, string usuario, string motivo)
+        {
+            int estado;
+            if (usuario == "guest")
+            {
+                //Cancelada por el usuario
+                estado = 4;
+                
+            }
+            else
+            {
+                //Cancelada por la recepción
+                estado = 3; 
+            }
+            string textoSQL = "UPDATE ATENTTOS.Reservas SET Res_Estado = " + estado.ToString() + " WHERE Res_Codigo = " + NroReservaBuscado.ToString();
+            try
+            {
+                EjecutarComando(textoSQL);
+                RegistrarEnTablaLogRegistros(NroReservaBuscado, usuario, 'C', motivo);
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }
+        }
+
+        internal DataTable ObtenerLogReserva(string nroReserva)
+        {
+            string textoSQL = "SELECT [LRe_ID_Log] AS 'ID Log',[LRe_Codigo_Reserva] AS 'Código de Reserva',[LRe_Usuario_Generador] AS 'Usuario Generador del Log',[LRe_FechaLog] AS 'Fecha Log',[LRe_Tipo_Accion] AS 'Tipo de Acción',[LRe_Motivo] AS 'Motivo' FROM [GD2C2014].[ATENTTOS].[LogReservas] WHERE LRe_Codigo_Reserva = " + nroReserva;
+            return EjecutarConsulta(textoSQL);
+        }
     }
 }

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_NroReserva = new System.Windows.Forms.TextBox();
             this.gb_Reserva = new System.Windows.Forms.GroupBox();
@@ -49,7 +49,6 @@
             this.Precio_por_dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantNoches = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PrecioTotalHab = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_LimpiarCampos = new System.Windows.Forms.Button();
             this.dtp_FechaEgreso = new System.Windows.Forms.DateTimePicker();
             this.dtp_FechaIngreso = new System.Windows.Forms.DateTimePicker();
             this.cb_Regimen = new System.Windows.Forms.ComboBox();
@@ -114,7 +113,6 @@
             // 
             this.gb_Reserva.Controls.Add(this.btn_BorrarHabitacion);
             this.gb_Reserva.Controls.Add(this.dgv_HabitacionesReserva);
-            this.gb_Reserva.Controls.Add(this.btn_LimpiarCampos);
             this.gb_Reserva.Controls.Add(this.dtp_FechaEgreso);
             this.gb_Reserva.Controls.Add(this.dtp_FechaIngreso);
             this.gb_Reserva.Controls.Add(this.cb_Regimen);
@@ -144,6 +142,7 @@
             this.btn_BorrarHabitacion.TabIndex = 52;
             this.btn_BorrarHabitacion.Text = "Borrar Habitación";
             this.btn_BorrarHabitacion.UseVisualStyleBackColor = true;
+            this.btn_BorrarHabitacion.Click += new System.EventHandler(this.btn_BorrarHabitacion_Click);
             // 
             // dgv_HabitacionesReserva
             // 
@@ -187,9 +186,9 @@
             // 
             // FechaInicio
             // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Format = "d";
+            dataGridViewCellStyle5.NullValue = null;
+            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle5;
             this.FechaInicio.HeaderText = "Fecha Inicio de Reserva";
             this.FechaInicio.Name = "FechaInicio";
             this.FechaInicio.ReadOnly = true;
@@ -197,9 +196,9 @@
             // 
             // FechaFin
             // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.FechaFin.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Format = "d";
+            dataGridViewCellStyle6.NullValue = null;
+            this.FechaFin.DefaultCellStyle = dataGridViewCellStyle6;
             this.FechaFin.HeaderText = "Fecha Fin de Reserva";
             this.FechaFin.Name = "FechaFin";
             this.FechaFin.ReadOnly = true;
@@ -265,15 +264,6 @@
             this.PrecioTotalHab.HeaderText = "Precio Total por Habitación";
             this.PrecioTotalHab.Name = "PrecioTotalHab";
             this.PrecioTotalHab.ReadOnly = true;
-            // 
-            // btn_LimpiarCampos
-            // 
-            this.btn_LimpiarCampos.Location = new System.Drawing.Point(919, 279);
-            this.btn_LimpiarCampos.Name = "btn_LimpiarCampos";
-            this.btn_LimpiarCampos.Size = new System.Drawing.Size(126, 31);
-            this.btn_LimpiarCampos.TabIndex = 51;
-            this.btn_LimpiarCampos.Text = "Limpiar Campos";
-            this.btn_LimpiarCampos.UseVisualStyleBackColor = true;
             // 
             // dtp_FechaEgreso
             // 
@@ -737,6 +727,5 @@
         private System.Windows.Forms.TextBox txt_ImporteTotal;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btn_BorrarHabitacion;
-        private System.Windows.Forms.Button btn_LimpiarCampos;
     }
 }
