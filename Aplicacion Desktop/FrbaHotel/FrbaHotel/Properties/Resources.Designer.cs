@@ -60,44 +60,9 @@ namespace FrbaHotel.Properties {
             }
         }
         
-        public static System.Drawing.Bitmap fotoA {
+        public static System.Drawing.Bitmap foto10 {
             get {
-                object obj = ResourceManager.GetObject("fotoA", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap IMAGEN1bn {
-            get {
-                object obj = ResourceManager.GetObject("IMAGEN1bn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap IMAGEN2bn {
-            get {
-                object obj = ResourceManager.GetObject("IMAGEN2bn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap IMAGEN3bn {
-            get {
-                object obj = ResourceManager.GetObject("IMAGEN3bn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap IMAGEN4bn {
-            get {
-                object obj = ResourceManager.GetObject("IMAGEN4bn", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        public static System.Drawing.Bitmap IMAGEN5bn {
-            get {
-                object obj = ResourceManager.GetObject("IMAGEN5bn", resourceCulture);
+                object obj = ResourceManager.GetObject("foto10", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

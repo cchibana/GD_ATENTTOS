@@ -118,22 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="fotoA" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fotoA.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IMAGEN1bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IMAGEN1bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IMAGEN3bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IMAGEN3bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IMAGEN4bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IMAGEN4bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IMAGEN2bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IMAGEN2bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IMAGEN5bn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IMAGEN5bn.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="foto10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\foto10.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

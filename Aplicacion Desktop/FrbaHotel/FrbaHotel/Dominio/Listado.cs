@@ -22,13 +22,15 @@ namespace FrbaHotel.Dominio
                     textoSQL = "exec ATENTTOS.LISTADOUNO @año=" + anio + ", @trimestre = " + trimestre;
                     break;
                 case 2:
-                    textoSQL = "exec ATENTTOS.LISTADODOS @año=" + anio + ", @trimestre = " + trimestre;
+                    textoSQL = "exec ATENTTOS.LISTADODOS @año=" + anio + ", @trimestre = " + trimestre +";";
+                    //textoSQL = "exec ATENTTOS.LISTADODOS @año=2014, @trimestre=1;";
                     break;
                 case 3:
                     textoSQL = "exec ATENTTOS.LISTADOTRES @año=" + anio + ", @trimestre = " + trimestre;
                     break;
                 case 4:
                     textoSQL = "exec ATENTTOS.LISTADOCUATRO @año=" + anio + ", @trimestre = " + trimestre;
+                    //textoSQL = "exec ATENTTOS.LISTADOCUATRO @año=2013, @trimestre=1;";
                     break;
                 default:
                     textoSQL = "exec ATENTTOS.LISTADOCINCO @año=" + anio + ", @trimestre = " + trimestre;

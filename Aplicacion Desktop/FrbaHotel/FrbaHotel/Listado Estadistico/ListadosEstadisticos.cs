@@ -80,8 +80,6 @@ namespace FrbaHotel.Listado_Estadistico
             }
         }
 
-
-
         private void CargarComboBoxTrimestres()
         {
             Dominio.ComboBoxItem item1 = new Dominio.ComboBoxItem();
@@ -90,7 +88,7 @@ namespace FrbaHotel.Listado_Estadistico
             cb_trimestre.Items.Add(item1);
             Dominio.ComboBoxItem item2 = new Dominio.ComboBoxItem();
             item2.Text = "Segundo Trimestre";
-            item2.Value = 3;
+            item2.Value = 2;
             cb_trimestre.Items.Add(item2);
             Dominio.ComboBoxItem item3 = new Dominio.ComboBoxItem();
             item3.Text = "Tercer Trimestre";
@@ -115,8 +113,14 @@ namespace FrbaHotel.Listado_Estadistico
 
             Dominio.Listado list1 = new Dominio.Listado();
             DataTable dtListado = list1.ObtenerListado(itemCb_Anio.Value.ToString(), itemCb_Trimestre.Value.ToString(), Convert.ToInt32(itemCb_Listado.Value));
-
-            dataGridView1.DataSource = dtListado;
+            if (dtListado.Rows.Count == 0)
+            {
+                MessageBox.Show("No se encontraron resultados para la consulta");
+            }
+            else
+            {
+                dataGridView1.DataSource = dtListado;
+            }
         }
 
 

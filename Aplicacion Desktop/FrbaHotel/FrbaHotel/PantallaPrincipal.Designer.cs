@@ -36,7 +36,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.BackgroundImage = global::FrbaHotel.Properties.Resources.fotoA;
+            this.BackgroundImage = global::FrbaHotel.Properties.Resources.foto10;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(984, 487);
             this.Name = "PantallaPrincipal";
