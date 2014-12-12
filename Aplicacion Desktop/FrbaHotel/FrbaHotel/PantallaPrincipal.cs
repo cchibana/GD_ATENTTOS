@@ -205,8 +205,9 @@ namespace FrbaHotel
         }
         
         private void menuItem_Estadias_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Estadías");
+        {            
+            Registrar_Estadia.Estadia_checkIn newCheckIn = new Registrar_Estadia.Estadia_checkIn();
+            newCheckIn.Show();
         }
 
         private void menuItem_Consumiciones_Click(object sender, EventArgs e)
