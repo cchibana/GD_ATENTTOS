@@ -39,10 +39,10 @@
             this.lbl_estrellas = new System.Windows.Forms.Label();
             this.lbl_Nombre = new System.Windows.Forms.Label();
             this.cbox_estrellas = new System.Windows.Forms.ComboBox();
-            this.txt_ciudad = new System.Windows.Forms.TextBox();
             this.txt_pais = new System.Windows.Forms.TextBox();
             this.lbl_ciudad = new System.Windows.Forms.Label();
             this.lbl_pais = new System.Windows.Forms.Label();
+            this.txt_ciudad = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_hoteles)).BeginInit();
             this.gBox_filtros.SuspendLayout();
             this.SuspendLayout();
@@ -115,11 +115,11 @@
             // 
             // gBox_filtros
             // 
+            this.gBox_filtros.Controls.Add(this.txt_ciudad);
             this.gBox_filtros.Controls.Add(this.txt_nombre);
             this.gBox_filtros.Controls.Add(this.lbl_estrellas);
             this.gBox_filtros.Controls.Add(this.lbl_Nombre);
             this.gBox_filtros.Controls.Add(this.cbox_estrellas);
-            this.gBox_filtros.Controls.Add(this.txt_ciudad);
             this.gBox_filtros.Controls.Add(this.txt_pais);
             this.gBox_filtros.Controls.Add(this.lbl_ciudad);
             this.gBox_filtros.Controls.Add(this.lbl_pais);
@@ -137,7 +137,6 @@
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(180, 20);
             this.txt_nombre.TabIndex = 6;
-            this.txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // lbl_estrellas
             // 
@@ -171,13 +170,6 @@
             this.cbox_estrellas.Size = new System.Drawing.Size(100, 21);
             this.cbox_estrellas.TabIndex = 13;
             // 
-            // txt_ciudad
-            // 
-            this.txt_ciudad.Location = new System.Drawing.Point(104, 45);
-            this.txt_ciudad.Name = "txt_ciudad";
-            this.txt_ciudad.Size = new System.Drawing.Size(180, 20);
-            this.txt_ciudad.TabIndex = 7;
-            // 
             // txt_pais
             // 
             this.txt_pais.Location = new System.Drawing.Point(104, 71);
@@ -204,6 +196,13 @@
             this.lbl_pais.Size = new System.Drawing.Size(29, 13);
             this.lbl_pais.TabIndex = 10;
             this.lbl_pais.Text = "País";
+            // 
+            // txt_ciudad
+            // 
+            this.txt_ciudad.Location = new System.Drawing.Point(104, 45);
+            this.txt_ciudad.Name = "txt_ciudad";
+            this.txt_ciudad.Size = new System.Drawing.Size(180, 20);
+            this.txt_ciudad.TabIndex = 15;
             // 
             // Hoteles
             // 
@@ -240,9 +239,9 @@
         private System.Windows.Forms.Label lbl_estrellas;
         private System.Windows.Forms.Label lbl_Nombre;
         private System.Windows.Forms.ComboBox cbox_estrellas;
-        private System.Windows.Forms.TextBox txt_ciudad;
         private System.Windows.Forms.TextBox txt_pais;
         private System.Windows.Forms.Label lbl_ciudad;
         private System.Windows.Forms.Label lbl_pais;
+        private System.Windows.Forms.TextBox txt_ciudad;
     }
 }

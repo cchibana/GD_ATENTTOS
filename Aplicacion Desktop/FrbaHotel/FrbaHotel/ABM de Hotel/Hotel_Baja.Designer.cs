@@ -30,14 +30,8 @@
         {
             this.btn_cancelar = new System.Windows.Forms.Button();
             this.btn_guardar = new System.Windows.Forms.Button();
-            this.btn_estado_hotel = new System.Windows.Forms.Button();
             this.lbl_estado = new System.Windows.Forms.Label();
             this.lbl_fecha_creacion = new System.Windows.Forms.Label();
-            this.chkBox_desayuno = new System.Windows.Forms.CheckBox();
-            this.chkBox_media_pens = new System.Windows.Forms.CheckBox();
-            this.chkBox_all_incl = new System.Windows.Forms.CheckBox();
-            this.cbox_estrellas = new System.Windows.Forms.ComboBox();
-            this.lbl_estrellas = new System.Windows.Forms.Label();
             this.lbl_pais = new System.Windows.Forms.Label();
             this.txt_pais = new System.Windows.Forms.TextBox();
             this.lbl_ciudad = new System.Windows.Forms.Label();
@@ -48,13 +42,17 @@
             this.txt_mail = new System.Windows.Forms.TextBox();
             this.lbl_nombre = new System.Windows.Forms.Label();
             this.txt_nombre = new System.Windows.Forms.TextBox();
-            this.gBox_regimenes = new System.Windows.Forms.GroupBox();
             this.date_creacion = new System.Windows.Forms.DateTimePicker();
             this.cbox_estado = new System.Windows.Forms.ComboBox();
             this.lbl_numero = new System.Windows.Forms.Label();
             this.txt_numero = new System.Windows.Forms.TextBox();
             this.lbl_calle = new System.Windows.Forms.Label();
             this.txt_calle = new System.Windows.Forms.TextBox();
+            this.txt_estrellas = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_estado = new System.Windows.Forms.TextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn_cancelar
@@ -75,20 +73,12 @@
             this.btn_guardar.TabIndex = 102;
             this.btn_guardar.Text = "Guardar";
             this.btn_guardar.UseVisualStyleBackColor = true;
-            // 
-            // btn_estado_hotel
-            // 
-            this.btn_estado_hotel.Location = new System.Drawing.Point(410, 226);
-            this.btn_estado_hotel.Name = "btn_estado_hotel";
-            this.btn_estado_hotel.Size = new System.Drawing.Size(100, 23);
-            this.btn_estado_hotel.TabIndex = 101;
-            this.btn_estado_hotel.Text = "Modificar estado";
-            this.btn_estado_hotel.UseVisualStyleBackColor = true;
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // lbl_estado
             // 
             this.lbl_estado.AutoSize = true;
-            this.lbl_estado.Location = new System.Drawing.Point(338, 199);
+            this.lbl_estado.Location = new System.Drawing.Point(388, 111);
             this.lbl_estado.Name = "lbl_estado";
             this.lbl_estado.Size = new System.Drawing.Size(40, 13);
             this.lbl_estado.TabIndex = 100;
@@ -102,55 +92,6 @@
             this.lbl_fecha_creacion.Size = new System.Drawing.Size(82, 13);
             this.lbl_fecha_creacion.TabIndex = 98;
             this.lbl_fecha_creacion.Text = "Fecha Creación";
-            // 
-            // chkBox_desayuno
-            // 
-            this.chkBox_desayuno.AutoSize = true;
-            this.chkBox_desayuno.Location = new System.Drawing.Point(410, 92);
-            this.chkBox_desayuno.Name = "chkBox_desayuno";
-            this.chkBox_desayuno.Size = new System.Drawing.Size(74, 17);
-            this.chkBox_desayuno.TabIndex = 95;
-            this.chkBox_desayuno.Text = "Desayuno";
-            this.chkBox_desayuno.UseVisualStyleBackColor = true;
-            // 
-            // chkBox_media_pens
-            // 
-            this.chkBox_media_pens.AutoSize = true;
-            this.chkBox_media_pens.Location = new System.Drawing.Point(410, 70);
-            this.chkBox_media_pens.Name = "chkBox_media_pens";
-            this.chkBox_media_pens.Size = new System.Drawing.Size(96, 17);
-            this.chkBox_media_pens.TabIndex = 94;
-            this.chkBox_media_pens.Text = "Media Pensión";
-            this.chkBox_media_pens.UseVisualStyleBackColor = true;
-            // 
-            // chkBox_all_incl
-            // 
-            this.chkBox_all_incl.AutoSize = true;
-            this.chkBox_all_incl.Location = new System.Drawing.Point(410, 47);
-            this.chkBox_all_incl.Name = "chkBox_all_incl";
-            this.chkBox_all_incl.Size = new System.Drawing.Size(81, 17);
-            this.chkBox_all_incl.TabIndex = 93;
-            this.chkBox_all_incl.Text = "All inclusive";
-            this.chkBox_all_incl.UseVisualStyleBackColor = true;
-            // 
-            // cbox_estrellas
-            // 
-            this.cbox_estrellas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbox_estrellas.FormattingEnabled = true;
-            this.cbox_estrellas.Location = new System.Drawing.Point(126, 219);
-            this.cbox_estrellas.Name = "cbox_estrellas";
-            this.cbox_estrellas.Size = new System.Drawing.Size(180, 21);
-            this.cbox_estrellas.TabIndex = 92;
-            this.cbox_estrellas.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // lbl_estrellas
-            // 
-            this.lbl_estrellas.AutoSize = true;
-            this.lbl_estrellas.Location = new System.Drawing.Point(24, 222);
-            this.lbl_estrellas.Name = "lbl_estrellas";
-            this.lbl_estrellas.Size = new System.Drawing.Size(46, 13);
-            this.lbl_estrellas.TabIndex = 91;
-            this.lbl_estrellas.Text = "Estrellas";
             // 
             // lbl_pais
             // 
@@ -236,17 +177,6 @@
             this.txt_nombre.ReadOnly = true;
             this.txt_nombre.Size = new System.Drawing.Size(180, 20);
             this.txt_nombre.TabIndex = 79;
-            this.txt_nombre.TextChanged += new System.EventHandler(this.txt_nombre_TextChanged);
-            // 
-            // gBox_regimenes
-            // 
-            this.gBox_regimenes.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-            this.gBox_regimenes.Location = new System.Drawing.Point(381, 24);
-            this.gBox_regimenes.Name = "gBox_regimenes";
-            this.gBox_regimenes.Size = new System.Drawing.Size(194, 137);
-            this.gBox_regimenes.TabIndex = 96;
-            this.gBox_regimenes.TabStop = false;
-            this.gBox_regimenes.Text = "Regímenes";
             // 
             // date_creacion
             // 
@@ -262,10 +192,11 @@
             // 
             this.cbox_estado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_estado.FormattingEnabled = true;
-            this.cbox_estado.Location = new System.Drawing.Point(410, 196);
+            this.cbox_estado.Location = new System.Drawing.Point(6, 16);
             this.cbox_estado.Name = "cbox_estado";
-            this.cbox_estado.Size = new System.Drawing.Size(100, 21);
+            this.cbox_estado.Size = new System.Drawing.Size(91, 21);
             this.cbox_estado.TabIndex = 105;
+            this.cbox_estado.SelectedIndexChanged += new System.EventHandler(this.CambiarEstado);
             // 
             // lbl_numero
             // 
@@ -301,27 +232,59 @@
             this.txt_calle.Size = new System.Drawing.Size(180, 20);
             this.txt_calle.TabIndex = 106;
             // 
+            // txt_estrellas
+            // 
+            this.txt_estrellas.Enabled = false;
+            this.txt_estrellas.Location = new System.Drawing.Point(449, 63);
+            this.txt_estrellas.Name = "txt_estrellas";
+            this.txt_estrellas.Size = new System.Drawing.Size(89, 20);
+            this.txt_estrellas.TabIndex = 111;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(388, 66);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 13);
+            this.label1.TabIndex = 110;
+            this.label1.Text = "Estrellas";
+            // 
+            // txt_estado
+            // 
+            this.txt_estado.Enabled = false;
+            this.txt_estado.Location = new System.Drawing.Point(449, 108);
+            this.txt_estado.Name = "txt_estado";
+            this.txt_estado.Size = new System.Drawing.Size(89, 20);
+            this.txt_estado.TabIndex = 114;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.cbox_estado);
+            this.groupBox3.Location = new System.Drawing.Point(544, 92);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(103, 45);
+            this.groupBox3.TabIndex = 113;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Seleccionar";
+            // 
             // Hotel_Baja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 417);
+            this.Controls.Add(this.txt_estado);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.txt_estrellas);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_numero);
             this.Controls.Add(this.txt_numero);
             this.Controls.Add(this.lbl_calle);
             this.Controls.Add(this.txt_calle);
-            this.Controls.Add(this.cbox_estado);
             this.Controls.Add(this.date_creacion);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_guardar);
-            this.Controls.Add(this.btn_estado_hotel);
             this.Controls.Add(this.lbl_estado);
             this.Controls.Add(this.lbl_fecha_creacion);
-            this.Controls.Add(this.chkBox_desayuno);
-            this.Controls.Add(this.chkBox_media_pens);
-            this.Controls.Add(this.chkBox_all_incl);
-            this.Controls.Add(this.cbox_estrellas);
-            this.Controls.Add(this.lbl_estrellas);
             this.Controls.Add(this.lbl_pais);
             this.Controls.Add(this.txt_pais);
             this.Controls.Add(this.lbl_ciudad);
@@ -332,10 +295,10 @@
             this.Controls.Add(this.txt_mail);
             this.Controls.Add(this.lbl_nombre);
             this.Controls.Add(this.txt_nombre);
-            this.Controls.Add(this.gBox_regimenes);
             this.Name = "Hotel_Baja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baja Hotel";
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,24 +308,17 @@
 
         private System.Windows.Forms.Button btn_cancelar;
         private System.Windows.Forms.Button btn_guardar;
-        private System.Windows.Forms.Button btn_estado_hotel;
         private System.Windows.Forms.Label lbl_estado;
         private System.Windows.Forms.Label lbl_fecha_creacion;
-        private System.Windows.Forms.CheckBox chkBox_desayuno;
-        private System.Windows.Forms.CheckBox chkBox_media_pens;
-        private System.Windows.Forms.CheckBox chkBox_all_incl;
-        private System.Windows.Forms.Label lbl_estrellas;
         private System.Windows.Forms.Label lbl_pais;
         private System.Windows.Forms.Label lbl_ciudad;
         private System.Windows.Forms.Label lbl_telefono;
         private System.Windows.Forms.Label lbl_mail;
         private System.Windows.Forms.Label lbl_nombre;
-        private System.Windows.Forms.GroupBox gBox_regimenes;
         private System.Windows.Forms.Label lbl_numero;
         private System.Windows.Forms.Label lbl_calle;
         public System.Windows.Forms.TextBox txt_mail;
         public System.Windows.Forms.TextBox txt_nombre;
-        public System.Windows.Forms.ComboBox cbox_estrellas;
         public System.Windows.Forms.TextBox txt_pais;
         public System.Windows.Forms.TextBox txt_ciudad;
         public System.Windows.Forms.TextBox txt_telefono;
@@ -370,5 +326,9 @@
         public System.Windows.Forms.ComboBox cbox_estado;
         public System.Windows.Forms.TextBox txt_numero;
         public System.Windows.Forms.TextBox txt_calle;
+        public System.Windows.Forms.TextBox txt_estrellas;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.TextBox txt_estado;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

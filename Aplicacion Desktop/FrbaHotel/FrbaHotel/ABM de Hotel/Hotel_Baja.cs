@@ -14,21 +14,47 @@ namespace FrbaHotel.ABM_de_Hotel
         public Hotel_Baja()
         {
             InitializeComponent();
+            InicializarComboBoxEstado();
+            btn_guardar.Enabled = false;
         }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        
+        private void InicializarComboBoxEstado()
         {
-
+            Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
+            item0.Text = "Inhabilitado";
+            item0.Value = "0";
+            cbox_estado.Items.Add(item0);
         }
+
+        private void CambiarEstado(object sender, EventArgs e)
+        {
+            if (txt_estado.Text != cbox_estado.SelectedItem.ToString())
+            {
+                txt_estado.Text = cbox_estado.SelectedItem.ToString();
+                btn_guardar.Enabled = true;
+            }           
+        }
+        
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void txt_nombre_TextChanged(object sender, EventArgs e)
+        private void btn_guardar_Click(object sender, EventArgs e)
         {
+            Dominio.Hotel hot1 = new Dominio.Hotel();
 
-        }
+            if (hot1.CambiarEstadoHotel(txt_calle.Text, txt_numero.Text, 0))
+            {
+                MessageBox.Show("Se ha dado de baja el Hotel: " + txt_nombre.Text);
+            }
+            else
+            {
+                MessageBox.Show("Error al dar de baja el hotel");
+            }
+            this.Hide();
+            this.Close(); 
+        } 
     }
 }

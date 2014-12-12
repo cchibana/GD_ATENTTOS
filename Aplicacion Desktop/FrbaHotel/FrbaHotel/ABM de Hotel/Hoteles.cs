@@ -13,11 +13,13 @@ namespace FrbaHotel.ABM_de_Hotel
     {
         Dominio.Hotel hotel1 = new Dominio.Hotel();
 
+        string idEstado;
+        string descEstado;
 
         public Hoteles()
         {
             InitializeComponent(); 
-            InicializarComboBoxEstado();
+            InicializarComboBoxEstrellas();
         }
 
         public void Limpiar()
@@ -25,7 +27,7 @@ namespace FrbaHotel.ABM_de_Hotel
             txt_nombre.Text = "";
             txt_ciudad.Text = "";
             txt_pais.Text = "";
-            cbox_estrellas.SelectedItem = null;
+            cbox_estrellas.SelectedIndex = 0;
             dgv_hoteles.DataSource = null;
 
         }
@@ -52,7 +54,7 @@ namespace FrbaHotel.ABM_de_Hotel
             e.Handled = Dominio.Validadores.ValidadorNumerico(e.KeyChar);
         }
 
-        private void InicializarComboBoxEstado()
+        private void InicializarComboBoxEstrellas()
         {
             Dominio.ComboBoxItem item0 = new Dominio.ComboBoxItem();
             item0.Text = "Sin Especificar";
@@ -87,6 +89,19 @@ namespace FrbaHotel.ABM_de_Hotel
             cbox_estrellas.SelectedIndex = 0;
         }
 
+        private string DescripEstado(string idEstado)
+        {
+            if (idEstado == "True")
+            {
+                descEstado = "Habilitado";
+            }
+            else
+            {
+                descEstado = "Inhabilitado";
+            }
+            return descEstado;
+        }
+               
 
         private void btn_alta_Click(object sender, EventArgs e)
         {
@@ -103,11 +118,18 @@ namespace FrbaHotel.ABM_de_Hotel
              hotel_modificacion.txt_telefono.Text = dgv_hoteles.CurrentRow.Cells[2].Value.ToString();
              hotel_modificacion.txt_calle.Text = dgv_hoteles.CurrentRow.Cells[3].Value.ToString();
              hotel_modificacion.txt_numero.Text = dgv_hoteles.CurrentRow.Cells[4].Value.ToString();
-             hotel_modificacion.txt_ciudad.Text = dgv_hoteles.CurrentRow.Cells[5].Value.ToString();
              hotel_modificacion.txt_pais.Text = dgv_hoteles.CurrentRow.Cells[6].Value.ToString();
-             hotel_modificacion.cbox_estrellas.Items.Add(dgv_hoteles.CurrentRow.Cells[7].Value.ToString());
+             hotel_modificacion.txt_estrellas.Text = (dgv_hoteles.CurrentRow.Cells[7].Value.ToString());
              hotel_modificacion.date_creacion.Text = dgv_hoteles.CurrentRow.Cells[8].Value.ToString();
-             hotel_modificacion.cbox_estado.Items.Add(dgv_hoteles.CurrentRow.Cells[9].Value.ToString());
+          
+             Dominio.Hotel ciuNom1 = new Dominio.Hotel();
+             string ciuNom = dgv_hoteles.CurrentRow.Cells[5].Value.ToString();
+             DataTable dt_ciudadNombre = ciuNom1.RecuperaNomCiudad(dgv_hoteles.CurrentRow.Cells[5].Value.ToString());
+             hotel_modificacion.txt_ciudad.Text = dt_ciudadNombre.Rows[0][0].ToString();
+
+             idEstado = dgv_hoteles.CurrentRow.Cells[9].Value.ToString();
+             DescripEstado(idEstado);
+             hotel_modificacion.txt_estado.Text = descEstado;  
             
              hotel_modificacion.Show();
          }
@@ -122,11 +144,18 @@ namespace FrbaHotel.ABM_de_Hotel
             hotel_Baja.txt_telefono.Text = dgv_hoteles.CurrentRow.Cells[2].Value.ToString();
             hotel_Baja.txt_calle.Text = dgv_hoteles.CurrentRow.Cells[3].Value.ToString();
             hotel_Baja.txt_numero.Text = dgv_hoteles.CurrentRow.Cells[4].Value.ToString();
-            hotel_Baja.txt_ciudad.Text = dgv_hoteles.CurrentRow.Cells[5].Value.ToString();
             hotel_Baja.txt_pais.Text = dgv_hoteles.CurrentRow.Cells[6].Value.ToString();
-            hotel_Baja.cbox_estrellas.Items.Add(dgv_hoteles.CurrentRow.Cells[7].Value.ToString());
+            hotel_Baja.txt_estrellas.Text = (dgv_hoteles.CurrentRow.Cells[7].Value.ToString());
             hotel_Baja.date_creacion.Text = dgv_hoteles.CurrentRow.Cells[8].Value.ToString();
-            hotel_Baja.cbox_estado.Items.Add(dgv_hoteles.CurrentRow.Cells[9].Value.ToString());
+
+            Dominio.Hotel ciuNom1 = new Dominio.Hotel();
+            string ciuNom = dgv_hoteles.CurrentRow.Cells[5].Value.ToString();
+            DataTable dt_ciudadNombre = ciuNom1.RecuperaNomCiudad(dgv_hoteles.CurrentRow.Cells[5].Value.ToString());
+            hotel_Baja.txt_ciudad.Text = dt_ciudadNombre.Rows[0][0].ToString();
+
+            idEstado = dgv_hoteles.CurrentRow.Cells[9].Value.ToString();
+            DescripEstado(idEstado);
+            hotel_Baja.txt_estado.Text = descEstado;
     
             hotel_Baja.Show();
 
@@ -150,7 +179,7 @@ namespace FrbaHotel.ABM_de_Hotel
                 {
                     itemCbox_estrellas.Value = "";
                 }
-
+                
                 DataTable dt = hotel1.BuscarHoteles(txt_nombre.Text, txt_ciudad.Text, txt_pais.Text, itemCbox_estrellas.Value.ToString());
 
                 if (dt.Rows.Count == 0)
@@ -184,7 +213,6 @@ namespace FrbaHotel.ABM_de_Hotel
             btn_modificacion.Enabled = true;
             btn_baja.Enabled = true;
         }
-
  
     }
 }

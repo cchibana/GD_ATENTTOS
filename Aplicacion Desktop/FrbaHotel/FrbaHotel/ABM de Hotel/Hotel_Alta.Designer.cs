@@ -33,9 +33,7 @@
             this.cbox_estrellas = new System.Windows.Forms.ComboBox();
             this.lbl_estrellas = new System.Windows.Forms.Label();
             this.lbl_pais = new System.Windows.Forms.Label();
-            this.txt_pais = new System.Windows.Forms.TextBox();
             this.lbl_ciudad = new System.Windows.Forms.Label();
-            this.txt_ciudad = new System.Windows.Forms.TextBox();
             this.lbl_calle = new System.Windows.Forms.Label();
             this.txt_calle = new System.Windows.Forms.TextBox();
             this.lbl_telefono = new System.Windows.Forms.Label();
@@ -50,14 +48,14 @@
             this.cbox_estado = new System.Windows.Forms.ComboBox();
             this.lbl_numero = new System.Windows.Forms.Label();
             this.txt_numero = new System.Windows.Forms.TextBox();
-            this.cbox_regimen = new System.Windows.Forms.ComboBox();
-            this.lbl_regimen = new System.Windows.Forms.Label();
+            this.cbox_pais = new System.Windows.Forms.ComboBox();
+            this.cbox_ciudad = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lbl_estado
             // 
             this.lbl_estado.AutoSize = true;
-            this.lbl_estado.Location = new System.Drawing.Point(407, 167);
+            this.lbl_estado.Location = new System.Drawing.Point(407, 118);
             this.lbl_estado.Name = "lbl_estado";
             this.lbl_estado.Size = new System.Drawing.Size(40, 13);
             this.lbl_estado.TabIndex = 50;
@@ -66,7 +64,7 @@
             // lbl_fecha_creacion
             // 
             this.lbl_fecha_creacion.AutoSize = true;
-            this.lbl_fecha_creacion.Location = new System.Drawing.Point(28, 245);
+            this.lbl_fecha_creacion.Location = new System.Drawing.Point(28, 246);
             this.lbl_fecha_creacion.Name = "lbl_fecha_creacion";
             this.lbl_fecha_creacion.Size = new System.Drawing.Size(82, 13);
             this.lbl_fecha_creacion.TabIndex = 48;
@@ -76,15 +74,9 @@
             // 
             this.cbox_estrellas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbox_estrellas.FormattingEnabled = true;
-            this.cbox_estrellas.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
             this.cbox_estrellas.Location = new System.Drawing.Point(479, 60);
             this.cbox_estrellas.Name = "cbox_estrellas";
-            this.cbox_estrellas.Size = new System.Drawing.Size(100, 21);
+            this.cbox_estrellas.Size = new System.Drawing.Size(138, 21);
             this.cbox_estrellas.TabIndex = 42;
             // 
             // lbl_estrellas
@@ -105,13 +97,6 @@
             this.lbl_pais.TabIndex = 40;
             this.lbl_pais.Text = "País";
             // 
-            // txt_pais
-            // 
-            this.txt_pais.Location = new System.Drawing.Point(130, 216);
-            this.txt_pais.Name = "txt_pais";
-            this.txt_pais.Size = new System.Drawing.Size(180, 20);
-            this.txt_pais.TabIndex = 39;
-            // 
             // lbl_ciudad
             // 
             this.lbl_ciudad.AutoSize = true;
@@ -120,13 +105,6 @@
             this.lbl_ciudad.Size = new System.Drawing.Size(40, 13);
             this.lbl_ciudad.TabIndex = 38;
             this.lbl_ciudad.Text = "Ciudad";
-            // 
-            // txt_ciudad
-            // 
-            this.txt_ciudad.Location = new System.Drawing.Point(130, 190);
-            this.txt_ciudad.Name = "txt_ciudad";
-            this.txt_ciudad.Size = new System.Drawing.Size(180, 20);
-            this.txt_ciudad.TabIndex = 37;
             // 
             // lbl_calle
             // 
@@ -192,7 +170,6 @@
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.Size = new System.Drawing.Size(180, 20);
             this.txt_nombre.TabIndex = 29;
-            this.txt_nombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressAlfa);
             // 
             // btn_limpiar
             // 
@@ -217,7 +194,7 @@
             // date_creacion
             // 
             this.date_creacion.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.date_creacion.Location = new System.Drawing.Point(130, 242);
+            this.date_creacion.Location = new System.Drawing.Point(130, 243);
             this.date_creacion.Name = "date_creacion";
             this.date_creacion.Size = new System.Drawing.Size(180, 20);
             this.date_creacion.TabIndex = 54;
@@ -230,9 +207,9 @@
             this.cbox_estado.Items.AddRange(new object[] {
             "Habilitado",
             "Inhabilitado"});
-            this.cbox_estado.Location = new System.Drawing.Point(479, 164);
+            this.cbox_estado.Location = new System.Drawing.Point(479, 115);
             this.cbox_estado.Name = "cbox_estado";
-            this.cbox_estado.Size = new System.Drawing.Size(100, 21);
+            this.cbox_estado.Size = new System.Drawing.Size(138, 21);
             this.cbox_estado.TabIndex = 73;
             // 
             // lbl_numero
@@ -252,37 +229,31 @@
             this.txt_numero.TabIndex = 74;
             this.txt_numero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNum);
             // 
-            // cbox_regimen
+            // cbox_pais
             // 
-            this.cbox_regimen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbox_regimen.FormattingEnabled = true;
-            this.cbox_regimen.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5"});
-            this.cbox_regimen.Location = new System.Drawing.Point(479, 104);
-            this.cbox_regimen.Name = "cbox_regimen";
-            this.cbox_regimen.Size = new System.Drawing.Size(100, 21);
-            this.cbox_regimen.TabIndex = 77;
+            this.cbox_pais.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_pais.FormattingEnabled = true;
+            this.cbox_pais.Location = new System.Drawing.Point(130, 216);
+            this.cbox_pais.Name = "cbox_pais";
+            this.cbox_pais.Size = new System.Drawing.Size(180, 21);
+            this.cbox_pais.TabIndex = 76;
             // 
-            // lbl_regimen
+            // cbox_ciudad
             // 
-            this.lbl_regimen.AutoSize = true;
-            this.lbl_regimen.Location = new System.Drawing.Point(407, 107);
-            this.lbl_regimen.Name = "lbl_regimen";
-            this.lbl_regimen.Size = new System.Drawing.Size(49, 13);
-            this.lbl_regimen.TabIndex = 76;
-            this.lbl_regimen.Text = "Regimen";
+            this.cbox_ciudad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbox_ciudad.FormattingEnabled = true;
+            this.cbox_ciudad.Location = new System.Drawing.Point(130, 190);
+            this.cbox_ciudad.Name = "cbox_ciudad";
+            this.cbox_ciudad.Size = new System.Drawing.Size(180, 21);
+            this.cbox_ciudad.TabIndex = 77;
             // 
             // Hotel_Alta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(677, 417);
-            this.Controls.Add(this.cbox_regimen);
-            this.Controls.Add(this.lbl_regimen);
+            this.Controls.Add(this.cbox_ciudad);
+            this.Controls.Add(this.cbox_pais);
             this.Controls.Add(this.lbl_numero);
             this.Controls.Add(this.txt_numero);
             this.Controls.Add(this.cbox_estado);
@@ -294,9 +265,7 @@
             this.Controls.Add(this.cbox_estrellas);
             this.Controls.Add(this.lbl_estrellas);
             this.Controls.Add(this.lbl_pais);
-            this.Controls.Add(this.txt_pais);
             this.Controls.Add(this.lbl_ciudad);
-            this.Controls.Add(this.txt_ciudad);
             this.Controls.Add(this.lbl_calle);
             this.Controls.Add(this.txt_calle);
             this.Controls.Add(this.lbl_telefono);
@@ -308,6 +277,7 @@
             this.Name = "Hotel_Alta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Hotel";
+            this.Load += new System.EventHandler(this.Hotel_Alta_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -331,13 +301,11 @@
         public System.Windows.Forms.TextBox txt_nombre;
         public System.Windows.Forms.TextBox txt_telefono;
         public System.Windows.Forms.ComboBox cbox_estrellas;
-        public System.Windows.Forms.TextBox txt_pais;
-        public System.Windows.Forms.TextBox txt_ciudad;
         public System.Windows.Forms.TextBox txt_calle;
         public System.Windows.Forms.DateTimePicker date_creacion;
         public System.Windows.Forms.ComboBox cbox_estado;
         public System.Windows.Forms.TextBox txt_numero;
-        public System.Windows.Forms.ComboBox cbox_regimen;
-        private System.Windows.Forms.Label lbl_regimen;
+        public System.Windows.Forms.ComboBox cbox_pais;
+        public System.Windows.Forms.ComboBox cbox_ciudad;
     }
 }
