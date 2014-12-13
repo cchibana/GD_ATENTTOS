@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_hotel = new System.Windows.Forms.TextBox();
             this.lbl_hotel = new System.Windows.Forms.Label();
             this.txt_NroReserva = new System.Windows.Forms.TextBox();
@@ -49,7 +49,6 @@
             this.lbl_tipoIdentif = new System.Windows.Forms.Label();
             this.lbl_nroIdentif = new System.Windows.Forms.Label();
             this.gb_Reserva = new System.Windows.Forms.GroupBox();
-            this.txt_regimen = new System.Windows.Forms.TextBox();
             this.txt_tipoHab = new System.Windows.Forms.TextBox();
             this.dgv_HabitacionesReserva = new System.Windows.Forms.DataGridView();
             this.Reg_Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +68,9 @@
             this.btn_LimpiarCampos = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.dtp_FechaEgreso = new System.Windows.Forms.DateTimePicker();
             this.dtp_FechaIngreso = new System.Windows.Forms.DateTimePicker();
+            this.lbl_fechaEgreso = new System.Windows.Forms.Label();
             this.lbl_fechaIngreso = new System.Windows.Forms.Label();
             this.gb_Estadia = new System.Windows.Forms.GroupBox();
             this.txt_CantNoches = new System.Windows.Forms.TextBox();
@@ -78,6 +79,7 @@
             this.btn_cancelar = new System.Windows.Forms.Button();
             this.txt_usuario = new System.Windows.Forms.TextBox();
             this.lbl_usuario = new System.Windows.Forms.Label();
+            this.txt_regimen = new System.Windows.Forms.TextBox();
             this.gb_Cliente.SuspendLayout();
             this.gb_Reserva.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_HabitacionesReserva)).BeginInit();
@@ -277,14 +279,6 @@
             this.gb_Reserva.Text = "Datos de la reserva";
             this.gb_Reserva.Visible = false;
             // 
-            // txt_regimen
-            // 
-            this.txt_regimen.Location = new System.Drawing.Point(443, 28);
-            this.txt_regimen.Name = "txt_regimen";
-            this.txt_regimen.ReadOnly = true;
-            this.txt_regimen.Size = new System.Drawing.Size(156, 20);
-            this.txt_regimen.TabIndex = 52;
-            // 
             // txt_tipoHab
             // 
             this.txt_tipoHab.Location = new System.Drawing.Point(124, 28);
@@ -335,9 +329,9 @@
             // 
             // FechaInicio
             // 
-            dataGridViewCellStyle1.Format = "d";
-            dataGridViewCellStyle1.NullValue = null;
-            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Format = "d";
+            dataGridViewCellStyle7.NullValue = null;
+            this.FechaInicio.DefaultCellStyle = dataGridViewCellStyle7;
             this.FechaInicio.HeaderText = "Fecha Inicio de Reserva";
             this.FechaInicio.Name = "FechaInicio";
             this.FechaInicio.ReadOnly = true;
@@ -345,9 +339,9 @@
             // 
             // FechaFin
             // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.FechaFin.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Format = "d";
+            dataGridViewCellStyle8.NullValue = null;
+            this.FechaFin.DefaultCellStyle = dataGridViewCellStyle8;
             this.FechaFin.HeaderText = "Fecha Fin de Reserva";
             this.FechaFin.Name = "FechaFin";
             this.FechaFin.ReadOnly = true;
@@ -441,12 +435,28 @@
             this.label8.TabIndex = 22;
             this.label8.Text = "Tipo de Régimen";
             // 
+            // dtp_FechaEgreso
+            // 
+            this.dtp_FechaEgreso.Location = new System.Drawing.Point(131, 60);
+            this.dtp_FechaEgreso.Name = "dtp_FechaEgreso";
+            this.dtp_FechaEgreso.Size = new System.Drawing.Size(200, 20);
+            this.dtp_FechaEgreso.TabIndex = 46;
+            // 
             // dtp_FechaIngreso
             // 
             this.dtp_FechaIngreso.Location = new System.Drawing.Point(131, 28);
             this.dtp_FechaIngreso.Name = "dtp_FechaIngreso";
             this.dtp_FechaIngreso.Size = new System.Drawing.Size(200, 20);
             this.dtp_FechaIngreso.TabIndex = 45;
+            // 
+            // lbl_fechaEgreso
+            // 
+            this.lbl_fechaEgreso.AutoSize = true;
+            this.lbl_fechaEgreso.Location = new System.Drawing.Point(16, 66);
+            this.lbl_fechaEgreso.Name = "lbl_fechaEgreso";
+            this.lbl_fechaEgreso.Size = new System.Drawing.Size(88, 13);
+            this.lbl_fechaEgreso.TabIndex = 19;
+            this.lbl_fechaEgreso.Text = "Fecha de Egreso";
             // 
             // lbl_fechaIngreso
             // 
@@ -459,9 +469,11 @@
             // 
             // gb_Estadia
             // 
+            this.gb_Estadia.Controls.Add(this.dtp_FechaEgreso);
             this.gb_Estadia.Controls.Add(this.txt_CantNoches);
             this.gb_Estadia.Controls.Add(this.dtp_FechaIngreso);
             this.gb_Estadia.Controls.Add(this.lbl_dias);
+            this.gb_Estadia.Controls.Add(this.lbl_fechaEgreso);
             this.gb_Estadia.Controls.Add(this.lbl_fechaIngreso);
             this.gb_Estadia.Location = new System.Drawing.Point(841, 74);
             this.gb_Estadia.Name = "gb_Estadia";
@@ -473,7 +485,7 @@
             // 
             // txt_CantNoches
             // 
-            this.txt_CantNoches.Location = new System.Drawing.Point(166, 78);
+            this.txt_CantNoches.Location = new System.Drawing.Point(131, 101);
             this.txt_CantNoches.Name = "txt_CantNoches";
             this.txt_CantNoches.ReadOnly = true;
             this.txt_CantNoches.Size = new System.Drawing.Size(139, 20);
@@ -483,11 +495,11 @@
             // 
             this.lbl_dias.AutoSize = true;
             this.lbl_dias.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_dias.Location = new System.Drawing.Point(16, 81);
+            this.lbl_dias.Location = new System.Drawing.Point(16, 104);
             this.lbl_dias.Name = "lbl_dias";
-            this.lbl_dias.Size = new System.Drawing.Size(133, 13);
+            this.lbl_dias.Size = new System.Drawing.Size(90, 13);
             this.lbl_dias.TabIndex = 8;
-            this.lbl_dias.Text = "Cantidad de Días Reserva";
+            this.lbl_dias.Text = "Cantidad de Días";
             // 
             // btn_checkIn
             // 
@@ -528,6 +540,14 @@
             this.lbl_usuario.Size = new System.Drawing.Size(43, 13);
             this.lbl_usuario.TabIndex = 115;
             this.lbl_usuario.Text = "Usuario";
+            // 
+            // txt_regimen
+            // 
+            this.txt_regimen.Location = new System.Drawing.Point(443, 28);
+            this.txt_regimen.Name = "txt_regimen";
+            this.txt_regimen.ReadOnly = true;
+            this.txt_regimen.Size = new System.Drawing.Size(156, 20);
+            this.txt_regimen.TabIndex = 52;
             // 
             // Estadia_checkIn
             // 
@@ -598,9 +618,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cantNoches;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioTotalHab;
         private System.Windows.Forms.Button btn_LimpiarCampos;
+        private System.Windows.Forms.DateTimePicker dtp_FechaEgreso;
         private System.Windows.Forms.DateTimePicker dtp_FechaIngreso;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbl_fechaEgreso;
         private System.Windows.Forms.Label lbl_fechaIngreso;
         private System.Windows.Forms.GroupBox gb_Estadia;
         private System.Windows.Forms.TextBox txt_CantNoches;
