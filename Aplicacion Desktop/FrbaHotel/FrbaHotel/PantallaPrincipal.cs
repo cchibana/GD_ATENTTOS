@@ -100,7 +100,13 @@ namespace FrbaHotel
 
             if (listaIDFuncionalidades.Exists(element => element == 9))
             {
-                ToolStripMenuItem menuItem_Estadias = new ToolStripMenuItem("&Estadías", null, new EventHandler(menuItem_Estadias_Click));
+                ToolStripMenuItem menuItem_Estadias = new ToolStripMenuItem("&Estadías", null);
+                menuPrincipal.Items.Add(menuItem_Estadias);
+                                
+                menuItem_Estadias.DropDownItems.Add("Check In", null, new EventHandler(menuItem_CheckIn_Click));
+                menuPrincipal.Items.Add(menuItem_Estadias);
+
+                menuItem_Estadias.DropDownItems.Add("Check Out", null, new EventHandler(menuItem_CheckOut_Click));
                 menuPrincipal.Items.Add(menuItem_Estadias);
             }
 
@@ -212,10 +218,16 @@ namespace FrbaHotel
             newCancRes.Show();
         }
         
-        private void menuItem_Estadias_Click(object sender, EventArgs e)
+        private void menuItem_CheckIn_Click(object sender, EventArgs e)
         {
             Registrar_Estadia.Estadia_checkIn newCheckIn = new Registrar_Estadia.Estadia_checkIn();
             newCheckIn.Show();
+        }
+
+        private void menuItem_CheckOut_Click(object sender, EventArgs e)
+        {
+            Registrar_Estadia.Estadia_checkOut newCheckOut = new Registrar_Estadia.Estadia_checkOut();
+            newCheckOut.Show();
         }
 
         private void menuItem_Consumiciones_Click(object sender, EventArgs e)
