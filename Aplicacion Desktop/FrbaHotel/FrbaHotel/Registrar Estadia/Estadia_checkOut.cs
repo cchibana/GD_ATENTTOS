@@ -9,8 +9,13 @@ using System.Windows.Forms;
 
 namespace FrbaHotel.Registrar_Estadia
 {
-    public partial class Estadia_checkIn : Form
+    public partial class Estadia_checkOut : Form
     {
+        DateTime fechaEgresoRes;
+        DateTime fechaCheckOut;
+        int cantNochesReal;
+        int CantNochesRes;
+
         private static Estadia_checkIn _instancia;
 
         public static Estadia_checkIn ObtenerInstancia()
@@ -23,7 +28,7 @@ namespace FrbaHotel.Registrar_Estadia
             return _instancia;
         }
 
-        public Estadia_checkIn()
+        public Estadia_checkOut()
         {
             InitializeComponent();
 
@@ -35,15 +40,14 @@ namespace FrbaHotel.Registrar_Estadia
         }
 
         private void Limpiar()
-        {            
-            txt_regimen.Text = null;
-            dtp_FechaIngreso.Value = Dominio.UsuarioLogin.TheInstance.getFechaSistema();
+        {
+            dtp_FechaEgreso.Value = Dominio.UsuarioLogin.TheInstance.getFechaSistema().AddDays(1);
             txt_NroCliente.Text = null;
             txt_ApellidoCliente.Text = null;
             txt_NombreCliente.Text = null;
             txt_TipoIdentificacionCliente.Text = null;
             txt_NroIdentificacionCliente.Text = null;
-            txt_MailCliente.Text = null;            
+            txt_MailCliente.Text = null;
             dgv_HabitacionesReserva.Rows.Clear();
         }
 
@@ -54,7 +58,8 @@ namespace FrbaHotel.Registrar_Estadia
                 Limpiar();
                 string nroReserva = txt_NroReserva.Text;
                 Dominio.Reserva res1 = new Dominio.Reserva();
-                DataTable dtReserva = res1.ObtenerDatosReserva(nroReserva);
+                Dominio.Estadia est1 = new Dominio.Estadia();
+                DataTable dtReserva = est1.ObtenerDatosResEfectiva(nroReserva);
                 if (dtReserva.Rows.Count == 0)
                 {
                     MessageBox.Show("No se encontraron resultados para el número de reserva ingresado");
@@ -63,7 +68,7 @@ namespace FrbaHotel.Registrar_Estadia
                 {
                     CargarDatosReserva(dtReserva);
                     DataTable dtCliente = res1.ObtenerDatosCliente(nroReserva);
-                    CargarDatosCliente(dtCliente);                    
+                    CargarDatosCliente(dtCliente);
                     DataTable dtHabitaciones = res1.ObtenerDatosHabitaciones(nroReserva);
                     CargarDatosHabitaciones(dtHabitaciones);
                     gb_Cliente.Visible = true;
@@ -76,11 +81,15 @@ namespace FrbaHotel.Registrar_Estadia
                 MessageBox.Show("Debe ingresar un número de Reserva");
             }
         }
+                
 
         private void CargarDatosReserva(DataTable dtReserva)
-        {                       
-            dtp_FechaIngreso.Value = Convert.ToDateTime(dtReserva.Rows[0][3].ToString());            
-            txt_regimen.Text = dtReserva.Rows[0][5].ToString();       
+        {
+            dtp_FechaIngreso.Value = Convert.ToDateTime(dtReserva.Rows[0][3].ToString());
+            dtp_FechaEgreso.Value = Convert.ToDateTime(dtReserva.Rows[0][4].ToString());
+            fechaEgresoRes = Convert.ToDateTime(dtReserva.Rows[0][4].ToString());
+
+            
         }
 
         private void CargarDatosCliente(DataTable dtCliente)
@@ -93,15 +102,17 @@ namespace FrbaHotel.Registrar_Estadia
             txt_MailCliente.Text = dtCliente.Rows[0][5].ToString();
         }
 
-        private void CargarDatosEstadia(DataTable dtEstadia)
+        /*private void CargarDatosEstadia(DataTable dtEstadia)
         {
-            txt_NroCliente.Text = dtEstadia.Rows[0][0].ToString();
+
+            /*txt_NroCliente.Text = dtEstadia.Rows[0][0].ToString();
             txt_ApellidoCliente.Text = dtEstadia.Rows[0][1].ToString();
             txt_NombreCliente.Text = dtEstadia.Rows[0][2].ToString();
             txt_TipoIdentificacionCliente.Text = dtEstadia.Rows[0][3].ToString();
             txt_NroIdentificacionCliente.Text = dtEstadia.Rows[0][4].ToString();
             txt_MailCliente.Text = dtEstadia.Rows[0][5].ToString();
-        }
+            
+        }*/
 
         private void CargarDatosHabitaciones(DataTable dtHabitaciones)
         {
@@ -124,49 +135,48 @@ namespace FrbaHotel.Registrar_Estadia
                 dgv_HabitacionesReserva.Rows[i].Cells["cantNoches"].Value = dtHabitaciones.Rows[i][12].ToString();
                 dgv_HabitacionesReserva.Rows[i].Cells["PrecioTotalHab"].Value = dtHabitaciones.Rows[i][13].ToString();
 
-                txt_CantNoches.Text = dtHabitaciones.Rows[i][12].ToString();
-                txt_tipoHab.Text = dtHabitaciones.Rows[i][5].ToString();
+                CantNochesRes = Convert.ToInt32(dtHabitaciones.Rows[i][12].ToString());                
             }
         }
-                
 
         private void btn_Cancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void btn_checkIn_Click(object sender, EventArgs e)
+        private void btn_checkOut_Click(object sender, EventArgs e)
         {
             Dominio.Estadia est1 = new Dominio.Estadia();
-            
-            if (est1.verificaReservaCod(txt_NroReserva.Text))
+
+            if (dtp_FechaEgreso.Value < fechaEgresoRes)
             {
-                if (est1.RegistrarEstadiaCheckIn(txt_NroReserva.Text, dtp_FechaIngreso.Value, txt_CantNoches.Text, txt_usuario.Text) &&
-                        est1.CambiarEstadoReserva(txt_NroReserva.Text))
+                fechaCheckOut = dtp_FechaEgreso.Value;
+
+                TimeSpan difer = dtp_FechaEgreso.Value - dtp_FechaIngreso.Value;
+                cantNochesReal = difer.Days;
+            }
+            else
+            {
+                fechaCheckOut = fechaEgresoRes;
+                cantNochesReal = CantNochesRes;
+            }
+
+            if (!est1.verificaReservaCod(txt_NroReserva.Text))
+            {
+                if (est1.ActualizarEstadiaCheckOut(txt_NroReserva.Text, fechaCheckOut, cantNochesReal, txt_usuario.Text))                       
                 {
-                    string idEstadia = Convert.ToString(est1.ObtenerIdEstadia(txt_NroReserva.Text));
-                    MessageBox.Show("Se registró correctamente la estadía" +idEstadia+"");
+                    MessageBox.Show("Se realizó correctamente el check Out");
                     this.Close();
                 }
                 else
                 {
-                    MessageBox.Show("Error al registrar la estadía");
-                }          
+                    MessageBox.Show("Error al realizar el check Out de la estadía");
+                }
             }
             else
             {
-                MessageBox.Show("Error, ya se ha realizado el check In de la reserva.");
+                MessageBox.Show("Error, no se encuentra el check in correspondiente a la reserva");
             }
-
-            DialogResult Result;
-            Result = MessageBox.Show("Reserva válida. Debe registrar a todos los huespedes", " ", MessageBoxButtons.OK);
-
-            if (Result == DialogResult.OK)
-            {
-                ABM_de_Cliente.Clientes huespedes = FrbaHotel.ABM_de_Cliente.Clientes.ObtenerInstancia();
-                huespedes.Show();
-            }
-        }        
-
+        }
     }
 }
