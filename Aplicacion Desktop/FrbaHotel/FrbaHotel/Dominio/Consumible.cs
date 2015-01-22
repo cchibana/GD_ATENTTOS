@@ -38,7 +38,7 @@ namespace FrbaHotel.Dominio
         internal DataTable VerificarFechaValida(string nroEstadia)
         {
             string fechaSistema = UsuarioLogin.TheInstance.getFechaSistema().ToString("yyyy-MM-dd HH:mm:ss");
-            string textoSQL = "  select case when Est_Fecha_CheckOut is null AND (DATEADD(day, e.Est_cant_noches_res, e.Est_Fecha_inicio) <= '" + fechaSistema + "') THEN 'true' else  'false' end from ATENTTOS.Estadias e WHERE e.Est_Id = " + nroEstadia;
+            string textoSQL = "  select case when Est_Fecha_CheckOut is null AND (DATEADD(day, e.Est_cant_noches_res, e.Est_Fecha_inicio) >= '" + fechaSistema + "') THEN 'true' else  'false' end from ATENTTOS.Estadias e WHERE e.Est_Id = " + nroEstadia;
             return EjecutarConsulta(textoSQL);
 
 

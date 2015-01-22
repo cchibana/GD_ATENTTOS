@@ -299,10 +299,10 @@
     <Compile Include="Generar Modificar Reserva\Reserva_Generar.Designer.cs">
       <DependentUpon>Reserva_Generar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Listado Estadistico\ListadosEstadisticos.cs">
+    <Compile Include="Generar Modificar Reserva\ListadosEstadisticos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Listado Estadistico\ListadosEstadisticos.Designer.cs">
+    <Compile Include="Generar Modificar Reserva\ListadosEstadisticos.Designer.cs">
       <DependentUpon>ListadosEstadisticos.cs</DependentUpon>
     </Compile>
     <Compile Include="Login\Login.cs">
@@ -418,7 +418,7 @@
     <EmbeddedResource Include="Generar Modificar Reserva\Reserva_Regimenes.resx">
       <DependentUpon>Reserva_Regimenes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Listado Estadistico\ListadosEstadisticos.resx">
+    <EmbeddedResource Include="Generar Modificar Reserva\ListadosEstadisticos.resx">
       <DependentUpon>ListadosEstadisticos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginHotelRol.resx">
@@ -483,6 +483,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\foto10.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Listado Estadistico\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

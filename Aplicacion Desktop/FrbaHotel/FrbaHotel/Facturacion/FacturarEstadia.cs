@@ -86,8 +86,28 @@ namespace FrbaHotel.Facturacion
             }
             else if (Convert.ToBoolean(dt.Rows[0][0].ToString()))
             {
-                Dominio.ComboBoxItem itemFormaPago = (Dominio.ComboBoxItem)cb_FormaDePago.SelectedItem;
-                f1.RegistrarFacturacion(txt_NroEstadia.Text,itemFormaPago.Text.ToString(), txt_NroTarjeta.Text, txt_Banco.Text);
+                try
+                {
+                    Dominio.ComboBoxItem itemFormaPago = (Dominio.ComboBoxItem)cb_FormaDePago.SelectedItem;
+                    f1.RegistrarFacturacion(txt_NroEstadia.Text, itemFormaPago.Text.ToString(), txt_NroTarjeta.Text, txt_Banco.Text);
+                    DataTable dtHabitaciones = f1.ObtenerDatosHabitaciones(txt_NroEstadia.Text);
+                    for (int i = 0; i < dtHabitaciones.Rows.Count; i++)
+                    {
+                        f1.RegistrarEstadiasFacturacion(txt_NroEstadia.Text, dtHabitaciones.Rows[i][5].ToString(), dtHabitaciones.Rows[i][11].ToString(), dtHabitaciones.Rows[i][12].ToString());
+                    }
+                    DataTable dtConsumibles = f1.ObtenerDatosConsumibles(txt_NroEstadia.Text);
+                    for (int i = 0; i < dtConsumibles.Rows.Count; i++)
+                    {
+                        f1.RegistrarConsumiblesFacturacion(txt_NroEstadia.Text, dtConsumibles.Rows[i][0].ToString(), dtConsumibles.Rows[i][1].ToString());
+                    }
+                    MessageBox.Show("Se ha realizado la facturación correctamente");
+                }
+                catch 
+                {
+                    MessageBox.Show("Error al realizar la facturación");
+                    
+                }
+
             }
             else
             {

@@ -232,12 +232,14 @@ namespace FrbaHotel
 
         private void menuItem_Consumiciones_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Consumiciones");
+            Registrar_Consumible.RegistrarConsumibles cons1 = Registrar_Consumible.RegistrarConsumibles.ObtenerInstancia();
+            cons1.Show();
         }
 
         private void menuItem_Facturaciones_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Facturaciones");
+            Facturacion.FacturarEstadia f1 = Facturacion.FacturarEstadia.ObtenerInstancia();
+            f1.Show();
         }
 
         private void menuItem_Listado_Estadistico_Click(object sender, EventArgs e)

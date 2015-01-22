@@ -74,3 +74,6 @@ C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaH
 C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Generar_Modificar_Reserva.Reserva_Regimenes.resources
 C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Listado_Estadistico.ListadosEstadisticos.resources
 C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Registrar_Estadia.Estadia_checkIn.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Facturacion.FacturarEstadia.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Registrar_Consumible.RegistrarConsumibles.resources
+C:\Users\Chibana\Documents\GitHub\GD_ATENTTOS\Aplicacion Desktop\FrbaHotel\FrbaHotel\obj\Debug\FrbaHotel.Registrar_Estadia.Estadia_checkOut.resources

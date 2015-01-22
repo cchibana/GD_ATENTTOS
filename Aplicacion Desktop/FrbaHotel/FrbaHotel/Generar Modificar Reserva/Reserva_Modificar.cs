@@ -35,7 +35,8 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         public Reserva_Modificar()
         {
             InitializeComponent();
-            InicializarComboBoxCiudad();
+            InicializarCiudadHotel();
+            
         }
 
         private void InicializarCiudadHotel()
@@ -173,8 +174,16 @@ namespace FrbaHotel.Generar_Modificar_Reserva
         private void Limpiar()
         {
             cb_Ciudad.SelectedIndex = 0;
+            if (cb_Hotel.SelectedIndex != -1)
+            {
+                
             cb_Hotel.SelectedIndex = 0;
+            }
+            if (cb_Regimen.SelectedIndex != -1)
+            {
+                
             cb_Regimen.SelectedIndex = 0;
+            }
             dtp_FechaIngreso.Value = Dominio.UsuarioLogin.TheInstance.getFechaSistema();
             dtp_FechaEgreso.Value = Dominio.UsuarioLogin.TheInstance.getFechaSistema().AddDays(1);
             txt_NroCliente.Text = null;
@@ -208,7 +217,10 @@ namespace FrbaHotel.Generar_Modificar_Reserva
                     indexRegimen = i;
                 }
             }
+            if (cb_Regimen.SelectedIndex != -1)
+            {
             cb_Regimen.SelectedIndex = indexRegimen;
+            }
         }
 
         private void CargarDatosCliente(DataTable dtCliente)

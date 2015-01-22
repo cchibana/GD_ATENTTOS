@@ -144,8 +144,9 @@ namespace FrbaHotel.Registrar_Estadia
                 if (est1.RegistrarEstadiaCheckIn(txt_NroReserva.Text, dtp_FechaIngreso.Value, txt_CantNoches.Text, txt_usuario.Text) &&
                         est1.CambiarEstadoReserva(txt_NroReserva.Text))
                 {
-                    string idEstadia = Convert.ToString(est1.ObtenerIdEstadia(txt_NroReserva.Text));
-                    MessageBox.Show("Se registró correctamente la estadía" +idEstadia+"");
+                    DataTable dtReserva = est1.ObtenerIdEstadia(txt_NroReserva.Text);
+                    string idEstadia = dtReserva.Rows[0][0].ToString();
+                    MessageBox.Show("Se registró correctamente la estadía número: " +idEstadia+"");
                     this.Close();
                 }
                 else
